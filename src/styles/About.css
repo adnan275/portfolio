@@ -1,0 +1,166 @@
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+.about-content {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    line-height: 1.7;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+.skills-wrapper {
+    margin-top: 2rem;
+}
+
+.skills-wrapper h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.25rem 0.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    transition: all 0.3s var(--transition-smooth);
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+.skill-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-5px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: var(--shadow-md);
+}
+
+.skill-icon {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.skill-name {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.skill-item:hover .skill-name {
+    color: var(--text-primary);
+}
+
+.about-visual {
+    position: relative;
+    padding: 2rem;
+}
+
+.visual-card {
+    position: relative;
+    padding: 2.5rem;
+    border-radius: 20px;
+    z-index: 2;
+    transform: rotate(2deg);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background: rgba(20, 20, 25, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-md);
+}
+
+.visual-card:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.gradient-orb {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 350px;
+    background: var(--gradient-main);
+    filter: blur(90px);
+    z-index: 1;
+    opacity: 0.4;
+    border-radius: 50%;
+}
+
+.code-block {
+    font-family: 'Fira Code', 'Roboto Mono', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.window-controls span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.window-controls span:nth-child(1) {
+    background-color: #ff5f56;
+}
+
+.window-controls span:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.window-controls span:nth-child(3) {
+    background-color: #27c93f;
+}
+
+pre {
+    margin: 0;
+    white-space: pre-wrap;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .visual-card {
+        transform: rotate(0);
+        margin: 0 auto;
+        max-width: 600px;
+    }
+}
