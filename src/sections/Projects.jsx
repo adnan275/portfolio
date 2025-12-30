@@ -6,42 +6,42 @@ const projects = [
     {
         title: 'Presento Treasure',
         description: 'Startup-grade E-commerce with modular API, role-based auth, and core commerce logic.',
-        tags: ['React', 'Node.js', 'MongoDB', 'Express'],
+        tags: ['React', 'Node.js', 'MySql', 'Express'],
         link: 'https://fullstack-presento-swaj.vercel.app/',
         image: '/projects/presento.png'
     },
     {
         title: 'Taskly',
         description: 'Auth-based Task Manager for organizing personal workflows.',
-        tags: ['React', 'Firebase', 'Auth'],
+        tags: ['React', 'Firebase', 'Auth','JavaScript'],
         link: 'https://auth-taskly.vercel.app/',
         image: '/projects/taskly-real.png'
     },
     {
         title: 'Stone Paper Scissors',
         description: 'Interactive game with score tracking and responsive UI.',
-        tags: ['JavaScript', 'DOM', 'CSS'],
+        tags: ['JavaScript', 'HTML', 'CSS'],
         link: 'https://stone-paper-scissors-blue-pi.vercel.app/',
         image: '/projects/rps.png'
     },
     {
         title: 'Password Strength Checker',
         description: 'Real-time password validation utility for security awareness.',
-        tags: ['JavaScript', 'Regex', 'Security'],
+        tags: ['JavaScript', 'HTML', 'CSS'],
         link: 'https://password-strength-checker-psi-one.vercel.app/',
         image: '/projects/password.png'
     },
     {
         title: 'Capstone Project',
         description: 'Comprehensive web solution demonstrating full-stack capabilities.',
-        tags: ['MERN', 'Full Stack', 'API'],
+        tags: ['CSS', 'HTML', 'JavaScript'],
         link: 'https://s-w-project-sigma.vercel.app/',
         image: '/projects/capstone-real.jpg'
     },
     {
         title: 'QR Scanner & Generator',
         description: 'Utility tool to scan and generate QR codes instantly.',
-        tags: ['JavaScript', 'API', 'Tool'],
+        tags: ['JavaScript', 'API', 'Tool','HTML', 'CSS'],
         link: 'https://qr-scanner-ten-tawny.vercel.app/',
         image: '/projects/qr.png'
     }
