@@ -4,6 +4,13 @@ import '../styles/Projects.css';
 
 const projects = [
     {
+        title: 'Zync',
+        description: 'Real-time video calling platform with 15,000+ calls, 50,000+ messages, 92% satisfaction, <0.1% error rate.',
+        tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Stream', 'JWT'],
+        link: 'https://zync-five.vercel.app/login',
+        image: '/projects/zync.png'
+    },
+    {
         title: 'Presento Treasure',
         description: 'Startup-grade E-commerce with modular API, role-based auth, and core commerce logic.',
         tags: ['React', 'Node.js', 'MySql', 'Express'],
@@ -13,7 +20,7 @@ const projects = [
     {
         title: 'Taskly',
         description: 'Auth-based Task Manager for organizing personal workflows.',
-        tags: ['React', 'Firebase', 'Auth','JavaScript'],
+        tags: ['React', 'Firebase', 'Auth', 'JavaScript'],
         link: 'https://auth-taskly.vercel.app/',
         image: '/projects/taskly-real.png'
     },
@@ -41,7 +48,7 @@ const projects = [
     {
         title: 'QR Scanner & Generator',
         description: 'Utility tool to scan and generate QR codes instantly.',
-        tags: ['JavaScript', 'API', 'Tool','HTML', 'CSS'],
+        tags: ['JavaScript', 'API', 'Tool', 'HTML', 'CSS'],
         link: 'https://qr-scanner-ten-tawny.vercel.app/',
         image: '/projects/qr.png'
     }
