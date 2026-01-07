@@ -8,10 +8,6 @@ const Footer = () => {
                 <div className="copyright">
                     © {new Date().getFullYear()} Portfolio. All Rights Reserved.
                 </div>
-                <div className="footer-nav">
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                </div>
             </div>
         </footer>
     );
