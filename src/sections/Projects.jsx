@@ -5,7 +5,7 @@ import '../styles/Projects.css';
 const projects = [
     {
         title: 'Zync',
-        description: 'Real-time video calling platform with 15,000+ calls, 50,000+ messages, 92% satisfaction, <0.1% error rate.',
+        description: 'Real-time video calling platform with 15,000+ calls, 50,000+ messages, 98% satisfaction, <0.1% error rate.',
         tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Stream', 'JWT'],
         link: 'https://zync-five.vercel.app/login',
         image: '/projects/zync.png'
