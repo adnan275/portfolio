@@ -21,12 +21,39 @@ const Contact = () => {
         e.preventDefault();
         setStatus('loading');
 
-        await new Promise(resolve => setTimeout(resolve, 1500));
+        try {
+            const { WEB3FORMS_CONFIG } = await import('../config/emailjs.js');
 
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
+            const formDataToSend = new FormData();
+            formDataToSend.append('access_key', WEB3FORMS_CONFIG.ACCESS_KEY);
+            formDataToSend.append('name', formData.name);
+            formDataToSend.append('email', formData.email);
+            formDataToSend.append('message', formData.message);
+            formDataToSend.append('subject', `New Contact Form Message from ${formData.name}`);
 
-        setTimeout(() => setStatus(''), 5000);
+            const response = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formDataToSend
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                console.log('Email sent successfully:', result);
+                setStatus('success');
+                setFormData({ name: '', email: '', message: '' });
+            } else {
+                console.error('Email send failed:', result);
+                setStatus('error');
+            }
+
+            setTimeout(() => setStatus(''), 5000);
+        } catch (error) {
+            console.error('Email send failed:', error);
+            setStatus('error');
+
+            setTimeout(() => setStatus(''), 5000);
+        }
     };
 
     return (
@@ -114,6 +141,17 @@ const Contact = () => {
                         >
                             <span style={{ marginRight: '8px' }}>✅</span>
                             Thanks for reaching out! I’ll get back to you soon.
+                        </motion.div>
+                    )}
+
+                    {status === 'error' && (
+                        <motion.div
+                            className="status-message error"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                        >
+                            <span style={{ marginRight: '8px' }}>❌</span>
+                            Oops! Something went wrong. Please check your Web3Forms configuration or try again later.
                         </motion.div>
                     )}
                 </form>

@@ -1,0 +1,3 @@
+export const WEB3FORMS_CONFIG = {
+    ACCESS_KEY: '04c10eac-391f-4932-941f-c00b57800317',
+};
