@@ -7,20 +7,12 @@
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 
-.footer-nav {
-    display: flex;
-    gap: 2rem;
-}
-
-.footer-nav a {
-    transition: color 0.2s ease;
-}
-
-.footer-nav a:hover {
+.copyright {
+    font-weight: 500;
     color: var(--text-primary);
 }
 
