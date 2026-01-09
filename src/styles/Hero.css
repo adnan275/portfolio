@@ -21,9 +21,10 @@
 
 .glow-blob {
     position: absolute;
-    filter: blur(100px);
+    filter: blur(120px);
     border-radius: 50%;
-    animation: pulse-glow 10s ease-in-out infinite alternate;
+    animation: pulse-glow 12s ease-in-out infinite alternate;
+    will-change: transform, opacity;
 }
 
 .glow-blob-1 {
@@ -32,9 +33,12 @@
     transform: translateX(-50%);
     width: 70vw;
     height: 70vw;
-    max-width: 700px;
-    max-height: 700px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%);
+    max-width: 800px;
+    max-height: 800px;
+    background: radial-gradient(circle,
+            rgba(99, 102, 241, 0.3) 0%,
+            rgba(139, 92, 246, 0.15) 40%,
+            transparent 70%);
 }
 
 .glow-blob-2 {
@@ -42,9 +46,13 @@
     right: -10%;
     width: 50vw;
     height: 50vw;
-    max-width: 500px;
-    max-height: 500px;
-    background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, rgba(139, 92, 246, 0.08) 40%, transparent 70%);
+    max-width: 600px;
+    max-height: 600px;
+    background: radial-gradient(circle,
+            rgba(236, 72, 153, 0.25) 0%,
+            rgba(139, 92, 246, 0.12) 40%,
+            transparent 70%);
+    animation: pulse-glow 15s ease-in-out infinite alternate-reverse;
 }
 
 .grid-overlay {
@@ -110,23 +118,49 @@
     align-items: center;
     justify-content: center;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-medium);
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.1) 0%,
+            rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.3);
     padding: 12px 28px;
     border-radius: 100px;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.02em;
     color: var(--text-accent);
-    backdrop-filter: blur(12px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    transition: all var(--transition-smooth);
+    backdrop-filter: blur(16px);
+    box-shadow:
+        0 4px 20px rgba(99, 102, 241, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.availability-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transition: left 0.6s ease;
+}
+
+.availability-badge:hover::before {
+    left: 100%;
 }
 
 .availability-badge:hover {
-    border-color: var(--border-accent);
-    box-shadow: 0 4px 25px var(--shadow-glow);
-    transform: translateY(-2px);
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow:
+        0 8px 30px rgba(99, 102, 241, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px) scale(1.02);
 }
 
 .pulse-dot {
@@ -219,16 +253,40 @@
 .btn-primary {
     background: var(--gradient-main);
     color: white;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow:
+        0 4px 15px rgba(99, 102, 241, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 12px 35px rgba(99, 102, 241, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn-primary:active {
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(1.01);
 }
 
 .btn-outline {
@@ -259,18 +317,47 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-light);
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.08) 0%,
+            rgba(255, 255, 255, 0.03) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text-primary);
-    transition: all var(--transition-smooth);
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-main);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 50%;
+}
+
+.social-icon svg {
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.social-icon:hover::before {
+    opacity: 1;
 }
 
 .social-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--accent-primary);
-    transform: translateY(-3px) scale(1.05);
-    color: var(--accent-primary);
-    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.3);
+    border-color: transparent;
+    transform: translateY(-4px) scale(1.1) rotate(5deg);
+    color: white;
+    box-shadow:
+        0 8px 25px rgba(99, 102, 241, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.social-icon:hover svg {
+    transform: scale(1.1);
 }
 
 .social-icon svg {

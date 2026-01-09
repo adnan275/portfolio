@@ -125,9 +125,6 @@ h6 {
     text-align: center;
 }
 
-    scroll-behavior: smooth;
-}
-
 ::selection {
     background: var(--accent-primary);
     color: white;

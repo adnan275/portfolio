@@ -7,15 +7,35 @@
 .project-card {
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
     cursor: pointer;
 }
 
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.03) 0%,
+            rgba(139, 92, 246, 0.03) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
 .project-card:hover {
-    transform: translateY(-5px);
     box-shadow:
-        0 12px 24px rgba(0, 0, 0, 0.3),
-        0 0 0 1px var(--border-medium);
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px var(--border-medium),
+        0 8px 16px rgba(99, 102, 241, 0.15);
 }
 
 .card-image {
@@ -27,15 +47,34 @@
     background: var(--bg-tertiary);
 }
 
+.card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top,
+            rgba(10, 10, 15, 0.6) 0%,
+            transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.project-card:hover .card-image::after {
+    opacity: 1;
+}
+
 .project-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 .project-card:hover .project-img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .placeholder-img {
@@ -52,6 +91,8 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    position: relative;
+    z-index: 2;
 }
 
 .card-content h3 {
@@ -61,6 +102,12 @@
     margin: 0;
     letter-spacing: -0.02em;
     line-height: 1.2;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .card-content h3 {
+    color: var(--accent-primary);
+    transform: translateX(3px);
 }
 
 .card-content p {
@@ -82,11 +129,33 @@
     font-size: 0.8rem;
     font-weight: 600;
     border-radius: 100px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--border-light);
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.08) 0%,
+            rgba(139, 92, 246, 0.05) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
     color: var(--text-accent);
-    transition: all var(--transition-smooth);
+    transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
     letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-tags span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent);
+    transition: left 0.5s ease;
+}
+
+.card-tags span:hover::before {
+    left: 100%;
 }
 
 .card-tags span:hover {
