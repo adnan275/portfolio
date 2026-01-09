@@ -142,7 +142,7 @@ const Projects = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    Selected Work
+                    Checkout My Projects
                 </motion.h2>
 
                 <motion.div
