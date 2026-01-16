@@ -25,7 +25,8 @@ const About = () => {
                         </p>
 
                         <div className="skills-wrapper">
-                            <h3>Tech Stack</h3>
+                            <h3>My skills</h3>
+                            <h2 className="heading-lg" style={{ marginTop: '2rem', marginBottom: '2rem' }}>The Secret Sauce</h2>
                             <motion.div
                                 className="skills-grid"
                                 initial={{ opacity: 0 }}
