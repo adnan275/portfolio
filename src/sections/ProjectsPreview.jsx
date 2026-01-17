@@ -91,40 +91,58 @@ const ProjectsPreview = () => {
                     className="horizontal-scroll-container"
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: false }}
                     transition={{ duration: 0.5 }}
                 >
                     <motion.div
                         className="projects-horizontal-track"
                         style={{ x }}
                     >
-                        {projects.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                className="project-scroll-card"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true, amount: 0.3 }}
-                                transition={{
-                                    delay: index * 0.05,
-                                    duration: 0.5
-                                }}
-                                whileHover={{
-                                    scale: 1.05,
-                                    y: -10,
-                                    transition: { duration: 0.3 }
-                                }}
-                                onClick={() => window.open(project.link, '_blank')}
-                                style={{ cursor: 'pointer' }}
-                            >
-                                <div className="scroll-card-image">
-                                    <img src={project.image} alt={project.title} />
-                                    <div className="scroll-card-overlay">
-                                        <h3>{project.title}</h3>
+                        {projects.map((project, index) => {
+                            const row = Math.floor(index / 4);
+                            const isEvenRow = row % 2 === 0;
+
+                            return (
+                                <motion.div
+                                    key={index}
+                                    className="project-scroll-card"
+                                    initial={{
+                                        opacity: 0,
+                                        y: isEvenRow ? 50 : -50,
+                                        rotateY: isEvenRow ? -15 : 15
+                                    }}
+                                    whileInView={{
+                                        opacity: 1,
+                                        y: 0,
+                                        rotateY: 0
+                                    }}
+                                    viewport={{ once: false, amount: 0.3 }}
+                                    transition={{
+                                        delay: (index % 4) * 0.1,
+                                        duration: 0.6,
+                                        ease: [0.22, 0.61, 0.36, 1]
+                                    }}
+                                    whileHover={{
+                                        scale: 1.05,
+                                        y: -10,
+                                        rotateY: 5,
+                                        transition: { duration: 0.3 }
+                                    }}
+                                    onClick={() => window.open(project.link, '_blank')}
+                                    style={{
+                                        cursor: 'pointer',
+                                        perspective: '1000px'
+                                    }}
+                                >
+                                    <div className="scroll-card-image">
+                                        <img src={project.image} alt={project.title} />
+                                        <div className="scroll-card-overlay">
+                                            <h3>{project.title}</h3>
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                </motion.div>
+                            );
+                        })}
                     </motion.div>
                 </motion.div>
 
