@@ -68,7 +68,7 @@ const projects = [
         description: 'Utility tool to scan and generate QR codes instantly.',
         tags: ['JavaScript', 'API', 'Tool', 'HTML', 'CSS'],
         link: 'https://qr-scanner-ten-tawny.vercel.app/',
-        image: '/projects/qr.png'
+        image: '/projects/qr-new.png'
     }
 ];
 
