@@ -47,7 +47,7 @@ const projects = [
         description: 'Interactive game with score tracking and responsive UI.',
         tags: ['JavaScript', 'HTML', 'CSS'],
         link: 'https://stone-paper-scissors-blue-pi.vercel.app/',
-        image: '/projects/rps.png'
+        image: '/projects/rps-update.png'
     },
     {
         title: 'Password Strength Checker',

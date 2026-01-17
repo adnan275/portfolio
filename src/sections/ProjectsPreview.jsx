@@ -43,7 +43,7 @@ const projects = [
         title: 'Stone Paper Scissors',
         description: 'Interactive game',
         tags: ['JavaScript', 'HTML'],
-        image: '/projects/rps.png',
+        image: '/projects/rps-update.png',
         link: 'https://stone-paper-scissors-blue-pi.vercel.app/'
     },
     {
