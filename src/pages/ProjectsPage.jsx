@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/ProjectsPage.css';
+import '../styles/Projects.css';
 
 const projects = [
     {
@@ -153,15 +154,15 @@ const ProjectsPage = () => {
             <Navbar />
             <main className="projects-main">
                 <div className="container">
+                    <Link to="/" className="back-link">
+                        ← Back to Home
+                    </Link>
                     <motion.div
                         className="page-header"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <Link to="/" className="back-link">
-                            ← Back to Home
-                        </Link>
                         <h1 className="heading-xl">All Projects</h1>
                         <p className="page-subtitle">
                             A collection of my work showcasing full-stack development, UI/UX design, and problem-solving skills.
