@@ -4,6 +4,20 @@ import '../styles/Projects.css';
 
 const projects = [
     {
+        title: 'GigFlow',
+        description: 'Real-time freelance marketplace platform for posting gigs, bidding, and live messaging with Socket.io integration.',
+        tags: ['React', 'Vite', 'TailwindCSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
+        link: 'https://service-hive-zeta.vercel.app/',
+        image: '/projects/service-hive.png'
+    },
+    {
+        title: 'Livesitter',
+        description: 'Full-stack RTSP livestream overlay application with draggable/resizable text and image overlays in real-time with persistent storage.',
+        tags: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'FFmpeg', 'HLS.js'],
+        link: 'https://livesitter-woad.vercel.app/',
+        image: '/projects/livesitter.png'
+    },
+    {
         title: 'Zync',
         description: 'Real-time video calling platform with 15,000+ calls, 50,000+ messages, 98% satisfaction, <0.1% error rate.',
         tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Stream', 'JWT'],
