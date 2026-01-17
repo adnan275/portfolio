@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('hero');
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,10 +33,10 @@ const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Home', href: '#hero' },
-        { name: 'About', href: '#about' },
-        { name: 'Work', href: '#work' },
-        { name: 'Contact', href: '#contact' },
+        { name: 'Home', href: '/', type: 'route' },
+        { name: 'About', href: '#about', type: 'hash' },
+        { name: 'Projects', href: '/projects', type: 'route' },
+        { name: 'Contact', href: '#contact', type: 'hash' },
     ];
 
     const handleNavClick = (href) => {
@@ -65,21 +67,33 @@ const Navbar = () => {
 
                 <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
                     {navLinks.map((link, index) => (
-                        <motion.a
-                            key={link.name}
-                            href={link.href}
-                            className={`nav-link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
-                            onClick={(e) => {
-                                e.preventDefault();
-                                handleNavClick(link.href);
-                            }}
-                            initial={{ opacity: 0, y: -20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.1 * index, duration: 0.4 }}
-                        >
-                            {link.name}
-                            <span className="nav-link-underline"></span>
-                        </motion.a>
+                        link.type === 'route' ? (
+                            <Link
+                                key={link.name}
+                                to={link.href}
+                                className={`nav-link ${location.pathname === link.href ? 'active' : ''}`}
+                                onClick={() => setMobileMenuOpen(false)}
+                            >
+                                {link.name}
+                                <span className="nav-link-underline"></span>
+                            </Link>
+                        ) : (
+                            <motion.a
+                                key={link.name}
+                                href={link.href}
+                                className={`nav-link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavClick(link.href);
+                                }}
+                                initial={{ opacity: 0, y: -20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.1 * index, duration: 0.4 }}
+                            >
+                                {link.name}
+                                <span className="nav-link-underline"></span>
+                            </motion.a>
+                        )
                     ))}
                 </div>
 
