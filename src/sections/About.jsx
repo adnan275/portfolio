@@ -1,12 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/About.css';
+import '../styles/Three.css';
 
 const About = () => {
     return (
         <section id="about" className="section-padding about-section">
             <div className="container">
-                <div className="about-grid">
+                <div className="about-grid perspective-container">
                     <motion.div
                         className="about-content"
                         initial={{ opacity: 0, x: -30 }}
@@ -16,8 +17,8 @@ const About = () => {
                     >
                         <h2 className="heading-lg" style={{ marginBottom: '2rem' }}>About Me</h2>
                         <p>
-                            I’m a <strong>Full Stack Developer</strong> passionate about building high-performance web applications.
-                            Currently, I’m focused on mastering <strong>React, Node.js, and modern UI/UX principles</strong> to create seamless digital experiences.
+                            I'm a <strong>Full Stack Developer</strong> passionate about building high-performance web applications.
+                            Currently, I'm focused on mastering <strong>React, Node.js, and modern UI/UX principles</strong> to create seamless digital experiences.
                         </p>
                         <p>
                             I love <strong>solving complex problems</strong> with clean code and believe in <strong>continuous learning</strong>.
@@ -28,7 +29,7 @@ const About = () => {
                             <h3>My skills</h3>
                             <h2 className="heading-lg" style={{ marginTop: '2rem', marginBottom: '2rem' }}>The Secret Sauce</h2>
                             <motion.div
-                                className="skills-grid"
+                                className="skills-grid transform-3d"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
@@ -58,11 +59,18 @@ const About = () => {
                                 ].map((skill, index) => (
                                     <motion.div
                                         key={index}
-                                        className="skill-item"
+                                        className="skill-item card-3d gpu-accelerated"
                                         initial={{ opacity: 0, y: 10 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.3 }}
+                                        whileHover={{
+                                            scale: 1.1,
+                                            rotateY: 10,
+                                            rotateX: 5,
+                                            z: 20,
+                                            transition: { duration: 0.3 }
+                                        }}
                                     >
                                         <img src={skill.icon} alt={skill.name} className="skill-icon" />
                                         <span className="skill-name">{skill.name}</span>
@@ -73,13 +81,13 @@ const About = () => {
                     </motion.div>
 
                     <motion.div
-                        className="about-visual"
+                        className="about-visual perspective-container"
                         initial={{ opacity: 0, x: 30, rotate: 5 }}
                         whileInView={{ opacity: 1, x: 0, rotate: 2 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
                     >
-                        <div className="visual-card">
+                        <div className="visual-card card-3d hover-lift-3d gpu-accelerated">
                             <div className="window-controls">
                                 <span></span><span></span><span></span>
                             </div>
@@ -96,7 +104,7 @@ const About = () => {
                                 </pre>
                             </div>
                         </div>
-                        <div className="gradient-orb"></div>
+                        <div className="gradient-orb float-3d"></div>
                     </motion.div>
                 </div>
             </div>

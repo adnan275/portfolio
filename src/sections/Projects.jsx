@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import '../styles/Projects.css';
+import '../styles/Three.css';
 
 const projects = [
     {
@@ -95,16 +96,17 @@ const ProjectCard = ({ project, variants }) => {
 
     return (
         <motion.div
-            className="project-card glass-panel"
+            className="project-card glass-panel card-3d gpu-accelerated"
             variants={variants}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             style={{
-                transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`,
-                transition: 'transform 0.1s ease-out'
+                transform: `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`,
+                transition: 'transform 0.1s ease-out, box-shadow 0.3s ease'
             }}
             whileHover={{
-                scale: 1.02,
+                scale: 1.03,
+                boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.7), 0 20px 30px -15px rgba(99, 102, 241, 0.3)',
                 transition: { duration: 0.3 }
             }}
         >

@@ -1,0 +1,122 @@
+.three-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: var(--z-background);
+    pointer-events: none;
+}
+
+.three-canvas-overlay {
+    position: relative;
+    z-index: var(--z-base);
+}
+
+.transform-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.depth-1 {
+    transform: translateZ(10px);
+}
+
+.depth-2 {
+    transform: translateZ(20px);
+}
+
+.depth-3 {
+    transform: translateZ(30px);
+}
+
+.shadow-depth-sm {
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.3),
+        0 2px 4px -1px rgba(99, 102, 241, 0.1);
+}
+
+.shadow-depth-md {
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.4),
+        0 4px 6px -2px rgba(99, 102, 241, 0.15);
+}
+
+.shadow-depth-lg {
+    box-shadow:
+        0 20px 25px -5px rgba(0, 0, 0, 0.5),
+        0 10px 10px -5px rgba(99, 102, 241, 0.2);
+}
+
+.shadow-depth-xl {
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.6),
+        0 15px 20px -10px rgba(99, 102, 241, 0.25);
+}
+
+.card-3d {
+    transform-style: preserve-3d;
+    transition: transform var(--transition-smooth);
+}
+
+.card-3d:hover {
+    transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+}
+
+@keyframes float-3d {
+
+    0%,
+    100% {
+        transform: translateY(0) translateZ(0);
+    }
+
+    50% {
+        transform: translateY(-20px) translateZ(10px);
+    }
+}
+
+.float-3d {
+    animation: float-3d 6s ease-in-out infinite;
+}
+
+.perspective-container {
+    perspective: 2000px;
+    perspective-origin: center;
+}
+
+.hover-lift-3d {
+    transition: all var(--transition-smooth);
+}
+
+.hover-lift-3d:hover {
+    transform: translateY(-10px) translateZ(20px) scale(1.02);
+    box-shadow:
+        0 30px 60px -15px rgba(0, 0, 0, 0.7),
+        0 20px 30px -15px rgba(99, 102, 241, 0.3);
+}
+
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .transform-3d {
+        perspective: 500px;
+    }
+
+    .hover-lift-3d:hover {
+        transform: translateY(-5px) scale(1.01);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .float-3d,
+    .card-3d,
+    .hover-lift-3d {
+        animation: none;
+        transition: none;
+    }
+}

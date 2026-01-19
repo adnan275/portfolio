@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../styles/ProjectsPreview.css';
+import '../styles/Three.css';
 
 const projects = [
     {
@@ -105,16 +106,18 @@ const ProjectsPreview = () => {
                             return (
                                 <motion.div
                                     key={index}
-                                    className="project-scroll-card"
+                                    className="project-scroll-card card-3d gpu-accelerated"
                                     initial={{
                                         opacity: 0,
                                         y: isEvenRow ? 50 : -50,
-                                        rotateY: isEvenRow ? -15 : 15
+                                        rotateY: isEvenRow ? -15 : 15,
+                                        z: -50
                                     }}
                                     whileInView={{
                                         opacity: 1,
                                         y: 0,
-                                        rotateY: 0
+                                        rotateY: 0,
+                                        z: 0
                                     }}
                                     viewport={{ once: false, amount: 0.3 }}
                                     transition={{
@@ -123,15 +126,18 @@ const ProjectsPreview = () => {
                                         ease: [0.22, 0.61, 0.36, 1]
                                     }}
                                     whileHover={{
-                                        scale: 1.05,
-                                        y: -10,
-                                        rotateY: 5,
+                                        scale: 1.08,
+                                        y: -15,
+                                        rotateY: 8,
+                                        z: 30,
+                                        boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 20px 30px -15px rgba(99, 102, 241, 0.4)',
                                         transition: { duration: 0.3 }
                                     }}
                                     onClick={() => window.open(project.link, '_blank')}
                                     style={{
                                         cursor: 'pointer',
-                                        perspective: '1000px'
+                                        perspective: '1200px',
+                                        transformStyle: 'preserve-3d'
                                     }}
                                 >
                                     <div className="scroll-card-image">
