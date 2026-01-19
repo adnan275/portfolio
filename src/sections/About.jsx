@@ -69,7 +69,7 @@ const About = () => {
                                             rotateY: 10,
                                             rotateX: 5,
                                             z: 20,
-                                            transition: { duration: 0.3 }
+                                            transition: { duration: 0.1 }
                                         }}
                                     >
                                         <img src={skill.icon} alt={skill.name} className="skill-icon" />
