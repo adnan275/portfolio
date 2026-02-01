@@ -6,6 +6,13 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'Socratic Study Buddy',
+        description: 'AI-powered Socratic tutor with intelligent guardrails',
+        tags: ['Flask', 'Python', 'OpenAI API'],
+        image: '/projects/socratic-buddy.png',
+        link: 'https://socratic-study-buddy.vercel.app/'
+    },
+    {
         title: 'GigFlow',
         description: 'Real-time freelance marketplace',
         tags: ['React', 'Node.js', 'MongoDB'],

@@ -8,6 +8,13 @@ import '../styles/Projects.css';
 
 const projects = [
     {
+        title: 'Socratic Study Buddy',
+        description: 'AI-powered Socratic tutor with intelligent guardrails that guides learning through questions, not answers. Features context retrieval and session management.',
+        tags: ['Flask', 'Python', 'OpenAI API', 'JavaScript', 'CSS3', 'Vercel'],
+        link: 'https://socratic-study-buddy.vercel.app/',
+        image: '/projects/socratic-buddy.png'
+    },
+    {
         title: 'GigFlow',
         description: 'Real-time freelance marketplace platform for posting gigs, bidding, and live messaging with Socket.io integration.',
         tags: ['React', 'Vite', 'TailwindCSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
