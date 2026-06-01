@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import ThreeBackground from '../components/ThreeBackground';
 import ParticleBackground3D from '../components/ParticleBackground3D';
 import TypingAnimation from '../components/TypingAnimation';
 import '../styles/Hero.css';
@@ -15,7 +14,6 @@ const Hero = () => {
 
     return (
         <section id="hero" className="hero-section">
-            <ThreeBackground />
             <div className="hero-background">
                 <ParticleBackground3D particleCount={600} />
 

@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 
-function Particles3D({ count = 800, mouse }) {
+const Particles3D = React.memo(({ count = 800, mouse }) => {
     const points = useRef();
 
     const particlesData = useMemo(() => {
@@ -64,7 +64,7 @@ function Particles3D({ count = 800, mouse }) {
             />
         </Points>
     );
-}
+});
 
 const ParticleBackground3D = ({ particleCount = 600 }) => {
     const mouse = useRef({ x: 0, y: 0 });
