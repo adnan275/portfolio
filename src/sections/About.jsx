@@ -152,7 +152,7 @@ const About = () => {
                                 { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg' },
                                 { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
                                 { name: 'Tableau', icon: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
-                                { name: 'LangChain', icon: 'https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/langchain_logo.png' },
+                                { name: 'LangChain', icon: 'https://avatars.githubusercontent.com/u/126733545?s=200&v=4' },
                                 { name: 'HuggingFace', icon: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg' },
                                 { name: 'LLMs', icon: 'https://cdn-icons-png.flaticon.com/512/2103/2103633.png' },
                                 { name: 'RAG', icon: 'https://cdn-icons-png.flaticon.com/512/2083/2083213.png' },
