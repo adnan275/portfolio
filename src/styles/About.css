@@ -1,19 +1,28 @@
-.about-grid {
+.about-intro-grid {
     display: grid;
     grid-template-columns: 1fr 0.8fr;
     gap: 6rem;
     align-items: center;
-    transform-style: preserve-3d;
+    margin-bottom: 8rem;
 }
 
-.about-content {
+.about-intro-content {
     color: var(--text-secondary);
     font-size: 1.15rem;
     line-height: 1.7;
 }
 
-.about-content p {
+.about-intro-content p {
     margin-bottom: 1.5rem;
+}
+
+.journey-section {
+    margin-bottom: 10rem;
+    width: 100%;
+}
+
+.skills-section {
+    width: 100%;
 }
 
 .skills-wrapper {
@@ -31,8 +40,8 @@
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 2rem;
 }
 
 .skill-item {
@@ -40,13 +49,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.75rem;
-    padding: 1.25rem 0.5rem;
+    gap: 1rem;
+    padding: 2rem 1rem;
     background: linear-gradient(135deg,
             rgba(99, 102, 241, 0.05) 0%,
             rgba(139, 92, 246, 0.02) 100%);
     border: 1px solid rgba(99, 102, 241, 0.15);
-    border-radius: 16px;
+    border-radius: 20px;
     transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
     text-align: center;
     backdrop-filter: blur(12px);
@@ -76,31 +85,31 @@
     background: linear-gradient(135deg,
             rgba(99, 102, 241, 0.15) 0%,
             rgba(139, 92, 246, 0.08) 100%);
-    transform: translateY(-10px) scale(1.08);
+    transform: translateY(-12px) scale(1.05);
     border-color: rgba(99, 102, 241, 0.5);
     box-shadow:
-        0 12px 35px rgba(99, 102, 241, 0.25),
+        0 20px 40px rgba(99, 102, 241, 0.2),
         0 0 0 1px rgba(99, 102, 241, 0.3),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .skill-icon {
-    width: 42px;
-    height: 42px;
+    width: 56px;
+    height: 56px;
     object-fit: contain;
     transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-    filter: grayscale(0.3);
+    filter: grayscale(0.2);
     position: relative;
     z-index: 1;
 }
 
 .skill-item:hover .skill-icon {
-    transform: scale(1.25) rotate(8deg);
-    filter: grayscale(0) drop-shadow(0 4px 12px rgba(99, 102, 241, 0.6));
+    transform: scale(1.2) rotate(5deg);
+    filter: grayscale(0) drop-shadow(0 4px 15px rgba(99, 102, 241, 0.5));
 }
 
 .skill-name {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -238,5 +247,162 @@ pre {
     .skill-icon {
         width: 36px;
         height: 36px;
+    }
+}
+
+/* Journey Timeline Zig-Zag */
+.journey-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom,
+            transparent,
+            var(--accent-primary) 15%,
+            var(--accent-secondary) 85%,
+            transparent);
+    transform: translateX(-50%);
+    opacity: 0.3;
+}
+
+.timeline-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+    width: 100%;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent-primary);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+.dot-inner {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    animation: pulse-dot 2s infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.5);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.timeline-card {
+    width: 42%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-item.left .timeline-card {
+    margin-right: auto;
+    margin-left: 0;
+    transform-origin: right center;
+}
+
+.timeline-item.right .timeline-card {
+    margin-left: auto;
+    margin-right: 0;
+    transform-origin: left center;
+}
+
+.timeline-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--accent-primary);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.card-number {
+    position: absolute;
+    top: -15px;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--accent-primary);
+    opacity: 0.1;
+    font-family: 'Outfit', sans-serif;
+    z-index: -1;
+}
+
+.timeline-item.left .card-number {
+    right: 20px;
+}
+
+.timeline-item.right .card-number {
+    left: 20px;
+}
+
+.timeline-card h4 {
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.timeline-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .timeline-line {
+        left: 30px;
+    }
+
+    .timeline-dot {
+        left: 30px;
+    }
+
+    .timeline-card {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+    }
+
+    .timeline-item {
+        justify-content: flex-start;
     }
 }

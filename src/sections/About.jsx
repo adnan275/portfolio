@@ -4,80 +4,49 @@ import '../styles/About.css';
 import '../styles/Three.css';
 
 const About = () => {
+    const milestones = [
+        {
+            title: "The Spark",
+            content: "CS student specializing in AI, driven by curiosity and the challenge of building impactful, problem-solving products."
+        },
+        {
+            title: "The Logic",
+            content: "Mastered problem-solving by solving <strong>350+ DSA problems</strong> (280 on LeetCode), prioritizing optimized and clean code."
+        },
+        {
+            title: "The Build",
+            content: "Built production apps with <strong>MERN, Prisma, and JWT</strong>. Focused on <strong>OOP and SOLID</strong> principles for scalable architecture."
+        },
+        {
+            title: "The Intelligence",
+            content: "Working with <strong>Generative AI (LLMs, RAG)</strong> using <strong>LangChain</strong>. Skilled in data workflows with <strong>Pandas, SQL, and Tableau</strong>."
+        },
+        {
+            title: "The Future",
+            content: "Bridging backend systems and AI. Currently mastering <strong>system design</strong> to build high-impact technology at scale."
+        }
+    ];
+
     return (
         <section id="about" className="section-padding about-section">
             <div className="container">
-                <div className="about-grid perspective-container">
+                {/* Intro Section: Text + Visual Card */}
+                <div className="about-intro-grid perspective-container">
                     <motion.div
-                        className="about-content"
+                        className="about-intro-content"
                         initial={{ opacity: 0, x: -30 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: "-50px" }}
+                        viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
                         <h2 className="heading-lg" style={{ marginBottom: '2rem' }}>About Me</h2>
                         <p>
-                            I'm a <strong>Full Stack Developer</strong> passionate about building high-performance web applications.
-                            Currently, I'm focused on mastering <strong>React, Node.js, and modern UI/UX principles</strong> to create seamless digital experiences.
+                            I'm a <strong>Software Engineer</strong> passionate about building high-performance applications and intelligent systems.
+                            My approach combines strong engineering fundamentals with a curiosity for cutting-edge AI technologies.
                         </p>
                         <p>
-                            I love <strong>solving complex problems</strong> with clean code and believe in <strong>continuous learning</strong>.
-                            Whether it's frontend aesthetics or backend logic, I enjoy working across the full stack.
+                            Whether it's architecting scalable backends or developing agentic AI workflows, I focus on writing <strong>clean, maintainable code</strong> that solves real-world problems at scale.
                         </p>
-
-                        <div className="skills-wrapper">
-                            <h3>My skills</h3>
-                            <h2 className="heading-lg" style={{ marginTop: '2rem', marginBottom: '2rem' }}>The Secret Sauce</h2>
-                            <motion.div
-                                className="skills-grid transform-3d"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
-                            >
-                                {[
-                                    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-                                    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-                                    { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-                                    { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-                                    { name: 'Vite', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg' },
-                                    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-                                    { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
-                                    { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg' },
-                                    { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
-                                    { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-                                    { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
-                                    { name: 'JWT', icon: 'https://jwt.io/img/pic_logo.svg' },
-                                    { name: 'Nodemailer', icon: 'https://cdn-icons-png.flaticon.com/512/732/732200.png' },
-                                    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
-                                    { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
-                                    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-                                    { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
-                                    { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
-                                    { name: 'Framer Motion', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg' },
-                                    { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg' }
-                                ].map((skill, index) => (
-                                    <motion.div
-                                        key={index}
-                                        className="skill-item card-3d gpu-accelerated"
-                                        initial={{ opacity: 0, y: 10 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        viewport={{ once: true }}
-                                        transition={{ duration: 0.3 }}
-                                        whileHover={{
-                                            scale: 1.1,
-                                            rotateY: 10,
-                                            rotateX: 5,
-                                            z: 20,
-                                            transition: { duration: 0.1 }
-                                        }}
-                                    >
-                                        <img src={skill.icon} alt={skill.name} className="skill-icon" />
-                                        <span className="skill-name">{skill.name}</span>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
-                        </div>
                     </motion.div>
 
                     <motion.div
@@ -96,9 +65,9 @@ const About = () => {
                                     <code>
                                         {`const developer = {
   name: 'Adnan',
-  role: 'Full Stack Dev',
-  passion: 'Building scalable apps',
-  status: 'Open to work'
+  role: 'Software Engineer',
+  focus: 'Full Stack & AI',
+  passion: 'Scalable Systems'
 };`}
                                     </code>
                                 </pre>
@@ -106,6 +75,120 @@ const About = () => {
                         </div>
                         <div className="gradient-orb float-3d"></div>
                     </motion.div>
+                </div>
+
+                {/* Journey Section: Full Width */}
+                <div className="journey-section">
+                    <motion.h2
+                        className="heading-lg"
+                        style={{ marginBottom: '4rem', textAlign: 'center' }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        My Journey
+                    </motion.h2>
+
+                    <div className="journey-timeline">
+                        <div className="timeline-line"></div>
+                        {milestones.map((milestone, index) => (
+                            <motion.div
+                                key={index}
+                                className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+                                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{
+                                    duration: 0.8,
+                                    delay: index * 0.1,
+                                    ease: [0.16, 1, 0.3, 1]
+                                }}
+                            >
+                                <div className="timeline-dot">
+                                    <div className="dot-inner"></div>
+                                </div>
+                                <div className="timeline-card card-3d">
+                                    <div className="card-number">{index + 1}</div>
+                                    <h4>{milestone.title}</h4>
+                                    <p dangerouslySetInnerHTML={{ __html: milestone.content }} />
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Skills Section: Full Width */}
+                <div className="skills-section">
+                    <div className="skills-wrapper">
+                        <motion.h2
+                            className="heading-lg"
+                            style={{ textAlign: 'center', marginBottom: '4rem' }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            The Secret Sauce
+                        </motion.h2>
+                        <motion.div
+                            className="skills-grid transform-3d"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ staggerChildren: 0.1, delayChildren: 0.2 }}
+                        >
+                            {[
+                                { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+                                { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+                                { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+                                { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+                                { name: 'Vite', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg' },
+                                { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+                                { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
+                                { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+                                { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg' },
+                                { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+                                { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+                                { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
+                                { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg' },
+                                { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
+                                { name: 'Tableau', icon: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
+                                { name: 'LangChain', icon: 'https://raw.githubusercontent.com/langchain-ai/langchain/master/docs/static/img/langchain_logo.png' },
+                                { name: 'HuggingFace', icon: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg' },
+                                { name: 'LLMs', icon: 'https://cdn-icons-png.flaticon.com/512/2103/2103633.png' },
+                                { name: 'RAG', icon: 'https://cdn-icons-png.flaticon.com/512/2083/2083213.png' },
+                                { name: 'Agentic AI', icon: 'https://cdn-icons-png.flaticon.com/512/10433/10433048.png' },
+                                { name: 'SOLID', icon: 'https://cdn-icons-png.flaticon.com/512/2592/2592317.png' },
+                                { name: 'OOP', icon: 'https://cdn-icons-png.flaticon.com/512/1149/1149168.png' },
+                                { name: 'System Design', icon: 'https://cdn-icons-png.flaticon.com/512/2620/2620971.png' },
+                                { name: 'JWT', icon: 'https://jwt.io/img/pic_logo.svg' },
+                                { name: 'Nodemailer', icon: 'https://cdn-icons-png.flaticon.com/512/732/732200.png' },
+                                { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+                                { name: 'GitHub', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+                                { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
+                                { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg' },
+                                { name: 'Framer Motion', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg' }
+                            ].map((skill, index) => (
+                                <motion.div
+                                    key={index}
+                                    className="skill-item card-3d gpu-accelerated"
+                                    initial={{ opacity: 0, y: 10 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.3 }}
+                                    whileHover={{
+                                        scale: 1.1,
+                                        rotateY: 10,
+                                        rotateX: 5,
+                                        z: 20,
+                                        transition: { duration: 0.1 }
+                                    }}
+                                >
+                                    <img src={skill.icon} alt={skill.name} className="skill-icon" />
+                                    <span className="skill-name">{skill.name}</span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    </div>
                 </div>
             </div>
         </section>
