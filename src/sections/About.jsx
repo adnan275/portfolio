@@ -145,14 +145,22 @@ const About = () => {
                                 { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
                                 { name: 'Express.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
                                 { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+                                { name: 'Streamlit', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/streamlit/streamlit-original.svg' },
                                 { name: 'Prisma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg' },
                                 { name: 'MySQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
                                 { name: 'MongoDB', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
                                 { name: 'Firebase', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg' },
                                 { name: 'SQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg' },
+                                { name: 'NumPy', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
                                 { name: 'Pandas', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
+                                { name: 'Jupyter', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg' },
                                 { name: 'Tableau', icon: 'https://cdn.worldvectorlogo.com/logos/tableau-software.svg' },
-                                { name: 'LangChain', icon: 'https://avatars.githubusercontent.com/u/126733545?s=200&v=4' },
+                                { name: 'Excel', icon: 'https://cdn.simpleicons.org/microsoftexcel/217346' },
+                                { name: 'Spreadsheet', icon: 'https://cdn.simpleicons.org/googlesheets/34A853' },
+                                { name: 'LangChain', icon: 'https://cdn.simpleicons.org/langchain/1C3C3C' },
+                                { name: 'LangGraph', icon: 'https://img.icons8.com/color/48/000000/graph.png' },
+                                { name: 'Notion', icon: 'https://cdn.simpleicons.org/notion/000000' },
+                                { name: 'Groq', icon: 'https://console.groq.com/powered-by-groq-dark.svg' },
                                 { name: 'HuggingFace', icon: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg' },
                                 { name: 'LLMs', icon: 'https://cdn-icons-png.flaticon.com/512/2103/2103633.png' },
                                 { name: 'RAG', icon: 'https://cdn-icons-png.flaticon.com/512/2083/2083213.png' },
@@ -167,26 +175,27 @@ const About = () => {
                                 { name: 'Figma', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg' },
                                 { name: 'Vercel', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg' },
                                 { name: 'Framer Motion', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg' }
-                            ].map((skill, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="skill-item card-3d gpu-accelerated"
-                                    initial={{ opacity: 0, y: 10 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.3 }}
-                                    whileHover={{
-                                        scale: 1.1,
-                                        rotateY: 10,
-                                        rotateX: 5,
-                                        z: 20,
-                                        transition: { duration: 0.1 }
-                                    }}
-                                >
-                                    <img src={skill.icon} alt={skill.name} className="skill-icon" />
-                                    <span className="skill-name">{skill.name}</span>
-                                </motion.div>
-                            ))}
+                            ]
+                                .map((skill, index) => (
+                                    <motion.div
+                                        key={index}
+                                        className="skill-item card-3d gpu-accelerated"
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.3 }}
+                                        whileHover={{
+                                            scale: 1.1,
+                                            rotateY: 10,
+                                            rotateX: 5,
+                                            z: 20,
+                                            transition: { duration: 0.1 }
+                                        }}
+                                    >
+                                        <img src={skill.icon} alt={skill.name} className="skill-icon" />
+                                        <span className="skill-name">{skill.name}</span>
+                                    </motion.div>
+                                ))}
                         </motion.div>
                     </div>
                 </div>
