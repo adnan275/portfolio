@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../styles/ProjectsPreview.css';
 import '../styles/Three.css';
@@ -70,6 +70,83 @@ const projects = [
     }
 ];
 
+const ProjectCard = ({ project, index }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const mouseXSpring = useSpring(x);
+    const mouseYSpring = useSpring(y);
+
+    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+    const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    const row = Math.floor(index / 4);
+    const isEvenRow = row % 2 === 0;
+
+    return (
+        <motion.div
+            className="project-scroll-card card-3d gpu-accelerated"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            initial={{
+                opacity: 0,
+                y: isEvenRow ? 50 : -50,
+                rotateY: isEvenRow ? -15 : 15,
+                z: -50
+            }}
+            whileInView={{
+                opacity: 1,
+                y: 0,
+                rotateY: 0,
+                z: 0
+            }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{
+                delay: (index % 4) * 0.1,
+                duration: 0.6,
+                ease: [0.22, 0.61, 0.36, 1]
+            }}
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+                perspective: "1000px",
+                cursor: 'pointer'
+            }}
+            whileHover={{
+                scale: 1.05,
+                z: 50,
+                boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 20px 30px -15px rgba(99, 102, 241, 0.4)',
+            }}
+            onClick={() => window.open(project.link, '_blank')}
+        >
+            <div className="scroll-card-image" style={{ transform: "translateZ(30px)" }}>
+                <img src={project.image} alt={project.title} />
+                <div className="scroll-card-overlay" style={{ transform: "translateZ(20px)" }}>
+                    <h3>{project.title}</h3>
+                </div>
+            </div>
+        </motion.div>
+    );
+};
+
 const ProjectsPreview = () => {
     const containerRef = useRef(null);
     const { scrollYProgress } = useScroll({
@@ -106,56 +183,9 @@ const ProjectsPreview = () => {
                         className="projects-horizontal-track"
                         style={{ x }}
                     >
-                        {projects.map((project, index) => {
-                            const row = Math.floor(index / 4);
-                            const isEvenRow = row % 2 === 0;
-
-                            return (
-                                <motion.div
-                                    key={index}
-                                    className="project-scroll-card card-3d gpu-accelerated"
-                                    initial={{
-                                        opacity: 0,
-                                        y: isEvenRow ? 50 : -50,
-                                        rotateY: isEvenRow ? -15 : 15,
-                                        z: -50
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        y: 0,
-                                        rotateY: 0,
-                                        z: 0
-                                    }}
-                                    viewport={{ once: false, amount: 0.3 }}
-                                    transition={{
-                                        delay: (index % 4) * 0.1,
-                                        duration: 0.6,
-                                        ease: [0.22, 0.61, 0.36, 1]
-                                    }}
-                                    whileHover={{
-                                        scale: 1.08,
-                                        y: -15,
-                                        rotateY: 8,
-                                        z: 30,
-                                        boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 20px 30px -15px rgba(99, 102, 241, 0.4)',
-                                        transition: { duration: 0.3 }
-                                    }}
-                                    onClick={() => window.open(project.link, '_blank')}
-                                    style={{
-                                        cursor: 'pointer',
-                                        perspective: '1200px',
-                                        transformStyle: 'preserve-3d'
-                                    }}
-                                >
-                                    <div className="scroll-card-image">
-                                        <img src={project.image} alt={project.title} />
-                                        <div className="scroll-card-overlay">
-                                            <h3>{project.title}</h3>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
+                        {projects.map((project, index) => (
+                            <ProjectCard key={index} project={project} index={index} />
+                        ))}
                     </motion.div>
                 </motion.div>
 

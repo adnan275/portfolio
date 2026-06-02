@@ -95,10 +95,3 @@ a {
     color: inherit;
     text-decoration: none;
 }
-
-* {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}

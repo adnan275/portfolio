@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
+import CustomCursor from './components/CustomCursor';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -41,6 +42,7 @@ function App() {
   return (
     <Router>
       <AnimatedRoutes />
+      <CustomCursor />
     </Router>
   );
 }
