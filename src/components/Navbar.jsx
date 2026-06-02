@@ -13,7 +13,7 @@ const Navbar = () => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
 
-            const sections = ['hero', 'about', 'work', 'contact'];
+            const sections = ['hero', 'about', 'contact'];
             const scrollPosition = window.scrollY + 100;
 
             for (const section of sections) {
@@ -35,7 +35,6 @@ const Navbar = () => {
     const navLinks = [
         { name: 'Home', href: '/', type: 'route' },
         { name: 'Projects', href: '/projects', type: 'route' },
-        { name: 'Experience', href: '#work', type: 'hash' },
         { name: 'Certifications', href: '/certifications', type: 'route' },
         { name: 'Contact', href: '#contact', type: 'hash' },
     ];
