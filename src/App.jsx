@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { AnimatePresence, motion } from 'framer-motion';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
+import CertificationsPage from './pages/CertificationsPage';
 import CustomCursor from './components/CustomCursor';
 
 const pageVariants = {
@@ -30,6 +31,14 @@ function AnimatedRoutes() {
           element={
             <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
               <ProjectsPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/certifications"
+          element={
+            <motion.div variants={pageVariants} initial="initial" animate="animate" exit="exit">
+              <CertificationsPage />
             </motion.div>
           }
         />
