@@ -22,7 +22,7 @@ const CertificationsPage = () => {
                 "Generative AI implementation"
             ],
             link: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=F849F73637C4CF1C1F23E9BA34AE5C598DCF237047134BD04EE9CEA24CF0794B",
-            logo: "https://logo.clearbit.com/oracle.com"
+            logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg"
         },
         {
             title: "AWS Solutions Architecture Job Simulation",
@@ -36,7 +36,7 @@ const CertificationsPage = () => {
                 "Cloud infrastructure best practices"
             ],
             link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/pmnMSL4QiQ9JCgE3W/kkE9HyeNcw6rwCRGw_pmnMSL4QiQ9JCgE3W_gbKsYnojnyDafzmWA_1753680026076_completion_certificate.pdf",
-            logo: "https://logo.clearbit.com/aws.amazon.com"
+            logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg"
         },
         {
             title: "Deloitte Australia - Cyber Job Simulation",
@@ -50,7 +50,9 @@ const CertificationsPage = () => {
                 "Forensic investigation techniques"
             ],
             link: "https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/E9pA6qsdbeyEkp3ti_9PBTqmSxAf6zZTseP_Q9Sqv4dBgSM4igcCq_1751281708262_completion_certificate.pdf",
-            logo: "https://logo.clearbit.com/deloitte.com"
+            logo: "/logos/deloitte.svg",
+            logoAlt: "Deloitte",
+            logoClass: "cert-logo-wide"
         }
     ];
 
@@ -79,7 +81,11 @@ const CertificationsPage = () => {
                         >
                             <div className="cert-logo-container">
                                 <div className="cert-logo-wrapper">
-                                    <img src={cert.logo} alt={cert.issuer} className="cert-logo" />
+                                    <img
+                                        src={cert.logo}
+                                        alt={cert.logoAlt || cert.issuer}
+                                        className={`cert-logo ${cert.logoClass || ''}`.trim()}
+                                    />
                                 </div>
                             </div>
                             <div className="cert-content">
