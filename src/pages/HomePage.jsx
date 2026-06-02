@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../sections/Hero';
 import About from '../sections/About';
 import Stats from '../sections/Stats';
+import CertificationsPreview from '../sections/CertificationsPreview';
 import ProjectsPreview from '../sections/ProjectsPreview';
 import Contact from '../sections/Contact';
 import Footer from '../components/Footer';
@@ -15,6 +16,7 @@ function HomePage() {
                 <Hero />
                 <About />
                 <Stats />
+                <CertificationsPreview />
                 <ProjectsPreview />
                 <Contact />
             </main>
