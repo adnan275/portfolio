@@ -5,6 +5,13 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'NeuraX — Vector DB & RAG Engine',
+        description: 'Lightweight, high-performance Vector Database built from scratch in Python. Features HNSW, KD-Tree, and Brute Force search with a complete RAG pipeline powered by local LLMs via Ollama.',
+        tags: ['Python', 'Flask', 'NumPy', 'Ollama', 'Llama 3.2', 'Vanilla JS', 'HTML5 Canvas'],
+        link: 'https://huggingface.co/spaces/rizzzvi/NeuraX',
+        image: '/projects/neurax.png'
+    },
+    {
         title: 'AI EV Charging Station Intelligence',
         description: 'Autonomous Agentic AI system using LangGraph for charger suitability prediction, wait time forecasting, and geospatial retrieval over 240,000+ stations.',
         tags: ['Python', 'LangGraph', 'LangChain', 'Groq', 'ChromaDB', 'XGBoost', 'Streamlit', 'Docker'],
