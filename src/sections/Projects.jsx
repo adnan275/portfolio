@@ -5,6 +5,13 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'Sentinel — AI-Powered File Organization',
+        description: 'Local-first AI agent that scans, classifies, and organizes files using a plan-before-execute flow. Built with a focus on safety and privacy, it runs entirely offline using local LLMs.',
+        tags: ['Python', 'FastAPI', 'Next.js', 'Rust', 'Tauri', 'Ollama', 'SQLModel'],
+        link: 'https://sentinel-ten-black.vercel.app/',
+        image: '/projects/sentinel.png'
+    },
+    {
         title: 'NeuraX — Vector DB & RAG Engine',
         description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.',
         tags: ['Python', 'Flask', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas'],
