@@ -186,7 +186,7 @@ const ProjectsPage = () => {
                     >
                         <h1 className="heading-xl">All Projects</h1>
                         <p className="page-subtitle">
-                            A collection of my work showcasing full-stack development, UI/UX design, and problem-solving skills.
+                            A collection of my work showcasing Agentic AI systems, full-stack development, UI/UX design, and problem-solving skills.
                         </p>
                     </motion.div>
 
