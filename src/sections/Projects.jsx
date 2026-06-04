@@ -5,6 +5,13 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'AI EV Charging Station Intelligence',
+        description: 'Autonomous Agentic AI system using LangGraph for charger suitability prediction, wait time forecasting, and geospatial retrieval over 240,000+ stations.',
+        tags: ['Python', 'LangGraph', 'LangChain', 'Groq', 'ChromaDB', 'XGBoost', 'Streamlit', 'Docker'],
+        link: 'https://huggingface.co/spaces/rizzzvi/ev-charging-agent',
+        image: '/projects/ev-charging-agent.png'
+    },
+    {
         title: 'GigFlow',
         description: 'Real-time freelance marketplace platform for posting gigs, bidding, and live messaging with Socket.io integration.',
         tags: ['React', 'Vite', 'TailwindCSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],

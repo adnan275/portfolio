@@ -8,6 +8,13 @@ import '../styles/Projects.css';
 
 const projects = [
     {
+        title: 'AI EV Charging Station Intelligence',
+        description: 'Autonomous Agentic AI system using LangGraph for charger suitability prediction, wait time forecasting, and geospatial retrieval over 240,000+ stations.',
+        tags: ['Python', 'LangGraph', 'LangChain', 'Groq', 'ChromaDB', 'XGBoost', 'Streamlit', 'Docker'],
+        link: 'https://huggingface.co/spaces/rizzzvi/ev-charging-agent',
+        image: '/projects/ev-charging-agent.png'
+    },
+    {
         title: 'Socratic Study Buddy',
         description: 'AI-powered Socratic tutor with intelligent guardrails that guides learning through questions, not answers. Features context retrieval and session management.',
         tags: ['Flask', 'Python', 'OpenAI API', 'JavaScript', 'CSS3', 'Vercel'],
