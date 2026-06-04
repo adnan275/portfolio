@@ -9,8 +9,8 @@ import '../styles/Projects.css';
 const projects = [
     {
         title: 'NeuraX — Vector DB & RAG Engine',
-        description: 'Lightweight, high-performance Vector Database built from scratch in Python. Features HNSW, KD-Tree, and Brute Force search with a complete RAG pipeline powered by local LLMs via Ollama.',
-        tags: ['Python', 'Flask', 'NumPy', 'Ollama', 'Llama 3.2', 'Vanilla JS', 'HTML5 Canvas'],
+        description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.',
+        tags: ['Python', 'Flask', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas'],
         link: 'https://huggingface.co/spaces/rizzzvi/NeuraX',
         image: '/projects/neurax.png'
     },
