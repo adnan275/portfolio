@@ -195,6 +195,7 @@ const projects = [
 const ProjectCard = ({ project, variants, onViewDetails }) => {
     const [rotateX, setRotateX] = useState(0);
     const [rotateY, setRotateY] = useState(0);
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     const handleMouseMove = (e) => {
         const card = e.currentTarget;
@@ -234,7 +235,16 @@ const ProjectCard = ({ project, variants, onViewDetails }) => {
         >
             <div className="card-image">
                 {project.image ? (
-                    <img src={project.image} alt={project.title} className="project-img" />
+                    <>
+                        <div className={`img-skeleton${imgLoaded ? ' hidden' : ''}`} />
+                        <img
+                            src={project.image}
+                            alt={project.title}
+                            className={`project-img${imgLoaded ? ' loaded' : ''}`}
+                            loading="lazy"
+                            onLoad={() => setImgLoaded(true)}
+                        />
+                    </>
                 ) : (
                     <div className="placeholder-img"></div>
                 )}

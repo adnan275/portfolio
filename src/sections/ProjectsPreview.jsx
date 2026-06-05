@@ -1,4 +1,5 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import '../styles/ProjectsPreview.css';
@@ -73,6 +74,7 @@ const projects = [
 const ProjectCard = ({ project, index }) => {
     const x = useMotionValue(0);
     const y = useMotionValue(0);
+    const [imgLoaded, setImgLoaded] = useState(false);
 
     const mouseXSpring = useSpring(x);
     const mouseYSpring = useSpring(y);
@@ -138,7 +140,14 @@ const ProjectCard = ({ project, index }) => {
             onClick={() => window.open(project.link, '_blank')}
         >
             <div className="scroll-card-image" style={{ transform: "translateZ(30px)" }}>
-                <img src={project.image} alt={project.title} />
+                <div className={`img-skeleton${imgLoaded ? ' hidden' : ''}`} />
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    loading="lazy"
+                    className={imgLoaded ? 'loaded' : ''}
+                    onLoad={() => setImgLoaded(true)}
+                />
                 <div className="scroll-card-overlay" style={{ transform: "translateZ(20px)" }}>
                     <h3>{project.title}</h3>
                 </div>
