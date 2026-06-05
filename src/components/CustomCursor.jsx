@@ -31,7 +31,7 @@ const CustomCursor = () => {
                 target.closest('a') ||
                 target.closest('button') ||
                 target.classList.contains('clickable') ||
-                window.getComputedStyle(target).cursor === 'pointer';
+                target.style.cursor === 'pointer';
 
             setIsHovered(isClickable);
         };

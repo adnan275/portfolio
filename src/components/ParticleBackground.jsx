@@ -19,11 +19,17 @@ const ParticleBackground = ({ particleCount = 50, color = 'rgba(99, 102, 241, 0.
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
+        const baseColor = color.match(/\d+/g);
+        const r = baseColor[0];
+        const g = baseColor[1];
+        const b = baseColor[2];
+
         class Particle {
             constructor() {
                 this.reset();
                 this.y = Math.random() * canvas.height;
                 this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
             }
 
             reset() {
@@ -33,6 +39,7 @@ const ParticleBackground = ({ particleCount = 50, color = 'rgba(99, 102, 241, 0.
                 this.speedY = Math.random() * 0.5 + 0.2;
                 this.speedX = Math.random() * 0.3 - 0.15;
                 this.opacity = Math.random() * 0.5 + 0.2;
+                this.color = `rgba(${r}, ${g}, ${b}, ${this.opacity})`;
             }
 
             update() {
@@ -50,7 +57,7 @@ const ParticleBackground = ({ particleCount = 50, color = 'rgba(99, 102, 241, 0.
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = color.replace(/[\d.]+\)$/g, `${this.opacity})`);
+                ctx.fillStyle = this.color;
                 ctx.fill();
             }
         }

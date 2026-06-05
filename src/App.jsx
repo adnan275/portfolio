@@ -47,11 +47,15 @@ function AnimatedRoutes() {
   );
 }
 
+import LenisProvider from './components/LenisProvider';
+
 function App() {
   return (
     <Router>
-      <AnimatedRoutes />
-      <CustomCursor />
+      <LenisProvider>
+        <AnimatedRoutes />
+        <CustomCursor />
+      </LenisProvider>
     </Router>
   );
 }
