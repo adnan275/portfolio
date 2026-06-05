@@ -1,6 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+
+export const LenisContext = createContext(null);
+
+export const useLenis = () => useContext(LenisContext);
 
 const LenisProvider = ({ children }) => {
     const lenisRef = useRef(null);
@@ -20,12 +24,12 @@ const LenisProvider = ({ children }) => {
 
         lenisRef.current = lenis;
 
+        let rafId;
         function raf(time) {
             lenis.raf(time);
-            requestAnimationFrame(raf);
+            rafId = requestAnimationFrame(raf);
         }
-
-        requestAnimationFrame(raf);
+        rafId = requestAnimationFrame(raf);
 
         // Handle anchor links
         const handleAnchorClick = (e) => {
@@ -48,12 +52,17 @@ const LenisProvider = ({ children }) => {
         document.addEventListener('click', handleAnchorClick);
 
         return () => {
+            cancelAnimationFrame(rafId);
             lenis.destroy();
             document.removeEventListener('click', handleAnchorClick);
         };
     }, []);
 
-    return <>{children}</>;
+    return (
+        <LenisContext.Provider value={lenisRef}>
+            {children}
+        </LenisContext.Provider>
+    );
 };
 
 export default LenisProvider;

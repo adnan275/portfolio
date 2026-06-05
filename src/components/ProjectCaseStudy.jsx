@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoClose, IoOpenOutline, IoCodeSlashOutline, IoBulbOutline, IoRocketOutline, IoLogoGithub } from 'react-icons/io5';
+import { useLenis } from './LenisProvider';
 import '../styles/ProjectCaseStudy.css';
 
 const ProjectCaseStudy = ({ project, isOpen, onClose }) => {
+    const lenisRef = useLenis();
+
+    useEffect(() => {
+        const lenis = lenisRef?.current;
+        if (!lenis) return;
+
+        if (isOpen) {
+            lenis.stop();
+            document.body.style.overflow = 'hidden';
+        } else {
+            lenis.start();
+            document.body.style.overflow = '';
+        }
+
+        return () => {
+            lenis.start();
+            document.body.style.overflow = '';
+        };
+    }, [isOpen, lenisRef]);
+
     if (!project) return null;
 
     const { title, description, image, link, tags, details } = project;
