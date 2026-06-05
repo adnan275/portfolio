@@ -201,7 +201,7 @@
 
 
 .project-scroll-card:hover .scroll-card-image img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .scroll-card-overlay {

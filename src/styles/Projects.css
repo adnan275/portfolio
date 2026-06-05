@@ -108,7 +108,7 @@
 }
 
 .project-card:hover .project-img {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .placeholder-img {

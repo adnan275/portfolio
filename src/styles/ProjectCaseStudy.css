@@ -22,17 +22,17 @@
     padding: var(--spacing-lg);
     background: var(--bg-secondary);
     border: 1px solid var(--border-medium);
-    scrollbar-width: thin;
-    scrollbar-color: var(--accent-primary) transparent;
-}
 
-.case-study-modal::-webkit-scrollbar {
-    width: 6px;
-}
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
-.case-study-modal::-webkit-scrollbar-thumb {
-    background: var(--accent-primary);
-    border-radius: 10px;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
 
 .close-btn {
@@ -103,12 +103,20 @@
     overflow: hidden;
     margin-bottom: var(--spacing-lg);
     border: 1px solid var(--border-light);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.3s ease-out;
 }
 
 .case-study-image img {
     width: 100%;
     height: auto;
     display: block;
+    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.case-study-image:hover img {
+    transform: scale(1.05);
 }
 
 .case-study-grid {
