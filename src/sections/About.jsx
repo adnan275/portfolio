@@ -6,24 +6,24 @@ import '../styles/Three.css';
 const About = () => {
     const milestones = [
         {
-            title: "The Spark",
-            content: "CS student specializing in AI, driven by curiosity and the challenge of building impactful, problem-solving products."
+            title: "01. The Foundations",
+            content: "Started my journey by mastering the core of the web—<strong>HTML, CSS, and JavaScript</strong>. Built a solid foundation in computer science principles and discovered a passion for creating digital solutions."
         },
         {
-            title: "The Logic",
-            content: "Mastered problem-solving by solving <strong>350+ DSA problems</strong> (280 on LeetCode), prioritizing optimized and clean code."
+            title: "02. The Logic & DSA",
+            content: "Deep-dived into <strong>Data Structures and Algorithms</strong> to sharpen my problem-solving skills. Solved <strong>350+ problems</strong> across LeetCode and other platforms, mastering optimization and clean logic."
         },
         {
-            title: "The Build",
-            content: "Built production apps with <strong>MERN, Prisma, and JWT</strong>. Focused on <strong>OOP and SOLID</strong> principles for scalable architecture."
+            title: "03. Full-Stack Mastery",
+            content: "Transitioned to building production-grade applications using the <strong>MERN stack, Prisma, and SQL</strong>. Focused on <strong>OOP and SOLID</strong> principles to ensure scalable and maintainable architecture."
         },
         {
-            title: "The Intelligence",
-            content: "Working with <strong>Generative AI (LLMs, RAG)</strong> using <strong>LangChain</strong>. Skilled in data workflows with <strong>Pandas, SQL, and Tableau</strong>."
+            title: "04. AI & Intelligence",
+            content: "Explored the world of <strong>Generative AI</strong>, specializing in <strong>RAG (Retrieval-Augmented Generation)</strong> and <strong>Agentic Workflows</strong> using LangChain. Built systems that can think and act autonomously."
         },
         {
-            title: "The Future",
-            content: "Bridging backend systems and AI. Currently mastering <strong>system design</strong> to build high-impact technology at scale."
+            title: "05. The Future: Scale",
+            content: "Currently mastering <strong>System Design</strong> and high-performance computing. My goal is to bridge the gap between robust engineering and cutting-edge AI to build technology that impacts millions."
         }
     ];
 
