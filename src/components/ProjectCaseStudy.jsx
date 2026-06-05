@@ -13,15 +13,12 @@ const ProjectCaseStudy = ({ project, isOpen, onClose }) => {
 
         if (isOpen) {
             lenis.stop();
-            document.body.style.overflow = 'hidden';
         } else {
             lenis.start();
-            document.body.style.overflow = '';
         }
 
         return () => {
             lenis.start();
-            document.body.style.overflow = '';
         };
     }, [isOpen, lenisRef]);
 
@@ -46,6 +43,7 @@ const ProjectCaseStudy = ({ project, isOpen, onClose }) => {
                         exit={{ y: 50, opacity: 0, scale: 0.95 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
                         onClick={(e) => e.stopPropagation()}
+                        onWheel={(e) => e.stopPropagation()}
                     >
                         <button className="close-btn" onClick={onClose} aria-label="Close">
                             <IoClose size={24} />
