@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { IoClose, IoOpenOutline, IoCodeSlashOutline, IoBulbOutline, IoRocketOutline } from 'react-icons/io5';
+import { IoClose, IoOpenOutline, IoCodeSlashOutline, IoBulbOutline, IoRocketOutline, IoLogoGithub } from 'react-icons/io5';
 import '../styles/ProjectCaseStudy.css';
 
 const ProjectCaseStudy = ({ project, isOpen, onClose }) => {
@@ -40,8 +40,12 @@ const ProjectCaseStudy = ({ project, isOpen, onClose }) => {
                                 </div>
                                 <div className="header-actions">
                                     <a href={link} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
-                                        <span>Live Demo</span>
+                                        <span>Demo</span>
                                         <IoOpenOutline />
+                                    </a>
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
+                                        <span>GitHub</span>
+                                        <IoLogoGithub />
                                     </a>
                                 </div>
                             </div>

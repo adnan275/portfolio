@@ -170,8 +170,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1.25rem;
-    gap: 1rem;
+    margin-top: 1.5rem;
+    gap: 2rem;
+}
+
+.card-links-right {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.separator {
+    color: var(--accent-primary);
+    font-size: 0.7rem;
+    opacity: 0.5;
+    user-select: none;
 }
 
 .card-link {

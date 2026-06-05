@@ -14,7 +14,7 @@ const projects = [
         tags: ['Python', 'FastAPI', 'Next.js', 'Rust', 'Tauri', 'Ollama', 'SQLModel'],
         link: 'https://sentinel-ten-black.vercel.app/',
         image: '/projects/sentinel.png',
-        featured: true,
+        github: 'https://github.com/adnan275/sentinel',
         details: {
             problem: 'Traditional file organization is manual, time-consuming, and often leads to cluttered digital workspaces. Cloud-based AI solutions pose privacy risks for sensitive local documents.',
             solution: 'Sentinel uses local LLMs (via Ollama) to analyze file contents and metadata, creating a logical directory structure. It follows a "Plan-then-Execute" flow where users approve the organization plan before any files are moved.',
@@ -28,7 +28,7 @@ const projects = [
         tags: ['Python', 'Flask', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas'],
         link: 'https://huggingface.co/spaces/rizzzvi/NeuraX',
         image: '/projects/neurax.png',
-        featured: true,
+        github: 'https://github.com/adnan275/NeuraX',
         details: {
             problem: 'Most RAG (Retrieval-Augmented Generation) systems rely on cloud vector databases, which can be slow and compromise data privacy. Visualizing high-dimensional embeddings is also a challenge.',
             solution: 'NeuraX implements a custom vector database from scratch using NumPy for efficient similarity searches. It includes a real-time PCA (Principal Component Analysis) visualizer to project 768D embeddings into 2D space.',
@@ -42,7 +42,7 @@ const projects = [
         tags: ['Python', 'LangGraph', 'LangChain', 'Groq', 'ChromaDB', 'XGBoost', 'Streamlit', 'Docker'],
         link: 'https://huggingface.co/spaces/rizzzvi/ev-charging-agent',
         image: '/projects/ev-charging-agent.png',
-        featured: true,
+        github: 'https://github.com/adnan275/ev-charging-agent',
         details: {
             problem: 'EV owners face "range anxiety" and unpredictable wait times at charging stations. Existing maps often lack real-time intelligence and suitability predictions.',
             solution: 'An autonomous agent built with LangGraph that orchestrates multiple specialized agents: a Geospatial Agent for location, a Prediction Agent (XGBoost) for wait times, and a Suitability Agent for charger matching.',
@@ -56,7 +56,7 @@ const projects = [
         tags: ['Flask', 'Python', 'OpenAI API', 'JavaScript', 'CSS3', 'Vercel'],
         link: 'https://socratic-study-buddy.vercel.app/',
         image: '/projects/socratic-buddy.png',
-        featured: true,
+        github: 'https://github.com/adnan275/socratic-study-buddy',
         details: {
             problem: 'Students often rely on AI to give them direct answers, which hinders deep learning and critical thinking.',
             solution: 'A tutor that uses the Socratic method to guide students toward answers by asking probing questions. It includes guardrails to prevent the AI from simply "giving away" the solution.',
@@ -70,7 +70,7 @@ const projects = [
         tags: ['React', 'Vite', 'TailwindCSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
         link: 'https://service-hive-zeta.vercel.app/',
         image: '/projects/service-hive.png',
-        featured: true,
+        github: 'https://github.com/adnan275/service-hive',
         details: {
             problem: 'Freelance platforms often lack real-time interaction, leading to slow communication between clients and freelancers.',
             solution: 'A high-performance marketplace with real-time bidding and instant messaging powered by Socket.io. Features a smooth, modern UI built with Framer Motion.',
@@ -84,6 +84,7 @@ const projects = [
         tags: ['React', 'Vite', 'Node.js', 'Express', 'MongoDB', 'FFmpeg', 'HLS.js'],
         link: 'https://livesitter-woad.vercel.app/',
         image: '/projects/livesitter.png',
+        github: 'https://github.com/adnan275/livesitter',
         details: {
             problem: 'Adding dynamic overlays to RTSP streams usually requires complex OBS setups or expensive hardware.',
             solution: 'A web-based solution that allows users to add draggable and resizable overlays directly onto a livestream using FFmpeg for stream processing and HLS.js for playback.',
@@ -97,6 +98,7 @@ const projects = [
         tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Stream', 'JWT'],
         link: 'https://zync-five.vercel.app/login',
         image: '/projects/zync.png',
+        github: 'https://github.com/adnan275/zync',
         details: {
             problem: 'Building a reliable, low-latency video communication platform that scales is technically challenging and often expensive.',
             solution: 'Leveraged GetStream.io for robust WebRTC infrastructure combined with a custom Node.js backend for user management and messaging.',
@@ -110,6 +112,7 @@ const projects = [
         tags: ['React', 'Node.js', 'MySql', 'Express'],
         link: 'https://fullstack-presento-swaj.vercel.app/',
         image: '/projects/presento.png',
+        github: 'https://github.com/adnan275/fullstack-presento',
         details: {
             problem: 'Many e-commerce solutions are either too simple or overly complex for startups to customize.',
             solution: 'Built a modular, scalable e-commerce engine with a clean separation between the React frontend and the MySQL-backed Express API.',
@@ -123,6 +126,7 @@ const projects = [
         tags: ['React', 'Firebase', 'Auth', 'JavaScript'],
         link: 'https://auth-taskly.vercel.app/',
         image: '/projects/taskly-real.png',
+        github: 'https://github.com/adnan275/auth-taskly',
         details: {
             problem: 'Users need a simple, fast, and reliable way to sync tasks across devices without complex setups.',
             solution: 'Utilized Firebase for real-time data synchronization and seamless Google/Email authentication.',
@@ -136,6 +140,7 @@ const projects = [
         tags: ['JavaScript', 'HTML', 'CSS'],
         link: 'https://stone-paper-scissors-blue-pi.vercel.app/',
         image: '/projects/rps-update.png',
+        github: 'https://github.com/adnan275/stone-paper-scissors-blue-pi',
         details: {
             problem: 'Creating engaging, state-managed games using only vanilla JavaScript requires careful DOM manipulation and logic.',
             solution: 'Implemented a clean state machine in vanilla JS to handle game rounds, score tracking, and UI updates.',
@@ -149,6 +154,7 @@ const projects = [
         tags: ['JavaScript', 'HTML', 'CSS'],
         link: 'https://password-strength-checker-psi-one.vercel.app/',
         image: '/projects/password.png',
+        github: 'https://github.com/adnan275/password-strength-checker',
         details: {
             problem: 'Users often use weak passwords because they lack immediate feedback on security vulnerabilities.',
             solution: 'A real-time validation tool that checks passwords against complexity rules (entropy, patterns, length) as the user types.',
@@ -162,6 +168,7 @@ const projects = [
         tags: ['CSS', 'HTML', 'JavaScript'],
         link: 'https://s-w-project-sigma.vercel.app/',
         image: '/projects/capstone-real.jpg',
+        github: 'https://github.com/adnan275/s-w-project',
         details: {
             problem: 'Integrating multiple disparate web technologies into a cohesive, professional-grade application.',
             solution: 'Developed a comprehensive web platform focusing on semantic HTML, modern CSS layouts, and interactive JS components.',
@@ -175,6 +182,7 @@ const projects = [
         tags: ['JavaScript', 'API', 'Tool', 'HTML', 'CSS'],
         link: 'https://qr-scanner-ten-tawny.vercel.app/',
         image: '/projects/qr-new.png',
+        github: 'https://github.com/adnan275/qr-scanner',
         details: {
             problem: 'Finding a clean, ad-free tool to quickly generate or scan QR codes can be difficult.',
             solution: 'Built a lightweight, fast utility using the QR Code API for generation and browser-based scanning capabilities.',
@@ -247,9 +255,14 @@ const ProjectCard = ({ project, variants, onViewDetails }) => {
                             onViewDetails(project);
                         }}
                     >
-                        View Details &rarr;
+                        View Details
                     </button>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="card-link">Live Demo &rarr;</a>
+                    <div className="card-links-right">
+                        <span className="separator">✦</span>
+                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-link">GitHub</a>
+                        <span className="separator">✦</span>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="card-link">Demo</a>
+                    </div>
                 </div>
             </div>
         </motion.div>
