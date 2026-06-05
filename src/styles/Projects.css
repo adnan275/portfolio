@@ -166,33 +166,41 @@
     box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
 }
 
+.card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.25rem;
+    gap: 1rem;
+}
+
 .card-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--accent-primary);
     font-weight: 600;
-    font-size: 0.95rem;
-    margin-top: 0.5rem;
+    font-size: 0.9rem;
     transition: all var(--transition-smooth);
     letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    background: none;
+    color: var(--accent-primary);
+    padding: 0;
 }
 
 .card-link:hover {
-    gap: 0.75rem;
     color: var(--accent-secondary);
+    transform: translateX(3px);
 }
 
-.card-link::after {
-    content: '';
-    width: 20px;
-    height: 2px;
-    background: currentColor;
-    transition: width var(--transition-smooth);
+.case-study-trigger {
+    color: var(--text-primary);
 }
 
-.card-link:hover::after {
-    width: 30px;
+.case-study-trigger:hover {
+    color: var(--accent-primary);
 }
 
 @media (max-width: 1024px) {
