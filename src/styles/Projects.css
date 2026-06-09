@@ -19,8 +19,8 @@
     right: 0;
     bottom: 0;
     background: linear-gradient(135deg,
-            rgba(99, 102, 241, 0.03) 0%,
-            rgba(139, 92, 246, 0.03) 100%);
+            rgba(0, 240, 255, 0.04) 0%,
+            rgba(139, 92, 246, 0.04) 100%);
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
@@ -33,9 +33,9 @@
 
 .project-card:hover {
     box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 20px 40px rgba(0, 0, 0, 0.6),
         0 0 0 1px var(--border-medium),
-        0 8px 16px rgba(99, 102, 241, 0.15);
+        0 8px 24px rgba(0, 240, 255, 0.12);
 }
 
 .card-image {
@@ -60,6 +60,7 @@
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
+    z-index: 2;
 }
 
 .project-card:hover .card-image::after {
@@ -84,7 +85,7 @@
     inset: 0;
     background: linear-gradient(90deg,
             var(--bg-tertiary) 25%,
-            rgba(99, 102, 241, 0.08) 50%,
+            rgba(0, 240, 255, 0.08) 50%,
             var(--bg-tertiary) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.6s infinite ease-in-out;
@@ -162,9 +163,9 @@
     font-weight: 600;
     border-radius: 100px;
     background: linear-gradient(135deg,
-            rgba(99, 102, 241, 0.08) 0%,
+            rgba(0, 240, 255, 0.08) 0%,
             rgba(139, 92, 246, 0.05) 100%);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    border: 1px solid rgba(0, 240, 255, 0.2);
     color: var(--text-accent);
     transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
     letter-spacing: 0.02em;
@@ -195,7 +196,7 @@
     border-color: transparent;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 240, 255, 0.35);
 }
 
 .card-actions {
