@@ -120,15 +120,55 @@ const About = () => {
                 {/* Skills Section: Full Width */}
                 <div className="skills-section">
                     <div className="skills-wrapper">
-                        <motion.h2
-                            className="heading-lg"
-                            style={{ textAlign: 'center', marginBottom: '4rem' }}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                            The Secret Sauce
-                        </motion.h2>
+                        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+                            <motion.span
+                                style={{
+                                    display: 'block',
+                                    fontSize: '0.85rem',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.25em',
+                                    color: 'var(--accent-primary)',
+                                    marginBottom: '0.75rem',
+                                    fontWeight: '700',
+                                    opacity: 0.85
+                                }}
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                My Skills
+                            </motion.span>
+                            <motion.h2
+                                className="heading-lg"
+                                style={{ margin: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.1 }}
+                            >
+                                The Secret Sauce
+                            </motion.h2>
+                            <motion.p
+                                style={{
+                                    color: 'var(--text-secondary)',
+                                    fontSize: '1.05rem',
+                                    marginTop: '1.25rem',
+                                    opacity: 0.8,
+                                    maxWidth: '600px',
+                                    marginLeft: 'auto',
+                                    marginRight: 'auto',
+                                    lineHeight: '1.6',
+                                    fontWeight: '400'
+                                }}
+                                initial={{ opacity: 0, y: 15 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: 0.2 }}
+                            >
+                                A curated selection of modern technologies and frameworks, engineered for high performance, structural reliability, and seamless digital experiences.
+                            </motion.p>
+                        </div>
                         <motion.div
                             className="skills-grid transform-3d"
                             initial={{ opacity: 0 }}
