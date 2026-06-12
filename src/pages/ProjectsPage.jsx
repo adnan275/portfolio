@@ -52,31 +52,22 @@ const projects = [
         }
     },
     {
-        title: 'Loan Default Risk Analytics Dashboard',
-        description: 'ETL and demographic data engineering pipeline with a structured dashboard focusing on the strongest predictors of borrower default: Loan-to-Value (LTV) Ratio and Debt-to-Income (DTI) Ratio.',
-        tags: ['Python', 'Pandas', 'Google Sheets', 'Data Engineering', 'Risk Analytics'],
-        link: 'https://github.com/adnan275/SectionE_Group15',
-        image: '/projects/loan-default.png',
-        github: 'https://github.com/adnan275/SectionE_Group15',
+        title: 'Data Analytics & BI Portfolio',
+        description: 'A consolidated data intelligence portfolio showcasing end-to-end ETL pipelines, exploratory data analysis (EDA), and interactive Tableau/BI dashboards for financial risk and market intelligence.',
+        tags: ['Python', 'SQL', 'Tableau', 'ETL Pipelines', 'Dashboard Design', 'EDA'],
+        link: 'https://github.com/adnan275/dva_portfolio',
+        image: '/projects/dva-portfolio.png',
+        github: 'https://github.com/adnan275/dva_portfolio',
         details: {
-            problem: 'Financial institutions need to accurately identify which borrowers are most likely to default based on financial and demographic data, but raw data alone is difficult to interpret at scale.',
-            solution: 'Extracted and sample-randomized a dataset of 148k+ rows down to 25k, performed median imputation for missing values, engineered a credit band classification model, and built a strategic LTV/DTI default risk prediction dashboard.',
-            features: ['Engineered credit band category to simplify credit scores', 'Analyzed compound risk factors like LTV and DTI ratios', 'Identified North-East region geographic default clusters', 'Delivered actionable underwriting recommendations'],
-            techStack: ['Python', 'Pandas', 'Google Sheets', 'Data Cleaning', 'Data Engineering']
-        }
-    },
-    {
-        title: 'Amazon Electronics Market Intelligence',
-        description: 'ETL pipeline and product market intelligence platform performing Exploratory Data Analysis (EDA) and visualizing pricing strategies, discount impact, and customer sentiment on Tableau.',
-        tags: ['Python', 'SQL', 'Tableau', 'ETL Pipelines', 'Market Intelligence'],
-        link: 'https://github.com/adnan275/E_G1_DVACapstone2',
-        image: '/projects/amazon-electronics.png',
-        github: 'https://github.com/adnan275/E_G1_DVACapstone2',
-        details: {
-            problem: 'E-commerce sellers and retail analysts lack a consolidated view of product performance, pricing elasticity, and customer sentiment within the competitive Amazon Electronics sub-categories.',
-            solution: 'Built an automated ETL pipeline to extract, clean, and structure raw product data. Performed rating and pricing correlation analysis, and deployed a detailed Tableau business dashboard for ROI mapping.',
-            features: ['Tableau dashboard tracking Avg Rating, Discount % & Best Seller Rate', 'Correlation analysis showing pricing vs satisfaction trends', 'Evaluated coupon strategy impact on sales velocity', 'Detailed category level opportunity mapping'],
-            techStack: ['Python', 'SQL', 'Tableau', 'ETL Pipelines', 'Exploratory Data Analysis']
+            problem: 'Businesses often struggle to interpret raw, messy data at scale, resulting in fragmented insights, pricing inefficiencies, and inaccurate risk forecasting.',
+            solution: 'Built a unified data intelligence portfolio demonstrating complete data lifecycles (Ask → Prepare → Process → Analyze → Share). Features automated ETL pipelines, data cleaning using Python, SQL querying, and interactive Tableau dashboards (such as Loan Risk Analysis and Amazon Market Intelligence) designed for user-centric storytelling.',
+            features: [
+                'ETL Pipelines: Python & SQL scripts to clean, impute values, and transform datasets.',
+                'Exploratory Data Analysis (EDA): Outlier detection, correlation analysis, and statistical profiling.',
+                'Visual Dashboards: Purposeful Tableau designs highlighting key KPIs, filters, and actionable business trends.',
+                'Compound Risk Metrics: Evaluates Loan-to-Value (LTV) and Debt-to-Income (DTI) predictors.'
+            ],
+            techStack: ['Python', 'SQL', 'Tableau', 'Pandas', 'ETL', 'EDA', 'Git']
         }
     },
     {

@@ -14,18 +14,11 @@ const projects = [
         link: 'https://socratic-study-buddy.vercel.app/'
     },
     {
-        title: 'Loan Default Risk Dashboard',
-        description: 'ETL risk pipeline & analytics dashboard',
-        tags: ['Python', 'Pandas', 'Google Sheets'],
-        image: '/projects/loan-default.png',
-        link: 'https://github.com/adnan275/SectionE_Group15'
-    },
-    {
-        title: 'Amazon Market Intelligence',
-        description: 'ETL pipeline & Tableau market intelligence platform',
+        title: 'Data & BI Portfolio',
+        description: 'ETL pipelines & Tableau business dashboards',
         tags: ['Python', 'SQL', 'Tableau'],
-        image: '/projects/amazon-electronics.png',
-        link: 'https://github.com/adnan275/E_G1_DVACapstone2'
+        image: '/projects/dva-portfolio.png',
+        link: 'https://github.com/adnan275/dva_portfolio'
     },
     {
         title: 'GigFlow',
