@@ -1,11 +1,87 @@
 .projects-page {
+    position: relative;
     min-height: 100vh;
     background: var(--bg-primary);
+    overflow: hidden;
 }
 
 .projects-main {
+    position: relative;
+    z-index: 1;
     padding: 6rem 0 4rem;
 }
+
+/* Background elements matching Hero design */
+.projects-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.projects-page .glow-blob {
+    position: absolute;
+    filter: blur(120px);
+    border-radius: 50%;
+    animation: pulse-glow-proj 12s ease-in-out infinite alternate;
+    will-change: transform, opacity;
+}
+
+.projects-page .glow-blob-1 {
+    top: 10%;
+    left: 20%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: radial-gradient(circle,
+            rgba(99, 102, 241, 0.18) 0%,
+            rgba(139, 92, 246, 0.08) 40%,
+            transparent 70%);
+}
+
+.projects-page .glow-blob-2 {
+    bottom: 15%;
+    right: 5%;
+    width: 50vw;
+    height: 50vw;
+    max-width: 600px;
+    max-height: 600px;
+    background: radial-gradient(circle,
+            rgba(236, 72, 153, 0.15) 0%,
+            rgba(139, 92, 246, 0.08) 40%,
+            transparent 70%);
+    animation: pulse-glow-proj 15s ease-in-out infinite alternate-reverse;
+}
+
+.projects-page .grid-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+}
+
+@keyframes pulse-glow-proj {
+    0% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+        transform: scale(1.15);
+        opacity: 0.6;
+    }
+}
+
 
 .container {
     max-width: 1400px;
