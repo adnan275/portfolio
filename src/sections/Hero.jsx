@@ -101,12 +101,13 @@ const Hero = () => {
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <h2 className="hero-subtitle">
-                        a <TypingAnimation
+                        <TypingAnimation
                             texts={[
-                                'Full-Stack Developer',
-                                'Problem Solver',
-                                'UI/UX Enthusiast',
-                                'Creative Thinker'
+                                'an AI/ML Engineer',
+                                'a Full-Stack Developer',
+                                'a System Designer',
+                                'an Algorithmic Problem Solver',
+                                'a UI/UX Designer'
                             ]}
                         />
                     </h2>
