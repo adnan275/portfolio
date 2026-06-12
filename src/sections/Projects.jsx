@@ -26,6 +26,20 @@ const projects = [
         image: '/projects/ev-charging-agent.png'
     },
     {
+        title: 'Loan Default Risk Analytics Dashboard',
+        description: 'ETL and demographic data engineering pipeline with a structured dashboard focusing on the strongest predictors of borrower default: Loan-to-Value (LTV) Ratio and Debt-to-Income (DTI) Ratio.',
+        tags: ['Python', 'Pandas', 'Google Sheets', 'Data Engineering', 'Risk Analytics'],
+        link: 'https://github.com/adnan275/SectionE_Group15',
+        image: '/projects/loan-default.png'
+    },
+    {
+        title: 'Amazon Electronics Market Intelligence',
+        description: 'ETL pipeline and product market intelligence platform performing Exploratory Data Analysis (EDA) and visualizing pricing strategies, discount impact, and customer sentiment on Tableau.',
+        tags: ['Python', 'SQL', 'Tableau', 'ETL Pipelines', 'Market Intelligence'],
+        link: 'https://github.com/adnan275/E_G1_DVACapstone2',
+        image: '/projects/amazon-electronics.png'
+    },
+    {
         title: 'GigFlow',
         description: 'Real-time freelance marketplace platform for posting gigs, bidding, and live messaging with Socket.io integration.',
         tags: ['React', 'Vite', 'TailwindCSS', 'Framer Motion', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
