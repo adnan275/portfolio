@@ -18,7 +18,7 @@ const projects = [
         description: 'ETL pipelines & Tableau business dashboards',
         tags: ['Python', 'SQL', 'Tableau'],
         image: '/projects/dva-portfolio.png',
-        link: 'https://github.com/adnan275/dva_portfolio'
+        link: 'https://dva-portfolio-theta.vercel.app/'
     },
     {
         title: 'GigFlow',

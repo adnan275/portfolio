@@ -55,7 +55,7 @@ const projects = [
         title: 'Data Analytics & BI Portfolio',
         description: 'A consolidated data intelligence portfolio showcasing end-to-end ETL pipelines, exploratory data analysis (EDA), and interactive Tableau/BI dashboards for financial risk and market intelligence.',
         tags: ['Python', 'SQL', 'Tableau', 'ETL Pipelines', 'Dashboard Design', 'EDA'],
-        link: 'https://github.com/adnan275/dva_portfolio',
+        link: 'https://dva-portfolio-theta.vercel.app/',
         image: '/projects/dva-portfolio.png',
         github: 'https://github.com/adnan275/dva_portfolio',
         details: {
