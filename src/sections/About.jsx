@@ -11,7 +11,7 @@ const About = () => {
         },
         {
             title: "02. The Logic & DSA",
-            content: "Deep-dived into <strong>Data Structures and Algorithms</strong> to sharpen my problem-solving skills. Solved <strong>350+ problems</strong> across LeetCode and other platforms, mastering optimization and clean logic."
+            content: "Deep-dived into <strong>Data Structures and Algorithms</strong> to sharpen my problem-solving skills. Solved <strong>400+ problems</strong> across LeetCode and other platforms, mastering optimization and clean logic."
         },
         {
             title: "03. Full-Stack Mastery",
