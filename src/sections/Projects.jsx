@@ -14,7 +14,7 @@ const projects = [
     {
         title: 'NeuraX — Vector DB & RAG Engine',
         description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.',
-        tags: ['Python', 'Flask', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas'],
+        tags: ['Python', 'FastAPI', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas'],
         link: 'https://huggingface.co/spaces/rizzzvi/NeuraX',
         image: '/projects/neurax.png'
     },
