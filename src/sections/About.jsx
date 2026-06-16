@@ -50,7 +50,7 @@ const About = () => {
                         <div className="about-quick-stats">
                             <div className="quick-stat-item">
                                 <span className="stat-number">2+</span>
-                                <span className="stat-label">Years Dev Experience</span>
+                                <span className="stat-label">Years Dev & AI/ML</span>
                             </div>
                             <div className="quick-stat-item">
                                 <span className="stat-number">10+</span>
