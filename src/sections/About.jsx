@@ -56,10 +56,6 @@ const About = () => {
                                 <span className="stat-number">10+</span>
                                 <span className="stat-label">AI & Full-Stack Projects</span>
                             </div>
-                            <div className="quick-stat-item">
-                                <span className="stat-number">400+</span>
-                                <span className="stat-label">DSA Problems Solved</span>
-                            </div>
                         </div>
                     </motion.div>
 

@@ -18,7 +18,7 @@
 
 .about-quick-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     margin-top: 2.5rem;
 }
@@ -288,7 +288,7 @@ pre {
 
 @media (max-width: 600px) {
     .about-quick-stats {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 0.75rem;
         margin-top: 2rem;
     }
