@@ -49,12 +49,12 @@ const About = () => {
                         </p>
                         <div className="about-quick-stats">
                             <div className="quick-stat-item">
-                                <span className="stat-number">2+</span>
-                                <span className="stat-label">Years Dev & AI/ML</span>
+                                <span className="stat-number">2+ Years</span>
+                                <span className="stat-label">Software & AI Engineering</span>
                             </div>
                             <div className="quick-stat-item">
-                                <span className="stat-number">10+</span>
-                                <span className="stat-label">AI & Full-Stack Projects</span>
+                                <span className="stat-number">10+ Projects</span>
+                                <span className="stat-label">AI & Full-Stack Systems</span>
                             </div>
                         </div>
                     </motion.div>
