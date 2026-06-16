@@ -47,6 +47,20 @@ const About = () => {
                         <p>
                             Whether it's architecting scalable backends or developing agentic AI workflows, I focus on writing <strong>clean, maintainable code</strong> that solves real-world problems at scale.
                         </p>
+                        <div className="about-quick-stats">
+                            <div className="quick-stat-item">
+                                <span className="stat-number">2+</span>
+                                <span className="stat-label">Years of coding</span>
+                            </div>
+                            <div className="quick-stat-item">
+                                <span className="stat-number">10+</span>
+                                <span className="stat-label">Projects built</span>
+                            </div>
+                            <div className="quick-stat-item">
+                                <span className="stat-number">400+</span>
+                                <span className="stat-label">DSA solved</span>
+                            </div>
+                        </div>
                     </motion.div>
 
                     <motion.div

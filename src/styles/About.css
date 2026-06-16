@@ -16,6 +16,57 @@
     margin-bottom: 1.5rem;
 }
 
+.about-quick-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+.quick-stat-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem 1rem;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.01) 0%,
+            rgba(255, 255, 255, 0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.quick-stat-item:hover {
+    background: linear-gradient(135deg,
+            rgba(99, 102, 241, 0.05) 0%,
+            rgba(139, 92, 246, 0.03) 100%);
+    border-color: rgba(99, 102, 241, 0.25);
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+.quick-stat-item .stat-number {
+    font-size: 2.25rem;
+    font-weight: 800;
+    line-height: 1.1;
+    background: var(--gradient-main);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Outfit', sans-serif;
+}
+
+.quick-stat-item .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .journey-section {
     margin-bottom: 10rem;
     width: 100%;
@@ -232,6 +283,28 @@ pre {
     .skills-grid {
         grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
         gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-quick-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+    
+    .quick-stat-item {
+        padding: 0.75rem 0.5rem;
+        border-radius: 12px;
+    }
+    
+    .quick-stat-item .stat-number {
+        font-size: 1.6rem;
+    }
+    
+    .quick-stat-item .stat-label {
+        font-size: 0.65rem;
+        margin-top: 0.25rem;
     }
 }
 
