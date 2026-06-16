@@ -50,15 +50,15 @@ const About = () => {
                         <div className="about-quick-stats">
                             <div className="quick-stat-item">
                                 <span className="stat-number">2+</span>
-                                <span className="stat-label">Years of coding</span>
+                                <span className="stat-label">Years Dev Experience</span>
                             </div>
                             <div className="quick-stat-item">
                                 <span className="stat-number">10+</span>
-                                <span className="stat-label">Projects built</span>
+                                <span className="stat-label">AI & Full-Stack Projects</span>
                             </div>
                             <div className="quick-stat-item">
                                 <span className="stat-number">400+</span>
-                                <span className="stat-label">DSA solved</span>
+                                <span className="stat-label">DSA Problems Solved</span>
                             </div>
                         </div>
                     </motion.div>
