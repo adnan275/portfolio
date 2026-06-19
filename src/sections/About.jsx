@@ -22,7 +22,11 @@ const About = () => {
             content: "Explored the world of <strong>Generative AI</strong>, specializing in <strong>RAG (Retrieval-Augmented Generation)</strong> and <strong>Agentic Workflows</strong> using LangChain. Built systems that can think and act autonomously."
         },
         {
-            title: "05. The Future: Scale",
+            title: "05. Data & Analytics",
+            content: "Mastered <strong>Data Analytics & Visualization</strong> using <strong>SQL, Scikit-learn, Tableau, and Excel</strong>. Built <strong>ETL pipelines, EDA, Data Cleaning</strong>, and dashboards with <strong>KPI Design</strong>, while applying <strong>OOP & System Design</strong> to <strong>REST APIs</strong>."
+        },
+        {
+            title: "06. The Future: Scale",
             content: "Currently mastering <strong>System Design</strong> and high-performance computing. My goal is to bridge the gap between robust engineering and cutting-edge AI to build technology that impacts millions."
         }
     ];
