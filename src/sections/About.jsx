@@ -23,7 +23,7 @@ const About = () => {
         },
         {
             title: "05. Data & Analytics",
-            content: "Mastered <strong>Data Analytics & Visualization</strong> using <strong>SQL, Scikit-learn, Tableau, and Excel</strong>. Built <strong>ETL pipelines, EDA, Data Cleaning</strong>, and dashboards with <strong>KPI Design</strong>, while applying <strong>OOP & System Design</strong> to <strong>REST APIs</strong>."
+            content: "Mastered <strong>Data Analytics & Visualization</strong> using <strong>SQL, Scikit-learn, Tableau, and Excel</strong>. Built <strong>ETL pipelines, EDA, Data Cleaning</strong>, and dashboards with <strong>KPI Design</strong>, while developing robust <strong>REST APIs</strong>."
         },
         {
             title: "06. The Future: Scale",
