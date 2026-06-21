@@ -25,11 +25,11 @@ const CertificationsPreview = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="heading-lg">Certifications</h2>
-                    <p className="section-subtitle">Credentials from Oracle, AWS, and Deloitte simulations</p>
+                    <p className="section-subtitle">Credentials from JPMorgan Chase, Oracle, and AWS simulations</p>
                 </motion.div>
 
                 <div className="cert-preview-grid">
-                    {certifications.map((cert, index) => (
+                    {certifications.slice(0, 3).map((cert, index) => (
                         <motion.a
                             key={cert.title}
                             href={cert.link}
