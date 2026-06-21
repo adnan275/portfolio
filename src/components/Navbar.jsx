@@ -52,7 +52,7 @@ const Navbar = () => {
                         element.scrollIntoView({ behavior: 'smooth' });
                     }
                 }
-            }, 100);
+            }, 600);
         }
     }, [location.pathname, location.state, navigate, lenisRef]);
 
