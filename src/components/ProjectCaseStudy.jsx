@@ -61,6 +61,7 @@ const ProjectCaseStudy = ({ project, isOpen, onClose }) => {
                 >
                     <motion.div
                         className="case-study-modal glass-panel"
+                        data-lenis-prevent
                         initial={{ y: 50, opacity: 0, scale: 0.95 }}
                         animate={{ y: 0, opacity: 1, scale: 1 }}
                         exit={{ y: 50, opacity: 0, scale: 0.95 }}
