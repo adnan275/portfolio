@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLenis } from './LenisProvider';
 import '../styles/Navbar.css';
 
 const Navbar = () => {
@@ -8,6 +9,8 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [activeSection, setActiveSection] = useState('hero');
     const location = useLocation();
+    const navigate = useNavigate();
+    const lenisRef = useLenis();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,6 +34,27 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    useEffect(() => {
+        if (location.pathname === '/' && location.state?.scrollTo) {
+            const target = location.state.scrollTo;
+            navigate(location.pathname, { replace: true, state: {} });
+            
+            setTimeout(() => {
+                const element = document.querySelector(target);
+                if (element) {
+                    if (lenisRef?.current) {
+                        lenisRef.current.scrollTo(element, {
+                            offset: -80,
+                            duration: 1.5,
+                        });
+                    } else {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            }, 100);
+        }
+    }, [location.pathname, location.state, navigate, lenisRef]);
 
     const navLinks = [
         { name: 'Home', href: '/', type: 'route' },
@@ -84,7 +108,11 @@ const Navbar = () => {
                                 className={`nav-link ${activeSection === link.href.slice(1) ? 'active' : ''}`}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    handleNavClick(link.href);
+                                    if (location.pathname !== '/') {
+                                        navigate('/', { state: { scrollTo: link.href } });
+                                    } else {
+                                        handleNavClick(link.href);
+                                    }
                                 }}
                                 initial={{ opacity: 0, y: -20 }}
                                 animate={{ opacity: 1, y: 0 }}
