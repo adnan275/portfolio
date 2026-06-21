@@ -3,28 +3,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 
-const createCircleTexture = () => {
-    if (typeof window === 'undefined') return null;
-    const canvas = document.createElement('canvas');
-    canvas.width = 64;
-    canvas.height = 64;
-    const ctx = canvas.getContext('2d');
-    
-    const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-    gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.8)');
-    gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 64, 64);
-    
-    return new THREE.CanvasTexture(canvas);
-};
-
 const Particles3D = React.memo(({ count = 800, mouse, isMobile }) => {
     const points = useRef();
-
-    const texture = useMemo(() => createCircleTexture(), []);
 
     const particlesData = useMemo(() => {
         const positions = new Float32Array(count * 3);
@@ -76,12 +56,11 @@ const Particles3D = React.memo(({ count = 800, mouse, isMobile }) => {
             <PointMaterial
                 transparent
                 vertexColors
-                size={isMobile ? 0.04 : 0.07}
+                size={isMobile ? 0.01 : 0.02}
                 sizeAttenuation={true}
                 depthWrite={false}
                 opacity={0.8}
                 blending={THREE.AdditiveBlending}
-                map={texture}
             />
         </Points>
     );
