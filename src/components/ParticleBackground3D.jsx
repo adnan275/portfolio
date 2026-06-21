@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
 
-const Particles3D = React.memo(({ count = 800, mouse }) => {
+const Particles3D = React.memo(({ count = 800, mouse, isMobile }) => {
     const points = useRef();
 
     const particlesData = useMemo(() => {
@@ -56,7 +56,7 @@ const Particles3D = React.memo(({ count = 800, mouse }) => {
             <PointMaterial
                 transparent
                 vertexColors
-                size={0.02}
+                size={isMobile ? 0.01 : 0.02}
                 sizeAttenuation={true}
                 depthWrite={false}
                 opacity={0.8}
@@ -68,6 +68,7 @@ const Particles3D = React.memo(({ count = 800, mouse }) => {
 
 const ParticleBackground3D = ({ particleCount = 600 }) => {
     const mouse = useRef({ x: 0, y: 0 });
+    const [isMobile, setIsMobile] = React.useState(false);
 
     const handleMouseMove = (event) => {
         mouse.current = {
@@ -77,8 +78,17 @@ const ParticleBackground3D = ({ particleCount = 600 }) => {
     };
 
     React.useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
         window.addEventListener('mousemove', handleMouseMove, { passive: true });
-        return () => window.removeEventListener('mousemove', handleMouseMove);
+        
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+            window.removeEventListener('mousemove', handleMouseMove);
+        };
     }, []);
 
     return (
@@ -101,7 +111,7 @@ const ParticleBackground3D = ({ particleCount = 600 }) => {
                 dpr={[1, 1.5]}
                 performance={{ min: 0.5 }}
             >
-                <Particles3D count={particleCount} mouse={mouse} />
+                <Particles3D count={particleCount} mouse={mouse} isMobile={isMobile} />
             </Canvas>
         </div>
     );
