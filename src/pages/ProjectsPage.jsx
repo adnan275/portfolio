@@ -26,7 +26,7 @@ const projects = [
     {
         title: 'NeuraX — Vector DB & RAG Engine',
         description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.',
-        tags: ['Python', 'FastAPI', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas'],
+        tags: ['Python', 'FastAPI', 'NumPy', 'JS', 'Hugging Face', 'Ollama (Llama 3.2)', 'Nomic Embed', 'HNSW'],
         link: 'https://huggingface.co/spaces/rizzzvi/NeuraX',
         image: '/projects/neurax.png',
         github: 'https://github.com/adnan275/NeuraX',
@@ -34,7 +34,7 @@ const projects = [
             problem: 'Most RAG (Retrieval-Augmented Generation) systems rely on cloud vector databases, which can be slow and compromise data privacy. Visualizing high-dimensional embeddings is also a challenge.',
             solution: 'NeuraX implements a custom vector database from scratch using NumPy for efficient similarity searches. It includes a real-time PCA (Principal Component Analysis) visualizer to project 768D embeddings into 2D space.',
             features: ['Custom HNSW/KD-Tree indexing', '768D Vector support', 'Real-time PCA Visualization', 'Local RAG pipeline with Llama 3.2'],
-            techStack: ['Python', 'FastAPI', 'NumPy', 'Ollama', 'Llama 3.2', 'Nomic Embed', 'Vanilla JS', 'HTML5 Canvas']
+            techStack: ['Python', 'FastAPI', 'NumPy', 'JS', 'Hugging Face', 'Ollama (Llama 3.2)', 'Nomic Embed', 'HNSW']
         }
     },
     {
