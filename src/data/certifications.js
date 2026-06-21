@@ -1,5 +1,21 @@
 export const certifications = [
     {
+        title: "JPMorgan Chase Investment Banking Job Simulation",
+        issuer: "Forage",
+        date: "Issued: Jun 2026",
+        description: "Through this simulation, I gained hands-on exposure to investment banking and M&A analysis. I evaluated acquisition opportunities, performed company valuation, and developed recommendations based on financial and strategic considerations.",
+        features: [
+            "Assessed multiple acquisition targets and identified the most suitable company based on strategic fit, growth prospects, and market position",
+            "Built and updated a Discounted Cash Flow (DCF) model to estimate enterprise and equity value using key valuation assumptions",
+            "Analyzed the impact of operational disruptions and competitive bidding scenarios on company valuation and investment attractiveness",
+            "Prepared client-ready presentations summarizing company profiles, valuation findings, auction processes, and final investment recommendations"
+        ],
+        link: "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/YD2kY95RQxQtXxFTS_Sj7temL583QAYpHXD_Q9Sqv4dBgSM4igcCq_1781717486766_completion_certificate.pdf",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/J_P_Morgan_Chase_Logo_2008_1.svg",
+        logoAlt: "JPMorgan Chase",
+        logoClass: "cert-logo-wide"
+    },
+    {
         title: "Oracle Cloud Infrastructure 2025 – AI Foundations Associate",
         issuer: "Oracle",
         date: "Issued: Oct 2025",
