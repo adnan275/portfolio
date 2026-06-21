@@ -79,15 +79,30 @@ const Navbar = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
         >
             <div className="container nav-content">
-                <motion.div
-                    className="logo"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2, duration: 0.6 }}
+                <Link
+                    to="/"
+                    className="logo-link"
+                    onClick={(e) => {
+                        if (location.pathname === '/') {
+                            e.preventDefault();
+                            if (lenisRef?.current) {
+                                lenisRef.current.scrollTo(0, { duration: 1.2 });
+                            } else {
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }
+                        }
+                    }}
                 >
-                    <span className="logo-text">Portfolio</span>
-                    <span className="dot">.</span>
-                </motion.div>
+                    <motion.div
+                        className="logo"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                    >
+                        <span className="logo-text">Portfolio</span>
+                        <span className="dot">.</span>
+                    </motion.div>
+                </Link>
 
                 <div className={`nav-links ${mobileMenuOpen ? 'open' : ''}`}>
                     {navLinks.map((link, index) => (
