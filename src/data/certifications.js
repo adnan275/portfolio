@@ -11,9 +11,8 @@ export const certifications = [
             "Prepared client-ready presentations summarizing company profiles, valuation findings, auction processes, and final investment recommendations"
         ],
         link: "https://www.theforage.com/completion-certificates/Sj7temL583QAYpHXD/YD2kY95RQxQtXxFTS_Sj7temL583QAYpHXD_Q9Sqv4dBgSM4igcCq_1781717486766_completion_certificate.pdf",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/0/05/J_P_Morgan_Chase_Logo_2008_1.svg",
-        logoAlt: "JPMorgan Chase",
-        logoClass: "cert-logo-wide"
+        logo: "/logos/jpmorgan.svg",
+        logoAlt: "JPMorgan Chase"
     },
     {
         title: "Oracle Cloud Infrastructure 2025 – AI Foundations Associate",
