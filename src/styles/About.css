@@ -269,15 +269,22 @@ pre {
 }
 
 @media (max-width: 900px) {
-    .about-grid {
+    .about-intro-grid {
         grid-template-columns: 1fr;
-        gap: 4rem;
+        gap: 3rem;
+    }
+
+    .about-visual {
+        padding: 1rem 0;
+        width: 100%;
     }
 
     .visual-card {
         transform: rotate(0);
         margin: 0 auto;
-        max-width: 600px;
+        max-width: 100%;
+        width: 100%;
+        padding: 1.5rem;
     }
 
     .skills-grid {
@@ -309,8 +316,31 @@ pre {
 }
 
 @media (max-width: 480px) {
-    .about-content {
+    .about-intro-content {
         font-size: 1rem;
+    }
+
+    .about-intro-grid {
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+
+    .journey-section {
+        margin-bottom: 5rem;
+    }
+
+    .timeline-card {
+        padding: 1.25rem;
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+    }
+
+    .timeline-line {
+        left: 20px;
+    }
+
+    .timeline-dot {
+        left: 20px;
     }
 
     .skills-grid {

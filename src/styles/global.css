@@ -1,9 +1,17 @@
-* {
-    cursor: none !important;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
-body {
-    cursor: none !important;
+@media (hover: hover) and (pointer: fine) {
+    * {
+        cursor: none !important;
+    }
+
+    body {
+        cursor: none !important;
+    }
 }
 
 .container {

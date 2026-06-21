@@ -351,10 +351,14 @@
     .projects-preview-section {
         padding: 4rem 0;
         min-height: auto;
+        overflow: hidden;
     }
 
     .container-full {
         padding: 0 1rem;
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
     }
 
     .preview-header {
@@ -362,13 +366,25 @@
     }
 
     .horizontal-scroll-container {
+        width: 100%;
+        max-width: 100%;
         height: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 2rem 0;
+    }
+
+    .horizontal-scroll-container::-webkit-scrollbar {
+        display: none;
     }
 
     .projects-horizontal-track {
         display: flex;
         flex-wrap: nowrap;
         gap: 1.5rem;
+        transform: none !important;
     }
 
     .project-scroll-card {

@@ -177,6 +177,15 @@
 }
 
 @media (max-width: 768px) {
+    .case-study-modal {
+        padding: 3.5rem var(--spacing-md) var(--spacing-md);
+    }
+
+    .close-btn {
+        top: 15px;
+        right: 15px;
+    }
+
     .case-study-header {
         flex-direction: column;
     }

@@ -30,6 +30,7 @@
     border: 1px solid var(--border-light);
     box-shadow: var(--shadow-lg);
     text-align: left;
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     position: relative;
@@ -202,6 +203,7 @@
     transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
     position: relative;
     overflow: hidden;
+    min-width: 0;
 }
 
 .contact-card::before {
@@ -253,6 +255,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    min-width: 0;
 }
 
 .contact-label {
@@ -270,6 +273,7 @@
     text-decoration: none;
     font-size: 1.05rem;
     transition: color var(--transition-smooth);
+    word-break: break-all;
 }
 
 .contact-card:hover .contact-value {
@@ -349,6 +353,8 @@
         grid-template-columns: 1fr;
         padding: 2rem;
         gap: 3rem;
+        width: calc(100% - 3rem);
+        margin: 0 auto;
     }
 
     .contact-info-side {
@@ -366,6 +372,7 @@
 @media (max-width: 480px) {
     .contact-container {
         padding: 1.5rem;
+        width: calc(100% - 2rem);
     }
 
     .form-group input,
