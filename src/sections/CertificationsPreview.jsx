@@ -29,7 +29,7 @@ const CertificationsPreview = () => {
                 </motion.div>
 
                 <div className="cert-preview-grid">
-                    {certifications.slice(0, 3).map((cert, index) => (
+                    {certifications.filter(cert => cert.showOnHome).slice(0, 3).map((cert, index) => (
                         <motion.a
                             key={cert.title}
                             href={cert.link}
