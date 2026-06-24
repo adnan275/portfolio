@@ -1,5 +1,39 @@
 export const certifications = [
     {
+        title: "Claude Code Certificate of Completion",
+        issuer: "Anthropic",
+        date: "Issued: Jun 2026",
+        description: "Through this course, I learned how AI-powered development agents can assist with codebase understanding, workflow automation, and software development tasks. The course covered practical approaches for working effectively with Claude Code.",
+        featuresTitle: "Key Learnings",
+        features: [
+            "Learned to navigate and understand unfamiliar codebases using AI-assisted workflows.",
+            "Studied the Explore → Plan → Code → Commit methodology for structured development.",
+            "Gained an understanding of context management and working within large coding sessions.",
+            "Explored the use of CLAUDE.md for project instructions, coding standards, and development conventions."
+        ],
+        link: "https://verify.skilljar.com/c/vhuaouvms7gi",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg",
+        logoAlt: "Anthropic",
+        showOnHome: false
+    },
+    {
+        title: "Claude 101 Certificate of Completion",
+        issuer: "Anthropic",
+        date: "Issued: Jun 2026",
+        description: "Through this course, I gained an understanding of Claude’s core capabilities, prompt engineering techniques, research workflows, and knowledge management features. The course focused on using AI effectively for problem-solving, content creation, and information retrieval.",
+        featuresTitle: "Key Learnings",
+        features: [
+            "Learned prompt engineering techniques using context, task definition, and clear instructions.",
+            "Explored Projects, Artifacts, and Knowledge Bases for organizing information and maintaining context.",
+            "Gained familiarity with Connectors and Enterprise Search for accessing and retrieving relevant information.",
+            "Studied Research Mode workflows for analysis, information synthesis, and insight generation."
+        ],
+        link: "https://verify.skilljar.com/c/ibrmiz6tdrou",
+        logo: "https://upload.wikimedia.org/wikipedia/commons/7/78/Anthropic_logo.svg",
+        logoAlt: "Anthropic",
+        showOnHome: false
+    },
+    {
         title: "Tata Group GenAI Powered Data Analytics Job Simulation",
         issuer: "Forage",
         date: "Issued: Jun 2026",

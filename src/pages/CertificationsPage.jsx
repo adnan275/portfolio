@@ -56,7 +56,7 @@ const CertificationsPage = () => {
                                 <p className="cert-description">{cert.description}</p>
 
                                 <div className="cert-features">
-                                    <h4>Features Worked on</h4>
+                                    <h4>{cert.featuresTitle || "Features Worked on"}</h4>
                                     <ul>
                                         {cert.features.map((feature, fIndex) => (
                                             <li key={fIndex}>{feature}</li>
