@@ -77,13 +77,11 @@ const About = () => {
                             <div className="code-block">
                                 <pre>
                                     <code>
-                                        {`const neuralSystem = {
-  engineer: 'Adnan Rizvi',
-  architecture: 'Agentic AI + Full-Stack',
-  vectorDB: 'NeuraX (768D HNSW/KD-Tree)',
-  localLLM: 'Llama 3.2 / Ollama RAG',
-  performance: 'Sub-80ms Query Latency',
-  status: 'Deployed & Operational'
+                                        {`const developer = {
+  name: 'Adnan',
+  role: 'Software Engineer',
+  focus: 'Full Stack & AI',
+  passion: 'Scalable Systems'
 };`}
                                     </code>
                                 </pre>

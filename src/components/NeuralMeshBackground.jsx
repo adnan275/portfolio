@@ -1,5 +1,6 @@
 import React, { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
+import { PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
 const NeuralNetwork = ({ nodeCount = 70, maxDistance = 3.5 }) => {
@@ -129,7 +130,7 @@ const NeuralNetwork = ({ nodeCount = 70, maxDistance = 3.5 }) => {
                         itemSize={3}
                     />
                 </bufferGeometry>
-                <pointMaterial
+                <PointMaterial
                     size={0.09}
                     color="#00f0ff"
                     transparent

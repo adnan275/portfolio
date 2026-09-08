@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import CertificationsPage from './pages/CertificationsPage';
 import CustomCursor from './components/CustomCursor';
+import NeuralLoader from './components/NeuralLoader';
+import LenisProvider from './components/LenisProvider';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -47,12 +49,11 @@ function AnimatedRoutes() {
   );
 }
 
-import LenisProvider from './components/LenisProvider';
-
 function App() {
   return (
     <Router>
       <LenisProvider>
+        <NeuralLoader />
         <AnimatedRoutes />
         <CustomCursor />
       </LenisProvider>
