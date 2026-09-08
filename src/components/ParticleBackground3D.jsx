@@ -9,16 +9,28 @@ const ParticleBackground3D = () => {
         const ctx = canvas.getContext('2d');
         let animId;
 
+        let dpr = 1;
+        let w = 0;
+        let h = 0;
+
         const resize = () => {
-            canvas.width = canvas.parentElement ? canvas.parentElement.clientWidth : window.innerWidth;
-            canvas.height = canvas.parentElement ? canvas.parentElement.clientHeight : window.innerHeight;
+            const parent = canvas.parentElement;
+            w = parent ? parent.clientWidth : window.innerWidth;
+            h = parent ? parent.clientHeight : window.innerHeight;
+            dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+
+            canvas.width = Math.floor(w * dpr);
+            canvas.height = Math.floor(h * dpr);
+            canvas.style.width = `${w}px`;
+            canvas.style.height = `${h}px`;
+
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(dpr, dpr);
         };
         resize();
         window.addEventListener('resize', resize);
 
         const getLayerConfig = () => {
-            const w = canvas.width;
-            const h = canvas.height;
             const isMobile = w < 768;
             const isSmallMobile = w < 480;
 
@@ -130,8 +142,8 @@ const ParticleBackground3D = () => {
         window.addEventListener('mousemove', handleMouseMove);
 
         const render = () => {
-            const width = canvas.width;
-            const height = canvas.height;
+            const width = w;
+            const height = h;
             const isMobile = width < 768;
             const isSmallMobile = width < 480;
 
@@ -181,18 +193,18 @@ const ParticleBackground3D = () => {
                 ctx.arc(px, py, isSmallMobile ? 2.5 : (isMobile ? 3 : 3.5), 0, Math.PI * 2);
                 ctx.fillStyle = '#ffffff';
                 ctx.shadowColor = p.color;
-                ctx.shadowBlur = isMobile ? 10 : 14;
+                ctx.shadowBlur = isMobile ? 6 : 12;
                 ctx.fill();
                 ctx.shadowBlur = 0;
             });
 
-            // 3. Draw Layer Header Titles & Nodes (Responsive positioning)
+            // 3. Draw Layer Header Titles & Nodes (Razor Sharp HD Rendering)
             layers.forEach((layer, layerIdx) => {
                 const isOuterLayer = layerIdx === 0 || layerIdx === layers.length - 1;
 
-                // Header Titles (Rendered on both Mobile and Desktop with safe alignments)
+                // Header Titles: Razor Sharp Monospace Font without heavy blurring
                 const headerY = isSmallMobile ? height * 0.15 : (isMobile ? height * 0.16 : height * 0.20);
-                const fontSize = isSmallMobile ? "700 8px" : (isMobile ? "700 9px" : "700 11px");
+                const fontSize = isSmallMobile ? "800 9.5px" : (isMobile ? "800 10.5px" : "800 12px");
                 ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.fillStyle = layer.color;
 
@@ -211,9 +223,9 @@ const ParticleBackground3D = () => {
                 }
 
                 ctx.textBaseline = 'bottom';
-                ctx.globalAlpha = isMobile ? 0.9 : 0.85;
-                ctx.shadowColor = layer.color;
-                ctx.shadowBlur = isMobile ? 5 : 8;
+                ctx.globalAlpha = 1.0; // Full 100% opacity for crystal sharpness
+                ctx.shadowColor = '#000000'; // Crisp dark contrast shadow instead of blurring color glow
+                ctx.shadowBlur = 4;
                 ctx.fillText(displayName, layer.x, headerY);
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
