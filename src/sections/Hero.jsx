@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import ParticleBackground3D from '../components/ParticleBackground3D';
+import NeuralMeshBackground from '../components/NeuralMeshBackground';
 import TypingAnimation from '../components/TypingAnimation';
 import Magnetic from '../components/Magnetic';
 import '../styles/Hero.css';
@@ -16,7 +17,8 @@ const Hero = () => {
     return (
         <section id="hero" className="hero-section">
             <div className="hero-background">
-                <ParticleBackground3D particleCount={600} />
+                <NeuralMeshBackground />
+                <ParticleBackground3D particleCount={400} />
 
                 <motion.div
                     className="glow-blob glow-blob-1"
@@ -80,7 +82,7 @@ const Hero = () => {
                 >
                     <span className="availability-badge">
                         <span className="pulse-dot"></span>
-                        Available for opportunities
+                        Neural Engine Active | 768D RAG & Full-Stack Systems
                     </span>
                 </motion.div>
 
@@ -103,11 +105,10 @@ const Hero = () => {
                     <h2 className="hero-subtitle">
                         <TypingAnimation
                             texts={[
-                                'an AI/ML Engineer',
-                                'a Full-Stack Developer',
-                                'a System Designer',
-                                'an Algorithmic Problem Solver',
-                                'a UI/UX Designer'
+                                'an Agentic AI & RAG Engineer',
+                                'a Full-Stack Systems Architect',
+                                'a Neural Network Practitioner',
+                                'an Algorithmic Problem Solver'
                             ]}
                         />
                     </h2>
@@ -119,7 +120,7 @@ const Hero = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.6, delay: 0.6 }}
                 >
-                    I solve complex problems with clear logic and simple digital solutions.
+                    Architecting high-performance full-stack applications, intelligent agentic workflows, and privacy-first local LLM/RAG vector systems.
                 </motion.p>
 
                 <motion.div
