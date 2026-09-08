@@ -97,6 +97,30 @@ const ParticleBackground3D = () => {
             return layers;
         };
 
+        const createPhotons = (layers) => {
+            const photons = [];
+            for (let l = 0; l < layers.length - 1; l++) {
+                const currentLayer = layers[l];
+                const nextLayer = layers[l + 1];
+
+                currentLayer.nodes.forEach((nA, idxA) => {
+                    const targetIdx = (idxA + l) % nextLayer.nodes.length;
+                    const nB = nextLayer.nodes[targetIdx];
+
+                    photons.push({
+                        x1: currentLayer.x,
+                        y1: nA.y,
+                        x2: nextLayer.x,
+                        y2: nB.y,
+                        progress: Math.random(),
+                        speed: 0.0014 + Math.random() * 0.0012,
+                        color: currentLayer.color
+                    });
+                });
+            }
+            return photons;
+        };
+
         const createFloatingFormulas = () => {
             const isMobile = w < 768;
             const isSmallMobile = w < 480;
