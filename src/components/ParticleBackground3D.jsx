@@ -149,13 +149,16 @@ const ParticleBackground3D = () => {
 
             ctx.clearRect(0, 0, width, height);
 
-            // 1. Draw Visible Network Connection Lines
+            // 1. Draw Visible Network Connection Lines (Streamlined on mobile for clean, uncluttered look)
             for (let l = 0; l < layers.length - 1; l++) {
                 const currentLayer = layers[l];
                 const nextLayer = layers[l + 1];
 
-                currentLayer.nodes.forEach((nodeA) => {
-                    nextLayer.nodes.forEach((nodeB) => {
+                currentLayer.nodes.forEach((nodeA, idxA) => {
+                    nextLayer.nodes.forEach((nodeB, idxB) => {
+                        // On mobile, only connect direct & adjacent nodes to keep lines clean and elegant
+                        if (isMobile && Math.abs(idxA - idxB) > 1) return;
+
                         const midX = (currentLayer.x + nextLayer.x) / 2;
                         const midY = (nodeA.y + nodeB.y) / 2;
                         const isMouseNear = Math.hypot(mouseX - midX, mouseY - midY) < 140;
@@ -166,12 +169,12 @@ const ParticleBackground3D = () => {
 
                         if (isMouseNear) {
                             ctx.strokeStyle = currentLayer.color;
-                            ctx.lineWidth = isMobile ? 1.4 : 1.8;
-                            ctx.globalAlpha = 0.75;
+                            ctx.lineWidth = isMobile ? 1.2 : 1.8;
+                            ctx.globalAlpha = 0.7;
                         } else {
-                            ctx.strokeStyle = 'rgba(255, 255, 255, 0.20)';
-                            ctx.lineWidth = isMobile ? 0.9 : 1.2;
-                            ctx.globalAlpha = isMobile ? 0.3 : 0.45;
+                            ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+                            ctx.lineWidth = isMobile ? 0.7 : 1.2;
+                            ctx.globalAlpha = isMobile ? 0.15 : 0.40;
                         }
                         ctx.stroke();
                         ctx.globalAlpha = 1;
@@ -190,10 +193,10 @@ const ParticleBackground3D = () => {
                 const py = p.y1 + (p.y2 - p.y1) * p.progress;
 
                 ctx.beginPath();
-                ctx.arc(px, py, isSmallMobile ? 2.5 : (isMobile ? 3 : 3.5), 0, Math.PI * 2);
+                ctx.arc(px, py, isSmallMobile ? 2 : (isMobile ? 2.5 : 3.5), 0, Math.PI * 2);
                 ctx.fillStyle = '#ffffff';
                 ctx.shadowColor = p.color;
-                ctx.shadowBlur = isMobile ? 6 : 12;
+                ctx.shadowBlur = isMobile ? 4 : 12;
                 ctx.fill();
                 ctx.shadowBlur = 0;
             });
@@ -202,9 +205,9 @@ const ParticleBackground3D = () => {
             layers.forEach((layer, layerIdx) => {
                 const isOuterLayer = layerIdx === 0 || layerIdx === layers.length - 1;
 
-                // Header Titles: Razor Sharp Monospace Font without heavy blurring
-                const headerY = isSmallMobile ? height * 0.15 : (isMobile ? height * 0.16 : height * 0.20);
-                const fontSize = isSmallMobile ? "800 9.5px" : (isMobile ? "800 10.5px" : "800 12px");
+                // Header Titles: Clean Monospace Font positioned safely below Navbar
+                const headerY = isSmallMobile ? height * 0.11 : (isMobile ? height * 0.12 : height * 0.20);
+                const fontSize = isSmallMobile ? "800 8.5px" : (isMobile ? "800 9.5px" : "800 12px");
                 ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.fillStyle = layer.color;
 
@@ -223,9 +226,9 @@ const ParticleBackground3D = () => {
                 }
 
                 ctx.textBaseline = 'bottom';
-                ctx.globalAlpha = 1.0; // Full 100% opacity for crystal sharpness
-                ctx.shadowColor = '#000000'; // Crisp dark contrast shadow instead of blurring color glow
-                ctx.shadowBlur = 4;
+                ctx.globalAlpha = 1.0;
+                ctx.shadowColor = '#000000';
+                ctx.shadowBlur = 3;
                 ctx.fillText(displayName, layer.x, headerY);
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
@@ -237,10 +240,10 @@ const ParticleBackground3D = () => {
 
                     // Outer Ring
                     ctx.beginPath();
-                    ctx.arc(layer.x, node.y, node.radius + (isHovered ? 6 : (isMobile ? 2.5 : 4)), 0, Math.PI * 2);
+                    ctx.arc(layer.x, node.y, node.radius + (isHovered ? 6 : (isMobile ? 2 : 4)), 0, Math.PI * 2);
                     ctx.strokeStyle = layer.color;
                     ctx.lineWidth = isHovered ? 2 : 1.2;
-                    ctx.globalAlpha = isOuterLayer ? (isHovered ? 0.95 : (isMobile ? 0.45 : 0.6)) : 0.35;
+                    ctx.globalAlpha = isOuterLayer ? (isHovered ? 0.95 : (isMobile ? 0.35 : 0.6)) : 0.25;
                     ctx.stroke();
                     ctx.globalAlpha = 1;
 
@@ -248,7 +251,7 @@ const ParticleBackground3D = () => {
                     ctx.beginPath();
                     ctx.arc(layer.x, node.y, node.radius / 1.7, 0, Math.PI * 2);
                     ctx.fillStyle = isHovered ? '#ffffff' : layer.color;
-                    ctx.globalAlpha = isHovered ? 1 : 0.85;
+                    ctx.globalAlpha = isHovered ? 1 : (isMobile ? 0.7 : 0.85);
                     if (isHovered) {
                         ctx.shadowColor = layer.color;
                         ctx.shadowBlur = 18;
@@ -257,34 +260,17 @@ const ParticleBackground3D = () => {
                     ctx.shadowBlur = 0;
                     ctx.globalAlpha = 1;
 
-                    // Labels for Outer Layers (Input & Output)
-                    if (isOuterLayer) {
-                        const fontSize = isSmallMobile ? "500 7.5px" : (isMobile ? "500 8.5px" : "600 10px");
+                    // Labels for Outer Layers (Input & Output) - DESKTOP ONLY to keep mobile 100% clean
+                    if (isOuterLayer && !isMobile) {
+                        const fontSize = "600 10px";
                         ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
                         ctx.fillStyle = isHovered ? '#ffffff' : 'rgba(235, 240, 255, 0.82)';
 
-                        let textX;
-                        const textOffset = isSmallMobile ? 4 : (isMobile ? 6 : 10);
-
-                        if (layer.x < width * 0.5) {
-                            // Input Layer: Desktop text to left, Mobile text to right so it stays inside screen
-                            if (isMobile) {
-                                ctx.textAlign = 'left';
-                                textX = layer.x + node.radius + textOffset;
-                            } else {
-                                ctx.textAlign = 'right';
-                                textX = layer.x - node.radius - textOffset;
-                            }
-                        } else {
-                            // Output Layer: Desktop text to right, Mobile text to left so it stays inside screen
-                            if (isMobile) {
-                                ctx.textAlign = 'right';
-                                textX = layer.x - node.radius - textOffset;
-                            } else {
-                                ctx.textAlign = 'left';
-                                textX = layer.x + node.radius + textOffset;
-                            }
-                        }
+                        ctx.textAlign = layer.x < width * 0.5 ? 'right' : 'left';
+                        const textOffset = 10;
+                        const textX = layer.x < width * 0.5
+                            ? layer.x - node.radius - textOffset
+                            : layer.x + node.radius + textOffset;
 
                         ctx.textBaseline = 'middle';
                         ctx.shadowColor = '#000000';
