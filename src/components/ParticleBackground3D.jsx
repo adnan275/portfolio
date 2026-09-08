@@ -51,6 +51,7 @@ const ParticleBackground3D = () => {
                 // Layer 0: Input Layer (Cyan)
                 {
                     name: 'INPUT LAYER',
+                    formula: 'z = wᵀx + b',
                     color: '#00f0ff',
                     x: xPositions[0],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -62,6 +63,7 @@ const ParticleBackground3D = () => {
                 // Layer 1: Hidden Layer 1 (Purple)
                 {
                     name: 'HIDDEN 1',
+                    formula: 'σ(z) = 1/(1+e⁻ᶻ)',
                     color: '#c084fc',
                     x: xPositions[1],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -73,6 +75,7 @@ const ParticleBackground3D = () => {
                 // Layer 2: Hidden Layer 2 (Magenta)
                 {
                     name: 'HIDDEN 2',
+                    formula: 'w := w - α(∂J/∂w)',
                     color: '#e879f9',
                     x: xPositions[2],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -84,6 +87,7 @@ const ParticleBackground3D = () => {
                 // Layer 3: Output Layer (Green)
                 {
                     name: 'OUTPUT LAYER',
+                    formula: 'β = (XᵀX)⁻¹Xᵀy',
                     color: '#34d399',
                     x: xPositions[3],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -205,8 +209,8 @@ const ParticleBackground3D = () => {
             layers.forEach((layer, layerIdx) => {
                 const isOuterLayer = layerIdx === 0 || layerIdx === layers.length - 1;
 
-                // Header Titles: Clean Monospace Font positioned safely below Navbar
-                const headerY = isSmallMobile ? height * 0.11 : (isMobile ? height * 0.12 : height * 0.20);
+                // Header Titles & Math Formulas
+                const headerY = isSmallMobile ? height * 0.10 : (isMobile ? height * 0.11 : height * 0.19);
                 const fontSize = isSmallMobile ? "800 8.5px" : (isMobile ? "800 9.5px" : "800 12px");
                 ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.fillStyle = layer.color;
@@ -230,6 +234,16 @@ const ParticleBackground3D = () => {
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 3;
                 ctx.fillText(displayName, layer.x, headerY);
+
+                // Math Formula Tag below title
+                if (layer.formula) {
+                    const subFontSize = isSmallMobile ? "600 7px" : (isMobile ? "600 7.5px" : "600 9.5px");
+                    ctx.font = `${subFontSize} 'Fira Code', 'JetBrains Mono', monospace`;
+                    ctx.fillStyle = 'rgba(225, 235, 255, 0.70)';
+                    ctx.textBaseline = 'top';
+                    ctx.fillText(layer.formula, layer.x, headerY + (isMobile ? 2 : 4));
+                }
+
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
 
