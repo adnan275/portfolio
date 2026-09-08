@@ -51,7 +51,6 @@ const ParticleBackground3D = () => {
                 // Layer 0: Input Layer (Cyan)
                 {
                     name: 'INPUT LAYER',
-                    formula: 'z = wᵀx + b',
                     color: '#00f0ff',
                     x: xPositions[0],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -63,7 +62,6 @@ const ParticleBackground3D = () => {
                 // Layer 1: Hidden Layer 1 (Purple)
                 {
                     name: 'HIDDEN 1',
-                    formula: 'σ(z) = 1/(1+e⁻ᶻ)',
                     color: '#c084fc',
                     x: xPositions[1],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -75,7 +73,6 @@ const ParticleBackground3D = () => {
                 // Layer 2: Hidden Layer 2 (Magenta)
                 {
                     name: 'HIDDEN 2',
-                    formula: 'w := w - α(∂J/∂w)',
                     color: '#e879f9',
                     x: xPositions[2],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -87,7 +84,6 @@ const ParticleBackground3D = () => {
                 // Layer 3: Output Layer (Green)
                 {
                     name: 'OUTPUT LAYER',
-                    formula: 'β = (XᵀX)⁻¹Xᵀy',
                     color: '#34d399',
                     x: xPositions[3],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
@@ -101,37 +97,45 @@ const ParticleBackground3D = () => {
             return layers;
         };
 
-        const createPhotons = (layers) => {
-            const photons = [];
-            for (let l = 0; l < layers.length - 1; l++) {
-                const currentLayer = layers[l];
-                const nextLayer = layers[l + 1];
+        const createFloatingFormulas = () => {
+            const isMobile = w < 768;
+            const isSmallMobile = w < 480;
 
-                currentLayer.nodes.forEach((nA, idxA) => {
-                    const targetIdx = (idxA + l) % nextLayer.nodes.length;
-                    const nB = nextLayer.nodes[targetIdx];
+            const formulaTexts = [
+                { text: 'z = wᵀx + b', color: '#00f0ff', px: 0.06, py: 0.28 },
+                { text: 'σ(z) = 1/(1+e⁻ᶻ)', color: '#c084fc', px: isMobile ? 0.05 : 0.18, py: isMobile ? 0.48 : 0.38 },
+                { text: 'σ\'(z) = σ(z)(1-σ(z))', color: '#a78bfa', px: 0.15, py: 0.72 },
+                { text: 'ŷ = Xw + b', color: '#38bdf8', px: 0.24, py: 0.82 },
+                { text: 'J(w,b) = ½n Σ(yᵢ-ŷᵢ)²', color: '#e879f9', px: isMobile ? 0.85 : 0.76, py: isMobile ? 0.52 : 0.80 },
+                { text: 'w := w - α(∂J/∂w)', color: '#f472b6', px: 0.82, py: 0.42 },
+                { text: 'β = (XᵀX)⁻¹Xᵀy', color: '#34d399', px: 0.92, py: 0.28 },
+                { text: 'Acc = (TP+TN)/Total', color: '#4ade80', px: 0.88, py: 0.72 }
+            ];
 
-                    photons.push({
-                        x1: currentLayer.x,
-                        y1: nA.y,
-                        x2: nextLayer.x,
-                        y2: nB.y,
-                        progress: Math.random(),
-                        speed: 0.0014 + Math.random() * 0.0012,
-                        color: currentLayer.color
-                    });
-                });
-            }
-            return photons;
+            // Filter out dense formulas on mobile to keep layout clean
+            const filtered = isSmallMobile
+                ? [formulaTexts[0], formulaTexts[1], formulaTexts[5], formulaTexts[6]]
+                : (isMobile ? formulaTexts.slice(0, 6) : formulaTexts);
+
+            return filtered.map((f, i) => ({
+                text: f.text,
+                color: f.color,
+                x: w * f.px,
+                baseY: h * f.py,
+                phase: i * 1.3,
+                speed: 0.0008 + i * 0.0003
+            }));
         };
 
         let layers = getLayerConfig();
         let photons = createPhotons(layers);
+        let floatingFormulas = createFloatingFormulas();
 
         const handleResize = () => {
             resize();
             layers = getLayerConfig();
             photons = createPhotons(layers);
+            floatingFormulas = createFloatingFormulas();
         };
 
         let mouseX = -1000;
@@ -205,11 +209,28 @@ const ParticleBackground3D = () => {
                 ctx.shadowBlur = 0;
             });
 
-            // 3. Draw Layer Header Titles & Nodes (Razor Sharp HD Rendering)
+            // 3. Render Ambient Floating Math Formulas in Background Space
+            const time = Date.now();
+            floatingFormulas.forEach((item) => {
+                const floatY = item.baseY + Math.sin(time * item.speed + item.phase) * 8;
+                const fontSz = isSmallMobile ? "600 7.5px" : (isMobile ? "600 8.5px" : "600 10px");
+                ctx.font = `${fontSz} 'Fira Code', 'JetBrains Mono', monospace`;
+                ctx.fillStyle = item.color;
+                ctx.globalAlpha = isMobile ? 0.30 : 0.40;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.shadowColor = '#000000';
+                ctx.shadowBlur = 4;
+                ctx.fillText(item.text, item.x, floatY);
+                ctx.shadowBlur = 0;
+                ctx.globalAlpha = 1;
+            });
+
+            // 4. Draw Layer Header Titles & Nodes (Razor Sharp HD Rendering)
             layers.forEach((layer, layerIdx) => {
                 const isOuterLayer = layerIdx === 0 || layerIdx === layers.length - 1;
 
-                // Header Titles & Math Formulas
+                // Header Titles: Clean Monospace Font positioned safely below Navbar
                 const headerY = isSmallMobile ? height * 0.10 : (isMobile ? height * 0.11 : height * 0.19);
                 const fontSize = isSmallMobile ? "800 8.5px" : (isMobile ? "800 9.5px" : "800 12px");
                 ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
@@ -234,16 +255,6 @@ const ParticleBackground3D = () => {
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 3;
                 ctx.fillText(displayName, layer.x, headerY);
-
-                // Math Formula Tag below title
-                if (layer.formula) {
-                    const subFontSize = isSmallMobile ? "600 7px" : (isMobile ? "600 7.5px" : "600 9.5px");
-                    ctx.font = `${subFontSize} 'Fira Code', 'JetBrains Mono', monospace`;
-                    ctx.fillStyle = 'rgba(225, 235, 255, 0.70)';
-                    ctx.textBaseline = 'top';
-                    ctx.fillText(layer.formula, layer.x, headerY + (isMobile ? 2 : 4));
-                }
-
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
 
