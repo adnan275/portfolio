@@ -7,6 +7,13 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'Presento Treasure',
+        description: 'Full-Stack E-commerce Platform',
+        tags: ['React', 'Node.js', 'MySQL', 'Express'],
+        image: '/projects/presento.png',
+        link: 'https://fullstack-presento-swaj.vercel.app/'
+    },
+    {
         title: 'Socratic Study Buddy',
         description: 'AI-powered Socratic tutor with intelligent guardrails',
         tags: ['Flask', 'Python', 'OpenAI API'],
@@ -40,13 +47,6 @@ const projects = [
         tags: ['React', 'Node.js', 'Stream'],
         image: '/projects/zync.png',
         link: 'https://zync-five.vercel.app/login'
-    },
-    {
-        title: 'Presento Treasure',
-        description: 'E-commerce platform',
-        tags: ['React', 'MySQL', 'Express'],
-        image: '/projects/presento.png',
-        link: 'https://fullstack-presento-swaj.vercel.app/'
     },
     {
         title: 'Taskly',
@@ -157,6 +157,14 @@ const ProjectCard = ({ project, index }) => {
                 />
                 <div className="scroll-card-overlay" style={{ transform: "translateZ(20px)" }}>
                     <h3>{project.title}</h3>
+                    {project.description && <p>{project.description}</p>}
+                    {project.tags && (
+                        <div className="scroll-card-tags">
+                            {project.tags.map(tag => (
+                                <span key={tag}>{tag}</span>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         </motion.div>

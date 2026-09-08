@@ -24,6 +24,20 @@ const projects = [
         }
     },
     {
+        title: 'Presento Treasure — E-commerce Platform',
+        description: 'Full-stack e-commerce platform built with modular Express APIs, role-based auth, and sub-80ms search performance.',
+        tags: ['React', 'Node.js', 'MySQL', 'Express', 'Prisma'],
+        link: 'https://fullstack-presento-swaj.vercel.app/',
+        image: '/projects/presento.png',
+        github: 'https://github.com/adnan275/fullstack_presento',
+        details: {
+            problem: 'The client required a custom e-commerce solution capable of handling high-velocity catalog searches and secure user authorization.',
+            solution: 'Engineered a full-stack platform using Prisma ORM with MySQL (Aiven) indexing for sub-80ms queries, reducing overall checkout pipeline latency by 40%.',
+            features: ['Role-based access control (JWT/RBAC)', 'Sub-80ms catalog search latency across 10k+ items', '40% latency reduction in checkout pipeline', 'Cloudinary media & Nodemailer integration'],
+            techStack: ['React', 'Node.js', 'MySQL (Aiven)', 'Express', 'Prisma', 'JWT', 'Cloudinary', 'Nodemailer']
+        }
+    },
+    {
         title: 'NeuraX — Vector DB & RAG Engine',
         description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.',
         tags: ['Python', 'FastAPI', 'NumPy', 'JS', 'Hugging Face', 'Ollama (Llama 3.2)', 'Nomic Embed', 'HNSW'],
@@ -124,20 +138,6 @@ const projects = [
             solution: 'Leveraged GetStream.io for robust WebRTC infrastructure combined with a custom Node.js backend for user management and messaging.',
             features: ['High-quality video/audio calls', 'Real-time chat integration', 'JWT-based secure authentication', 'Call history and analytics'],
             techStack: ['React', 'Node.js', 'Express', 'Stream API', 'MongoDB']
-        }
-    },
-    {
-        title: 'Presento Treasure — E-commerce',
-        description: 'Startup-grade E-commerce with modular API, role-based auth, and core commerce logic.',
-        tags: ['React', 'Node.js', 'MySql', 'Express'],
-        link: 'https://fullstack-presento-swaj.vercel.app/',
-        image: '/projects/presento.png',
-        github: 'https://github.com/adnan275/fullstack-presento',
-        details: {
-            problem: 'Many e-commerce solutions are either too simple or overly complex for startups to customize.',
-            solution: 'Built a modular, scalable e-commerce engine with a clean separation between the React frontend and the MySQL-backed Express API.',
-            features: ['Role-based access control', 'Dynamic product management', 'Secure checkout flow', 'Order tracking system'],
-            techStack: ['React', 'Node.js', 'MySQL', 'Express', 'Sequelize']
         }
     },
     {

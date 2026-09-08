@@ -12,6 +12,13 @@ const projects = [
         image: '/projects/sentinel.png'
     },
     {
+        title: 'Presento Treasure',
+        description: 'E-commerce platform built with modular REST APIs, role-based auth, and sub-80ms MySQL catalog search.',
+        tags: ['React', 'Node.js', 'MySQL', 'Express', 'Prisma'],
+        link: 'https://fullstack-presento-swaj.vercel.app/',
+        image: '/projects/presento.png'
+    },
+    {
         title: 'NeuraX — Vector DB & RAG Engine',
         description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.',
         tags: ['Python', 'FastAPI', 'NumPy', 'JS', 'Hugging Face', 'Ollama (Llama 3.2)', 'Nomic Embed', 'HNSW'],
@@ -52,13 +59,6 @@ const projects = [
         tags: ['React', 'Node.js', 'Express', 'MongoDB', 'Stream', 'JWT'],
         link: 'https://zync-five.vercel.app/login',
         image: '/projects/zync.png'
-    },
-    {
-        title: 'Presento Treasure',
-        description: 'Startup-grade E-commerce with modular API, role-based auth, and core commerce logic.',
-        tags: ['React', 'Node.js', 'MySql', 'Express'],
-        link: 'https://fullstack-presento-swaj.vercel.app/',
-        image: '/projects/presento.png'
     },
     {
         title: 'Taskly',
