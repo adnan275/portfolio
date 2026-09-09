@@ -7,7 +7,7 @@ const experiences = [
         role: 'Full-Stack Developer (Freelance)',
         company: 'Presento Treasure',
         period: 'Oct 2025',
-        type: 'Freelance Client Project',
+        type: 'Freelance Project',
         github: 'https://github.com/adnan275/fullstack_presento',
         live: 'https://fullstack-presento-swaj.vercel.app/',
         techStack: ['React', 'JavaScript', 'Node.js', 'Express', 'Prisma', 'MySQL (Aiven)', 'JWT', 'Cloudinary', 'Nodemailer', 'Vercel'],
