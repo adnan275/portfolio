@@ -10,20 +10,43 @@
 }
 
 .skills-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.45rem 1.1rem;
+    border-radius: 100px;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.15);
     font-family: 'Fira Code', 'JetBrains Mono', monospace;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--accent-primary);
-    margin-bottom: 0.75rem;
+    letter-spacing: 0.18em;
+    color: #00f0ff;
+    margin-bottom: 1.25rem;
+}
+
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00f0ff;
+    box-shadow: 0 0 8px #00f0ff;
+    animation: pulse-glow 2s infinite alternate;
+}
+
+.skills-header .heading-lg {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 
 .skills-subtitle {
     color: var(--text-secondary);
     font-size: 1.05rem;
-    margin-top: 0.75rem;
+    max-width: 680px;
+    margin: 0.75rem auto 0 auto;
+    line-height: 1.6;
 }
 
 /* Category Tab Selector */

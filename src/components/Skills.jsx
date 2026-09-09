@@ -87,7 +87,10 @@ const Skills = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <span className="skills-badge">Technical Stack</span>
+                    <span className="skills-badge">
+                        <span className="badge-dot"></span>
+                        Technical Stack
+                    </span>
                     <h2 className="heading-lg">The Secret Sauce</h2>
                     <p className="skills-subtitle">
                         A curated selection of modern technologies and frameworks, engineered for high performance, structural reliability, and seamless digital experiences.
