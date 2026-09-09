@@ -21,7 +21,7 @@ function HomePage() {
                 <Experience />
                 <Stats />
                 <CertificationsPreview />
-                <ProjectsPreview />
+                {/* <ProjectsPreview /> */}
                 <Contact />
             </main>
             <Footer />
