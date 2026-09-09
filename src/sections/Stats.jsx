@@ -20,10 +20,10 @@ const Stats = () => {
                 if (ghUserJson && typeof ghUserJson.public_repos === 'number') {
                     setGithubData(ghUserJson);
                 } else {
-                    setGithubData({ public_repos: 28 });
+                    setGithubData({ public_repos: 29 });
                 }
             } catch (e) {
-                setGithubData({ public_repos: 28 });
+                setGithubData({ public_repos: 29 });
             }
 
             // 2. Fetch GitHub Repos safely
@@ -42,21 +42,21 @@ const Stats = () => {
                         .slice(0, 5)
                         .map(([name, count]) => ({ name, count }));
                     setLanguages(sortedLangs.length ? sortedLangs : [
-                        { name: 'JavaScript', count: 14 },
-                        { name: 'Python', count: 9 },
+                        { name: 'JavaScript', count: 15 },
+                        { name: 'Python', count: 10 },
                         { name: 'React', count: 6 }
                     ]);
                 } else {
                     setLanguages([
-                        { name: 'JavaScript', count: 14 },
-                        { name: 'Python', count: 9 },
+                        { name: 'JavaScript', count: 15 },
+                        { name: 'Python', count: 10 },
                         { name: 'React', count: 6 }
                     ]);
                 }
             } catch (e) {
                 setLanguages([
-                    { name: 'JavaScript', count: 14 },
-                    { name: 'Python', count: 9 },
+                    { name: 'JavaScript', count: 15 },
+                    { name: 'Python', count: 10 },
                     { name: 'React', count: 6 }
                 ]);
             }
