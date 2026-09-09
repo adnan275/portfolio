@@ -91,7 +91,7 @@ const Skills = () => {
                         <span className="badge-dot"></span>
                         Tech Stack
                     </span>
-                    <h2 className="heading-lg">Secret Sauce</h2>
+                    <h2 className="heading-lg">The Secret Sauce</h2>
                     <p className="skills-subtitle">
                         A curated selection of modern technologies and frameworks, engineered for high performance, structural reliability, and seamless digital experiences.
                     </p>
