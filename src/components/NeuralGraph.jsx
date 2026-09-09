@@ -427,27 +427,27 @@ const NeuralGraph = () => {
                 data: { x: 0.33, y: 0.62 },
                 projects: { x: 0.67, y: 0.62 },
 
-                // AI Sub-nodes (Top-Left Quadrant - Clear of Top Meta Tag)
-                sentinel: { x: 0.10, y: 0.32 },
+                // AI Sub-nodes (Top-Left Quadrant)
+                sentinel: { x: 0.12, y: 0.32 },
                 neurax: { x: 0.28, y: 0.20 },
-                ev_agent: { x: 0.14, y: 0.48 },
+                ev_agent: { x: 0.15, y: 0.48 },
 
-                // Full-Stack Sub-nodes (Top-Right Quadrant - Clear of Legend Card)
-                presento: { x: 0.90, y: 0.32 },
+                // Full-Stack Sub-nodes (Top-Right Quadrant - Clear of right border)
+                presento: { x: 0.86, y: 0.32 },
                 gigflow: { x: 0.68, y: 0.18 },
-                zync: { x: 0.86, y: 0.48 },
+                zync: { x: 0.83, y: 0.48 },
                 taskly: { x: 0.72, y: 0.30 },
-                capstone: { x: 0.94, y: 0.44 },
+                capstone: { x: 0.89, y: 0.44 },
 
                 // Data Sub-nodes (Bottom-Left Quadrant)
-                bi_portfolio: { x: 0.14, y: 0.76 },
+                bi_portfolio: { x: 0.15, y: 0.76 },
                 socratic: { x: 0.36, y: 0.86 },
 
-                // Production Sub-nodes (Bottom-Right Quadrant)
-                livesitter: { x: 0.84, y: 0.72 },
-                qr: { x: 0.94, y: 0.80 },
-                password: { x: 0.76, y: 0.88 },
-                rps: { x: 0.88, y: 0.92 }
+                // Production Sub-nodes (Bottom-Right Quadrant - Clear of right border)
+                livesitter: { x: 0.82, y: 0.72 },
+                qr: { x: 0.88, y: 0.80 },
+                password: { x: 0.74, y: 0.88 },
+                rps: { x: 0.85, y: 0.92 }
             };
 
             const target = coordMap[n.id] || { x: 0.5, y: 0.5 };

@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Hero from '../sections/Hero';
 import About from '../sections/About';
 import NeuralGraph from '../components/NeuralGraph';
+import Skills from '../components/Skills';
 import Experience from '../sections/Experience';
 import Stats from '../sections/Stats';
 import CertificationsPreview from '../sections/CertificationsPreview';
@@ -17,6 +18,7 @@ function HomePage() {
             <main>
                 <Hero />
                 <About />
+                <Skills />
                 <NeuralGraph />
                 <Experience />
                 <Stats />
