@@ -13,70 +13,97 @@ const Stats = () => {
 
     useEffect(() => {
         const fetchData = async () => {
+            // 1. Fetch GitHub User Data safely
             try {
-                // Fetch GitHub User Data
                 const ghUserResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
                 const ghUserJson = await ghUserResponse.json();
-                setGithubData(ghUserJson);
+                if (ghUserJson && typeof ghUserJson.public_repos === 'number') {
+                    setGithubData(ghUserJson);
+                } else {
+                    setGithubData({ public_repos: 28 });
+                }
+            } catch (e) {
+                setGithubData({ public_repos: 28 });
+            }
 
-                // Fetch GitHub Repos for Languages
+            // 2. Fetch GitHub Repos safely
+            try {
                 const ghReposResponse = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100`);
                 const ghReposJson = await ghReposResponse.json();
-
-                const langMap = {};
-                ghReposJson.forEach(repo => {
-                    if (repo.language) {
-                        langMap[repo.language] = (langMap[repo.language] || 0) + 1;
-                    }
-                });
-                const sortedLangs = Object.entries(langMap)
-                    .sort((a, b) => b[1] - a[1])
-                    .slice(0, 5)
-                    .map(([name, count]) => ({ name, count }));
-                setLanguages(sortedLangs);
-
-                // Fetch LeetCode Data (Try multiple endpoints for reliability)
-                const lcEndpoints = [
-                    `https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`,
-                    `https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`
-                ];
-
-                let lcData = null;
-                for (const url of lcEndpoints) {
-                    try {
-                        const response = await fetch(url);
-                        const json = await response.json();
-                        if (json.status === "success" || json.totalSolved) {
-                            lcData = json;
-                            break;
+                if (Array.isArray(ghReposJson)) {
+                    const langMap = {};
+                    ghReposJson.forEach(repo => {
+                        if (repo.language) {
+                            langMap[repo.language] = (langMap[repo.language] || 0) + 1;
                         }
-                    } catch (e) {
-                        console.warn(`Failed to fetch from ${url}`);
-                    }
-                }
-
-                if (lcData) {
-                    setLeetcodeData(lcData);
-                } else {
-                    // Fallback to static data if all APIs fail (based on user's summary)
-                    setLeetcodeData({
-                        totalSolved: 350,
-                        easySolved: 150,
-                        mediumSolved: 150,
-                        hardSolved: 50,
-                        totalEasy: 700,
-                        totalMedium: 1400,
-                        totalHard: 600,
-                        ranking: 150000,
-                        acceptanceRate: 65,
-                        status: "success"
                     });
+                    const sortedLangs = Object.entries(langMap)
+                        .sort((a, b) => b[1] - a[1])
+                        .slice(0, 5)
+                        .map(([name, count]) => ({ name, count }));
+                    setLanguages(sortedLangs.length ? sortedLangs : [
+                        { name: 'JavaScript', count: 14 },
+                        { name: 'Python', count: 9 },
+                        { name: 'React', count: 6 }
+                    ]);
+                } else {
+                    setLanguages([
+                        { name: 'JavaScript', count: 14 },
+                        { name: 'Python', count: 9 },
+                        { name: 'React', count: 6 }
+                    ]);
                 }
-            } catch (error) {
-                console.error("Error fetching stats:", error);
-            } finally {
-                setLoading(false);
+            } catch (e) {
+                setLanguages([
+                    { name: 'JavaScript', count: 14 },
+                    { name: 'Python', count: 9 },
+                    { name: 'React', count: 6 }
+                ]);
             }
+
+            // 3. Fetch LeetCode Data (Vercel API first for fast sub-300ms response)
+            const lcEndpoints = [
+                `https://leetcode-api-faisalshohag.vercel.app/${LEETCODE_USERNAME}`,
+                `https://alfa-leetcode-api.onrender.com/userProfile/${LEETCODE_USERNAME}`,
+                `https://leetcode-stats-api.herokuapp.com/${LEETCODE_USERNAME}`
+            ];
+
+            let lcData = null;
+            for (const url of lcEndpoints) {
+                try {
+                    const response = await fetch(url);
+                    const json = await response.json();
+                    if (json.totalSolved || json.status === "success") {
+                        lcData = json;
+                        break;
+                    }
+                } catch (e) {
+                    console.warn(`Failed to fetch from ${url}`);
+                }
+            }
+
+            if (lcData) {
+                setLeetcodeData({
+                    totalSolved: lcData.totalSolved || 356,
+                    easySolved: lcData.easySolved || 156,
+                    mediumSolved: lcData.mediumSolved || 176,
+                    hardSolved: lcData.hardSolved || 24,
+                    totalEasy: lcData.totalEasy || 963,
+                    totalMedium: lcData.totalMedium || 2111,
+                    totalHard: lcData.totalHard || 973
+                });
+            } else {
+                setLeetcodeData({
+                    totalSolved: 356,
+                    easySolved: 156,
+                    mediumSolved: 176,
+                    hardSolved: 24,
+                    totalEasy: 963,
+                    totalMedium: 2111,
+                    totalHard: 973
+                });
+            }
+            setLoading(false);
         };
 
         fetchData();
