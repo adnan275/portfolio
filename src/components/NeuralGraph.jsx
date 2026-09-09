@@ -718,9 +718,9 @@ const NeuralGraph = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="heading-lg">Engineering Knowledge Graph</h2>
+                    <h2 className="heading-lg">Interactive Project Architecture</h2>
                     <p className="neural-subtitle">
-                        Interactive topology mapping core CS pillars, AI/ML research projects, and full-stack systems
+                        Neural topology mapping AI/ML models, agentic workflows, and full-stack systems. Click any node to explore case studies & live demos.
                     </p>
                 </motion.div>
 
