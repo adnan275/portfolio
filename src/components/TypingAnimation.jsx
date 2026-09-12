@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
 const TypingAnimation = ({
-    texts = ['Full-Stack Developer', 'Problem Solver', 'Creative Thinker'],
-    typingSpeed = 100,
-    deletingSpeed = 50,
-    pauseDuration = 2000
+    texts = [
+        'an AI/ML Engineer',
+        'a Full-Stack Developer',
+        'a System Designer',
+        'an Algorithmic Problem Solver',
+        'a UI/UX Designer'
+    ],
+    typingSpeed = 85,
+    deletingSpeed = 45,
+    pauseDuration = 2200
 }) => {
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [currentText, setCurrentText] = useState('');
@@ -47,9 +53,8 @@ const TypingAnimation = ({
     }, [currentText, isDeleting, isPaused, currentTextIndex, texts, typingSpeed, deletingSpeed, pauseDuration]);
 
     return (
-        <span className="typing-text">
-            {currentText}
-            <span className="typing-cursor">|</span>
+        <span className="typing-container">
+            <span className="typing-text">{currentText}</span>
         </span>
     );
 };

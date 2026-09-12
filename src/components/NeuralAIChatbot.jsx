@@ -32,7 +32,7 @@ const KNOWLEDGE_BASE = {
     },
     greetings: {
         keywords: ['hi', 'hello', 'hey', 'greetings', 'namaste', 'whaddup', 'sup', 'what can you do', 'help', 'bot', 'assistant'],
-        response: "Hello! I am **Adnan's Neural Assistant v2.4** 🤖.\nI can answer details about **Adnan's actual real projects** (**Sentinel**, **NeuraX Vector DB**, **Zync Video Calling**, **EV Charging AI Agent**), **tech stack**, or **contact links**!\n\nWhat would you like to explore?",
+        response: "Hello & welcome! 👋 I am **Adnan's AI Assistant**, built specifically to assist you in exploring his work, code architecture, and experience.\n\nWhether you're reviewing his **live AI projects (Sentinel & NeuraX)**, checking his **400+ LeetCode DSA background**, or looking to **connect directly**, I am here to help you!\n\nTap a suggestion below or ask me anything!",
         chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '🧠 NeuraX Vector DB', '🤖 Sentinel AI']
     },
     sentinel: {
@@ -148,7 +148,7 @@ export default function NeuralAIChatbot() {
         {
             id: 1,
             sender: 'ai',
-            text: "Hi! I am **Adnan's Neural Assistant** 🤖.\nAsk me about **Adnan Rizvi**, his **actual projects** (**Sentinel**, **NeuraX Vector DB**, **EV Charging AI**), or use direct links below!",
+            text: "Hello & welcome! 👋 I am **Adnan's AI Assistant**, built specifically to assist you in exploring his work, code architecture, and experience.\n\nWhether you're exploring his **live AI projects (Sentinel, NeuraX)**, reviewing his **400+ LeetCode DSA background**, or looking to **connect directly**, I am here to help you!\n\nClick a suggestion chip below or type any question to get started!",
             timestamp: getFormattedTime(),
             chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB']
         }
