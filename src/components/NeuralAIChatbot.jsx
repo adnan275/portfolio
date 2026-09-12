@@ -405,7 +405,7 @@ export default function NeuralAIChatbot() {
                 <div className="trigger-icon-container">
                     {isOpen ? <IoClose className="close-icon" /> : <IoSparkles className="sparkle-icon" />}
                 </div>
-                <span className="trigger-label">{isOpen ? 'Close' : 'AI Co-Pilot'}</span>
+                <span className="trigger-label">{isOpen ? 'Close' : 'AI Assistant'}</span>
                 {!isOpen && unreadCount > 0 && (
                     <span className="unread-badge">{unreadCount}</span>
                 )}
