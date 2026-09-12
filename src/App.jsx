@@ -7,6 +7,7 @@ import CertificationsPage from './pages/CertificationsPage';
 import CustomCursor from './components/CustomCursor';
 import NeuralLoader from './components/NeuralLoader';
 import LenisProvider from './components/LenisProvider';
+import NeuralAIChatbot from './components/NeuralAIChatbot';
 
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
@@ -48,7 +49,6 @@ function AnimatedRoutes() {
     </AnimatePresence>
   );
 }
-
 function App() {
   return (
     <Router>
@@ -56,6 +56,7 @@ function App() {
         <NeuralLoader />
         <AnimatedRoutes />
         <CustomCursor />
+        <NeuralAIChatbot />
       </LenisProvider>
     </Router>
   );
