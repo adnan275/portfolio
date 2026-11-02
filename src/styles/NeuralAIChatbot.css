@@ -567,6 +567,46 @@
     font-style: italic;
 }
 
+/* Quick Prompts Bar */
+.quick-prompts-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: rgba(10, 10, 20, 0.95);
+    border-top: 1px solid rgba(0, 240, 255, 0.1);
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.quick-prompts-bar::-webkit-scrollbar {
+    display: none;
+}
+
+.quick-prompt-pill {
+    padding: 5px 11px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 14px;
+    color: var(--text-secondary, #94a3b8);
+    font-size: 0.72rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.quick-prompt-pill:hover {
+    background: rgba(0, 240, 255, 0.14);
+    border-color: rgba(0, 240, 255, 0.45);
+    color: var(--accent-cyan, #00f0ff);
+    transform: translateY(-1px);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+}
+
 /* Input Bar */
 .chatbot-input-container {
     display: flex;

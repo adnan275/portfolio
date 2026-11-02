@@ -15,157 +15,362 @@ import {
 } from 'react-icons/io5';
 import '../styles/NeuralAIChatbot.css';
 
-// Comprehensive Knowledge Base built directly from Adnan's Actual Projects & Bio
+// Comprehensive Knowledge Base built directly from Adnan's Actual Projects, Systems & Bio
 const KNOWLEDGE_BASE = {
     bio: {
         keywords: [
             'adnan', 'who is adnan', 'adnan rizvi', 'who is adnan rizvi', 'about adnan', 
             'who is he', 'bio', 'about', 'introduction', 'tell me about adnan', 
-            'background', 'who are you', 'what is your name', 'profile', 'software engineer'
+            'background', 'who are you', 'what is your name', 'profile', 'software engineer',
+            'adnan kaun hai', 'koun hai', 'introduce yourself', 'summary', 'overview'
         ],
-        response: "**Adnan Rizvi** is a **Software Engineer & AI Systems Developer** with **2+ Years** of experience building high-performance AI agents, RAG engines, 3D web interfaces, and scalable full-stack backends.\n\n" +
-            "• **Key Highlights**: Built **Sentinel (Local AI Agent)**, **NeuraX (Vector DB & RAG Engine)**, and **LangGraph EV Charging AI**.\n" +
-            "• **Problem Solving**: Solved **400+ DSA problems** on LeetCode focusing on optimization and OOP/SOLID principles.\n" +
-            "• **Tech Stack**: PyTorch, LangChain, FastAPI, React 19, Three.js, Node.js, PostgreSQL, Docker\n\n" +
-            "🔗 Check out his [Featured Projects](/projects), explore his [AI & Web Stack](#skills), or send a message via [Contact Form](#contact).",
-        chips: ['🚀 Featured Projects', '🧠 NeuraX & AI Engine', '🤖 Sentinel AI Agent', '✉️ Contact Details']
+        response: "**Adnan Rizvi** is a **Software Engineer & AI Systems Developer** with **2+ Years** of hands-on experience architecting autonomous AI agents, privacy-centric RAG engines, 3D web interfaces, and high-throughput backends.\n\n" +
+            "• **Academic Rigor**: Pursuing B.Tech in Computer Science & AI at **Newton School of Technology (NST) / Rishihood University**.\n" +
+            "• **Algorithmic Mastery**: Solved **400+ DSA problems** across LeetCode, mastering runtime efficiency, dynamic programming, and clean OOP/SOLID patterns.\n" +
+            "• **Flagship Inventions**: Built **Sentinel (Local AI File Organizer)**, **NeuraX (Vector DB & RAG Engine)**, and **LangGraph EV Charging AI**.\n" +
+            "• **End-to-End Stack**: From low-level silicon logic (**Verilog HDL, RISC-V**) and **AWS Cloud Networks (VPC, Route 53)** to modern **React 19, PyTorch, and LangChain**.\n\n" +
+            "🔗 Explore his [Featured Projects](/projects), inspect the interactive [Tech Stack](#skills), or get in touch via [Contact Form](#contact).",
+        chips: ['🚀 Flagship Projects', '🤖 Agentic AI & RAG', '⚡ LeetCode 400+ DSA', '💼 Why Hire Adnan?']
     },
     greetings: {
-        keywords: ['hi', 'hello', 'hey', 'greetings', 'namaste', 'whaddup', 'sup', 'what can you do', 'help', 'bot', 'assistant'],
-        response: "Hello & welcome! 👋 I am **Adnan's AI Assistant**, built specifically to assist you in exploring his work, code architecture, and experience.\n\nWhether you're reviewing his **live AI projects (Sentinel & NeuraX)**, checking his **400+ LeetCode DSA background**, or looking to **connect directly**, I am here to help you!\n\nTap a suggestion below or ask me anything!",
-        chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '🧠 NeuraX Vector DB', '🤖 Sentinel AI']
+        keywords: [
+            'hi', 'hello', 'hey', 'greetings', 'namaste', 'whaddup', 'sup', 
+            'what can you do', 'help', 'bot', 'assistant', 'kaise ho', 'kya haal hai', 'start'
+        ],
+        response: "Hello & welcome! 👋 I am **Adnan's Neural AI Assistant**.\n\nI can give you in-depth answers about Adnan's **code architecture**, **live systems**, and **technical competencies**:\n\n" +
+            "• 🤖 **AI & LLM Systems**: Sentinel (Offline Agent), NeuraX (Vector DB), LangGraph EV Agent\n" +
+            "• ⚡ **Problem Solving**: 400+ LeetCode DSA solutions, algorithms, and system architecture\n" +
+            "• 🖥️ **Computer Architecture**: Verilog HDL, RISC-V, 5-stage CPU pipelining, and GPU/TPU accelerators\n" +
+            "• 🌐 **Cloud & Networking**: Multi-tier AWS VPCs, CIDR subnetting, ALB/NLB, and Wireshark diagnostics\n" +
+            "• 💼 **Full-Stack & Hiring**: React 19, Node.js, Prisma, work history, and direct contact\n\n" +
+            "What would you like to explore first?",
+        chips: ['🚀 Flagship Projects', '🤖 Agentic AI & RAG', '🖥️ Verilog & Silicon', '⚡ LeetCode 400+ DSA', '💼 Why Hire Adnan?']
     },
     sentinel: {
-        keywords: ['sentinel', 'file organizer', 'local ai', 'ollama', 'tauri', 'rust', 'privacy'],
-        response: "🤖 **Sentinel — AI-Powered File Organization Agent**\n\n" +
-            "Local-first privacy AI agent that scans, classifies, and organizes files using a plan-before-execute flow. Runs 100% offline using local LLMs (Ollama).\n\n" +
-            "• **Tech Stack**: Python, FastAPI, Next.js, Rust, Tauri, Ollama, SQLModel\n" +
-            "• **Live Demo**: [Sentinel Live Demo](https://sentinel-ten-black.vercel.app/)",
+        keywords: [
+            'sentinel', 'file organizer', 'local ai', 'ollama', 'tauri', 'rust', 'privacy',
+            'offline ai', 'plan before execute', 'file organization'
+        ],
+        response: "🤖 **Sentinel — AI-Powered Local File Organization Agent**\n\n" +
+            "Sentinel is a local-first, privacy-focused desktop AI agent that scans, semantically classifies, and reorganizes unorganized local drives without sending any sensitive data to external clouds.\n\n" +
+            "• **Architecture**: Powered by local LLMs via **Ollama** using an innovative **Plan-Before-Execute** safety pattern—users preview and approve the complete file operations graph before execution.\n" +
+            "• **Tech Stack**: Python, FastAPI, Next.js, Rust, Tauri desktop wrapper, Ollama, SQLModel\n" +
+            "• **Key Feature**: Zero data egress; sub-second semantic clustering of documents, images, and code repositories.\n\n" +
+            "🔗 Try the [Sentinel Live Demo](https://sentinel-ten-black.vercel.app/) or view the [Sentinel GitHub Repo](https://github.com/adnan275/sentinel).",
         chips: ['🧠 NeuraX Vector DB', '⚡ EV Charging AI', '🚀 All Projects']
     },
     neurax: {
-        keywords: ['neurax', 'vector db', 'vector database', 'embeddings', 'hnsw', 'llama 3.2', 'nomic', 'rag engine'],
-        response: "🧠 **NeuraX — Vector Database & RAG Engine**\n\n" +
-            "Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization for secure local AI retrieval.\n\n" +
-            "• **Tech Stack**: Python, FastAPI, NumPy, Hugging Face, Ollama (Llama 3.2), Nomic Embed, HNSW\n" +
-            "• **Live Hugging Face Space**: [NeuraX Space](https://huggingface.co/spaces/rizzzvi/NeuraX)",
+        keywords: [
+            'neurax', 'vector db', 'vector database', 'embeddings', 'hnsw', 'llama 3.2', 
+            'nomic', 'rag engine', 'pca visualization', 'similarity search', 'kd-tree'
+        ],
+        response: "🧠 **NeuraX — Custom Vector Database & RAG Engine**\n\n" +
+            "NeuraX is an ultra-fast, privacy-centric vector database built from first principles to store, index, and query 768-dimensional vector embeddings locally.\n\n" +
+            "• **Indexing Engine**: Custom implementations of **HNSW (Hierarchical Navigable Small World)** and **KD-Tree** indexing algorithms alongside pure NumPy cosine similarity.\n" +
+            "• **Real-Time Visualizer**: Features a live **PCA (Principal Component Analysis)** canvas projection that maps 768D semantic clusters down into interactive 2D coordinates.\n" +
+            "• **RAG Pipeline**: Offline document ingestion and contextual question answering via Llama 3.2 and Nomic Embed.\n" +
+            "• **Tech Stack**: Python, FastAPI, NumPy, Hugging Face Spaces, Ollama, HNSW\n\n" +
+            "🔗 Explore the live [NeuraX Hugging Face Space](https://huggingface.co/spaces/rizzzvi/NeuraX) or check the [NeuraX GitHub](https://github.com/adnan275/NeuraX).",
         chips: ['🤖 Sentinel AI Agent', '⚡ EV Charging AI', '🚀 All Projects']
     },
     evcharging: {
-        keywords: ['ev', 'ev charging', 'langgraph', 'chromadb', 'station', 'groq', 'agentic', 'geospatial'],
-        response: "⚡ **AI EV Charging Station Intelligence**\n\n" +
-            "Autonomous Agentic AI system using LangGraph for charger suitability prediction, wait time forecasting, and geospatial retrieval over 240,000+ charging stations.\n\n" +
-            "• **Tech Stack**: Python, LangGraph, LangChain, Groq, ChromaDB, XGBoost, Streamlit, Docker\n" +
-            "• **Live Demo**: [EV Charging Agent Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent)",
+        keywords: [
+            'ev', 'ev charging', 'langgraph', 'chromadb', 'station', 'groq', 'agentic', 
+            'geospatial', 'xgboost', 'wait time', 'charging station'
+        ],
+        response: "⚡ **AI EV Charging Station Intelligence Agent**\n\n" +
+            "An autonomous multi-agent system built with **LangGraph** that tackles EV range anxiety and real-world station queues across a dataset of **240,000+ global charging stations**.\n\n" +
+            "• **Multi-Agent State Graph**: Orchestrates three specialized agents:\n" +
+            "   1. *Geospatial Vector Agent*: Sub-50ms proximity retrieval via ChromaDB.\n" +
+            "   2. *XGBoost Predictive Agent*: Real-time wait-time and availability forecasting.\n" +
+            "   3. *Suitability Recommendation Agent*: Matches vehicle plug specs with charging speeds.\n" +
+            "• **Speed**: Fast LLM reasoning powered by **Groq LPU API**.\n" +
+            "• **Tech Stack**: Python, LangGraph, LangChain, Groq, ChromaDB, XGBoost, Streamlit, Docker\n\n" +
+            "🔗 Launch the live [EV Charging Agent Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent) or view the [GitHub Source](https://github.com/adnan275/ev-charging-agent).",
         chips: ['🧠 NeuraX Vector DB', '🤖 Sentinel AI Agent', '🚀 All Projects']
     },
     zync: {
-        keywords: ['zync', 'video call', 'video calling', 'stream', 'chat app'],
-        response: "📹 **Zync — Real-Time Video Calling Platform**\n\n" +
-            "Real-time video calling & messaging platform that powered 15,000+ video calls and 50,000+ messages with <0.1% error rate.\n\n" +
-            "• **Tech Stack**: React, Node.js, Express, MongoDB, Stream API, JWT\n" +
-            "• **Live App**: [Zync Live Demo](https://zync-five.vercel.app/login)",
+        keywords: ['zync', 'video call', 'video calling', 'stream api', 'webrtc', 'chat app', 'meetings'],
+        response: "📹 **Zync — Real-Time Video Collaboration Platform**\n\n" +
+            "A high-availability video calling and team collaboration platform designed for seamless communications with near-zero latency.\n\n" +
+            "• **Production Metrics**: Successfully handled **15,000+ video calls** and **50,000+ messages** with a verified `<0.1% error rate`.\n" +
+            "• **Capabilities**: 1-on-1 and group video meetings, real-time screen sharing, chat threads, and JWT authentication.\n" +
+            "• **Tech Stack**: React 19, Node.js, Express, MongoDB, Stream API, TailwindCSS, JWT\n\n" +
+            "🔗 Test the live app: [Zync Live Demo](https://zync-five.vercel.app/login) or view the [GitHub Repo](https://github.com/adnan275/zync).",
         chips: ['💼 GigFlow Marketplace', '🛍️ Presento Treasure', '🚀 All Projects']
     },
+    presento: {
+        keywords: ['presento', 'presento treasure', 'ecommerce', 'e-commerce', 'shop', 'cart', 'checkout', 'store'],
+        response: "🛍️ **Presento Treasure — High-Performance E-Commerce Engine**\n\n" +
+            "A full-stack commercial e-commerce solution architected for sub-80ms product catalog lookups and frictionless checkout.\n\n" +
+            "• **Key Engineering**: Optimized database schemas using **Prisma ORM & MySQL (Aiven)** with custom indexing, slashing catalog search latency to `<80ms` across 10,000+ products.\n" +
+            "• **Security**: Robust Role-Based Access Control (RBAC), JWT sessions, and automated email order pipelines.\n" +
+            "• **Tech Stack**: React, Node.js, Express, MySQL, Prisma, Cloudinary, Nodemailer\n\n" +
+            "🔗 Visit the store: [Presento Live Platform](https://fullstack-presento-swaj.vercel.app/).",
+        chips: ['💼 GigFlow Marketplace', '📹 Zync Platform', '🚀 All Projects']
+    },
+    gigflow: {
+        keywords: ['gigflow', 'marketplace', 'freelance', 'socket.io', 'realtime market', 'orders', 'gigs'],
+        response: "💼 **GigFlow — Real-Time Freelance Services Marketplace**\n\n" +
+            "A multi-tenant marketplace platform connecting digital creators with clients, featuring instant real-time contract negotiations.\n\n" +
+            "• **Real-Time Architecture**: Built with **Socket.io** bidirectional WebSocket channels for zero-refresh bid updates, messaging, and order lifecycle state transitions.\n" +
+            "• **Tech Stack**: React, Node.js, Express, MongoDB, Socket.io, JWT\n\n" +
+            "🔗 Check out the live app: [GigFlow Live Platform](https://service-hive-zeta.vercel.app/).",
+        chips: ['🛍️ Presento Treasure', '📹 Zync Platform', '🚀 All Projects']
+    },
     projects: {
-        keywords: ['project', 'projects', 'portfolio', 'work', 'built', 'apps', 'chess', 'neural', 'stockfish', 'rag', 'github', 'demo', 'sentinel', 'neurax', 'gigflow', 'zync', 'presento'],
-        response: "Here are Adnan's **actual flagship projects**:\n\n" +
-            "1. **🤖 Sentinel (AI File Organizer)**: Privacy-centric local AI agent running Ollama & Tauri.\n" +
-            "   🔗 [Live Demo](https://sentinel-ten-black.vercel.app/)\n" +
-            "2. **🧠 NeuraX (Vector DB & RAG Engine)**: 768D embeddings with HNSW indexing.\n" +
-            "   🔗 [HuggingFace Space](https://huggingface.co/spaces/rizzzvi/NeuraX)\n" +
-            "3. **⚡ EV Charging AI Agent**: LangGraph agent over 240,000+ stations.\n" +
-            "   🔗 [HuggingFace Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent)\n" +
-            "4. **🛍️ Presento Treasure**: E-commerce with sub-80ms catalog search.\n" +
-            "   🔗 [Live Demo](https://fullstack-presento-swaj.vercel.app/)\n" +
-            "5. **💼 GigFlow Marketplace**: Real-time freelance market with Socket.io.\n" +
-            "   🔗 [Live Demo](https://service-hive-zeta.vercel.app/)\n" +
-            "6. **📹 Zync Video Calling**: Real-time video web app with 15k+ calls.\n" +
-            "   🔗 [Live Demo](https://zync-five.vercel.app/login)\n\n" +
-            "🔗 See full cards & specs on the [Projects Page](/projects).",
-        chips: ['🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB', '⚡ EV Charging AI']
+        keywords: [
+            'project', 'projects', 'portfolio', 'work', 'built', 'apps', 'chess', 
+            'neural', 'stockfish', 'rag', 'github', 'demo', 'kya banaya hai', 
+            'list projects', 'top projects', 'flagship'
+        ],
+        response: "Here is an overview of Adnan's **flagship production systems**:\n\n" +
+            "1. **🤖 Sentinel (Local AI Agent)**: Offline file organizer with Ollama, Tauri & Rust. ([Live Demo](https://sentinel-ten-black.vercel.app/))\n" +
+            "2. **🧠 NeuraX (Vector DB & RAG)**: 768D embeddings, HNSW indexing & live 2D PCA canvas. ([HF Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n" +
+            "3. **⚡ EV Charging AI Agent**: LangGraph multi-agent system across 240,000+ stations. ([HF Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent))\n" +
+            "4. **📹 Zync Video Platform**: 15k+ calls, 50k+ messages with <0.1% error rate. ([Live Demo](https://zync-five.vercel.app/login))\n" +
+            "5. **🛍️ Presento Treasure**: E-commerce with sub-80ms Prisma queries. ([Live Demo](https://fullstack-presento-swaj.vercel.app/))\n" +
+            "6. **💼 GigFlow Marketplace**: Real-time freelance market via Socket.io. ([Live Demo](https://service-hive-zeta.vercel.app/))\n\n" +
+            "🔗 See full architecture diagrams & case studies on the [Projects Page](/projects)!",
+        chips: ['🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB', '⚡ EV Charging AI', '💼 Why Hire Adnan?']
     },
     dsa: {
-        keywords: ['dsa', 'leetcode', 'algorithms', 'data structures', 'problem solving', 'logic', 'solid', 'oop', 'code'],
-        response: "Adnan has a strong foundation in **Data Structures & Algorithms**:\n\n" +
-            "• **LeetCode & Problem Solving**: Solved **400+ algorithmic problems** covering Dynamic Programming, Graphs, Trees, and System Optimization.\n" +
-            "• **Architecture Principles**: Applies **OOP** (Object-Oriented Programming) and **SOLID principles** for clean, maintainable code.\n\n" +
-            "🔗 Explore his project code repositories on [GitHub Profile](https://github.com).",
-        chips: ['🚀 Featured Projects', '🧠 AI/ML Stack', '👤 Who is Adnan?']
+        keywords: [
+            'dsa', 'leetcode', 'algorithms', 'data structures', 'problem solving', 
+            'logic', 'solid', 'oop', 'code', '400+', 'competitive programming', 
+            'dynamic programming', 'trees', 'graphs'
+        ],
+        response: "Adnan has a rigorous foundation in **Data Structures, Algorithms & Clean Architecture**:\n\n" +
+            "• **400+ LeetCode Problems Solved**: Consistent mastery across Dynamic Programming, Graph Traversals (Dijkstra, BFS/DFS), Trees, Heaps, and Slidding Windows.\n" +
+            "• **Optimization Obsession**: Strong instinct for time/space complexity trade-offs, minimizing allocations, and memory locality.\n" +
+            "• **Software Engineering Principles**: Strict adherence to **SOLID design principles**, Object-Oriented patterns, and modular decoupling.\n\n" +
+            "🔗 Check out code repositories on [GitHub](https://github.com/adnan275) or view the [My Journey Section](#about).",
+        chips: ['🚀 Flagship Projects', '🧠 Deep Learning Stack', '👤 Who is Adnan?']
     },
     aiml: {
-        keywords: ['ai', 'ml', 'machine learning', 'deep learning', 'dl', 'transformers', 'mamba', 'ssm', 'diffusion', 'ddpm', 'clip', 'dpo', 'rlhf', 'qlora', 'quantization', 'pytorch', 'tensorflow', 'scikit', 'llm', 'rag', 'nlp', 'computer vision', 'cnn', 'lstm', 'model', 'python', 'huggingface', 'vector', 'neural', 'langchain', 'agentic', 'ollama', 'chromadb'],
-        response: "Adnan's **Deep Learning, AI & Generative Intelligence Architecture**:\n\n" +
-            "• **Deep Learning & Architectures**: Transformers (Multi-Head Attention, ViT), State-Space Models (Mamba/SSMs), Diffusion Models (DDPM), Multimodal CLIP, CNNs & LSTMs.\n" +
-            "• **LLM Post-Training & Edge AI**: Direct Preference Optimization (DPO), RLHF, INT4/INT8 Quantization (QLoRA, QAMR), Compute Scaling Laws (MMLU/GPQA).\n" +
-            "• **Generative AI & Agentic Systems**: Production RAG Pipelines (ChromaDB Vector DB), Agentic AI Workflows (LangGraph), LangChain, PyTorch, Hugging Face.\n\n" +
-            "🔗 View interactive skill graph in the [Skills & Neural Section](#skills).",
-        chips: ['🧠 Deep Learning Stack', '🤖 Sentinel AI Agent', '🌐 Computer Networks']
+        keywords: [
+            'ai', 'ml', 'machine learning', 'deep learning', 'dl', 'transformers', 
+            'mamba', 'ssm', 'diffusion', 'ddpm', 'clip', 'dpo', 'rlhf', 'qlora', 
+            'quantization', 'pytorch', 'scikit', 'llm', 'rag', 'nlp', 'computer vision', 
+            'cnn', 'lstm', 'python', 'huggingface', 'vector', 'neural', 'langchain', 
+            'langgraph', 'agentic', 'ollama'
+        ],
+        response: "Adnan's **Deep Learning & Foundation Intelligence Stack**:\n\n" +
+            "• **Modern Neural Architectures**: Transformers (Multi-Head Self-Attention, ViT), State-Space Models (**Mamba/SSMs** for linear-time sequence modeling), Diffusion Models (**DDPM**), and Multimodal **CLIP**.\n" +
+            "• **LLM Post-Training & Alignment**: Direct Preference Optimization (**DPO**), RLHF, Reward Modeling, and Compute Scaling Laws (MMLU / GPQA evaluations).\n" +
+            "• **Edge AI & Quantization**: INT4/INT8 compression with **QLoRA** and Quantization-Aware Modular Reasoning (QAMR) for mobile & edge inference.\n" +
+            "• **Agentic AI & Production RAG**: Stateful agent graphs using **LangGraph**, **ChromaDB**, **Groq**, and **PyTorch**.\n\n" +
+            "🔗 Explore live interactive cards in the [Skills Section](#skills)!",
+        chips: ['🧠 NeuraX Vector DB', '🤖 Sentinel AI Agent', '🔬 From-Scratch ML', '🖥️ Computer Architecture']
     },
     advml: {
-        keywords: ['advanced machine learning', 'aml', 'from scratch', 'gmm', 'gaussian mixture', 'arima', 'time series', 'forecasting', 'vif', 'multicollinearity', 'homoscedasticity', 'cart', 'decision tree', 'random forest', 'gradient descent', 'sgd', 'ols', 'linear regression', 'logistic regression', 'mle', 'lasso', 'ridge', 'regularization', 'pca', 'kmeans', 'silhouette'],
-        response: "Adnan's **Advanced Machine Learning & From-Scratch Engineering Stack**:\n\n" +
-            "• **From-Scratch Algorithmic Implementation**: Custom NumPy implementations of OLS Regression, Logistic Regression with MLE, CART Decision Trees, Gradient Descent (Batch, SGD, Mini-batch), and Gaussian Mixture Models (GMM).\n" +
-            "• **Time Series & Professional Forecasting**: Trend/seasonality decomposition, ACF/PACF autocorrelation analysis, AR, MA, and ARIMA models using Statsmodels.\n" +
-            "• **Statistical Diagnostics & Regularization**: Residual analysis, homoscedasticity testing, multicollinearity detection via Variance Inflation Factor (VIF), L1/L2 shrinkage (Lasso vs Ridge), PCA, and Sequential Forward Selection (SFS).\n\n" +
-            "🔗 Explore the full interactive competencies in the [Skills Section](#skills).",
-        chips: ['🔬 Advanced ML Stack', '🧠 Deep Learning Stack', '🌐 Computer Networks']
-    },
-    fullstack: {
-        keywords: ['skill', 'skills', 'stack', 'tech', 'fullstack', 'frontend', 'backend', 'react', 'node', 'express', 'javascript', 'typescript', 'css', 'three', 'webgl', 'database', 'postgres', 'docker', 'vite', 'sql', 'mern', 'prisma', 'mongodb'],
-        response: "Adnan's **Full-Stack & Web Architecture**:\n\n" +
-            "• **Frontend**: React 19, TypeScript, JavaScript, Three.js / R3F, Framer Motion, TailwindCSS\n" +
-            "• **Backend & APIs**: Node.js, Express, Python, FastAPI, Prisma, MySQL, MongoDB, Socket.io, WebSockets\n" +
-            "• **DevOps & Tools**: PostgreSQL, Redis, Docker, Git/GitHub, Linux, Vercel\n\n" +
-            "🔗 Check out the interactive [Skills & Neural Graph](#skills).",
-        chips: ['🧠 AI/ML Stack', '💼 Experience', '🚀 Featured Projects']
-    },
-    networking: {
-        keywords: ['network', 'networking', 'computer networks', 'vpc', 'subnets', 'subnetting', 'cidr', 'wireshark', 'packet tracer', 'tcp', 'udp', 'dns', 'route 53', 'alb', 'nlb', 'load balancer', 'security group', 'nacl', 'vpn', 'wireguard', 'ipsec', 'bgp', 'ospf', 'socket', 'osi'],
-        response: "Adnan's **Computer Networks & Cloud Architecture Stack**:\n\n" +
-            "• **Layered Protocols & Core Mechanics**: OSI & TCP/IP models, HTTP/1.1 to HTTP/3, TLS handshakes, TCP 3-way handshakes, AIMD congestion control, UDP, Python socket programming.\n" +
-            "• **AWS Cloud Networking**: Multi-tier VPC architecture, public/private subnets, CIDR design, NAT Gateways, Internet Gateways, Route Tables, and Route 53 managed DNS.\n" +
-            "• **Scalability & Security**: Elastic Load Balancers (ALB Layer 7 / NLB Layer 4), Stateful Security Groups, stateless NACLs, AWS WAF, AWS Certificate Manager (ACM), WireGuard/IPsec VPNs.\n" +
-            "• **Analysis & Diagnostics**: Wireshark packet analysis, VPC Flow Logs, Cisco Packet Tracer, traceroute, and ICMP monitoring.\n\n" +
-            "🔗 Explore the full tech stack in the [Skills Section](#skills).",
-        chips: ['🌐 Computer Networks', '💻 Full-Stack Systems', '🧠 AI/ML Stack']
+        keywords: [
+            'advanced machine learning', 'aml', 'from scratch', 'gmm', 'gaussian mixture', 
+            'arima', 'time series', 'forecasting', 'vif', 'multicollinearity', 
+            'homoscedasticity', 'cart', 'decision tree', 'random forest', 'gradient descent', 
+            'sgd', 'ols', 'linear regression', 'logistic regression', 'mle', 'lasso', 'ridge', 
+            'regularization', 'pca', 'kmeans', 'acf', 'pacf'
+        ],
+        response: "Adnan's **Advanced Machine Learning & From-Scratch Mathematical Rigor**:\n\n" +
+            "• **From-Scratch Algorithmic Implementation**: Custom NumPy code for OLS Multiple Regression, Logistic Regression with MLE, CART Decision Trees, and Gaussian Mixture Models (**GMM**) for soft clustering.\n" +
+            "• **Time Series & Forecasting**: Trend/seasonality decomposition, autocorrelation (ACF/PACF) analysis, and AR/MA/ARIMA modeling with Statsmodels.\n" +
+            "• **Statistical Diagnostics & Regularization**: Multicollinearity elimination via Variance Inflation Factor (**VIF**), residual homoscedasticity tests, L1/L2 shrinkage (Lasso vs Ridge), and PCA dimensionality reduction.\n\n" +
+            "🔗 View all competencies in the [Skills Section](#skills)!",
+        chips: ['🧠 Deep Learning Stack', '🖥️ Computer Architecture', '🌐 Computer Networks']
     },
     architecture: {
-        keywords: ['architecture', 'computer architecture', 'modern computer architecture', 'verilog', 'gtkwave', 'riscv', 'risc-v', 'mips', 'pipelining', 'pipeline', 'hazard', 'cache', 'amat', 'mesi', 'multicore', 'atomic', 'gpu', 'simt', 'tpu', 'systolic array', 'simd', 'avx', 'spectre', 'meltdown', 'hardware'],
-        response: "Adnan's **Modern Computer Architecture & Systems Engineering Stack**:\n\n" +
-            "• **Digital Design & ISA**: Verilog HDL, GTKWave circuit simulation, testbenches, RISC-V & MIPS32 assembly programming, and MARS datapath simulation.\n" +
-            "• **CPU Pipelining & Memory Hierarchy**: 5-stage pipeline (IF/ID/EX/MEM/WB), RAW/WAW hazard handling, branch prediction, L1/L2/L3 cache organization, AMAT optimization, and virtual memory TLBs.\n" +
-            "• **Parallelism & AI Hardware**: Multicore cache coherence (MESI), atomic primitives (CAS/mutexes), SIMD vectorization, GPU streaming multiprocessors (SIMT), TPU systolic arrays, and hardware side-channel mitigations (Spectre/Meltdown).\n\n" +
-            "🔗 Explore hardware & software systems in the [Skills Section](#skills).",
-        chips: ['🖥️ Computer Architecture', '🌐 Computer Networks', '🧠 Deep Learning Stack']
+        keywords: [
+            'architecture', 'computer architecture', 'modern computer architecture', 
+            'verilog', 'gtkwave', 'riscv', 'risc-v', 'mips', 'pipelining', 'pipeline', 
+            'hazard', 'cache', 'amat', 'mesi', 'multicore', 'atomic', 'gpu', 'simt', 
+            'tpu', 'systolic array', 'simd', 'avx', 'spectre', 'meltdown', 'hardware', 
+            'silicon', 'digital logic', 'fpga'
+        ],
+        response: "Adnan's **Modern Computer Architecture & Low-Level Silicon Stack**:\n\n" +
+            "• **Digital Design & ISAs**: Circuit modeling in **Verilog HDL**, waveform verification via GTKWave, testbenches, and **RISC-V / MIPS32** assembly programming.\n" +
+            "• **CPU Pipelining & Datapaths**: 5-stage CPU datapath (IF→ID→EX→MEM→WB), hazard resolution (RAW/WAW/WAR), branch prediction, and CPI optimization.\n" +
+            "• **Memory Hierarchy & AMAT**: L1/L2/L3 cache architectures, N-way set associativity, LRU replacement, cache-blocked matrix multiply, and virtual memory TLBs.\n" +
+            "• **Multicore & Accelerators**: Cache coherence (**MESI protocol**), lock-free atomic primitives (CAS/`__atomic_fetch_add`), GPU streaming multiprocessors (SIMT), and TPU systolic arrays.\n\n" +
+            "🔗 See how hardware meets AI in the [Skills Section](#skills)!",
+        chips: ['🌐 Computer Networks', '🧠 Deep Learning Stack', '🚀 Flagship Projects']
+    },
+    networking: {
+        keywords: [
+            'network', 'networking', 'computer networks', 'vpc', 'subnets', 'subnetting', 
+            'cidr', 'wireshark', 'packet tracer', 'tcp', 'udp', 'dns', 'route 53', 
+            'alb', 'nlb', 'load balancer', 'security group', 'nacl', 'vpn', 'wireguard', 
+            'ipsec', 'bgp', 'ospf', 'socket', 'osi', 'aws networking', 'cloudfront'
+        ],
+        response: "Adnan's **Computer Networks & AWS Cloud Architecture Stack**:\n\n" +
+            "• **AWS Cloud Infrastructure**: Multi-tier **Amazon VPC** design, public/private subnets, CIDR math, NAT Gateways, Internet Gateways, Route Tables, and **Route 53** routing policies (latency, failover, geo).\n" +
+            "• **Traffic Management & Security**: Elastic Load Balancing (**ALB** Layer 7, **NLB** Layer 4), stateful Security Groups, stateless NACLs, AWS WAF, and ACM TLS/SSL auto-renewal.\n" +
+            "• **Layered Protocols & Diagnostics**: OSI & TCP/IP stacks, HTTP/3, TLS handshakes, TCP 3-way handshakes, AIMD flow control, and deep packet captures with **Wireshark**.\n" +
+            "• **Sockets & Tunnels**: Python TCP/UDP socket programming, Site-to-Site VPNs, and WireGuard tunneling.\n\n" +
+            "🔗 Explore the cloud network stack in the [Skills Section](#skills)!",
+        chips: ['🖥️ Computer Architecture', '💻 Full-Stack Systems', '🚀 Flagship Projects']
+    },
+    fullstack: {
+        keywords: [
+            'skill', 'skills', 'stack', 'tech', 'fullstack', 'frontend', 'backend', 
+            'react', 'node', 'express', 'javascript', 'typescript', 'css', 'three', 
+            'webgl', 'database', 'postgres', 'docker', 'vite', 'sql', 'mern', 
+            'prisma', 'mongodb', 'kya kya ata hai'
+        ],
+        response: "Adnan's **Full-Stack Systems & Web Architecture**:\n\n" +
+            "• **Frontend UI/UX**: React 19, TypeScript, Modern ES6+, Three.js / React Three Fiber (3D WebGL), Framer Motion, TailwindCSS\n" +
+            "• **Backend & APIs**: Node.js, Express, Python, FastAPI, RESTful architecture, WebSockets / Socket.io, JWT auth\n" +
+            "• **Databases & ORMs**: Prisma ORM, PostgreSQL, MySQL, MongoDB, Redis caching, vector databases\n" +
+            "• **DevOps & Tooling**: Docker, Git/GitHub, Linux system admin, Vercel CI/CD\n\n" +
+            "🔗 Filter all competencies interactively in the [Skills Section](#skills).",
+        chips: ['🤖 Agentic AI & RAG', '🌐 Computer Networks', '💼 Why Hire Adnan?']
+    },
+    systemdesign: {
+        keywords: [
+            'system design', 'system architecture', 'scalability', 'distributed systems', 
+            'high availability', 'microservices', 'load balancing', 'caching', 'redis', 
+            'database sharding', 'horizontal scaling', 'fault tolerance', 'acid', 'scale', 
+            'rate limiting', 'message queues', 'kafka', 'latency', 'high throughput',
+            'scaling', 'system design ata hai', 'system design skills'
+        ],
+        response: "🏗️ **System Design & High-Scalability Engineering**:\n\n" +
+            "Adnan approaches system design with a rigorous distributed systems mindset:\n" +
+            "• **Horizontal Scaling & Load Balancing**: Tiered traffic distribution using AWS Application Load Balancers (ALB) and Network Load Balancers (NLB) with health check failover.\n" +
+            "• **Low-Latency Caching**: Multi-level cache topologies with **Redis** (cache-aside, write-through patterns) and CDN edge caching to slash p99 latencies.\n" +
+            "• **Data Tier Architectures**: Relational schema optimization with **Prisma & MySQL** (indexing, foreign key constraints, connection pooling) and decoupled NoSQL storage with MongoDB.\n" +
+            "• **Fault-Tolerance & State Management**: Idempotent API endpoints, WebSocket connection state preservation, and atomic transactions ensuring ACID compliance.\n\n" +
+            "🔗 See real production implementations in [Featured Projects](/projects)!",
+        chips: ['🌐 AWS & Cloud Networks', '🚀 Flagship Projects', '💼 Why Hire Adnan?']
+    },
+    journey: {
+        keywords: [
+            'journey', 'timeline', 'milestones', 'story', 'phases', 'background', 
+            'evolution', 'career path', 'how did you start', 'my journey', 'phases of journey',
+            'adnan journey', 'safarnama', 'history'
+        ],
+        response: "Adnan's **Engineering Journey in 9 Phases**:\n\n" +
+            "1. **Foundations**: Web basics (HTML, CSS, JS) and core CS.\n" +
+            "2. **Logic & DSA**: 400+ LeetCode problems & algorithmic optimization.\n" +
+            "3. **Full-Stack**: Production MERN systems, Prisma, and SOLID design.\n" +
+            "4. **Networks & Cloud**: AWS VPCs, Route 53, ALBs, and Wireshark diagnostics.\n" +
+            "5. **Computer Architecture**: Verilog HDL, RISC-V, 5-stage CPU pipelining, and GPU/TPUs.\n" +
+            "6. **Advanced ML**: From-scratch NumPy algorithms, ARIMA forecasting, and VIF diagnostics.\n" +
+            "7. **Deep Learning**: PyTorch Transformers, Mamba SSMs, Diffusion, and DPO.\n" +
+            "8. **Agentic AI**: Autonomous LangGraph multi-agent workflows and local RAG.\n" +
+            "9. **The Future**: High-scale System Design and high-performance computing.\n\n" +
+            "🔗 View the complete visual timeline in the [My Journey Section](#about).",
+        chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '💼 Why Hire Adnan?']
+    },
+    certifications: {
+        keywords: [
+            'certification', 'certifications', 'certificate', 'certificates', 
+            'credential', 'credentials', 'deeplearning.ai', 'andrew ng', 
+            'google cloud', 'ibm', 'coursera', 'course', 'certificates dikhao'
+        ],
+        response: "Adnan holds industry-accredited certifications from premier institutions:\n\n" +
+            "• **Machine Learning Specialization**: DeepLearning.AI & Stanford (Andrew Ng)\n" +
+            "• **Generative AI & LLMs**: DeepLearning.AI\n" +
+            "• **Google Cloud Computing & AI Fundamentals**: Google Cloud\n" +
+            "• **Data Science & AI Professional**: IBM\n\n" +
+            "🔗 View full certificate credentials, issue dates, and badges on the [Certifications Page](/certifications)!",
+        chips: ['🚀 Flagship Projects', '🧠 Deep Learning Stack', '👤 Who is Adnan?']
+    },
+    education: {
+        keywords: [
+            'education', 'college', 'university', 'degree', 'btech', 'csai', 
+            'nst', 'newton school', 'rishihood', 'academics', 'gpa', 'study', 
+            'where do you study', 'qualification', 'qualifications', 'kaha padhte ho', 
+            'kis college me', 'school', 'batch', 'student'
+        ],
+        response: "🎓 **Academic Background**:\n\n" +
+            "• **Degree**: Bachelor of Technology (B.Tech) in **Computer Science & Artificial Intelligence**\n" +
+            "• **Institution**: **Newton School of Technology (NST) / Rishihood University**\n" +
+            "• **Timeline**: Batch 2024 – 2028 (Currently in Semester 5)\n" +
+            "• **Focus Areas**: Advanced Machine Learning, Deep Learning, Modern Computer Architecture, Computer Networks & AWS Cloud, Distributed Systems.\n\n" +
+            "🔗 Learn more about his learning path in the [My Journey Section](#about).",
+        chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '✉️ Contact Details']
     },
     experience: {
-        keywords: ['experience', 'work', 'job', 'role', 'company', 'career', 'history', 'internship', 'background', 'years'],
+        keywords: [
+            'experience', 'work', 'job', 'role', 'company', 'career', 'history', 
+            'internship', 'years', 'total experience', 'kitna experience hai', 'work exp'
+        ],
         response: "Adnan's **Software & AI Engineering Background**:\n\n" +
-            "• **2+ Years Experience**: Building production web applications, RAG engines, 3D visualizers, and AI agents.\n" +
-            "• **10+ Systems Delivered**: End-to-end full-stack architectures, Sentinel AI Organizer, Zync Video Calling, and Data Analytics dashboards.\n" +
-            "• **Focus**: Latency optimization, clean maintainable code, and scalable architecture.\n\n" +
-            "🔗 View full career details in the [Experience Section](#experience).",
-        chips: ['👤 Who is Adnan?', '🚀 Featured Projects', '✉️ Contact Details']
+            "• **2+ Years Experience**: Designing and deploying production-grade AI agents, RAG engines, 3D interactive web applications, and scalable APIs.\n" +
+            "• **10+ Delivered Systems**: Highlights include Sentinel (Local AI Agent), NeuraX (Vector DB), EV Charging Agent (LangGraph), and Zync Video Platform (15,000+ sessions).\n" +
+            "• **Core Strengths**: Fast shipping velocity, low-latency architecture, clean maintainable code, and deep hardware-to-application understanding.\n\n" +
+            "🔗 View the detailed career timeline in the [Experience Section](#experience).",
+        chips: ['🚀 Flagship Projects', '💼 Why Hire Adnan?', '✉️ Contact Details']
+    },
+    location: {
+        keywords: [
+            'location', 'where are you from', 'where is he based', 'where do you live', 
+            'city', 'delhi', 'sonipat', 'india', 'remote work', 'relocate', 'relocation', 
+            'availability', 'open to work', 'kaha rehta hai', 'kaha se ho', 'address'
+        ],
+        response: "📍 **Location & Work Availability**:\n\n" +
+            "• **Base Location**: **Delhi NCR / Sonipat, India**\n" +
+            "• **Work Preference**: Open for **Remote worldwide** as well as **On-site / Hybrid** positions.\n" +
+            "• **Relocation**: Fully open to relocate for compelling engineering roles and high-impact teams.\n" +
+            "• **Current Status**: Actively open to Software Engineering, AI/ML Developer, and Distributed Systems roles.\n\n" +
+            "🔗 Connect directly via [Contact Form](#contact) or email [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com).",
+        chips: ['💼 Why Hire Adnan?', '✉️ Contact Details', '📄 Resume Overview']
+    },
+    socials: {
+        keywords: [
+            'github', 'linkedin', 'twitter', 'x', 'social', 'socials', 'profiles', 
+            'handles', 'social links', 'repo', 'github link', 'linkedin profile', 
+            'social media', 'github repo'
+        ],
+        response: "🌐 **Adnan's Official Developer Profiles**:\n\n" +
+            "• 🐙 **GitHub**: [github.com/adnan275](https://github.com/adnan275) — Check out open-source repos, agent graphs, and code repositories.\n" +
+            "• 💼 **LinkedIn**: [linkedin.com/in/adnan-rizvi](https://linkedin.com) — Connect professionally, inspect recommendations, and send a message.\n" +
+            "• 📧 **Email**: [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com) — Fast response within 12–24 hours.\n" +
+            "• 📞 **Direct Phone**: **765-209-2174**\n\n" +
+            "Feel free to connect or drop a note!",
+        chips: ['✉️ Contact Details', '📄 Resume Overview', '💼 Why Hire Adnan?']
     },
     contact: {
-        keywords: ['contact', 'email', 'reach', 'hire', 'linkedin', 'github', 'phone', 'message', 'talk', 'connect', 'social', 'number', 'mail', 'adnan.rizvi2004@gmail.com', '765-209-2174'],
-        response: "Here are Adnan's direct contact details:\n\n" +
+        keywords: [
+            'contact', 'email', 'reach', 'phone', 'call', 'message', 'talk', 
+            'connect', 'number', 'mail', 'adnan.rizvi2004@gmail.com', 
+            '765-209-2174', 'kaise contact karein', 'phone number', 'email id', 'contact form',
+            'contact details', 'sampark'
+        ],
+        response: "Here are Adnan's **direct contact channels**:\n\n" +
             "• 📧 **Email**: [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com)\n" +
-            "• 📞 **Phone**: **765-209-2174**\n" +
-            "• ✉️ **Message**: Send a note directly via the [Contact Form](#contact)\n" +
-            "• 🐙 **GitHub**: [GitHub Profile](https://github.com)\n" +
-            "• 💼 **LinkedIn**: [LinkedIn Profile](https://linkedin.com)",
-        chips: ['🚀 Featured Projects', '⚡ Why Hire Adnan?', '👤 Who is Adnan?']
+            "• 📞 **Direct Phone**: **765-209-2174**\n" +
+            "• 💼 **LinkedIn Profile**: [linkedin.com/in/adnan-rizvi](https://linkedin.com)\n" +
+            "• 🐙 **GitHub Repos**: [github.com/adnan275](https://github.com/adnan275)\n" +
+            "• ✉️ **Direct Form**: Send a quick note directly via the [Contact Form](#contact)\n\n" +
+            "Adnan typically responds within 12–24 hours!",
+        chips: ['💼 Why Hire Adnan?', '🚀 Flagship Projects', '👤 Who is Adnan?']
+    },
+    resume: {
+        keywords: [
+            'resume', 'cv', 'curriculum vitae', 'download resume', 'pdf resume', 
+            'resume link', 'resume bhejo', 'resume chahiye', 'adnan resume'
+        ],
+        response: "📄 **Adnan Rizvi's Resume Overview**:\n\n" +
+            "• **Role**: Software Engineer & AI Systems Developer\n" +
+            "• **Education**: B.Tech Computer Science & AI (NST / Rishihood University)\n" +
+            "• **Skills**: PyTorch, LangGraph, Python, FastAPI, React 19, Node.js, Prisma, AWS, Verilog, 400+ LeetCode DSA\n" +
+            "• **Proven Deliverables**: Sentinel, NeuraX Vector DB, EV Charging AI, Zync Platform\n\n" +
+            "🔗 Need a copy of his full PDF resume? Drop an email to [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com) or ping him through the [Contact Form](#contact)!",
+        chips: ['✉️ Contact Details', '💼 Why Hire Adnan?', '🚀 Flagship Projects']
     },
     hire: {
-        keywords: ['why hire', 'hire', 'recruiter', 'job', 'opportunity', 'relocate', 'full-time', 'remote', 'interview', 'salary'],
-        response: "Why hire **Adnan Rizvi**?\n\n" +
-            "✅ **Proven AI Systems**: Built production AI agents (Sentinel, NeuraX Vector DB, LangGraph EV Agent).\n" +
-            "✅ **400+ LeetCode DSA Problems**: Sharp algorithmic thinking, clean OOP logic, and low-latency coding.\n" +
-            "✅ **Full-Stack Proficiency**: Mastery from React 19 / Three.js UI to Node.js / FastAPI & Docker backends.\n\n" +
-            "🔗 Contact Adnan directly via the [Contact Form](#contact) or email [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com)!",
-        chips: ['✉️ Contact Details', '🚀 Featured Projects', '🧠 AI/ML Stack']
+        keywords: [
+            'why hire', 'hire', 'recruiter', 'job', 'opportunity', 'relocate', 
+            'full-time', 'remote', 'interview', 'salary', 'hire karna hai', 
+            'available for work', 'hire adnan', 'why should we hire'
+        ],
+        response: "Why you should hire **Adnan Rizvi**:\n\n" +
+            "1. 🚀 **Proven Shipping Track Record**: Has built and deployed production systems (Sentinel local AI, NeuraX 768D Vector DB, LangGraph multi-agent systems, and 15k+ call video platforms).\n" +
+            "2. ⚡ **400+ LeetCode DSA Rigor**: Sharp algorithmic thinking, rapid problem resolution, low memory overhead, and clean OOP/SOLID architectural logic.\n" +
+            "3. 🌐 **Hardware-to-Cloud Full Breadth**: Rare ability to traverse the entire engineering spectrum—from **Verilog & RISC-V silicon datapaths** up to **AWS cloud networks**, scalable backends, and responsive React 19 UIs.\n" +
+            "4. 🏎️ **Speed & Autonomy**: Takes ownership of problems from specification to production deployment with high velocity.\n\n" +
+            "🔗 Ready to schedule an interview or discuss an opportunity? Send a message via [Contact Form](#contact) or email [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com)!",
+        chips: ['✉️ Contact Details', '🚀 Flagship Projects', '🧠 AI/ML Stack']
     }
 };
 
@@ -176,9 +381,21 @@ export default function NeuralAIChatbot() {
         {
             id: 1,
             sender: 'ai',
-            text: "Hello & welcome! 👋 I am **Adnan's AI Assistant**, built specifically to assist you in exploring his work, code architecture, and experience.\n\nWhether you're exploring his **live AI projects (Sentinel, NeuraX)**, reviewing his **400+ LeetCode DSA background**, or looking to **connect directly**, I am here to help you!\n\nClick a suggestion chip below or type any question to get started!",
+            text: "Hello & welcome! 👋 I am **Adnan's Neural AI Assistant**.\n\nWhether you're exploring his **flagship AI projects (Sentinel, NeuraX)**, reviewing his **400+ LeetCode DSA background**, or looking to **hire / connect**, I am here with instant architectural answers.\n\nClick a suggestion chip below or type any question to get started!",
             timestamp: getFormattedTime(),
-            chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB']
+            chips: [
+                '👤 Who is Adnan?',
+                '🚀 Flagship Projects',
+                '🤖 Sentinel AI Agent',
+                '🧠 NeuraX Vector DB',
+                '⚡ EV Charging AI',
+                '💻 400+ LeetCode DSA',
+                '🖥️ Verilog & Architecture',
+                '🌐 AWS & Cloud Networks',
+                '🏗️ System Design',
+                '🎓 Education & NST',
+                '💼 Why Hire Adnan?'
+            ]
         }
     ]);
     const [inputValue, setInputValue] = useState('');
@@ -228,26 +445,54 @@ export default function NeuralAIChatbot() {
         }
     };
 
+    // Helper to sanitize and normalize query strings
+    const cleanText = (str) => {
+        return (str || '')
+            .toLowerCase()
+            .replace(/[^\w\s\+\#\-\.\/]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    };
+
     // Fast Local NLP Intent Engine
-    const findBestResponse = (query) => {
-        const cleanQuery = query.toLowerCase().trim();
-        const tokens = cleanQuery.split(/\s+/);
-        
+    const findBestResponse = (rawQuery) => {
+        const cleanQuery = cleanText(rawQuery);
+        if (!cleanQuery) return KNOWLEDGE_BASE.greetings;
+
+        const queryTokens = cleanQuery.split(' ').filter(Boolean);
+
         let bestCategory = null;
         let highestScore = 0;
 
-        Object.keys(KNOWLEDGE_BASE).forEach(category => {
+        Object.keys(KNOWLEDGE_BASE).forEach((category) => {
             const data = KNOWLEDGE_BASE[category];
             let categoryScore = 0;
 
-            data.keywords.forEach(keyword => {
-                const lowerKeyword = keyword.toLowerCase();
-                if (cleanQuery.includes(lowerKeyword)) {
-                    categoryScore += lowerKeyword.length * 3;
+            data.keywords.forEach((keyword) => {
+                const lowerKeyword = cleanText(keyword);
+                if (!lowerKeyword) return;
+
+                // 1. Exact match bonus
+                if (cleanQuery === lowerKeyword) {
+                    categoryScore += 140;
                 }
-                tokens.forEach(token => {
-                    if (token.length > 2 && lowerKeyword.includes(token)) {
-                        categoryScore += token.length * 1.5;
+                // 2. Exact phrase included in query
+                else if (cleanQuery.includes(lowerKeyword)) {
+                    categoryScore += 35 + lowerKeyword.length * 3;
+                }
+                // 3. Keyword contains full clean query
+                else if (lowerKeyword.includes(cleanQuery) && cleanQuery.length > 3) {
+                    categoryScore += 25 + cleanQuery.length * 2;
+                }
+
+                // 4. Token-by-token scoring
+                const keywordTokens = lowerKeyword.split(' ').filter(Boolean);
+                queryTokens.forEach((qToken) => {
+                    // Match short critical tech acronyms (e.g. ai, ml, dl, ev, db, ip, nst, dsa, aws, vpc)
+                    if (keywordTokens.includes(qToken)) {
+                        categoryScore += qToken.length <= 3 ? 20 : 14;
+                    } else if (qToken.length > 3 && lowerKeyword.includes(qToken)) {
+                        categoryScore += 8;
                     }
                 });
             });
@@ -258,22 +503,39 @@ export default function NeuralAIChatbot() {
             }
         });
 
-        if (highestScore > 3 && bestCategory) {
+        // Intent confidence threshold
+        if (highestScore >= 12 && bestCategory) {
             return bestCategory;
         }
 
-        if (cleanQuery.includes('who') || cleanQuery.includes('adnan') || cleanQuery.includes('about') || cleanQuery.includes('bio')) {
+        // Common conversational fallbacks
+        if (/\b(who|about|adnan|bio|profile|intro|creator|developer)\b/.test(cleanQuery)) {
             return KNOWLEDGE_BASE.bio;
+        }
+        if (/\b(hi|hello|hey|namaste|morning|evening|sup|start)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.greetings;
+        }
+        if (/\b(project|projects|work|built|portfolio|github)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.projects;
+        }
+        if (/\b(college|university|degree|study|nst|rishihood)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.education;
+        }
+        if (/\b(hire|recruiter|interview|job|opportunity)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.hire;
+        }
+        if (/\b(contact|email|phone|reach|call)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.contact;
         }
 
         return {
-            response: "**Adnan Rizvi** is a **Software Engineer & AI Developer** (2+ Years Exp, 400+ LeetCode DSA, 10+ Projects).\n\n" +
-                "Here are key projects you can ask me about:\n" +
-                "• **🤖 Sentinel**: AI File Organizer Agent ([Live Demo](https://sentinel-ten-black.vercel.app/))\n" +
-                "• **🧠 NeuraX**: Vector DB & RAG Engine ([HuggingFace Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n" +
-                "• **⚡ EV Charging AI**: LangGraph agent ([HuggingFace Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent))\n\n" +
-                "🔗 Explore all projects on the [Projects Page](/projects) or send a message via [Contact Form](#contact).",
-            chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '🤖 Sentinel AI Agent', '✉️ Contact Details']
+            response: `I couldn't find an exact match for **"${rawQuery.slice(0, 35)}"**, but here are key areas you can ask me about:\n\n` +
+                "• 🚀 **Flagship AI**: [Sentinel](https://sentinel-ten-black.vercel.app/) (Local Agent), [NeuraX](https://huggingface.co/spaces/rizzzvi/NeuraX) (Vector DB), [EV Agent](https://huggingface.co/spaces/rizzzvi/ev-charging-agent) (LangGraph)\n" +
+                "• ⚡ **Algorithms**: **400+ LeetCode DSA** solutions & clean OOP/SOLID design\n" +
+                "• 🖥️ **Hardware & Networks**: Verilog HDL, RISC-V CPU pipelining, and AWS VPC cloud networking\n" +
+                "• 💼 **Hiring & Background**: 2+ years shipping experience, B.Tech CS & AI at Newton School of Technology (NST)\n\n" +
+                "Click any topic chip below or rephrase your question:",
+            chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '🤖 Agentic AI & RAG', '🖥️ Verilog & Architecture', '🌐 AWS & Cloud Networks', '⚡ 400+ LeetCode DSA', '💼 Why Hire Adnan?']
         };
     };
 
@@ -461,7 +723,7 @@ export default function NeuralAIChatbot() {
                                 <div className="header-title">
                                     <div className="title-row">
                                         <h3>Neural Assistant</h3>
-                                        <span className="version-tag">v2.4</span>
+                                        <span className="version-tag">v3.0</span>
                                     </div>
                                     <p className="subtitle">
                                         <span className="live-dot">●</span> ONLINE | AI Agent Active
@@ -480,7 +742,7 @@ export default function NeuralAIChatbot() {
 
                         {/* Telemetry Bar */}
                         <div className="telemetry-bar">
-                            <span><IoTerminalOutline /> Engine: Neural-Portfolio-v2.4</span>
+                            <span><IoTerminalOutline /> Engine: Neural-Portfolio-v3.0</span>
                             <span>Latency: 12ms</span>
                         </div>
 
@@ -517,7 +779,7 @@ export default function NeuralAIChatbot() {
                                                     <button
                                                         key={cIdx}
                                                         className="chip-btn"
-                                                        onClick={() => handleSendMessage(chip.replace(/^[\u2700-\u27BF\u1F300-\u1F9FF]\s*/, ''))}
+                                                        onClick={() => handleSendMessage(chip.replace(/^[^\p{L}\p{N}]+/u, '').trim())}
                                                     >
                                                         {chip}
                                                         <IoArrowForward className="chip-arrow" />
@@ -549,13 +811,37 @@ export default function NeuralAIChatbot() {
                             )}
                         </div>
 
+                        {/* Quick Prompts Bar */}
+                        <div className="quick-prompts-bar">
+                            {[
+                                '🚀 Flagship Projects',
+                                '🤖 Sentinel AI',
+                                '🧠 NeuraX Vector DB',
+                                '⚡ EV Charging AI',
+                                '💻 400+ DSA',
+                                '🖥️ Verilog & Silicon',
+                                '🌐 AWS Cloud Networks',
+                                '🏗️ System Design',
+                                '🎓 Education & NST',
+                                '💼 Why Hire Adnan?'
+                            ].map((prompt, pIdx) => (
+                                <button
+                                    key={pIdx}
+                                    className="quick-prompt-pill"
+                                    onClick={() => handleSendMessage(prompt.replace(/^[^\p{L}\p{N}]+/u, '').trim())}
+                                >
+                                    {prompt}
+                                </button>
+                            ))}
+                        </div>
+
                         {/* Input Area */}
                         <div className="chatbot-input-container">
                             <input
                                 ref={inputRef}
                                 type="text"
                                 className="chatbot-input"
-                                placeholder="Ask about Sentinel, NeuraX, Zync, EV Charging AI..."
+                                placeholder="Ask anything (e.g. Sentinel, Verilog, 400+ DSA, AWS, System Design)..."
                                 value={inputValue}
                                 onChange={(e) => setInputValue(e.target.value)}
                                 onKeyDown={handleKeyDown}
