@@ -33,7 +33,7 @@ const About = () => {
             title: "05. Modern Computer Architecture",
             color: "#f97316",
             tag: "Silicon & Hardware",
-            content: "Bridged software with silicon—analyzing <strong>5-stage CPU pipelining, RISC-V/MIPS ISA, Cache AMAT optimization</strong>, and hardware accelerators across <strong>multicore MESI, GPUs, and TPU arrays</strong>."
+            content: "Bridged software with silicon—designing logic in <strong>Verilog HDL</strong>, analyzing <strong>5-stage CPU pipelining, RISC-V/MIPS ISA</strong>, and hardware accelerators across <strong>multicore MESI, GPUs, and TPU arrays</strong>."
         },
         {
             title: "06. Advanced Machine Learning",
