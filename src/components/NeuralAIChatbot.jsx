@@ -94,13 +94,22 @@ const KNOWLEDGE_BASE = {
         chips: ['🚀 Featured Projects', '🧠 AI/ML Stack', '👤 Who is Adnan?']
     },
     aiml: {
-        keywords: ['ai', 'ml', 'machine learning', 'artificial intelligence', 'pytorch', 'tensorflow', 'scikit', 'llm', 'rag', 'nlp', 'computer vision', 'deep learning', 'model', 'python', 'huggingface', 'vector', 'neural', 'langchain', 'agentic', 'ollama', 'chromadb'],
-        response: "Adnan's **AI/ML & Generative Intelligence Architecture**:\n\n" +
-            "• **Generative AI & LLMs**: RAG Pipelines (NeuraX Vector DB), Agentic AI Workflows (LangGraph EV Agent), Ollama, Llama 3.2, LangChain, ChromaDB\n" +
-            "• **Frameworks & ML**: PyTorch, TensorFlow, Scikit-Learn, XGBoost, OpenCV, NumPy, Pandas\n" +
-            "• **Deployment & MLOps**: FastAPI, Docker, Hugging Face Spaces, Model Optimization\n\n" +
+        keywords: ['ai', 'ml', 'machine learning', 'deep learning', 'dl', 'transformers', 'mamba', 'ssm', 'diffusion', 'ddpm', 'clip', 'dpo', 'rlhf', 'qlora', 'quantization', 'pytorch', 'tensorflow', 'scikit', 'llm', 'rag', 'nlp', 'computer vision', 'cnn', 'lstm', 'model', 'python', 'huggingface', 'vector', 'neural', 'langchain', 'agentic', 'ollama', 'chromadb'],
+        response: "Adnan's **Deep Learning, AI & Generative Intelligence Architecture**:\n\n" +
+            "• **Deep Learning & Architectures**: Transformers (Multi-Head Attention, ViT), State-Space Models (Mamba/SSMs), Diffusion Models (DDPM), Multimodal CLIP, CNNs & LSTMs.\n" +
+            "• **LLM Post-Training & Edge AI**: Direct Preference Optimization (DPO), RLHF, INT4/INT8 Quantization (QLoRA, QAMR), Compute Scaling Laws (MMLU/GPQA).\n" +
+            "• **Generative AI & Agentic Systems**: Production RAG Pipelines (ChromaDB Vector DB), Agentic AI Workflows (LangGraph), LangChain, PyTorch, Hugging Face.\n\n" +
             "🔗 View interactive skill graph in the [Skills & Neural Section](#skills).",
-        chips: ['🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB', '✉️ Contact Details']
+        chips: ['🧠 Deep Learning Stack', '🤖 Sentinel AI Agent', '🌐 Computer Networks']
+    },
+    advml: {
+        keywords: ['advanced machine learning', 'aml', 'from scratch', 'gmm', 'gaussian mixture', 'arima', 'time series', 'forecasting', 'vif', 'multicollinearity', 'homoscedasticity', 'cart', 'decision tree', 'random forest', 'gradient descent', 'sgd', 'ols', 'linear regression', 'logistic regression', 'mle', 'lasso', 'ridge', 'regularization', 'pca', 'kmeans', 'silhouette'],
+        response: "Adnan's **Advanced Machine Learning & From-Scratch Engineering Stack**:\n\n" +
+            "• **From-Scratch Algorithmic Implementation**: Custom NumPy implementations of OLS Regression, Logistic Regression with MLE, CART Decision Trees, Gradient Descent (Batch, SGD, Mini-batch), and Gaussian Mixture Models (GMM).\n" +
+            "• **Time Series & Professional Forecasting**: Trend/seasonality decomposition, ACF/PACF autocorrelation analysis, AR, MA, and ARIMA models using Statsmodels.\n" +
+            "• **Statistical Diagnostics & Regularization**: Residual analysis, homoscedasticity testing, multicollinearity detection via Variance Inflation Factor (VIF), L1/L2 shrinkage (Lasso vs Ridge), PCA, and Sequential Forward Selection (SFS).\n\n" +
+            "🔗 Explore the full interactive competencies in the [Skills Section](#skills).",
+        chips: ['🔬 Advanced ML Stack', '🧠 Deep Learning Stack', '🌐 Computer Networks']
     },
     fullstack: {
         keywords: ['skill', 'skills', 'stack', 'tech', 'fullstack', 'frontend', 'backend', 'react', 'node', 'express', 'javascript', 'typescript', 'css', 'three', 'webgl', 'database', 'postgres', 'docker', 'vite', 'sql', 'mern', 'prisma', 'mongodb'],
@@ -110,6 +119,25 @@ const KNOWLEDGE_BASE = {
             "• **DevOps & Tools**: PostgreSQL, Redis, Docker, Git/GitHub, Linux, Vercel\n\n" +
             "🔗 Check out the interactive [Skills & Neural Graph](#skills).",
         chips: ['🧠 AI/ML Stack', '💼 Experience', '🚀 Featured Projects']
+    },
+    networking: {
+        keywords: ['network', 'networking', 'computer networks', 'vpc', 'subnets', 'subnetting', 'cidr', 'wireshark', 'packet tracer', 'tcp', 'udp', 'dns', 'route 53', 'alb', 'nlb', 'load balancer', 'security group', 'nacl', 'vpn', 'wireguard', 'ipsec', 'bgp', 'ospf', 'socket', 'osi'],
+        response: "Adnan's **Computer Networks & Cloud Architecture Stack**:\n\n" +
+            "• **Layered Protocols & Core Mechanics**: OSI & TCP/IP models, HTTP/1.1 to HTTP/3, TLS handshakes, TCP 3-way handshakes, AIMD congestion control, UDP, Python socket programming.\n" +
+            "• **AWS Cloud Networking**: Multi-tier VPC architecture, public/private subnets, CIDR design, NAT Gateways, Internet Gateways, Route Tables, and Route 53 managed DNS.\n" +
+            "• **Scalability & Security**: Elastic Load Balancers (ALB Layer 7 / NLB Layer 4), Stateful Security Groups, stateless NACLs, AWS WAF, AWS Certificate Manager (ACM), WireGuard/IPsec VPNs.\n" +
+            "• **Analysis & Diagnostics**: Wireshark packet analysis, VPC Flow Logs, Cisco Packet Tracer, traceroute, and ICMP monitoring.\n\n" +
+            "🔗 Explore the full tech stack in the [Skills Section](#skills).",
+        chips: ['🌐 Computer Networks', '💻 Full-Stack Systems', '🧠 AI/ML Stack']
+    },
+    architecture: {
+        keywords: ['architecture', 'computer architecture', 'modern computer architecture', 'verilog', 'gtkwave', 'riscv', 'risc-v', 'mips', 'pipelining', 'pipeline', 'hazard', 'cache', 'amat', 'mesi', 'multicore', 'atomic', 'gpu', 'simt', 'tpu', 'systolic array', 'simd', 'avx', 'spectre', 'meltdown', 'hardware'],
+        response: "Adnan's **Modern Computer Architecture & Systems Engineering Stack**:\n\n" +
+            "• **Digital Design & ISA**: Verilog HDL, GTKWave circuit simulation, testbenches, RISC-V & MIPS32 assembly programming, and MARS datapath simulation.\n" +
+            "• **CPU Pipelining & Memory Hierarchy**: 5-stage pipeline (IF/ID/EX/MEM/WB), RAW/WAW hazard handling, branch prediction, L1/L2/L3 cache organization, AMAT optimization, and virtual memory TLBs.\n" +
+            "• **Parallelism & AI Hardware**: Multicore cache coherence (MESI), atomic primitives (CAS/mutexes), SIMD vectorization, GPU streaming multiprocessors (SIMT), TPU systolic arrays, and hardware side-channel mitigations (Spectre/Meltdown).\n\n" +
+            "🔗 Explore hardware & software systems in the [Skills Section](#skills).",
+        chips: ['🖥️ Computer Architecture', '🌐 Computer Networks', '🧠 Deep Learning Stack']
     },
     experience: {
         keywords: ['experience', 'work', 'job', 'role', 'company', 'career', 'history', 'internship', 'background', 'years'],

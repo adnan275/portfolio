@@ -384,14 +384,7 @@ const initialLinks = [
     { source: 'projects', target: 'livesitter' },
     { source: 'projects', target: 'qr' },
     { source: 'projects', target: 'password' },
-    { source: 'projects', target: 'rps' },
-
-    // Cross Mesh Connections
-    { source: 'sentinel', target: 'neurax' },
-    { source: 'presento', target: 'zync' },
-    { source: 'ev_agent', target: 'bi_portfolio' },
-    { source: 'taskly', target: 'gigflow' },
-    { source: 'qr', target: 'livesitter' }
+    { source: 'projects', target: 'rps' }
 ];
 
 const NeuralGraph = () => {

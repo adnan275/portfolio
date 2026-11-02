@@ -6,16 +6,23 @@ const skillNodes = [
     // Center Node
     { id: 'adnan', label: 'ADNAN RIZVI', category: 'center', radius: 24, color: '#ffffff' },
 
-    // Core 4 Pillars
+    // Core 5 Pillars
     { id: 'ai', label: 'AI & ML Core', category: 'pillar', radius: 17, color: '#00f0ff' },
     { id: 'fullstack', label: 'Full-Stack Systems', category: 'pillar', radius: 17, color: '#c084fc' },
     { id: 'data', label: 'Data & Analytics', category: 'pillar', radius: 17, color: '#ffb703' },
     { id: 'tools', label: 'Production Engineering', category: 'pillar', radius: 17, color: '#34d399' },
+    { id: 'networking', label: 'Computer Networks', category: 'pillar', radius: 17, color: '#38bdf8' },
 
-    // AI & ML Skills
+    // Networking Skills
+    { id: 'vpc', label: 'AWS VPC & Subnets', category: 'net_skill', radius: 9, color: '#38bdf8', desc: 'CIDR, Route Tables, NAT Gateways & multi-tier architecture' },
+    { id: 'wireshark', label: 'Wireshark & Packets', category: 'net_skill', radius: 8, color: '#38bdf8', desc: 'Packet inspection, TCP 3-way handshake & flow diagnostics' },
+    { id: 'tcpudp', label: 'TCP/UDP & Sockets', category: 'net_skill', radius: 9, color: '#38bdf8', desc: 'Python socket programming, AIMD flow control & routing' },
+    { id: 'secgroups', label: 'Security & VPNs', category: 'net_skill', radius: 8, color: '#38bdf8', desc: 'Security Groups, NACLs, TLS/ACM, WireGuard & Route 53' },
+
+    // AI & ML / Deep Learning Skills
     { id: 'langchain', label: 'LangChain & RAG', category: 'ai_skill', radius: 9, color: '#00f0ff', desc: 'RAG pipelines, vector search & agentic memory' },
-    { id: 'llms', label: 'LLMs & Prompting', category: 'ai_skill', radius: 8, color: '#00f0ff', desc: 'OpenAI, Groq & HuggingFace inference' },
-    { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', radius: 9, color: '#00f0ff', desc: 'Model scripting & numerical computing' },
+    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', radius: 8, color: '#00f0ff', desc: 'Self-Attention, Mamba SSMs, Diffusion & DPO' },
+    { id: 'python', label: 'PyTorch & Deep Learning', category: 'ai_skill', radius: 9, color: '#00f0ff', desc: 'CNNs, LSTMs, VAEs & QLoRA quantization' },
     { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', radius: 8, color: '#00f0ff', desc: 'Rapid AI prototype UI dashboards' },
 
     // Full-Stack Skills
@@ -43,6 +50,12 @@ const skillLinks = [
     { source: 'adnan', target: 'fullstack' },
     { source: 'adnan', target: 'data' },
     { source: 'adnan', target: 'tools' },
+    { source: 'adnan', target: 'networking' },
+
+    { source: 'networking', target: 'vpc' },
+    { source: 'networking', target: 'wireshark' },
+    { source: 'networking', target: 'tcpudp' },
+    { source: 'networking', target: 'secgroups' },
 
     { source: 'ai', target: 'langchain' },
     { source: 'ai', target: 'llms' },
@@ -63,13 +76,7 @@ const skillLinks = [
     { source: 'tools', target: 'sysdesign' },
     { source: 'tools', target: 'solid' },
     { source: 'tools', target: 'jwt' },
-    { source: 'tools', target: 'git' },
-
-    // Mesh cross connections
-    { source: 'langchain', target: 'python' },
-    { source: 'react', target: 'javascript' },
-    { source: 'nodejs', target: 'prisma' },
-    { source: 'sql', target: 'pandas' }
+    { source: 'tools', target: 'git' }
 ];
 
 const SkillsNeuralGraph = () => {
@@ -101,8 +108,15 @@ const SkillsNeuralGraph = () => {
 
                 ai: { x: 0.33, y: 0.38 },
                 fullstack: { x: 0.67, y: 0.38 },
-                data: { x: 0.33, y: 0.62 },
-                tools: { x: 0.67, y: 0.62 },
+                data: { x: 0.28, y: 0.62 },
+                tools: { x: 0.72, y: 0.62 },
+                networking: { x: 0.50, y: 0.78 },
+
+                // Networking Skills
+                vpc: { x: 0.42, y: 0.90 },
+                wireshark: { x: 0.58, y: 0.90 },
+                tcpudp: { x: 0.38, y: 0.78 },
+                secgroups: { x: 0.62, y: 0.78 },
 
                 // AI Skills (Top-Left)
                 langchain: { x: 0.14, y: 0.28 },
@@ -352,6 +366,10 @@ const SkillsNeuralGraph = () => {
                         <div className="legend-item">
                             <span className="legend-dot" style={{ background: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
                             <span className="legend-label">Production Engineering</span>
+                        </div>
+                        <div className="legend-item">
+                            <span className="legend-dot" style={{ background: '#38bdf8', boxShadow: '0 0 8px #38bdf8' }}></span>
+                            <span className="legend-label">Computer Networks</span>
                         </div>
                     </div>
 

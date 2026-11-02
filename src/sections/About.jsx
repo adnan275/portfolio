@@ -7,26 +7,56 @@ const About = () => {
     const milestones = [
         {
             title: "01. The Foundations",
-            content: "Started my journey by mastering the core of the web—<strong>HTML, CSS, and JavaScript</strong>. Built a solid foundation in computer science principles and discovered a passion for creating digital solutions."
+            color: "#38bdf8",
+            tag: "Core Web & CS",
+            content: "Mastered core computer science and web engineering principles—<strong>HTML, CSS, and modern JavaScript</strong>, establishing a strong base for scalable software solutions."
         },
         {
             title: "02. The Logic & DSA",
-            content: "Deep-dived into <strong>Data Structures and Algorithms</strong> to sharpen my problem-solving skills. Solved <strong>400+ problems</strong> across LeetCode and other platforms, mastering optimization and clean logic."
+            color: "#6366f1",
+            tag: "400+ Solved",
+            content: "Deep-dived into <strong>Data Structures & Algorithms</strong>, solving <strong>400+ problems</strong> across LeetCode, mastering runtime complexity, memory optimization, and clean logic."
         },
         {
             title: "03. Full-Stack Mastery",
-            content: "Transitioned to building production-grade applications using the <strong>MERN stack, Prisma, and SQL</strong>. Focused on <strong>OOP and SOLID</strong> principles to ensure scalable and maintainable architecture."
+            color: "#c084fc",
+            tag: "MERN & SQL",
+            content: "Built production-grade web systems with <strong>React, Node.js, Express, Prisma, and SQL</strong>, implementing <strong>OOP and SOLID</strong> design patterns for high maintainability."
         },
         {
-            title: "04. AI & Intelligence",
-            content: "Explored the world of <strong>Generative AI</strong>, specializing in <strong>RAG (Retrieval-Augmented Generation)</strong> and <strong>Agentic Workflows</strong> using LangChain. Built systems that can think and act autonomously."
+            title: "04. Networks & Cloud Infrastructure",
+            color: "#0ea5e9",
+            tag: "AWS & Protocols",
+            content: "Engineered cloud infrastructure on <strong>AWS</strong>—mastering <strong>VPC architecture, CIDR subnetting, ALB load balancers, and Route 53</strong>, alongside packet diagnostics with <strong>Wireshark & Sockets</strong>."
         },
         {
-            title: "05. Data & Analytics",
-            content: "Mastered <strong>Data Analytics & Visualization</strong> using <strong>SQL, Scikit-learn, Tableau, and Excel</strong>. Built <strong>ETL pipelines, EDA, Data Cleaning</strong>, and dashboards with <strong>KPI Design</strong>, while developing robust <strong>REST APIs</strong>."
+            title: "05. Modern Computer Architecture",
+            color: "#f97316",
+            tag: "Silicon & Hardware",
+            content: "Bridged software with silicon—analyzing <strong>5-stage CPU pipelining, RISC-V/MIPS ISA, Cache AMAT optimization</strong>, and hardware accelerators across <strong>multicore MESI, GPUs, and TPU arrays</strong>."
         },
         {
-            title: "06. The Future: Scale",
+            title: "06. Advanced Machine Learning",
+            color: "#14b8a6",
+            tag: "From-Scratch ML",
+            content: "Implemented ML algorithms from scratch in <strong>NumPy</strong>—mastering <strong>OLS, GMM clustering, CART decision trees, Time Series ARIMA forecasting</strong>, and statistical <strong>VIF diagnostics</strong>."
+        },
+        {
+            title: "07. Deep Learning & Neural Systems",
+            color: "#ec4899",
+            tag: "PyTorch & Transformers",
+            content: "Designed deep neural architectures in <strong>PyTorch</strong>—mastering <strong>Transformers, Mamba SSMs, Diffusion DDPM, Multimodal CLIP</strong>, and post-training via <strong>DPO & QLoRA quantization</strong>."
+        },
+        {
+            title: "08. Agentic AI & Intelligence",
+            color: "#00f0ff",
+            tag: "Autonomous Agents",
+            content: "Explored the world of <strong>Generative AI</strong>, specializing in <strong>RAG (Retrieval-Augmented Generation)</strong> and autonomous <strong>Agentic Workflows</strong> using LangChain & LangGraph."
+        },
+        {
+            title: "09. The Future: System Design & Scale",
+            color: "#ffb703",
+            tag: "Scale & Architecture",
             content: "Currently mastering <strong>System Design</strong> and high-performance computing. My goal is to bridge the gap between robust engineering and cutting-edge AI to build technology that impacts millions."
         }
     ];
@@ -91,41 +121,57 @@ const About = () => {
                     </motion.div>
                 </div>
 
-                {/* Journey Section: Full Width */}
+                {/* Journey Section: Compact Responsive Grid */}
                 <div className="journey-section">
-                    <motion.h2
-                        className="heading-lg"
-                        style={{ marginBottom: '4rem', textAlign: 'center' }}
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
                     >
-                        My Journey
-                    </motion.h2>
+                        <h2 className="heading-lg" style={{ textAlign: 'center', marginBottom: '0.75rem' }}>
+                            My Journey
+                        </h2>
+                        <p className="journey-subtitle">
+                            Evolution from fundamental logic and full-stack systems to cloud architecture, silicon hardware, and cutting-edge intelligence.
+                        </p>
+                    </motion.div>
 
-                    <div className="journey-timeline">
-                        <div className="timeline-line"></div>
+                    <div className="journey-grid">
                         {milestones.map((milestone, index) => (
                             <motion.div
                                 key={index}
-                                className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
-                                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, amount: 0.3 }}
-                                transition={{
-                                    duration: 0.8,
-                                    delay: index * 0.1,
-                                    ease: [0.16, 1, 0.3, 1]
+                                className="journey-card"
+                                style={{
+                                    '--phase-color': milestone.color,
+                                    '--phase-glow': `${milestone.color}33`,
+                                    '--phase-bg': `${milestone.color}12`
                                 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.15 }}
+                                transition={{
+                                    duration: 0.4,
+                                    delay: index * 0.04
+                                }}
+                                whileHover={{ y: -5, scale: 1.015 }}
                             >
-                                <div className="timeline-dot">
-                                    <div className="dot-inner"></div>
+                                <div className="journey-card-glow" />
+                                <div className="journey-card-top-line" />
+
+                                <div className="journey-card-header">
+                                    <div className="journey-badge-group">
+                                        <span className="journey-step-badge">
+                                            <span className="step-glow"></span>
+                                            Phase {String(index + 1).padStart(2, '0')}
+                                        </span>
+                                        <span className="journey-tag-pill">{milestone.tag}</span>
+                                    </div>
+                                    <span className="journey-step-number">0{index + 1}</span>
                                 </div>
-                                <div className="timeline-card card-3d">
-                                    <div className="card-number">{index + 1}</div>
-                                    <h4>{milestone.title}</h4>
-                                    <p dangerouslySetInnerHTML={{ __html: milestone.content }} />
-                                </div>
+
+                                <h4 className="journey-card-title">{milestone.title.replace(/^\d+\.\s*/, '')}</h4>
+                                <p dangerouslySetInnerHTML={{ __html: milestone.content }} />
                             </motion.div>
                         ))}
                     </div>
