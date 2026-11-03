@@ -39,7 +39,7 @@ const CertificationsPage = () => {
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                         >
                             <div className="cert-logo-container">
-                                <div className="cert-logo-wrapper">
+                                <div className={`cert-logo-wrapper ${cert.logoWrapperClass || ''}`.trim()}>
                                     <img
                                         src={cert.logo}
                                         alt={cert.logoAlt || cert.issuer}

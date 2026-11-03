@@ -12,8 +12,9 @@ export const certifications = [
             "Advanced through Bronze, Silver, and Gold milestones in the competitive global quantitative finance challenge."
         ],
         link: "/certificates/worldquant-challenge-gold.pdf",
-        logo: "/logos/worldquant.svg",
+        logo: "/logos/worldquant.png",
         logoAlt: "WorldQuant BRAIN",
+        logoWrapperClass: "cert-logo-wrap-dark",
         showOnHome: true
     },
     {
@@ -28,8 +29,9 @@ export const certifications = [
             "Utilized fundamental, pricing, and volume datasets to extract uncorrelated predictive alpha signals."
         ],
         link: "/certificates/worldquant-challenge-silver.pdf",
-        logo: "/logos/worldquant.svg",
+        logo: "/logos/worldquant.png",
         logoAlt: "WorldQuant BRAIN",
+        logoWrapperClass: "cert-logo-wrap-dark",
         showOnHome: false
     },
     {
@@ -43,8 +45,9 @@ export const certifications = [
             "Built initial suite of qualifying Alphas meeting strict turnover, fitness, and Sharpe criteria."
         ],
         link: "/certificates/worldquant-challenge-bronze.pdf",
-        logo: "/logos/worldquant.svg",
+        logo: "/logos/worldquant.png",
         logoAlt: "WorldQuant BRAIN",
+        logoWrapperClass: "cert-logo-wrap-dark",
         showOnHome: false
     },
     {

@@ -42,7 +42,7 @@ const CertificationsPreview = () => {
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.2 }}
                         >
-                            <div className="cert-preview-logo-wrap">
+                            <div className={`cert-preview-logo-wrap ${cert.logoWrapperClass || ''}`.trim()}>
                                 <img
                                     src={cert.logo}
                                     alt={cert.logoAlt || cert.issuer}
