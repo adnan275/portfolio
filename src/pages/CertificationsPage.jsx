@@ -4,7 +4,6 @@ import '../styles/Certifications.css';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { certifications } from '../data/certifications';
-import ParticleBackground3D from '../components/ParticleBackground3D';
 
 const CertificationsPage = () => {
     useEffect(() => {
@@ -14,7 +13,6 @@ const CertificationsPage = () => {
     return (
         <div className="certifications-page">
             <div className="certifications-background">
-                <ParticleBackground3D particleCount={200} />
                 <div className="glow-blob glow-blob-1"></div>
                 <div className="glow-blob glow-blob-2"></div>
                 <div className="grid-overlay"></div>

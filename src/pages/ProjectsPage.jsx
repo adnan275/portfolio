@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProjectCaseStudy from '../components/ProjectCaseStudy';
-import ParticleBackground3D from '../components/ParticleBackground3D';
 import '../styles/ProjectsPage.css';
 import '../styles/Projects.css';
 
@@ -330,7 +329,6 @@ const ProjectsPage = () => {
     return (
         <div className="projects-page">
             <div className="projects-background">
-                <ParticleBackground3D particleCount={300} />
                 <div className="glow-blob glow-blob-1"></div>
                 <div className="glow-blob glow-blob-2"></div>
                 <div className="grid-overlay"></div>
