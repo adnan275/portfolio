@@ -1,5 +1,53 @@
 export const certifications = [
     {
+        title: "WorldQuant Challenge® – Gold Level",
+        issuer: "WorldQuant BRAIN",
+        date: "Issued: 2026",
+        description: "Awarded Gold Level in the global WorldQuant Challenge® by WorldQuant BRAIN, authorized by Nitish Maini (Chief Strategy Officer of WorldQuant). Developed, simulated, and backtested institutional-grade quantitative trading Alphas across global equity universes meeting strict performance, turnover, and market neutrality criteria.",
+        featuresTitle: "Key Quantitative Accomplishments",
+        features: [
+            "Formulated predictive mathematical trading signals (Alphas) leveraging time-series and cross-sectional operators (ts_rank, ts_regression, group_neutralize).",
+            "Achieved institutional-grade Alpha performance with high Sharpe Ratio, low turnover (<70%), and robust Information Ratio across 5+ years of simulation data.",
+            "Engineered industry- and sector-neutralized signals to eliminate market beta and multi-factor exposure bias.",
+            "Advanced through Bronze, Silver, and Gold milestones in the competitive global quantitative finance challenge."
+        ],
+        link: "/certificates/worldquant-challenge-gold.pdf",
+        logo: "/logos/worldquant.svg",
+        logoAlt: "WorldQuant BRAIN",
+        showOnHome: true
+    },
+    {
+        title: "WorldQuant Challenge® – Silver Level",
+        issuer: "WorldQuant BRAIN",
+        date: "Issued: 2026",
+        description: "Recognized for reaching Silver Level in the WorldQuant Challenge®. Demonstrated consistent mathematical modeling capabilities by engineering high-fitness Alphas across multi-market datasets.",
+        featuresTitle: "Key Quantitative Accomplishments",
+        features: [
+            "Constructed statistical arbitrage and mean-reversion Alphas with low portfolio correlation (<0.7).",
+            "Validated risk-adjusted returns and simulated drawdown curves under volatile macroeconomic regimes.",
+            "Utilized fundamental, pricing, and volume datasets to extract uncorrelated predictive alpha signals."
+        ],
+        link: "/certificates/worldquant-challenge-silver.pdf",
+        logo: "/logos/worldquant.svg",
+        logoAlt: "WorldQuant BRAIN",
+        showOnHome: false
+    },
+    {
+        title: "WorldQuant Challenge® – Bronze Level",
+        issuer: "WorldQuant BRAIN",
+        date: "Issued: 2026",
+        description: "Earned Bronze Level in the WorldQuant Challenge®, establishing strong algorithmic foundational competencies on the WorldQuant BRAIN simulation platform.",
+        featuresTitle: "Key Quantitative Accomplishments",
+        features: [
+            "Mastered WorldQuant BRAIN expression syntax, statistical operators, and market data simulation pipelines.",
+            "Built initial suite of qualifying Alphas meeting strict turnover, fitness, and Sharpe criteria."
+        ],
+        link: "/certificates/worldquant-challenge-bronze.pdf",
+        logo: "/logos/worldquant.svg",
+        logoAlt: "WorldQuant BRAIN",
+        showOnHome: false
+    },
+    {
         title: "Claude Code Certificate of Completion",
         issuer: "Anthropic",
         date: "Issued: Jun 2026",

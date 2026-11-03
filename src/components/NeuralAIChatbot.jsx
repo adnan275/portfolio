@@ -26,11 +26,12 @@ const KNOWLEDGE_BASE = {
         ],
         response: "**Adnan Rizvi** is a **Software Engineer & AI Systems Developer** with **2+ Years** of hands-on experience architecting autonomous AI agents, privacy-centric RAG engines, 3D web interfaces, and high-throughput backends.\n\n" +
             "• **Academic Rigor**: Pursuing B.Tech in Computer Science & AI at **Newton School of Technology (NST) / Rishihood University**.\n" +
+            "• **Quantitative Finance**: Achieved **Gold Level in WorldQuant Challenge®** (WorldQuant BRAIN), engineering high-performance predictive trading Alphas.\n" +
             "• **Algorithmic Mastery**: Solved **400+ DSA problems** across LeetCode, mastering runtime efficiency, dynamic programming, and clean OOP/SOLID patterns.\n" +
             "• **Flagship Inventions**: Built **Sentinel (Local AI File Organizer)**, **NeuraX (Vector DB & RAG Engine)**, and **LangGraph EV Charging AI**.\n" +
             "• **End-to-End Stack**: From low-level silicon logic (**Verilog HDL, RISC-V**) and **AWS Cloud Networks (VPC, Route 53)** to modern **React 19, PyTorch, and LangChain**.\n\n" +
-            "🔗 Explore his [Featured Projects](/projects), inspect the interactive [Tech Stack](#skills), or get in touch via [Contact Form](#contact).",
-        chips: ['🚀 Flagship Projects', '🤖 Agentic AI & RAG', '⚡ LeetCode 400+ DSA', '💼 Why Hire Adnan?']
+            "🔗 Explore his [Featured Projects](/projects), inspect verified [Certifications](/certifications), or get in touch via [Contact Form](#contact).",
+        chips: ['🏆 WorldQuant Gold', '🚀 Flagship Projects', '🤖 Agentic AI & RAG', '⚡ LeetCode 400+ DSA', '💼 Why Hire Adnan?']
     },
     greetings: {
         keywords: [
@@ -260,19 +261,39 @@ const KNOWLEDGE_BASE = {
             "🔗 View the complete visual timeline in the [My Journey Section](#about).",
         chips: ['👤 Who is Adnan?', '🚀 Flagship Projects', '💼 Why Hire Adnan?']
     },
+    worldquant: {
+        keywords: [
+            'worldquant', 'world quant', 'brain', 'worldquant brain', 'alpha', 'alphas', 
+            'quant', 'quantitative finance', 'worldquant challenge', 'gold level', 
+            'silver level', 'bronze level', 'nitish maini', 'sharpe ratio', 'turnover',
+            'algorithmic trading', 'trading algorithm', 'quantitative'
+        ],
+        response: "🏆 **WorldQuant Challenge® — Gold Level Achievement**\n\n" +
+            "Adnan reached **Gold Level** in the global **WorldQuant Challenge®** organized by **WorldQuant BRAIN** (Authorized & presented by Nitish Maini, Chief Strategy Officer of WorldQuant):\n\n" +
+            "• **Quantitative Alpha Engineering**: Formulated predictive mathematical trading formulas (Alphas) using time-series operators (`ts_rank`, `ts_regression`, `ts_corr`) and cross-sectional operators (`group_neutralize`).\n" +
+            "• **Institutional Standards**: Backtested across 5+ years of historical market data meeting strict institutional risk thresholds—high Sharpe Ratio, low turnover (<70%), and non-correlation (<0.7).\n" +
+            "• **Progressive Milestones**: Consecutively cleared **Bronze Level, Silver Level, and Gold Level** credentials.\n\n" +
+            "🔗 Direct Certificate Credentials:\n" +
+            "• [View Gold Certificate](/certificates/worldquant-challenge-gold.pdf)\n" +
+            "• [View Silver Certificate](/certificates/worldquant-challenge-silver.pdf)\n" +
+            "• [View Bronze Certificate](/certificates/worldquant-challenge-bronze.pdf)\n\n" +
+            "Or view all credentials on the [Certifications Page](/certifications)!",
+        chips: ['📜 All Certifications', '🔬 From-Scratch ML', '🚀 Flagship Projects', '💼 Why Hire Adnan?']
+    },
     certifications: {
         keywords: [
             'certification', 'certifications', 'certificate', 'certificates', 
-            'credential', 'credentials', 'deeplearning.ai', 'andrew ng', 
-            'google cloud', 'ibm', 'coursera', 'course', 'certificates dikhao'
+            'credential', 'credentials', 'worldquant', 'world quant', 'gold level', 'silver level', 'bronze level', 
+            'jpmorgan', 'oracle', 'aws', 'anthropic', 'claude', 'certificates dikhao'
         ],
-        response: "Adnan holds industry-accredited certifications from premier institutions:\n\n" +
-            "• **Machine Learning Specialization**: DeepLearning.AI & Stanford (Andrew Ng)\n" +
-            "• **Generative AI & LLMs**: DeepLearning.AI\n" +
-            "• **Google Cloud Computing & AI Fundamentals**: Google Cloud\n" +
-            "• **Data Science & AI Professional**: IBM\n\n" +
-            "🔗 View full certificate credentials, issue dates, and badges on the [Certifications Page](/certifications)!",
-        chips: ['🚀 Flagship Projects', '🧠 Deep Learning Stack', '👤 Who is Adnan?']
+        response: "Adnan holds industry-accredited credentials from premier quantitative and technology institutions:\n\n" +
+            "• 🏆 **WorldQuant Challenge® (Gold, Silver & Bronze Levels)**: WorldQuant BRAIN — Quantitative Alpha modeling, market-neutral simulation, and backtesting. ([View Gold Certificate](/certificates/worldquant-challenge-gold.pdf))\n" +
+            "• 💼 **JPMorgan Chase Investment Banking**: Job Simulation covering M&A analysis, DCF financial models, and valuation.\n" +
+            "• ☁️ **Oracle Cloud Infrastructure 2025 AI Foundations Associate**: Supervised/unsupervised AI, CNN/LSTM architectures, and cloud deployments.\n" +
+            "• 🌐 **AWS Solutions Architecture**: Scalable cloud architectures, Elastic Beanstalk, and multi-tier systems.\n" +
+            "• 🤖 **Claude Code & Claude 101**: Anthropic agentic coding and prompt engineering.\n\n" +
+            "🔗 View all verified certificate documents and badges on the [Certifications Page](/certifications)!",
+        chips: ['🏆 WorldQuant BRAIN', '🚀 Flagship Projects', '🧠 Deep Learning Stack', '👤 Who is Adnan?']
     },
     education: {
         keywords: [
@@ -385,6 +406,7 @@ export default function NeuralAIChatbot() {
             timestamp: getFormattedTime(),
             chips: [
                 '👤 Who is Adnan?',
+                '🏆 WorldQuant Gold',
                 '🚀 Flagship Projects',
                 '🤖 Sentinel AI Agent',
                 '🧠 NeuraX Vector DB',
@@ -814,6 +836,7 @@ export default function NeuralAIChatbot() {
                         {/* Quick Prompts Bar */}
                         <div className="quick-prompts-bar">
                             {[
+                                '🏆 WorldQuant Gold',
                                 '🚀 Flagship Projects',
                                 '🤖 Sentinel AI',
                                 '🧠 NeuraX Vector DB',

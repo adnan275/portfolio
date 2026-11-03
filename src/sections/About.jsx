@@ -36,10 +36,10 @@ const About = () => {
             content: "Bridged software with silicon—designing logic in <strong>Verilog HDL</strong>, analyzing <strong>5-stage CPU pipelining, RISC-V/MIPS ISA</strong>, and hardware accelerators across <strong>multicore MESI, GPUs, and TPU arrays</strong>."
         },
         {
-            title: "06. Advanced Machine Learning",
+            title: "06. Advanced Machine Learning & Quantitative Modeling",
             color: "#14b8a6",
-            tag: "From-Scratch ML",
-            content: "Implemented ML algorithms from scratch in <strong>NumPy</strong>—mastering <strong>OLS, GMM clustering, CART decision trees, Time Series ARIMA forecasting</strong>, and statistical <strong>VIF diagnostics</strong>."
+            tag: "From-Scratch ML & Quants",
+            content: "Implemented ML algorithms from scratch in <strong>NumPy</strong>—mastering <strong>OLS, GMM clustering, CART decision trees, Time Series ARIMA forecasting</strong>, and statistical <strong>VIF diagnostics</strong>, applied to institutional <strong>WorldQuant BRAIN Alpha simulation</strong>."
         },
         {
             title: "07. Deep Learning & Neural Systems",
@@ -89,6 +89,10 @@ const About = () => {
                             <div className="quick-stat-item">
                                 <span className="stat-number">10+ Projects</span>
                                 <span className="stat-label">AI & Full-Stack Systems</span>
+                            </div>
+                            <div className="quick-stat-item">
+                                <span className="stat-number">Gold Level</span>
+                                <span className="stat-label">WorldQuant Challenge®</span>
                             </div>
                         </div>
                     </motion.div>

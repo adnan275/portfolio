@@ -25,7 +25,7 @@ const CertificationsPreview = () => {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="heading-lg">Certifications</h2>
-                    <p className="section-subtitle">Credentials from JPMorgan Chase, Oracle, and AWS simulations</p>
+                    <p className="section-subtitle">Credentials from WorldQuant BRAIN, JPMorgan Chase, and Oracle</p>
                 </motion.div>
 
                 <div className="cert-preview-grid">

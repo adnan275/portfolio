@@ -1,0 +1,43 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wq-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00a3ff"/>
+      <stop offset="100%" stop-color="#0052cc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Stylized Geometric Neural Brain -->
+  <g transform="translate(18, 8) scale(0.64)">
+    <!-- Outer brain contour & network paths -->
+    <path d="M 46 8 L 24 24 L 14 46 L 20 72 L 36 92 L 50 96 L 50 8 Z" fill="none" stroke="url(#wq-grad)" stroke-width="3.5" stroke-linejoin="round"/>
+    <path d="M 54 8 L 76 24 L 86 46 L 80 72 L 64 92 L 50 96 L 50 8 Z" fill="none" stroke="url(#wq-grad)" stroke-width="3.5" stroke-linejoin="round"/>
+    
+    <!-- Internal neural pathways -->
+    <path d="M 24 24 L 46 36 L 50 56 L 30 56 L 20 72" fill="none" stroke="#00a3ff" stroke-width="2.5"/>
+    <path d="M 76 24 L 54 36 L 50 56 L 70 56 L 80 72" fill="none" stroke="#00a3ff" stroke-width="2.5"/>
+    
+    <path d="M 46 36 L 30 56 L 46 76 L 50 56" fill="none" stroke="#0052cc" stroke-width="2.5"/>
+    <path d="M 54 36 L 70 56 L 54 76 L 50 56" fill="none" stroke="#0052cc" stroke-width="2.5"/>
+
+    <path d="M 30 56 L 36 92" fill="none" stroke="#0077ff" stroke-width="2.5"/>
+    <path d="M 70 56 L 64 92" fill="none" stroke="#0077ff" stroke-width="2.5"/>
+
+    <!-- Neural Nodes -->
+    <circle cx="46" cy="8" r="4" fill="#0052cc"/>
+    <circle cx="54" cy="8" r="4" fill="#0052cc"/>
+    <circle cx="24" cy="24" r="3.5" fill="#00a3ff"/>
+    <circle cx="76" cy="24" r="3.5" fill="#00a3ff"/>
+    <circle cx="14" cy="46" r="3.5" fill="#00a3ff"/>
+    <circle cx="86" cy="46" r="3.5" fill="#00a3ff"/>
+    <circle cx="50" cy="56" r="4" fill="#00a3ff"/>
+    <circle cx="36" cy="92" r="3" fill="#0052cc"/>
+    <circle cx="64" cy="92" r="3" fill="#0052cc"/>
+    <circle cx="50" cy="96" r="4" fill="#0052cc"/>
+  </g>
+
+  <!-- WorldQuant text -->
+  <text x="50" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="700" fill="#0a192f" text-anchor="middle" letter-spacing="1">WORLDQUANT</text>
+
+  <!-- BRAIN text -->
+  <text x="50" y="91" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="900" fill="#0052cc" text-anchor="middle" letter-spacing="2.5">BRAIN</text>
+</svg>
