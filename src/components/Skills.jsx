@@ -16,18 +16,18 @@ const skillNodes = [
 
     // --- AI & ML Core Sub-skills ---
     { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, persistent checkpointing & human-in-the-loop validation.' },
-    { id: 'langchain', label: 'LangChain & RAG', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'RAG PIPELINE', level: 94, desc: 'Semantic retrieval architectures, dense vector search, hybrid ranking & agent memory.' },
+    { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'RAG & VECTORS', level: 94, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
     { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'FOUNDATION', level: 92, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
-    { id: 'python', label: 'PyTorch & Deep Learning', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'TENSOR ENGINE', level: 95, desc: 'Custom autograd backprop, CNNs, LSTMs, VAEs, LoRA & QLoRA quantization.' },
+    { id: 'python', label: 'Python, FastAPI & PyTorch', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'BACKEND & AI', level: 96, desc: 'Async FastAPI microservices, custom autograd backprop, CNNs, LSTMs, LoRA & QLoRA quantization.' },
     { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
     { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 7, color: '#00f0ff', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
 
     // --- Full-Stack Systems Sub-skills ---
-    { id: 'react', label: 'React 19 & Vite', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'MODERN SPA', level: 96, desc: 'High-performance component trees, custom hooks, atomic state management & SSR pipelines.' },
+    { id: 'react', label: 'React 19 & Next.js', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'FULLSTACK UI', level: 96, desc: 'Next.js App Router, SSR/SSG pipelines, React Server Components, custom hooks & Vite.' },
     { id: 'nodejs', label: 'Node.js & Express', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'HIGH-THROUGHPUT', level: 94, desc: 'Non-blocking event-driven backend services, clustering, stream pipes & async REST APIs.' },
     { id: 'prisma', label: 'Prisma ORM', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'TYPE-SAFE DB', level: 92, desc: 'Schema-driven migrations, declarative relations, connection pooling & auto-generated clients.' },
     { id: 'mysql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'STORAGE LAYER', level: 91, desc: 'B-tree indexing, ACID relational guarantees, aggregation pipelines & sharding strategies.' },
-    { id: 'javascript', label: 'JavaScript (ES6+)', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'RUNTIME CORE', level: 96, desc: 'V8 engine internals, Event Loop microtasks, closures, Web Workers & async generators.' },
+    { id: 'javascript', label: 'TypeScript & JavaScript', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'TYPE-SAFE CORE', level: 96, desc: 'Type-safe interfaces, generics, V8 Event Loop microtasks, closures & Web Workers.' },
     { id: 'tailwind', label: 'Tailwind & Motion', category: 'fs_skill', domain: 'fullstack', radius: 7, color: '#c084fc', tag: 'CYBER UI', level: 94, desc: 'Atomic design tokens, hardware-accelerated animations, responsive glassmorphism & HUDs.' },
 
     // --- Data & Analytics Sub-skills ---
@@ -37,11 +37,11 @@ const skillNodes = [
     { id: 'excel', label: 'Excel & Data Prep', category: 'data_skill', domain: 'data', radius: 7, color: '#ffb703', tag: 'STATISTICS', level: 88, desc: 'Dynamic pivot structures, statistical regression modeling, Power Query transformations.' },
 
     // --- Production Engineering Sub-skills ---
-    { id: 'sysdesign', label: 'System Design', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'DISTRIBUTED', level: 94, desc: 'Microservices architectures, Redis caching layers, load balancers, CDN edge caching & CAP theorem.' },
+    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'DISTRIBUTED ARCH', level: 95, desc: 'Redis distributed caching, microservices architectures, load balancers, CDN edge caching & CAP theorem.' },
     { id: 'docker', label: 'Docker Containers', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'ISOLATION', level: 92, desc: 'Multi-stage container builds, Alpine optimization, compose orchestration & deterministic runs.' },
     { id: 'solid', label: 'OOP & Clean Code', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'PATTERNS', level: 92, desc: 'SOLID principles, design patterns (Factory, Observer, Strategy), dependency injection.' },
     { id: 'jwt', label: 'JWT & Security', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'AUTH / SEC', level: 93, desc: 'Role-Based Access Control (RBAC), token rotation, salted SHA hashing & CSRF/XSS hardening.' },
-    { id: 'git', label: 'Git & CI/CD Pipelines', category: 'tool_skill', domain: 'tools', radius: 7, color: '#34d399', tag: 'DEVOPS', level: 94, desc: 'Branch protections, automated GitHub Actions testing, preview deploy triggers on Vercel.' },
+    { id: 'git', label: 'Git & GitHub Actions', category: 'tool_skill', domain: 'tools', radius: 7, color: '#34d399', tag: 'CI/CD DEVOPS', level: 94, desc: 'Branch protections, automated GitHub Actions testing, preview deploy triggers on Vercel.' },
 
     // --- Computer Networks Sub-skills ---
     { id: 'vpc', label: 'AWS VPC & Subnets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'CLOUD NETWORK', level: 92, desc: 'CIDR subnetting, Internet Gateways, NAT routing tables & multi-tier isolated zones.' },
