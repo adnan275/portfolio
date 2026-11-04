@@ -153,34 +153,34 @@ const Skills = () => {
                 tools: { x: 0.74, y: 0.68 },
                 networking: { x: 0.50, y: 0.80 },
 
-                // AI Sub-nodes (Top-Left Quadrant - Well spaced)
-                langgraph: { x: 0.12, y: 0.18 },
-                langchain: { x: 0.10, y: 0.36 },
-                llms: { x: 0.26, y: 0.14 },
-                python: { x: 0.15, y: 0.52 },
+                // AI Sub-nodes (Top-Left Quadrant - Clear of bottom)
+                langgraph: { x: 0.13, y: 0.15 },
+                langchain: { x: 0.10, y: 0.28 },
+                llms: { x: 0.26, y: 0.12 },
+                python: { x: 0.14, y: 0.42 }, // PyTorch & DL safely positioned at y: 0.42
                 groq: { x: 0.38, y: 0.18 },
-                streamlit: { x: 0.34, y: 0.25 },
+                streamlit: { x: 0.33, y: 0.24 },
 
-                // Full-Stack Sub-nodes (Top-Right Quadrant - Well spaced)
-                react: { x: 0.88, y: 0.18 },
-                nodejs: { x: 0.74, y: 0.14 },
-                prisma: { x: 0.90, y: 0.36 },
+                // Full-Stack Sub-nodes (Top-Right Quadrant - Clear of bottom)
+                react: { x: 0.87, y: 0.15 },
+                nodejs: { x: 0.74, y: 0.12 },
+                prisma: { x: 0.90, y: 0.28 },
                 mysql: { x: 0.62, y: 0.18 },
-                javascript: { x: 0.85, y: 0.52 },
-                tailwind: { x: 0.66, y: 0.25 },
+                javascript: { x: 0.86, y: 0.42 }, // JS safely positioned at y: 0.42
+                tailwind: { x: 0.67, y: 0.24 },
 
-                // Data Sub-nodes (Bottom-Left Quadrant - Well spaced)
-                sql: { x: 0.10, y: 0.66 },
-                tableau: { x: 0.28, y: 0.88 },
-                pandas: { x: 0.14, y: 0.82 },
-                excel: { x: 0.10, y: 0.52 },
+                // Data Sub-nodes (Bottom-Left Quadrant - Well separated below y: 0.56)
+                excel: { x: 0.10, y: 0.58 }, // Excel positioned at y: 0.58 (115px below PyTorch)
+                sql: { x: 0.12, y: 0.70 },
+                pandas: { x: 0.16, y: 0.82 },
+                tableau: { x: 0.30, y: 0.88 },
 
-                // Production Sub-nodes (Bottom-Right Quadrant - Well spaced)
-                sysdesign: { x: 0.90, y: 0.66 },
-                docker: { x: 0.72, y: 0.88 },
-                solid: { x: 0.86, y: 0.82 },
-                jwt: { x: 0.90, y: 0.52 },
-                git: { x: 0.82, y: 0.74 },
+                // Production Sub-nodes (Bottom-Right Quadrant - Well separated below y: 0.56)
+                jwt: { x: 0.90, y: 0.58 }, // JWT positioned at y: 0.58 (115px below JavaScript)
+                sysdesign: { x: 0.88, y: 0.70 },
+                git: { x: 0.82, y: 0.82 },
+                solid: { x: 0.70, y: 0.86 },
+                docker: { x: 0.78, y: 0.92 },
 
                 // Networking Sub-nodes (Bottom-Center - Well spaced)
                 vpc: { x: 0.38, y: 0.92 },
