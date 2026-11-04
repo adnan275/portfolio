@@ -109,6 +109,7 @@ const Skills = () => {
     const [activeDomain, setActiveDomain] = useState('all');
     const [selectedSkill, setSelectedSkill] = useState(null);
     const activeDomainRef = useRef('all');
+    const selectedSkillRef = useRef(null);
 
     useEffect(() => {
         activeDomainRef.current = activeDomain;
@@ -116,6 +117,7 @@ const Skills = () => {
 
     const handleDomainToggle = (domainId) => {
         setActiveDomain(domainId);
+        selectedSkillRef.current = null;
         setSelectedSkill(null);
     };
 
@@ -234,6 +236,27 @@ const Skills = () => {
                 }
                 hoveredId = found ? found.id : null;
                 canvas.style.cursor = found ? 'pointer' : 'default';
+
+                // Instant zero-delay hover telemetry inspector
+                if (found && found.desc) {
+                    if (selectedSkillRef.current?.id !== found.id) {
+                        selectedSkillRef.current = found;
+                        setSelectedSkill(found);
+                    }
+                } else if (!found) {
+                    if (selectedSkillRef.current !== null) {
+                        selectedSkillRef.current = null;
+                        setSelectedSkill(null);
+                    }
+                }
+            }
+        };
+
+        const handleMouseLeave = () => {
+            hoveredId = null;
+            if (selectedSkillRef.current !== null) {
+                selectedSkillRef.current = null;
+                setSelectedSkill(null);
             }
         };
 
@@ -245,7 +268,7 @@ const Skills = () => {
                 if (node.opacity < 0.2) continue;
                 const dx = mouseX - node.x;
                 const dy = mouseY - node.y;
-                if (Math.hypot(dx, dy) < node.radius + 12) {
+                if (Math.hypot(dx, dy) < node.radius + 14) {
                     draggedNode = node;
                     break;
                 }
@@ -276,16 +299,20 @@ const Skills = () => {
                         const next = activeDomainRef.current === clickedNode.id ? 'all' : clickedNode.id;
                         setActiveDomain(next);
                         activeDomainRef.current = next;
+                        selectedSkillRef.current = null;
                         setSelectedSkill(null);
                     } else if (clickedNode.id === 'adnan') {
                         setActiveDomain('all');
                         activeDomainRef.current = 'all';
+                        selectedSkillRef.current = null;
                         setSelectedSkill(null);
                     } else if (clickedNode.desc) {
+                        selectedSkillRef.current = clickedNode;
                         setSelectedSkill(clickedNode);
                     }
                 } else {
-                    // Clicked on blank space on canvas - dismiss details!
+                    // Clicked on blank space on canvas
+                    selectedSkillRef.current = null;
                     setSelectedSkill(null);
                 }
             }
@@ -314,6 +341,7 @@ const Skills = () => {
         };
 
         canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mouseleave', handleMouseLeave);
         canvas.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mouseup', handleMouseUp);
         canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
@@ -520,6 +548,7 @@ const Skills = () => {
         return () => {
             window.removeEventListener('resize', resize);
             canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mouseleave', handleMouseLeave);
             canvas.removeEventListener('mousedown', handleMouseDown);
             window.removeEventListener('mouseup', handleMouseUp);
             canvas.removeEventListener('touchstart', handleTouchStart);
@@ -580,27 +609,22 @@ const Skills = () => {
                         <span className="meta-code" style={{ color: activeDomainMeta.color }}>
                             {' '}SKILLS_NEURAL_TOPOLOGY_V2 // {activeDomainMeta.label.toUpperCase()}
                         </span>
-                        <span className="meta-instruction"> — Click domain pillars or chips above to filter</span>
+                        <span className="meta-instruction"> — Hover over any node or click chips above to filter</span>
                     </div>
 
                     <canvas ref={canvasRef} className="graph-canvas" />
                 </div>
 
-                {/* Telemetry HUD Dock (Shows strictly on click; dismisses on blank space or close button) */}
-                <AnimatePresence>
-                    {selectedSkill && selectedSkill.desc && (
-                        <motion.div
-                            key={selectedSkill.id}
-                            className="skills-telemetry-dock glass-panel"
-                            initial={{ opacity: 0, y: 14, scale: 0.98 }}
-                            animate={{ opacity: 1, y: 0, scale: 1 }}
-                            exit={{ opacity: 0, y: 10, scale: 0.98 }}
-                            transition={{ duration: 0.2 }}
-                            style={{
-                                '--dock-accent': selectedSkill.color,
-                                '--dock-glow': `${selectedSkill.color}25`
-                            }}
-                        >
+                {/* Telemetry HUD Dock (Instant Zero-Delay Hover Telemetry) */}
+                <div
+                    className={`skills-telemetry-dock glass-panel ${selectedSkill && selectedSkill.desc ? 'active' : 'idle'}`}
+                    style={{
+                        '--dock-accent': selectedSkill ? selectedSkill.color : '#00f0ff',
+                        '--dock-glow': selectedSkill ? `${selectedSkill.color}25` : 'transparent'
+                    }}
+                >
+                    {selectedSkill && selectedSkill.desc ? (
+                        <>
                             <div className="dock-left">
                                 <span className="dock-tag" style={{ color: selectedSkill.color, borderColor: `${selectedSkill.color}66` }}>
                                     {selectedSkill.tag || 'SPEC'}
@@ -628,15 +652,23 @@ const Skills = () => {
 
                             <button
                                 className="dock-close-btn"
-                                onClick={() => setSelectedSkill(null)}
+                                onClick={() => {
+                                    selectedSkillRef.current = null;
+                                    setSelectedSkill(null);
+                                }}
                                 aria-label="Close details"
                                 title="Close"
                             >
                                 ✕
                             </button>
-                        </motion.div>
+                        </>
+                    ) : (
+                        <div className="dock-placeholder">
+                            <span className="placeholder-radar-dot"></span>
+                            <span className="placeholder-text">// HOVER OVER ANY SKILL NODE TO INSPECT ARCHITECTURAL TELEMETRY</span>
+                        </div>
                     )}
-                </AnimatePresence>
+                </div>
             </div>
         </section>
     );
