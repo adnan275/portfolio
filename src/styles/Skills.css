@@ -529,16 +529,40 @@
 }
 
 @media (max-width: 600px) {
+    .skills-filter-toolbar {
+        gap: 0.4rem;
+        margin-bottom: 1rem;
+        padding: 0 0.25rem;
+    }
+
     .filter-chip {
-        padding: 0.45rem 0.85rem;
-        font-size: 0.74rem;
+        padding: 0.38rem 0.72rem;
+        font-size: 0.72rem;
+        gap: 0.45rem;
+    }
+
+    .chip-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .chip-count {
+        font-size: 0.64rem;
+        padding: 0.08rem 0.35rem;
+    }
+
+    .skills-telemetry-dock {
+        padding: 0.85rem 1rem;
+        border-radius: 14px;
+        gap: 0.65rem;
     }
 
     .dock-title {
-        font-size: 1.02rem;
+        font-size: 0.98rem;
     }
 
     .dock-desc {
-        font-size: 0.82rem;
+        font-size: 0.8rem;
+        line-height: 1.45;
     }
 }

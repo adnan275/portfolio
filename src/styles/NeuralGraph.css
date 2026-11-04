@@ -195,53 +195,46 @@
 }
 
 @media (max-width: 768px) {
+    .neural-graph-section {
+        padding: 4rem 0;
+    }
+
     .graph-container {
-        height: 540px;
+        height: 520px;
     }
 
     .graph-system-meta {
-        top: 1rem;
-        left: 1rem;
-        font-size: 0.7rem;
-    }
-
-    .graph-legend-card {
         top: 0.85rem;
-        right: 0.85rem;
-        padding: 0.65rem 0.85rem;
-        gap: 0.45rem;
-    }
-
-    .legend-label {
-        font-size: 0.7rem;
+        left: 1rem;
+        font-size: 0.68rem;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 580px) {
     .graph-container {
         height: 480px;
+        border-radius: 18px;
+    }
+
+    .meta-instruction {
+        display: none;
+    }
+
+    .graph-system-meta {
+        top: 0.7rem;
+        left: 0.8rem;
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .graph-container {
+        height: 450px;
         border-radius: 16px;
     }
 
     .graph-system-meta {
-        display: none; /* Hide system tag on ultra-small phones to maximize canvas clarity */
-    }
-
-    .graph-legend-card {
-        top: 0.65rem;
-        right: 0.65rem;
-        padding: 0.45rem 0.65rem;
-        gap: 0.3rem;
-        border-radius: 10px;
-    }
-
-    .legend-dot {
-        width: 6px;
-        height: 6px;
-    }
-
-    .legend-label {
-        font-size: 0.62rem;
+        display: none; /* Hide system tag on ultra-compact phones to give maximum room to nodes */
     }
 }
 

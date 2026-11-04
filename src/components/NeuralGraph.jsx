@@ -481,7 +481,12 @@ const NeuralGraph = () => {
             };
 
             const target = coordMap[n.id] || { x: 0.5, y: 0.5 };
-            const x = width * target.x;
+            let tx = target.x;
+            // On narrower screens, compress X slightly towards center to avoid edge text clipping
+            if (width < 580 && tx !== 0.5) {
+                tx = 0.5 + (tx - 0.5) * 0.86;
+            }
+            const x = width * tx;
             const y = height * target.y;
 
             return {
@@ -578,9 +583,33 @@ const NeuralGraph = () => {
             draggedNode = null;
         };
 
+        const handleTouchStart = (e) => {
+            if (e.touches.length === 1) {
+                const t = e.touches[0];
+                handleMouseDown({ clientX: t.clientX, clientY: t.clientY });
+            }
+        };
+
+        const handleTouchMove = (e) => {
+            if (e.touches.length === 1) {
+                const t = e.touches[0];
+                handleMouseMove({ clientX: t.clientX, clientY: t.clientY });
+            }
+        };
+
+        const handleTouchEnd = (e) => {
+            if (e.changedTouches.length === 1) {
+                const t = e.changedTouches[0];
+                handleMouseUp({ clientX: t.clientX, clientY: t.clientY });
+            }
+        };
+
         canvas.addEventListener('mousemove', handleMouseMove);
         canvas.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mouseup', handleMouseUp);
+        canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
+        canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         let time = 0;
 
@@ -759,13 +788,15 @@ const NeuralGraph = () => {
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
-                // Clean Monospace Text Label
-                const fontSize = width < 520 ? 9.5 : 11;
+                // Clean Monospace Text Label (Responsive font scaling)
+                const isSmallPhone = width < 420;
+                const isTablet = width < 560;
+                const fontSize = isSmallPhone ? 7.6 : (isTablet ? 8.8 : 10.5);
                 ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
 
-                const labelY = node.y + r + 6;
+                const labelY = node.y + r + (isSmallPhone ? 4 : 6);
 
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 8;
@@ -788,6 +819,9 @@ const NeuralGraph = () => {
             canvas.removeEventListener('mousemove', handleMouseMove);
             canvas.removeEventListener('mousedown', handleMouseDown);
             window.removeEventListener('mouseup', handleMouseUp);
+            canvas.removeEventListener('touchstart', handleTouchStart);
+            canvas.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
             cancelAnimationFrame(animationFrameId);
         };
     }, []);

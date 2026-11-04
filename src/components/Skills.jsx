@@ -190,7 +190,12 @@ const Skills = () => {
             };
 
             const target = coordMap[n.id] || { x: 0.5, y: 0.5 };
-            const x = width * target.x;
+            let tx = target.x;
+            // On narrower screens, gently compress X towards center so edge labels never clip off canvas
+            if (width < 580 && tx !== 0.5) {
+                tx = 0.5 + (tx - 0.5) * 0.86;
+            }
+            const x = width * tx;
             const y = height * target.y;
 
             return {
@@ -284,9 +289,33 @@ const Skills = () => {
             draggedNode = null;
         };
 
+        const handleTouchStart = (e) => {
+            if (e.touches.length === 1) {
+                const t = e.touches[0];
+                handleMouseDown({ clientX: t.clientX, clientY: t.clientY });
+            }
+        };
+
+        const handleTouchMove = (e) => {
+            if (e.touches.length === 1) {
+                const t = e.touches[0];
+                handleMouseMove({ clientX: t.clientX, clientY: t.clientY });
+            }
+        };
+
+        const handleTouchEnd = (e) => {
+            if (e.changedTouches.length === 1) {
+                const t = e.changedTouches[0];
+                handleMouseUp({ clientX: t.clientX, clientY: t.clientY });
+            }
+        };
+
         canvas.addEventListener('mousemove', handleMouseMove);
         canvas.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mouseup', handleMouseUp);
+        canvas.addEventListener('touchstart', handleTouchStart, { passive: true });
+        canvas.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         let time = 0;
 
@@ -460,13 +489,15 @@ const Skills = () => {
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
-                // Monospace Text Label
-                const fontSize = width < 520 ? 9 : 10.5;
+                // Monospace Text Label (Scaled smoothly for small phones & tablets)
+                const isSmallPhone = width < 420;
+                const isTablet = width < 560;
+                const fontSize = isSmallPhone ? 7.6 : (isTablet ? 8.8 : 10.5);
                 ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
 
-                const labelY = node.y + r + 6;
+                const labelY = node.y + r + (isSmallPhone ? 4 : 6);
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 8;
                 ctx.fillStyle = (isHovered || isCore || isSelectedDomain) ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
@@ -488,6 +519,9 @@ const Skills = () => {
             canvas.removeEventListener('mousemove', handleMouseMove);
             canvas.removeEventListener('mousedown', handleMouseDown);
             window.removeEventListener('mouseup', handleMouseUp);
+            canvas.removeEventListener('touchstart', handleTouchStart);
+            canvas.removeEventListener('touchmove', handleTouchMove);
+            window.removeEventListener('touchend', handleTouchEnd);
             cancelAnimationFrame(animId);
         };
     }, []);
