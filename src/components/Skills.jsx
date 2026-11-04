@@ -105,22 +105,18 @@ const domainFilterList = [
 
 const Skills = () => {
     const canvasRef = useRef(null);
-    // By default loads with 'all' domains visible
+    // By default loads with 'all' domains visible; telemetry dock is hidden until a skill is clicked
     const [activeDomain, setActiveDomain] = useState('all');
-    const [selectedSkill, setSelectedSkill] = useState(skillNodes.find(s => s.id === 'langgraph'));
+    const [selectedSkill, setSelectedSkill] = useState(null);
     const activeDomainRef = useRef('all');
 
     useEffect(() => {
         activeDomainRef.current = activeDomain;
-        // Auto-select first skill of active domain for the dock
-        if (activeDomain !== 'all') {
-            const firstOfDomain = skillNodes.find(s => s.domain === activeDomain);
-            if (firstOfDomain) setSelectedSkill(firstOfDomain);
-        }
     }, [activeDomain]);
 
     const handleDomainToggle = (domainId) => {
         setActiveDomain(domainId);
+        setSelectedSkill(null);
     };
 
     useEffect(() => {
@@ -238,9 +234,6 @@ const Skills = () => {
                 }
                 hoveredId = found ? found.id : null;
                 canvas.style.cursor = found ? 'pointer' : 'default';
-                if (found && found.desc) {
-                    setSelectedSkill(found);
-                }
             }
         };
 
@@ -267,23 +260,33 @@ const Skills = () => {
                 const clickX = e.clientX - rect.left;
                 const clickY = e.clientY - rect.top;
 
+                let clickedNode = null;
                 for (const node of nodes) {
                     if (node.opacity < 0.2) continue;
                     const dx = clickX - node.x;
                     const dy = clickY - node.y;
                     if (Math.hypot(dx, dy) < node.radius + 14) {
-                        if (node.category === 'pillar') {
-                            const next = activeDomainRef.current === node.id ? 'all' : node.id;
-                            setActiveDomain(next);
-                            activeDomainRef.current = next;
-                        } else if (node.id === 'adnan') {
-                            setActiveDomain('all');
-                            activeDomainRef.current = 'all';
-                        } else if (node.desc) {
-                            setSelectedSkill(node);
-                        }
+                        clickedNode = node;
                         break;
                     }
+                }
+
+                if (clickedNode) {
+                    if (clickedNode.category === 'pillar') {
+                        const next = activeDomainRef.current === clickedNode.id ? 'all' : clickedNode.id;
+                        setActiveDomain(next);
+                        activeDomainRef.current = next;
+                        setSelectedSkill(null);
+                    } else if (clickedNode.id === 'adnan') {
+                        setActiveDomain('all');
+                        activeDomainRef.current = 'all';
+                        setSelectedSkill(null);
+                    } else if (clickedNode.desc) {
+                        setSelectedSkill(clickedNode);
+                    }
+                } else {
+                    // Clicked on blank space on canvas - dismiss details!
+                    setSelectedSkill(null);
                 }
             }
             draggedNode = null;
@@ -583,45 +586,57 @@ const Skills = () => {
                     <canvas ref={canvasRef} className="graph-canvas" />
                 </div>
 
-                {/* Telemetry HUD Dock (Positioned BELOW the Canvas - Zero Node Collision) */}
-                {selectedSkill && selectedSkill.desc && (
-                    <motion.div
-                        key={selectedSkill.id}
-                        className="skills-telemetry-dock glass-panel"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.2 }}
-                        style={{
-                            '--dock-accent': selectedSkill.color,
-                            '--dock-glow': `${selectedSkill.color}25`
-                        }}
-                    >
-                        <div className="dock-left">
-                            <span className="dock-tag" style={{ color: selectedSkill.color, borderColor: `${selectedSkill.color}66` }}>
-                                {selectedSkill.tag || 'SPEC'}
-                            </span>
-                            <div className="dock-title-wrap">
-                                <h4 className="dock-title">{selectedSkill.label}</h4>
-                                <span className="dock-domain">{selectedSkill.domain?.toUpperCase() || 'CORE'} DOMAIN</span>
+                {/* Telemetry HUD Dock (Shows strictly on click; dismisses on blank space or close button) */}
+                <AnimatePresence>
+                    {selectedSkill && selectedSkill.desc && (
+                        <motion.div
+                            key={selectedSkill.id}
+                            className="skills-telemetry-dock glass-panel"
+                            initial={{ opacity: 0, y: 14, scale: 0.98 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                            transition={{ duration: 0.2 }}
+                            style={{
+                                '--dock-accent': selectedSkill.color,
+                                '--dock-glow': `${selectedSkill.color}25`
+                            }}
+                        >
+                            <div className="dock-left">
+                                <span className="dock-tag" style={{ color: selectedSkill.color, borderColor: `${selectedSkill.color}66` }}>
+                                    {selectedSkill.tag || 'SPEC'}
+                                </span>
+                                <div className="dock-title-wrap">
+                                    <h4 className="dock-title">{selectedSkill.label}</h4>
+                                    <span className="dock-domain">{selectedSkill.domain?.toUpperCase() || 'CORE'} DOMAIN</span>
+                                </div>
                             </div>
-                        </div>
 
-                        <p className="dock-desc">{selectedSkill.desc}</p>
+                            <p className="dock-desc">{selectedSkill.desc}</p>
 
-                        <div className="dock-right">
-                            <span className="dock-level-text">{selectedSkill.level || 90}% PROFICIENCY</span>
-                            <div className="dock-meter-track">
-                                <div
-                                    className="dock-meter-fill"
-                                    style={{
-                                        width: `${selectedSkill.level || 90}%`,
-                                        background: `linear-gradient(90deg, ${selectedSkill.color} 0%, #ffffff 100%)`
-                                    }}
-                                ></div>
+                            <div className="dock-right">
+                                <span className="dock-level-text">{selectedSkill.level || 90}% PROFICIENCY</span>
+                                <div className="dock-meter-track">
+                                    <div
+                                        className="dock-meter-fill"
+                                        style={{
+                                            width: `${selectedSkill.level || 90}%`,
+                                            background: `linear-gradient(90deg, ${selectedSkill.color} 0%, #ffffff 100%)`
+                                        }}
+                                    ></div>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
-                )}
+
+                            <button
+                                className="dock-close-btn"
+                                onClick={() => setSelectedSkill(null)}
+                                aria-label="Close details"
+                                title="Close"
+                            >
+                                ✕
+                            </button>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );

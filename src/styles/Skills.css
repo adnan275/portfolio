@@ -511,6 +511,35 @@
     transition: width 0.4s ease;
 }
 
+.dock-close-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.65);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.78rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    margin-left: 0.25rem;
+    outline: none;
+}
+
+.dock-close-btn:hover {
+    background: rgba(255, 255, 255, 0.16);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.dock-close-btn:active {
+    transform: scale(0.92);
+}
+
 @media (max-width: 900px) {
     .skills-telemetry-dock {
         flex-direction: column;
