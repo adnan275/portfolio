@@ -45,6 +45,7 @@ const initialNodes = [
     // AI Pillar Sub-nodes (Clickable Projects)
     {
         id: 'sentinel',
+        domain: 'ai',
         label: 'Sentinel AI',
         category: 'project',
         color: '#38bdf8',
@@ -387,10 +388,45 @@ const initialLinks = [
     { source: 'projects', target: 'rps' }
 ];
 
+const nodeDomainMap = {
+    sentinel: 'ai',
+    neurax: 'ai',
+    ev_agent: 'ai',
+    presento: 'fullstack',
+    gigflow: 'fullstack',
+    zync: 'fullstack',
+    taskly: 'fullstack',
+    capstone: 'fullstack',
+    bi_portfolio: 'data',
+    socratic: 'data',
+    livesitter: 'projects',
+    qr: 'projects',
+    password: 'projects',
+    rps: 'projects'
+};
+
+const domainMeta = {
+    all: { label: 'ALL DOMAINS', color: '#ffffff' },
+    ai: { label: 'AI & ML CORE', color: '#00f0ff', count: 3 },
+    fullstack: { label: 'FULL-STACK SYSTEMS', color: '#c084fc', count: 5 },
+    data: { label: 'DATA & ANALYTICS', color: '#fbbf24', count: 2 },
+    projects: { label: 'PRODUCTION ENGINEERING', color: '#34d399', count: 4 }
+};
+
 const NeuralGraph = () => {
     const canvasRef = useRef(null);
     const [selectedProject, setSelectedProject] = useState(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [activeDomain, setActiveDomain] = useState('all');
+    const activeDomainRef = useRef('all');
+
+    useEffect(() => {
+        activeDomainRef.current = activeDomain;
+    }, [activeDomain]);
+
+    const handleDomainToggle = (domainId) => {
+        setActiveDomain(prev => (prev === domainId && domainId !== 'all') ? 'all' : domainId);
+    };
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -402,6 +438,7 @@ const NeuralGraph = () => {
             const rect = canvas.parentElement.getBoundingClientRect();
             canvas.width = rect.width * window.devicePixelRatio;
             canvas.height = rect.height * window.devicePixelRatio;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
             ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
         };
         resizeCanvas();
@@ -453,6 +490,8 @@ const NeuralGraph = () => {
                 y,
                 baseX: x,
                 baseY: y,
+                opacity: 1,
+                scale: 1,
                 angle: Math.random() * Math.PI * 2,
                 speed: 0.0015 + Math.random() * 0.0015
             };
@@ -475,15 +514,16 @@ const NeuralGraph = () => {
             } else {
                 let found = null;
                 for (const node of nodes) {
+                    if (node.opacity < 0.2) continue; // Skip collapsed nodes
                     const dx = mouseX - node.x;
                     const dy = mouseY - node.y;
-                    if (Math.sqrt(dx * dx + dy * dy) < node.radius + 12) {
+                    if (Math.sqrt(dx * dx + dy * dy) < node.radius + 14) {
                         found = node;
                         break;
                     }
                 }
                 hoveredId = found ? found.id : null;
-                const isClickable = found && found.category === 'project';
+                const isClickable = found && (found.category === 'project' || found.category === 'pillar' || found.id === 'adnan');
                 canvas.style.cursor = isClickable ? 'pointer' : 'default';
             }
         };
@@ -493,9 +533,10 @@ const NeuralGraph = () => {
             mouseDownPos = { x: e.clientX, y: e.clientY };
 
             for (const node of nodes) {
+                if (node.opacity < 0.2) continue;
                 const dx = mouseX - node.x;
                 const dy = mouseY - node.y;
-                if (Math.sqrt(dx * dx + dy * dy) < node.radius + 12) {
+                if (Math.sqrt(dx * dx + dy * dy) < node.radius + 14) {
                     draggedNode = node;
                     break;
                 }
@@ -512,13 +553,22 @@ const NeuralGraph = () => {
                 const clickY = e.clientY - rect.top;
 
                 for (const node of nodes) {
+                    if (node.opacity < 0.2) continue;
                     const dx = clickX - node.x;
                     const dy = clickY - node.y;
                     if (Math.sqrt(dx * dx + dy * dy) < node.radius + 14) {
-                        // Strictly only open modal for actual projects (category === 'project')
                         if (node.category === 'project') {
                             setSelectedProject(node);
                             setIsModalOpen(true);
+                        } else if (node.category === 'pillar') {
+                            // Toggle domain on pillar click
+                            const next = activeDomainRef.current === node.id ? 'all' : node.id;
+                            setActiveDomain(next);
+                            activeDomainRef.current = next;
+                        } else if (node.id === 'adnan') {
+                            // Reset to all on center click
+                            setActiveDomain('all');
+                            activeDomainRef.current = 'all';
                         }
                         break;
                     }
@@ -538,7 +588,20 @@ const NeuralGraph = () => {
             time += 0.01;
             ctx.clearRect(0, 0, width, height);
 
+            const curDomain = activeDomainRef.current;
+
+            // Update node visibility, opacity & physics positions
             nodes.forEach((node) => {
+                const isDomainMatch = curDomain === 'all' || 
+                                      node.id === 'adnan' || 
+                                      node.category === 'pillar' || 
+                                      nodeDomainMap[node.id] === curDomain;
+
+                const targetOpacity = isDomainMatch ? 1 : 0;
+                const targetScale = isDomainMatch ? 1 : 0.1;
+                node.opacity += (targetOpacity - node.opacity) * 0.16;
+                node.scale += (targetScale - node.scale) * 0.16;
+
                 if (node !== draggedNode) {
                     node.angle += node.speed;
                     node.x = node.baseX + Math.sin(node.angle * 1.2) * 6;
@@ -546,7 +609,7 @@ const NeuralGraph = () => {
                 }
             });
 
-            // Calculate full network branch path for hovered/selected node
+            // Calculate active links
             const activeLinkIndices = new Set();
             if (hoveredId) {
                 initialLinks.forEach((link, idx) => {
@@ -567,29 +630,36 @@ const NeuralGraph = () => {
                 });
             }
 
+            // Draw Links
             initialLinks.forEach((link, idx) => {
                 const s = nodes.find(n => n.id === link.source);
                 const t = nodes.find(n => n.id === link.target);
                 if (!s || !t) return;
 
+                const linkOpacity = Math.min(s.opacity, t.opacity);
+                if (linkOpacity < 0.04) return;
+
                 const isCoreLink = s.id === 'adnan' || t.id === 'adnan';
+                const isDomainBranch = curDomain !== 'all' && (s.id === curDomain || t.id === curDomain);
                 const isHoveredPath = activeLinkIndices.has(idx);
-                const isLinkActive = isCoreLink || isHoveredPath;
+                const isLinkActive = isCoreLink || isDomainBranch || isHoveredPath;
 
-                const activeColor = isHoveredPath ? (s.color === '#ffffff' ? t.color : s.color) : s.color;
+                const activeColor = isHoveredPath ? (s.color === '#ffffff' ? t.color : s.color) : (isDomainBranch ? (t.color || s.color) : s.color);
 
+                ctx.save();
+                ctx.globalAlpha = linkOpacity;
                 ctx.beginPath();
                 ctx.moveTo(s.x, s.y);
                 ctx.lineTo(t.x, t.y);
 
-                if (isHoveredPath) {
+                if (isHoveredPath || isDomainBranch) {
                     ctx.strokeStyle = activeColor;
-                    ctx.lineWidth = 2.8;
+                    ctx.lineWidth = 2.6;
                     ctx.shadowColor = activeColor;
-                    ctx.shadowBlur = 18;
+                    ctx.shadowBlur = 16;
                 } else if (isCoreLink) {
-                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
-                    ctx.lineWidth = 1.5;
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.24)';
+                    ctx.lineWidth = 1.6;
                     ctx.shadowColor = '#ffffff';
                     ctx.shadowBlur = 8;
                 } else {
@@ -600,8 +670,8 @@ const NeuralGraph = () => {
                 ctx.stroke();
                 ctx.shadowBlur = 0;
 
-                // Glowing Action Potential Impulse Signal along Active Path
-                if (isLinkActive) {
+                // Glowing Action Potential Impulse Signal
+                if (isLinkActive && linkOpacity > 0.4) {
                     const speedMultiplier = isHoveredPath ? 0.35 : 0.22;
                     const progress = (time * speedMultiplier + (s.x % 7)) % 1;
                     const px = s.x + (t.x - s.x) * progress;
@@ -614,7 +684,7 @@ const NeuralGraph = () => {
 
                     const grad = ctx.createLinearGradient(tx, ty, px, py);
                     grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
-                    grad.addColorStop(1, isHoveredPath ? activeColor : (s.color || '#ffffff'));
+                    grad.addColorStop(1, (isHoveredPath || isDomainBranch) ? activeColor : (s.color || '#ffffff'));
 
                     ctx.beginPath();
                     ctx.moveTo(tx, ty);
@@ -627,64 +697,85 @@ const NeuralGraph = () => {
                     ctx.beginPath();
                     ctx.arc(px, py, isHoveredPath ? 4.5 : 3, 0, Math.PI * 2);
                     ctx.fillStyle = '#ffffff';
-                    ctx.shadowColor = isHoveredPath ? activeColor : (s.color || '#ffffff');
+                    ctx.shadowColor = (isHoveredPath || isDomainBranch) ? activeColor : (s.color || '#ffffff');
                     ctx.shadowBlur = isHoveredPath ? 20 : 14;
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 }
+                ctx.restore();
             });
 
+            // Draw Nodes
             nodes.forEach((node) => {
+                if (node.opacity < 0.05) return;
+
+                ctx.save();
+                ctx.globalAlpha = node.opacity;
+
                 const isHovered = node.id === hoveredId;
                 const isCore = node.id === 'adnan';
+                const isPillar = node.category === 'pillar';
+                const isSelectedDomain = curDomain === node.id;
+                const r = node.radius * Math.max(0.1, node.scale);
 
                 // Continuous Pulsing White Halo Ring for Central Node
                 if (isCore) {
-                    const pulseRadius = node.radius + 10 + Math.sin(time * 3) * 4;
+                    const pulseRadius = r + 10 + Math.sin(time * 3) * 4;
                     ctx.beginPath();
                     ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2);
                     ctx.strokeStyle = '#ffffff';
                     ctx.lineWidth = 1.8;
                     ctx.shadowColor = '#ffffff';
                     ctx.shadowBlur = 18;
-                    ctx.globalAlpha = 0.75;
+                    ctx.globalAlpha = 0.75 * node.opacity;
                     ctx.stroke();
-                    ctx.globalAlpha = 1;
+                    ctx.globalAlpha = node.opacity;
                     ctx.shadowBlur = 0;
-                } else if (node.category === 'pillar' || isHovered) {
-                    // Outer Concentric Ring for Pillars & Hovered Nodes
+                } else if (isPillar) {
+                    // Outer Concentric Ring for Pillars
+                    const ringRadius = r + (isSelectedDomain ? (14 + Math.sin(time * 4) * 3) : (isHovered ? 12 : 8));
                     ctx.beginPath();
-                    ctx.arc(node.x, node.y, node.radius + (isHovered ? 14 : 10), 0, Math.PI * 2);
+                    ctx.arc(node.x, node.y, ringRadius, 0, Math.PI * 2);
                     ctx.strokeStyle = node.color;
-                    ctx.lineWidth = isHovered ? 2 : 1;
-                    ctx.globalAlpha = isHovered ? 0.8 : 0.35;
+                    ctx.lineWidth = isSelectedDomain ? 2.5 : (isHovered ? 2 : 1.2);
+                    ctx.shadowColor = node.color;
+                    ctx.shadowBlur = isSelectedDomain ? 20 : 0;
                     ctx.stroke();
-                    ctx.globalAlpha = 1;
+                    ctx.shadowBlur = 0;
+                } else if (isHovered) {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, r + 10, 0, Math.PI * 2);
+                    ctx.strokeStyle = node.color;
+                    ctx.lineWidth = 1.8;
+                    ctx.stroke();
                 }
 
                 // Inner Glowing Circle
                 ctx.beginPath();
-                ctx.arc(node.x, node.y, node.radius / (isCore ? 1.5 : 1.8), 0, Math.PI * 2);
+                ctx.arc(node.x, node.y, r / (isCore ? 1.5 : 1.8), 0, Math.PI * 2);
                 ctx.fillStyle = node.color;
                 ctx.shadowColor = node.color;
-                ctx.shadowBlur = isCore ? 20 : (isHovered ? 24 : 8);
+                ctx.shadowBlur = isCore ? 20 : (isSelectedDomain ? 28 : (isHovered ? 24 : 10));
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
-                // Clean Monospace Text Label (Responsive font scaling)
+                // Clean Monospace Text Label
                 const fontSize = width < 520 ? 9.5 : 11;
-                ctx.font = `${isHovered || isCore ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
+                ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
 
-                const labelY = node.y + node.radius + 6;
+                const labelY = node.y + r + 6;
 
-                // Subtle text shadow for crisp legibility
                 ctx.shadowColor = '#000000';
                 ctx.shadowBlur = 8;
-                ctx.fillStyle = isHovered || isCore ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
-                ctx.fillText(node.label, node.x, labelY);
+                ctx.fillStyle = (isHovered || isCore || isSelectedDomain) ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
+                
+                const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
+                ctx.fillText(labelText, node.x, labelY);
                 ctx.shadowBlur = 0;
+
+                ctx.restore();
             });
 
             animationFrameId = requestAnimationFrame(render);
@@ -711,36 +802,71 @@ const NeuralGraph = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="heading-lg">Interactive Project Architecture</h2>
+                    <span className="neural-meta-pill">
+                        <span className="pill-pulse-dot"></span>
+                        Interactive Domain Topology
+                    </span>
+                    <h2 className="heading-lg">System Architecture & Projects</h2>
                     <p className="neural-subtitle">
-                        Neural topology mapping AI/ML models, agentic workflows, and full-stack systems. Click any node to explore case studies & live demos.
+                        Neural topology mapping AI/ML models, agentic workflows, and full-stack systems. Click any domain pillar to expand its cluster, or click any node to explore case studies.
                     </p>
                 </motion.div>
 
                 <div className="graph-container glass-panel">
-                    {/* Top Left Meta Tag (High-Tech Systems Architecture Label) */}
+                    {/* Top Left Meta Tag (Dynamic Active Domain Indicator) */}
                     <div className="graph-system-meta">
-                        System Architecture: AGENTIC_NEURAL_TOPOLOGY_V2 // CS_AIML
+                        <span className="meta-prefix">System Architecture:</span>
+                        <span className="meta-code"> AGENTIC_NEURAL_TOPOLOGY_V2 // {domainMeta[activeDomain]?.label || 'CORE'}</span>
+                        <span className="meta-instruction"> — Click domain pillars or buttons to filter</span>
                     </div>
 
-                    {/* Top Right Legend Box (All 4 CS & Engineering Pillars) */}
+                    {/* Top Right Legend / Interactive Filter Pills */}
                     <div className="graph-legend-card">
-                        <div className="legend-item">
+                        <button
+                            className={`legend-btn ${activeDomain === 'all' ? 'active' : ''}`}
+                            onClick={() => handleDomainToggle('all')}
+                            title="Show all domains simultaneously"
+                        >
+                            <span className="legend-dot" style={{ backgroundColor: '#ffffff', boxShadow: '0 0 8px #ffffff' }}></span>
+                            <span className="legend-label">All Domains</span>
+                            <span className="legend-count">14</span>
+                        </button>
+                        <button
+                            className={`legend-btn ${activeDomain === 'ai' ? 'active' : ''}`}
+                            onClick={() => handleDomainToggle('ai')}
+                            title="Filter: AI & ML Core"
+                        >
                             <span className="legend-dot" style={{ backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></span>
                             <span className="legend-label">AI & ML Core</span>
-                        </div>
-                        <div className="legend-item">
+                            <span className="legend-count">3</span>
+                        </button>
+                        <button
+                            className={`legend-btn ${activeDomain === 'fullstack' ? 'active' : ''}`}
+                            onClick={() => handleDomainToggle('fullstack')}
+                            title="Filter: Full-Stack Systems"
+                        >
                             <span className="legend-dot" style={{ backgroundColor: '#c084fc', boxShadow: '0 0 8px #c084fc' }}></span>
                             <span className="legend-label">Full-Stack Systems</span>
-                        </div>
-                        <div className="legend-item">
+                            <span className="legend-count">5</span>
+                        </button>
+                        <button
+                            className={`legend-btn ${activeDomain === 'data' ? 'active' : ''}`}
+                            onClick={() => handleDomainToggle('data')}
+                            title="Filter: Data & Analytics"
+                        >
                             <span className="legend-dot" style={{ backgroundColor: '#fbbf24', boxShadow: '0 0 8px #fbbf24' }}></span>
                             <span className="legend-label">Data & Analytics</span>
-                        </div>
-                        <div className="legend-item">
+                            <span className="legend-count">2</span>
+                        </button>
+                        <button
+                            className={`legend-btn ${activeDomain === 'projects' ? 'active' : ''}`}
+                            onClick={() => handleDomainToggle('projects')}
+                            title="Filter: Production Engineering"
+                        >
                             <span className="legend-dot" style={{ backgroundColor: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
-                            <span className="legend-label">Production Engineering</span>
-                        </div>
+                            <span className="legend-label">Production Eng</span>
+                            <span className="legend-count">4</span>
+                        </button>
                     </div>
 
                     <canvas ref={canvasRef} className="graph-canvas" />

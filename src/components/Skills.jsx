@@ -1,612 +1,578 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import '../styles/NeuralGraph.css';
 import '../styles/Skills.css';
 
-const skillCategories = [
-    {
-        id: 'featured',
-        name: 'Featured Core',
-        icon: '⚡',
-        color: '#00f0ff'
-    },
-    {
-        id: 'aiml',
-        name: 'Agentic AI & LLMs',
-        icon: '🤖',
-        color: '#00f0ff'
-    },
-    {
-        id: 'deeplearning',
-        name: 'Deep Learning',
-        icon: '🧠',
-        color: '#ec4899'
-    },
-    {
-        id: 'advml',
-        name: 'Advanced ML',
-        icon: '🔬',
-        color: '#14b8a6'
-    },
-    {
-        id: 'comparch',
-        name: 'Silicon & Arch',
-        icon: '🖥️',
-        color: '#f97316'
-    },
-    {
-        id: 'networking',
-        name: 'Cloud & Networks',
-        icon: '🌐',
-        color: '#38bdf8'
-    },
-    {
-        id: 'fullstack',
-        name: 'Full-Stack Web',
-        icon: '💻',
-        color: '#c084fc'
-    },
-    {
-        id: 'tools',
-        name: 'System Design',
-        icon: '🏗️',
-        color: '#34d399'
-    }
+const skillNodes = [
+    // Center Node
+    { id: 'adnan', label: 'ADNAN RIZVI', category: 'center', radius: 22, color: '#ffffff' },
+
+    // Core 5 Domain Pillars
+    { id: 'ai', label: 'AI & ML Core', category: 'pillar', radius: 15, color: '#00f0ff' },
+    { id: 'fullstack', label: 'Full-Stack Systems', category: 'pillar', radius: 15, color: '#c084fc' },
+    { id: 'data', label: 'Data & Analytics', category: 'pillar', radius: 15, color: '#ffb703' },
+    { id: 'tools', label: 'Production Engineering', category: 'pillar', radius: 15, color: '#34d399' },
+    { id: 'networking', label: 'Computer Networks', category: 'pillar', radius: 15, color: '#38bdf8' },
+
+    // --- AI & ML Core Sub-skills ---
+    { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, persistent checkpointing & human-in-the-loop validation.' },
+    { id: 'langchain', label: 'LangChain & RAG', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'RAG PIPELINE', level: 94, desc: 'Semantic retrieval architectures, dense vector search, hybrid ranking & agent memory.' },
+    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'FOUNDATION', level: 92, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
+    { id: 'python', label: 'PyTorch & Deep Learning', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'TENSOR ENGINE', level: 95, desc: 'Custom autograd backprop, CNNs, LSTMs, VAEs, LoRA & QLoRA quantization.' },
+    { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
+    { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 7, color: '#00f0ff', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
+
+    // --- Full-Stack Systems Sub-skills ---
+    { id: 'react', label: 'React 19 & Vite', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'MODERN SPA', level: 96, desc: 'High-performance component trees, custom hooks, atomic state management & SSR pipelines.' },
+    { id: 'nodejs', label: 'Node.js & Express', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'HIGH-THROUGHPUT', level: 94, desc: 'Non-blocking event-driven backend services, clustering, stream pipes & async REST APIs.' },
+    { id: 'prisma', label: 'Prisma ORM', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'TYPE-SAFE DB', level: 92, desc: 'Schema-driven migrations, declarative relations, connection pooling & auto-generated clients.' },
+    { id: 'mysql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'STORAGE LAYER', level: 91, desc: 'B-tree indexing, ACID relational guarantees, aggregation pipelines & sharding strategies.' },
+    { id: 'javascript', label: 'JavaScript (ES6+)', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'RUNTIME CORE', level: 96, desc: 'V8 engine internals, Event Loop microtasks, closures, Web Workers & async generators.' },
+    { id: 'tailwind', label: 'Tailwind & Motion', category: 'fs_skill', domain: 'fullstack', radius: 7, color: '#c084fc', tag: 'CYBER UI', level: 94, desc: 'Atomic design tokens, hardware-accelerated animations, responsive glassmorphism & HUDs.' },
+
+    // --- Data & Analytics Sub-skills ---
+    { id: 'sql', label: 'Advanced SQL', category: 'data_skill', domain: 'data', radius: 8, color: '#ffb703', tag: 'QUERY ENGINE', level: 95, desc: 'Window functions, Common Table Expressions (CTEs), recursive queries & execution plan tuning.' },
+    { id: 'tableau', label: 'Tableau & Dashboards', category: 'data_skill', domain: 'data', radius: 8, color: '#ffb703', tag: 'ANALYTICS HUD', level: 90, desc: 'Interactive parameter controls, multi-source blending, calculated fields & KPI reporting.' },
+    { id: 'pandas', label: 'Pandas & NumPy', category: 'data_skill', domain: 'data', radius: 8, color: '#ffb703', tag: 'ETL PIPELINE', level: 93, desc: 'Vectorized tensor operations, exploratory data analysis, outlier sanitization & feature engineering.' },
+    { id: 'excel', label: 'Excel & Data Prep', category: 'data_skill', domain: 'data', radius: 7, color: '#ffb703', tag: 'STATISTICS', level: 88, desc: 'Dynamic pivot structures, statistical regression modeling, Power Query transformations.' },
+
+    // --- Production Engineering Sub-skills ---
+    { id: 'sysdesign', label: 'System Design', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'DISTRIBUTED', level: 94, desc: 'Microservices architectures, Redis caching layers, load balancers, CDN edge caching & CAP theorem.' },
+    { id: 'docker', label: 'Docker Containers', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'ISOLATION', level: 92, desc: 'Multi-stage container builds, Alpine optimization, compose orchestration & deterministic runs.' },
+    { id: 'solid', label: 'OOP & Clean Code', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'PATTERNS', level: 92, desc: 'SOLID principles, design patterns (Factory, Observer, Strategy), dependency injection.' },
+    { id: 'jwt', label: 'JWT & Security', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'AUTH / SEC', level: 93, desc: 'Role-Based Access Control (RBAC), token rotation, salted SHA hashing & CSRF/XSS hardening.' },
+    { id: 'git', label: 'Git & CI/CD Pipelines', category: 'tool_skill', domain: 'tools', radius: 7, color: '#34d399', tag: 'DEVOPS', level: 94, desc: 'Branch protections, automated GitHub Actions testing, preview deploy triggers on Vercel.' },
+
+    // --- Computer Networks Sub-skills ---
+    { id: 'vpc', label: 'AWS VPC & Subnets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'CLOUD NETWORK', level: 92, desc: 'CIDR subnetting, Internet Gateways, NAT routing tables & multi-tier isolated zones.' },
+    { id: 'wireshark', label: 'Wireshark & Packets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'PACKET DIAG', level: 90, desc: 'Packet trace inspection, TCP 3-way handshake analysis, window sizing & packet drop telemetry.' },
+    { id: 'tcpudp', label: 'TCP/UDP & Sockets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'TRANSPORT', level: 94, desc: 'Python low-level socket programming, AIMD congestion control & multiplexing protocols.' },
+    { id: 'secgroups', label: 'Security & VPNs', category: 'net_skill', domain: 'networking', radius: 7, color: '#38bdf8', tag: 'ENCRYPTION', level: 91, desc: 'Stateful Security Groups, stateless NACLs, TLS/SSL certificates, WireGuard tunnels.' }
 ];
 
-const allSkillsData = [
-    // --- Agentic AI & LLMs ---
-    {
-        name: 'LangGraph',
-        category: 'aiml',
-        color: '#00f0ff',
-        tag: 'MULTI-AGENT',
-        icon: 'https://img.icons8.com/color/48/000000/graph.png',
-        desc: 'Stateful multi-agent cyclic graphs, memory persistence & human-in-the-loop workflows.',
-        spec: 'LangGraph v0.2+',
-        level: 96,
-        isFeatured: true
-    },
-    {
-        name: 'LangChain & RAG',
-        category: 'aiml',
-        color: '#00f0ff',
-        tag: 'RAG PIPELINE',
-        icon: 'https://cdn.simpleicons.org/langchain/1C3C3C',
-        desc: 'Semantic retrieval architectures, dense embeddings, document chunking & vector search.',
-        spec: 'LangChain Ecosystem',
-        level: 94,
-        isFeatured: true
-    },
-    {
-        name: 'Groq LPU Engine',
-        category: 'aiml',
-        color: '#00f0ff',
-        tag: 'INFERENCE',
-        icon: 'https://console.groq.com/powered-by-groq-dark.svg',
-        desc: 'Ultra-low latency LLM acceleration for real-time autonomous reasoning loops.',
-        spec: 'Sub-50ms TTFT',
-        level: 92,
-        isFeatured: false
-    },
-    {
-        name: 'Hugging Face',
-        category: 'aiml',
-        color: '#00f0ff',
-        tag: 'FOUNDATION',
-        icon: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
-        desc: 'Model hub deployments, custom tokenizers, Spaces hosting & open-source LLM integration.',
-        spec: 'Transformers Hub',
-        level: 90,
-        isFeatured: false
-    },
-    {
-        name: 'Python Systems',
-        category: 'aiml',
-        color: '#00f0ff',
-        tag: 'CORE ENGINE',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-        desc: 'Asynchronous FastAPI microservices, numerical vector pipelines & agent backends.',
-        spec: 'Python 3.12+',
-        level: 98,
-        isFeatured: true
-    },
+const skillLinks = [
+    // Core links to pillars
+    { source: 'adnan', target: 'ai' },
+    { source: 'adnan', target: 'fullstack' },
+    { source: 'adnan', target: 'data' },
+    { source: 'adnan', target: 'tools' },
+    { source: 'adnan', target: 'networking' },
 
-    // --- Deep Learning & Neural Systems ---
-    {
-        name: 'PyTorch',
-        category: 'deeplearning',
-        color: '#ec4899',
-        tag: 'AUTOGRAD',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg',
-        desc: 'Custom neural layers, dynamic computational graphs, loss engineering & CUDA backprop.',
-        spec: 'PyTorch 2.x',
-        level: 95,
-        isFeatured: true
-    },
-    {
-        name: 'Transformers & Attention',
-        category: 'deeplearning',
-        color: '#ec4899',
-        tag: 'ATTENTION',
-        icon: 'https://huggingface.co/front/assets/huggingface_logo-noborder.svg',
-        desc: 'Scaled dot-product multi-head attention, positional encodings & Vision Transformers.',
-        spec: 'Self-Attention',
-        level: 92,
-        isFeatured: true
-    },
-    {
-        name: 'Mamba (State-Space)',
-        category: 'deeplearning',
-        color: '#ec4899',
-        tag: 'LINEAR TIME',
-        icon: 'https://cdn-icons-png.flaticon.com/512/8644/8644474.png',
-        desc: 'Selective parameter State-Space Models for linear-time complexity over long contexts.',
-        spec: 'S4 / Mamba-2',
-        level: 88,
-        isFeatured: false
-    },
-    {
-        name: 'Diffusion (DDPM)',
-        category: 'deeplearning',
-        color: '#ec4899',
-        tag: 'GENERATIVE',
-        icon: 'https://cdn-icons-png.flaticon.com/512/9991/9991874.png',
-        desc: 'Forward Markov noise schedules, reverse denoising diffusion & U-Net architectures.',
-        spec: 'DDPM / DDIM',
-        level: 86,
-        isFeatured: false
-    },
-    {
-        name: 'Multimodal AI (CLIP)',
-        category: 'deeplearning',
-        color: '#ec4899',
-        tag: 'CROSS-MODAL',
-        icon: 'https://cdn-icons-png.flaticon.com/512/12222/12222560.png',
-        desc: 'Joint vision-language representations and contrastive pre-training embeddings.',
-        spec: 'CLIP / ViT',
-        level: 88,
-        isFeatured: false
-    },
-    {
-        name: 'QLoRA & Quantization',
-        category: 'deeplearning',
-        color: '#ec4899',
-        tag: 'EFFICIENCY',
-        icon: 'https://cdn-icons-png.flaticon.com/512/9581/9581977.png',
-        desc: 'INT4 NormalFloat parameter-efficient fine-tuning, Low-Rank Adaptation & memory optimization.',
-        spec: 'BitsAndBytes',
-        level: 90,
-        isFeatured: true
-    },
+    // AI sub-links
+    { source: 'ai', target: 'langgraph' },
+    { source: 'ai', target: 'langchain' },
+    { source: 'ai', target: 'llms' },
+    { source: 'ai', target: 'python' },
+    { source: 'ai', target: 'groq' },
+    { source: 'ai', target: 'streamlit' },
 
-    // --- Advanced Machine Learning & Math ---
-    {
-        name: 'NumPy ML (From Scratch)',
-        category: 'advml',
-        color: '#14b8a6',
-        tag: 'FIRST PRINCIPLES',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg',
-        desc: 'Pure mathematical derivations of OLS, Logistic Regression, MLE & Decision Trees.',
-        spec: 'Linear Algebra',
-        level: 96,
-        isFeatured: true
-    },
-    {
-        name: 'Time Series & ARIMA',
-        category: 'advml',
-        color: '#14b8a6',
-        tag: 'FORECASTING',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2920/2920349.png',
-        desc: 'Stationarity transformation, ACF/PACF autocorrelation diagnostics & ARIMA forecasting.',
-        spec: 'Statsmodels',
-        level: 90,
-        isFeatured: false
-    },
-    {
-        name: 'Gaussian Mixtures (GMM)',
-        category: 'advml',
-        color: '#14b8a6',
-        tag: 'CLUSTERING',
-        icon: 'https://cdn-icons-png.flaticon.com/512/8644/8644474.png',
-        desc: 'Soft probabilistic density estimation and clustering via Expectation-Maximization (EM).',
-        spec: 'EM Algorithm',
-        level: 88,
-        isFeatured: false
-    },
-    {
-        name: 'CART Decision Trees',
-        category: 'advml',
-        color: '#14b8a6',
-        tag: 'ENSEMBLES',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2592/2592317.png',
-        desc: 'Gini impurity, entropy gain calculations, recursive binary splitting & pruning.',
-        spec: 'CART / Trees',
-        level: 92,
-        isFeatured: false
-    },
-    {
-        name: 'Gradient Descent (SGD)',
-        category: 'advml',
-        color: '#14b8a6',
-        tag: 'OPTIMIZATION',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2083/2083213.png',
-        desc: 'Stochastic gradients, momentum vectors, Adam optimization & convex loss navigation.',
-        spec: 'SGD / Adam',
-        level: 94,
-        isFeatured: false
-    },
-    {
-        name: 'Model Diagnostics (VIF/PCA)',
-        category: 'advml',
-        color: '#14b8a6',
-        tag: 'DIAGNOSTICS',
-        icon: 'https://cdn-icons-png.flaticon.com/512/1265/1265757.png',
-        desc: 'Multicollinearity mitigation via VIF, eigen-decomposition & PCA dimensionality reduction.',
-        spec: 'VIF / SVD',
-        level: 92,
-        isFeatured: true
-    },
+    // Full-Stack sub-links
+    { source: 'fullstack', target: 'react' },
+    { source: 'fullstack', target: 'nodejs' },
+    { source: 'fullstack', target: 'prisma' },
+    { source: 'fullstack', target: 'mysql' },
+    { source: 'fullstack', target: 'javascript' },
+    { source: 'fullstack', target: 'tailwind' },
 
-    // --- Computer Architecture & Silicon ---
-    {
-        name: 'Verilog HDL & GTKWave',
-        category: 'comparch',
-        color: '#f97316',
-        tag: 'SILICON DESIGN',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2885/2885417.png',
-        desc: 'RTL circuit modeling, finite state machines, testbench waveforms & GTKWave inspection.',
-        spec: 'IEEE 1364 HDL',
-        level: 92,
-        isFeatured: true
-    },
-    {
-        name: '5-Stage CPU Pipelining',
-        category: 'comparch',
-        color: '#f97316',
-        tag: 'PROCESSOR',
-        icon: 'https://cdn-icons-png.flaticon.com/512/3178/3178283.png',
-        desc: 'IF→ID→EX→MEM→WB datapath engineering, data hazard forwarding units & branch handling.',
-        spec: 'CPI Optimization',
-        level: 94,
-        isFeatured: true
-    },
-    {
-        name: 'RISC-V & MIPS32 ISAs',
-        category: 'comparch',
-        color: '#f97316',
-        tag: 'INSTRUCTION SET',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2620/2620971.png',
-        desc: 'Register file structures, ALU control units, assembly decoding & memory-mapped I/O.',
-        spec: 'RV32I Core',
-        level: 90,
-        isFeatured: false
-    },
-    {
-        name: 'Cache AMAT & Associativity',
-        category: 'comparch',
-        color: '#f97316',
-        tag: 'MEMORY HIERARCHY',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2083/2083213.png',
-        desc: 'N-way set associativity, LRU replacement, write-through/back & AMAT latency optimization.',
-        spec: 'L1/L2/L3 Cache',
-        level: 92,
-        isFeatured: false
-    },
-    {
-        name: 'Multicore MESI Coherence',
-        category: 'comparch',
-        color: '#f97316',
-        tag: 'COHERENCE',
-        icon: 'https://img.icons8.com/color/48/000000/graph.png',
-        desc: 'Cache snooping protocols, write-invalidate logic & hardware atomic primitives (CAS).',
-        spec: 'MESI Protocol',
-        level: 88,
-        isFeatured: false
-    },
-    {
-        name: 'GPU SIMT & TPU Arrays',
-        category: 'comparch',
-        color: '#f97316',
-        tag: 'HARDWARE ACCEL',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nvidia/nvidia-original.svg',
-        desc: 'Warp scheduling, SIMT thread divergence analysis & 2D systolic array matrix engines.',
-        spec: 'SIMT / Systolic',
-        level: 88,
-        isFeatured: true
-    },
+    // Data sub-links
+    { source: 'data', target: 'sql' },
+    { source: 'data', target: 'tableau' },
+    { source: 'data', target: 'pandas' },
+    { source: 'data', target: 'excel' },
 
-    // --- Computer Networks & AWS Cloud ---
-    {
-        name: 'AWS Multi-Tier VPC',
-        category: 'networking',
-        color: '#38bdf8',
-        tag: 'CLOUD ARCH',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg',
-        desc: 'Public/private CIDR subnetting, Internet/NAT Gateways, Route Tables & security topology.',
-        spec: 'Amazon VPC',
-        level: 95,
-        isFeatured: true
-    },
-    {
-        name: 'Elastic Load Balancers',
-        category: 'networking',
-        color: '#38bdf8',
-        tag: 'TRAFFIC',
-        icon: 'https://cdn-icons-png.flaticon.com/512/1541/1541400.png',
-        desc: 'Layer 7 Application Load Balancers (ALB) and Layer 4 NLBs with health-check failover.',
-        spec: 'AWS ALB / NLB',
-        level: 92,
-        isFeatured: true
-    },
-    {
-        name: 'Route 53 & CloudFront',
-        category: 'networking',
-        color: '#38bdf8',
-        tag: 'DNS & CDN',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2885/2885449.png',
-        desc: 'Latency-based & failover DNS routing, ACM TLS/SSL auto-renewal & global edge caching.',
-        spec: 'Global CDN',
-        level: 90,
-        isFeatured: false
-    },
-    {
-        name: 'TCP/IP & Socket Programming',
-        category: 'networking',
-        color: '#38bdf8',
-        tag: 'PROTOCOLS',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-        desc: 'Low-level Python TCP/UDP sockets, 3-way handshakes, AIMD flow control & sliding windows.',
-        spec: 'Raw Sockets',
-        level: 94,
-        isFeatured: false
-    },
-    {
-        name: 'Wireshark Diagnostics',
-        category: 'networking',
-        color: '#38bdf8',
-        tag: 'ANALYSIS',
-        icon: 'https://cdn.simpleicons.org/wireshark/1679A7',
-        desc: 'Deep packet inspection, TCP segment retransmissions triage & TLS negotiation analysis.',
-        spec: 'Deep Inspection',
-        level: 92,
-        isFeatured: true
-    },
-    {
-        name: 'Security Groups & NACLs',
-        category: 'networking',
-        color: '#38bdf8',
-        tag: 'VPC SECURITY',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2092/2092663.png',
-        desc: 'Stateful instance firewalls, stateless subnet NACL rules & zero-trust network boundaries.',
-        spec: 'Zero Trust',
-        level: 92,
-        isFeatured: false
-    },
+    // Production Engineering sub-links
+    { source: 'tools', target: 'sysdesign' },
+    { source: 'tools', target: 'docker' },
+    { source: 'tools', target: 'solid' },
+    { source: 'tools', target: 'jwt' },
+    { source: 'tools', target: 'git' },
 
-    // --- Full-Stack & Systems ---
-    {
-        name: 'React 19 & Modern Web',
-        category: 'fullstack',
-        color: '#c084fc',
-        tag: 'FRONTEND',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg',
-        desc: 'Concurrent rendering, Server Actions, modern hooks architecture & responsive glass UIs.',
-        spec: 'React 19 Core',
-        level: 96,
-        isFeatured: true
-    },
-    {
-        name: 'Node.js & Express',
-        category: 'fullstack',
-        color: '#c084fc',
-        tag: 'API BACKEND',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
-        desc: 'Asynchronous event loops, RESTful microservices, JWT authentication & secure middleware.',
-        spec: 'Node.js v20+',
-        level: 94,
-        isFeatured: true
-    },
-    {
-        name: 'TypeScript / ES6+',
-        category: 'fullstack',
-        color: '#c084fc',
-        tag: 'TYPE SAFETY',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg',
-        desc: 'Strict type contracts, generic interfaces, and clean maintainable scalable codebases.',
-        spec: 'Strict TS',
-        level: 92,
-        isFeatured: false
-    },
-    {
-        name: 'Prisma ORM & SQL',
-        category: 'fullstack',
-        color: '#c084fc',
-        tag: 'DATA ACCESS',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg',
-        desc: 'Type-safe relational modeling, ACID transactions, relation queries & sub-80ms lookups.',
-        spec: 'Prisma / MySQL',
-        level: 94,
-        isFeatured: true
-    },
-    {
-        name: 'MongoDB & NoSQL',
-        category: 'fullstack',
-        color: '#c084fc',
-        tag: 'DOC STORE',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg',
-        desc: 'Flexible schema aggregation pipelines, compound indexing & high-throughput document stores.',
-        spec: 'MongoDB Atlas',
-        level: 90,
-        isFeatured: false
-    },
-    {
-        name: 'WebSockets (Socket.io)',
-        category: 'fullstack',
-        color: '#c084fc',
-        tag: 'REAL-TIME',
-        icon: 'https://cdn.simpleicons.org/socketdotio/010101',
-        desc: 'Full-duplex bidirectional communication for live collaboration, bids & instant notifications.',
-        spec: 'Socket.io Core',
-        level: 92,
-        isFeatured: false
-    },
+    // Networking sub-links
+    { source: 'networking', target: 'vpc' },
+    { source: 'networking', target: 'wireshark' },
+    { source: 'networking', target: 'tcpudp' },
+    { source: 'networking', target: 'secgroups' }
+];
 
-    // --- System Design & DevOps ---
-    {
-        name: 'System Design & Scale',
-        category: 'tools',
-        color: '#34d399',
-        tag: 'HIGH SCALE',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2620/2620971.png',
-        desc: 'Horizontal scalability, stateless microservices, read-replicas & fault-tolerant topologies.',
-        spec: 'Distributed Arch',
-        level: 95,
-        isFeatured: true
-    },
-    {
-        name: 'Docker Containers',
-        category: 'tools',
-        color: '#34d399',
-        tag: 'CONTAINER',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg',
-        desc: 'Multi-stage Docker builds, isolated runtime environments & lightweight deployment images.',
-        spec: 'Docker Engine',
-        level: 92,
-        isFeatured: true
-    },
-    {
-        name: 'OOP & SOLID Principles',
-        category: 'tools',
-        color: '#34d399',
-        tag: 'PATTERNS',
-        icon: 'https://cdn-icons-png.flaticon.com/512/2592/2592317.png',
-        desc: 'Strict object-oriented patterns, interface segregation, single-responsibility & clean code.',
-        spec: 'Clean Arch',
-        level: 96,
-        isFeatured: false
-    },
-    {
-        name: 'Redis In-Memory Cache',
-        category: 'tools',
-        color: '#34d399',
-        tag: 'CACHING',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg',
-        desc: 'Cache-aside strategies, distributed rate limiting, session stores & sub-millisecond lookups.',
-        spec: 'Redis 7',
-        level: 90,
-        isFeatured: false
-    },
-    {
-        name: 'Git & GitHub Actions',
-        category: 'tools',
-        color: '#34d399',
-        tag: 'CI / CD',
-        icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg',
-        desc: 'Automated CI/CD pipelines, semantic testing, branch protection & production deployments.',
-        spec: 'CI/CD Automation',
-        level: 94,
-        isFeatured: false
-    }
+const domainFilterList = [
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 },
+    { id: 'ai', label: 'AI & ML Core', color: '#00f0ff', count: 6 },
+    { id: 'fullstack', label: 'Full-Stack Systems', color: '#c084fc', count: 6 },
+    { id: 'data', label: 'Data & Analytics', color: '#ffb703', count: 4 },
+    { id: 'tools', label: 'Production Engineering', color: '#34d399', count: 5 },
+    { id: 'networking', label: 'Computer Networks', color: '#38bdf8', count: 4 }
 ];
 
 const Skills = () => {
-    const [activeTab, setActiveTab] = useState('featured');
+    const canvasRef = useRef(null);
+    const [activeDomain, setActiveDomain] = useState('all');
+    const [selectedSkill, setSelectedSkill] = useState(null);
+    const activeDomainRef = useRef('all');
 
-    const displayedSkills = activeTab === 'featured'
-        ? allSkillsData.filter(s => s.isFeatured)
-        : allSkillsData.filter(s => s.category === activeTab);
+    useEffect(() => {
+        activeDomainRef.current = activeDomain;
+    }, [activeDomain]);
+
+    const handleDomainToggle = (domainId) => {
+        setActiveDomain(prev => (prev === domainId && domainId !== 'all') ? 'all' : domainId);
+    };
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let animId;
+
+        const resize = () => {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio;
+            canvas.height = rect.height * window.devicePixelRatio;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+        };
+        resize();
+        window.addEventListener('resize', resize);
+
+        const width = canvas.width / window.devicePixelRatio;
+        const height = canvas.height / window.devicePixelRatio;
+
+        const nodes = skillNodes.map(n => {
+            const coordMap = {
+                adnan: { x: 0.50, y: 0.48 },
+
+                // 5 Core Pillars
+                ai: { x: 0.32, y: 0.30 },
+                fullstack: { x: 0.68, y: 0.30 },
+                data: { x: 0.25, y: 0.64 },
+                tools: { x: 0.75, y: 0.64 },
+                networking: { x: 0.50, y: 0.78 },
+
+                // AI Sub-nodes (Top-Left)
+                langgraph: { x: 0.16, y: 0.14 },
+                langchain: { x: 0.13, y: 0.26 },
+                llms: { x: 0.28, y: 0.12 },
+                python: { x: 0.14, y: 0.40 },
+                groq: { x: 0.38, y: 0.16 },
+                streamlit: { x: 0.32, y: 0.22 },
+
+                // Full-Stack Sub-nodes (Top-Right)
+                react: { x: 0.84, y: 0.14 },
+                nodejs: { x: 0.70, y: 0.12 },
+                prisma: { x: 0.87, y: 0.26 },
+                mysql: { x: 0.62, y: 0.16 },
+                javascript: { x: 0.86, y: 0.40 },
+                tailwind: { x: 0.68, y: 0.22 },
+
+                // Data Sub-nodes (Bottom-Left)
+                sql: { x: 0.12, y: 0.58 },
+                tableau: { x: 0.28, y: 0.82 },
+                pandas: { x: 0.15, y: 0.74 },
+                excel: { x: 0.11, y: 0.48 },
+
+                // Production Sub-nodes (Bottom-Right)
+                sysdesign: { x: 0.88, y: 0.58 },
+                docker: { x: 0.76, y: 0.88 },
+                solid: { x: 0.72, y: 0.80 },
+                jwt: { x: 0.85, y: 0.74 },
+                git: { x: 0.89, y: 0.48 },
+
+                // Networking Sub-nodes (Bottom-Center)
+                vpc: { x: 0.40, y: 0.90 },
+                wireshark: { x: 0.60, y: 0.90 },
+                tcpudp: { x: 0.34, y: 0.80 },
+                secgroups: { x: 0.66, y: 0.80 }
+            };
+
+            const target = coordMap[n.id] || { x: 0.5, y: 0.5 };
+            const x = width * target.x;
+            const y = height * target.y;
+
+            return {
+                ...n,
+                x,
+                y,
+                baseX: x,
+                baseY: y,
+                opacity: 1,
+                scale: 1,
+                angle: Math.random() * Math.PI * 2,
+                speed: 0.0014 + Math.random() * 0.0014
+            };
+        });
+
+        let hoveredId = 'adnan';
+        let draggedNode = null;
+        let mouseDownPos = { x: 0, y: 0 };
+        let mouseX = -1000;
+        let mouseY = -1000;
+
+        const handleMouseMove = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseX = e.clientX - rect.left;
+            mouseY = e.clientY - rect.top;
+
+            if (draggedNode) {
+                draggedNode.x = mouseX;
+                draggedNode.y = mouseY;
+            } else {
+                let found = null;
+                for (const node of nodes) {
+                    if (node.opacity < 0.2) continue;
+                    const dx = mouseX - node.x;
+                    const dy = mouseY - node.y;
+                    if (Math.hypot(dx, dy) < node.radius + 12) {
+                        found = node;
+                        break;
+                    }
+                }
+                hoveredId = found ? found.id : null;
+                canvas.style.cursor = found ? 'pointer' : 'default';
+                if (found && found.desc) {
+                    setSelectedSkill(found);
+                }
+            }
+        };
+
+        const handleMouseDown = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            mouseDownPos = { x: e.clientX, y: e.clientY };
+
+            for (const node of nodes) {
+                if (node.opacity < 0.2) continue;
+                const dx = mouseX - node.x;
+                const dy = mouseY - node.y;
+                if (Math.hypot(dx, dy) < node.radius + 12) {
+                    draggedNode = node;
+                    break;
+                }
+            }
+        };
+
+        const handleMouseUp = (e) => {
+            const dist = Math.hypot(e.clientX - mouseDownPos.x, e.clientY - mouseDownPos.y);
+
+            if (dist < 6) {
+                const rect = canvas.getBoundingClientRect();
+                const clickX = e.clientX - rect.left;
+                const clickY = e.clientY - rect.top;
+
+                for (const node of nodes) {
+                    if (node.opacity < 0.2) continue;
+                    const dx = clickX - node.x;
+                    const dy = clickY - node.y;
+                    if (Math.hypot(dx, dy) < node.radius + 14) {
+                        if (node.category === 'pillar') {
+                            const next = activeDomainRef.current === node.id ? 'all' : node.id;
+                            setActiveDomain(next);
+                            activeDomainRef.current = next;
+                        } else if (node.id === 'adnan') {
+                            setActiveDomain('all');
+                            activeDomainRef.current = 'all';
+                        } else if (node.desc) {
+                            setSelectedSkill(node);
+                        }
+                        break;
+                    }
+                }
+            }
+            draggedNode = null;
+        };
+
+        canvas.addEventListener('mousemove', handleMouseMove);
+        canvas.addEventListener('mousedown', handleMouseDown);
+        window.addEventListener('mouseup', handleMouseUp);
+
+        let time = 0;
+
+        const render = () => {
+            time += 0.012;
+            ctx.clearRect(0, 0, width, height);
+
+            const curDomain = activeDomainRef.current;
+
+            // Update smooth node expansion/collapse physics
+            nodes.forEach(node => {
+                const isMatch = curDomain === 'all' ||
+                                node.id === 'adnan' ||
+                                node.category === 'pillar' ||
+                                node.domain === curDomain;
+
+                const targetOpacity = isMatch ? 1 : 0;
+                const targetScale = isMatch ? 1 : 0.15;
+                node.opacity += (targetOpacity - node.opacity) * 0.16;
+                node.scale += (targetScale - node.scale) * 0.16;
+
+                if (node !== draggedNode) {
+                    node.angle += node.speed;
+                    node.x = node.baseX + Math.sin(node.angle * 1.1) * 5;
+                    node.y = node.baseY + Math.cos(node.angle * 1.5) * 5;
+                }
+            });
+
+            // Calculate active links
+            const activeLinks = new Set();
+            if (hoveredId) {
+                skillLinks.forEach((link, idx) => {
+                    if (link.source === hoveredId || link.target === hoveredId) {
+                        activeLinks.add(idx);
+                        const otherId = link.source === hoveredId ? link.target : link.source;
+                        skillLinks.forEach((pLink, pIdx) => {
+                            if ((pLink.source === 'adnan' && pLink.target === otherId) ||
+                                (pLink.target === 'adnan' && pLink.source === otherId)) {
+                                activeLinks.add(pIdx);
+                            }
+                        });
+                    }
+                });
+            }
+
+            // 1. Draw Neural Synapse Links
+            skillLinks.forEach((link, idx) => {
+                const s = nodes.find(n => n.id === link.source);
+                const t = nodes.find(n => n.id === link.target);
+                if (!s || !t) return;
+
+                const linkOpacity = Math.min(s.opacity, t.opacity);
+                if (linkOpacity < 0.04) return;
+
+                const isCoreLink = s.id === 'adnan' || t.id === 'adnan';
+                const isDomainActive = curDomain !== 'all' && (s.id === curDomain || t.id === curDomain);
+                const isHoveredPath = activeLinks.has(idx);
+                const isLinkActive = isCoreLink || isDomainActive || isHoveredPath;
+
+                const activeColor = isHoveredPath ? (s.color === '#ffffff' ? t.color : s.color) : (isDomainActive ? (t.color || s.color) : s.color);
+
+                ctx.save();
+                ctx.globalAlpha = linkOpacity;
+                ctx.beginPath();
+                ctx.moveTo(s.x, s.y);
+                ctx.lineTo(t.x, t.y);
+
+                if (isHoveredPath || isDomainActive) {
+                    ctx.strokeStyle = activeColor;
+                    ctx.lineWidth = 2.4;
+                    ctx.shadowColor = activeColor;
+                    ctx.shadowBlur = 14;
+                } else if (isCoreLink) {
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+                    ctx.lineWidth = 1.5;
+                    ctx.shadowColor = '#ffffff';
+                    ctx.shadowBlur = 8;
+                } else {
+                    ctx.strokeStyle = 'rgba(255, 255, 255, 0.09)';
+                    ctx.lineWidth = 0.9;
+                    ctx.shadowBlur = 0;
+                }
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+
+                // Glowing Action Potential Impulse Photon
+                if (isLinkActive && linkOpacity > 0.4) {
+                    const speed = isHoveredPath ? 0.35 : 0.2;
+                    const progress = (time * speed + (s.x % 6)) % 1;
+                    const px = s.x + (t.x - s.x) * progress;
+                    const py = s.y + (t.y - s.y) * progress;
+
+                    const tailLen = 0.18;
+                    const tailProg = Math.max(0, progress - tailLen);
+                    const tx = s.x + (t.x - s.x) * tailProg;
+                    const ty = s.y + (t.y - s.y) * tailProg;
+
+                    const grad = ctx.createLinearGradient(tx, ty, px, py);
+                    grad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+                    grad.addColorStop(1, (isHoveredPath || isDomainActive) ? activeColor : (s.color || '#ffffff'));
+
+                    ctx.beginPath();
+                    ctx.moveTo(tx, ty);
+                    ctx.lineTo(px, py);
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = isHoveredPath ? 3.8 : 2.2;
+                    ctx.stroke();
+
+                    // Photon Head
+                    ctx.beginPath();
+                    ctx.arc(px, py, isHoveredPath ? 4 : 2.8, 0, Math.PI * 2);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.shadowColor = activeColor;
+                    ctx.shadowBlur = 16;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+                ctx.restore();
+            });
+
+            // 2. Draw Neural Nodes
+            nodes.forEach(node => {
+                if (node.opacity < 0.05) return;
+
+                ctx.save();
+                ctx.globalAlpha = node.opacity;
+
+                const isHovered = node.id === hoveredId;
+                const isCore = node.id === 'adnan';
+                const isPillar = node.category === 'pillar';
+                const isSelectedDomain = curDomain === node.id;
+                const r = node.radius * Math.max(0.1, node.scale);
+
+                // Central Node Pulsing Halo
+                if (isCore) {
+                    const pulseRadius = r + 10 + Math.sin(time * 3) * 4;
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, pulseRadius, 0, Math.PI * 2);
+                    ctx.strokeStyle = '#ffffff';
+                    ctx.lineWidth = 1.8;
+                    ctx.shadowColor = '#ffffff';
+                    ctx.shadowBlur = 18;
+                    ctx.globalAlpha = 0.75 * node.opacity;
+                    ctx.stroke();
+                    ctx.globalAlpha = node.opacity;
+                    ctx.shadowBlur = 0;
+                } else if (isPillar) {
+                    const ringRadius = r + (isSelectedDomain ? (14 + Math.sin(time * 4) * 3) : (isHovered ? 12 : 7));
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, ringRadius, 0, Math.PI * 2);
+                    ctx.strokeStyle = node.color;
+                    ctx.lineWidth = isSelectedDomain ? 2.5 : (isHovered ? 2 : 1.2);
+                    ctx.shadowColor = node.color;
+                    ctx.shadowBlur = isSelectedDomain ? 20 : 0;
+                    ctx.stroke();
+                    ctx.shadowBlur = 0;
+                } else if (isHovered) {
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, r + 8, 0, Math.PI * 2);
+                    ctx.strokeStyle = node.color;
+                    ctx.lineWidth = 1.8;
+                    ctx.stroke();
+                }
+
+                // Inner Glowing Circle
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, r / (isCore ? 1.5 : 1.8), 0, Math.PI * 2);
+                ctx.fillStyle = node.color;
+                ctx.shadowColor = node.color;
+                ctx.shadowBlur = isCore ? 20 : (isSelectedDomain ? 26 : (isHovered ? 22 : 9));
+                ctx.fill();
+                ctx.shadowBlur = 0;
+
+                // Monospace Text Label
+                const fontSize = width < 520 ? 9 : 10.5;
+                ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'top';
+
+                const labelY = node.y + r + 6;
+                ctx.shadowColor = '#000000';
+                ctx.shadowBlur = 8;
+                ctx.fillStyle = (isHovered || isCore || isSelectedDomain) ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
+
+                const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
+                ctx.fillText(labelText, node.x, labelY);
+                ctx.shadowBlur = 0;
+
+                ctx.restore();
+            });
+
+            animId = requestAnimationFrame(render);
+        };
+
+        render();
+
+        return () => {
+            window.removeEventListener('resize', resize);
+            canvas.removeEventListener('mousemove', handleMouseMove);
+            canvas.removeEventListener('mousedown', handleMouseDown);
+            window.removeEventListener('mouseup', handleMouseUp);
+            cancelAnimationFrame(animId);
+        };
+    }, []);
+
+    const activeDomainMeta = domainFilterList.find(d => d.id === activeDomain) || domainFilterList[0];
 
     return (
-        <section id="skills" className="section-padding skills-section">
+        <section id="skills" className="section-padding neural-graph-section">
             <div className="container">
                 <motion.div
-                    className="skills-header"
+                    className="neural-header"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <span className="skills-badge">
-                        <span className="badge-dot"></span>
-                        Engineering Matrix
+                    <span className="neural-meta-pill">
+                        <span className="pill-pulse-dot"></span>
+                        Architectural Constellation
                     </span>
                     <h2 className="heading-lg">The Secret Sauce</h2>
-                    <p className="skills-subtitle">
-                        Architectural competencies engineered for high throughput, silicon-to-cloud breadth, and autonomous intelligence.
+                    <p className="neural-subtitle">
+                        Neural topology mapping technologies across agentic AI, deep learning, silicon architectures, and distributed full-stack systems. Click any domain pillar to expand its cluster.
                     </p>
                 </motion.div>
 
-                {/* Cybernetic Category Tabs */}
-                <div className="skills-tabs-container">
-                    {skillCategories.map(cat => (
-                        <button
-                            key={cat.id}
-                            className={`skills-tab ${activeTab === cat.id ? 'active' : ''}`}
-                            style={{ '--tab-color': cat.color }}
-                            onClick={() => setActiveTab(cat.id)}
-                        >
-                            <span className="tab-icon">{cat.icon}</span>
-                            <span className="tab-name">{cat.name}</span>
-                        </button>
-                    ))}
-                </div>
+                <div className="graph-container glass-panel">
+                    {/* Top Left Meta Tag */}
+                    <div className="graph-system-meta">
+                        <span className="meta-prefix">System Architecture:</span>
+                        <span className="meta-code" style={{ color: activeDomainMeta.color }}>
+                            {' '}SKILLS_NEURAL_TOPOLOGY_V2 // {activeDomainMeta.label.toUpperCase()}
+                        </span>
+                        <span className="meta-instruction"> — Click domain pillars or buttons to filter</span>
+                    </div>
 
-                {/* Cybernetic Skills Grid */}
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeTab}
-                        className="cyber-skills-grid"
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -15 }}
-                        transition={{ duration: 0.25 }}
-                    >
-                        {displayedSkills.map((skill, index) => (
-                            <div
-                                key={skill.name}
-                                className="cyber-skill-card"
+                    {/* Top Right Legend / Interactive Filter Pills */}
+                    <div className="graph-legend-card">
+                        {domainFilterList.map(domain => (
+                            <button
+                                key={domain.id}
+                                className={`legend-btn ${activeDomain === domain.id ? 'active' : ''}`}
+                                onClick={() => handleDomainToggle(domain.id)}
+                                title={`Filter: ${domain.label}`}
+                            >
+                                <span
+                                    className="legend-dot"
+                                    style={{
+                                        backgroundColor: domain.color,
+                                        boxShadow: `0 0 8px ${domain.color}`
+                                    }}
+                                ></span>
+                                <span className="legend-label">{domain.label}</span>
+                                <span className="legend-count">{domain.count}</span>
+                            </button>
+                        ))}
+                    </div>
+
+                    <canvas ref={canvasRef} className="graph-canvas" />
+
+                    {/* Interactive Telemetry HUD Inspector (Shows on Hover/Click) */}
+                    <AnimatePresence>
+                        {selectedSkill && selectedSkill.desc && (
+                            <motion.div
+                                key={selectedSkill.id}
+                                className="skills-hud-inspector"
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 10 }}
+                                transition={{ duration: 0.2 }}
                                 style={{
-                                    '--skill-color': skill.color,
-                                    '--skill-glow': `${skill.color}25`
+                                    '--hud-accent': selectedSkill.color,
+                                    '--hud-glow': `${selectedSkill.color}25`
                                 }}
                             >
-                                <div className="cyber-card-top-line"></div>
-                                <div className="cyber-card-radial-glow"></div>
-
-                                <div className="cyber-card-header">
-                                    <div className="cyber-icon-wrap">
-                                        <img
-                                            src={skill.icon}
-                                            alt={skill.name}
-                                            className="cyber-icon-img"
-                                            onError={(e) => {
-                                                e.currentTarget.style.display = 'none';
-                                            }}
-                                        />
-                                    </div>
-                                    <span className="cyber-badge-tag">{skill.tag}</span>
+                                <div className="hud-header">
+                                    <span className="hud-tag">{selectedSkill.tag || 'SPEC'}</span>
+                                    <h4 className="hud-title">{selectedSkill.label}</h4>
+                                    <span className="hud-level">{selectedSkill.level || 90}% MASTERY</span>
                                 </div>
-
-                                <div className="cyber-card-body">
-                                    <h4 className="cyber-skill-title">{skill.name}</h4>
-                                    <p className="cyber-skill-desc">{skill.desc}</p>
+                                <p className="hud-desc">{selectedSkill.desc}</p>
+                                <div className="hud-meter-track">
+                                    <div
+                                        className="hud-meter-fill"
+                                        style={{ width: `${selectedSkill.level || 90}%`, background: selectedSkill.color }}
+                                    ></div>
                                 </div>
-
-                                <div className="cyber-card-footer">
-                                    <div className="cyber-telemetry-meter">
-                                        <div className="meter-track">
-                                            <div
-                                                className="meter-fill"
-                                                style={{ width: `${skill.level}%` }}
-                                            ></div>
-                                        </div>
-                                    </div>
-                                    <span className="cyber-spec-tag">{skill.spec}</span>
-                                </div>
-                            </div>
-                        ))}
-                    </motion.div>
-                </AnimatePresence>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
         </section>
     );
