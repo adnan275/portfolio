@@ -615,9 +615,10 @@ const Skills = () => {
                     <canvas ref={canvasRef} className="graph-canvas" />
                 </div>
 
-                {/* Telemetry HUD Dock (Shows directly on hover with zero delay; hidden when not hovering) */}
+                {/* Telemetry HUD Dock (Smoothly glides into view on hover) */}
                 {selectedSkill && selectedSkill.desc && (
                     <div
+                        key={selectedSkill.id}
                         className="skills-telemetry-dock glass-panel"
                         style={{
                             '--dock-accent': selectedSkill.color,
