@@ -95,20 +95,20 @@ const skillLinks = [
 ];
 
 const domainFilterList = [
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 },
     { id: 'ai', label: 'AI & ML Core', color: '#00f0ff', count: 6 },
     { id: 'fullstack', label: 'Full-Stack Systems', color: '#c084fc', count: 6 },
     { id: 'data', label: 'Data & Analytics', color: '#ffb703', count: 4 },
     { id: 'tools', label: 'Production Engineering', color: '#34d399', count: 5 },
-    { id: 'networking', label: 'Computer Networks', color: '#38bdf8', count: 4 },
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 }
+    { id: 'networking', label: 'Computer Networks', color: '#38bdf8', count: 4 }
 ];
 
 const Skills = () => {
     const canvasRef = useRef(null);
-    // Default to 'ai' domain so canvas is ultra-spacious, focused and completely overlap-free
-    const [activeDomain, setActiveDomain] = useState('ai');
+    // By default loads with 'all' domains visible
+    const [activeDomain, setActiveDomain] = useState('all');
     const [selectedSkill, setSelectedSkill] = useState(skillNodes.find(s => s.id === 'langgraph'));
-    const activeDomainRef = useRef('ai');
+    const activeDomainRef = useRef('all');
 
     useEffect(() => {
         activeDomainRef.current = activeDomain;
@@ -272,7 +272,8 @@ const Skills = () => {
                             setActiveDomain(next);
                             activeDomainRef.current = next;
                         } else if (node.id === 'adnan') {
-                            setActiveDomain(activeDomainRef.current === 'all' ? 'ai' : 'all');
+                            setActiveDomain('all');
+                            activeDomainRef.current = 'all';
                         } else if (node.desc) {
                             setSelectedSkill(node);
                         }
