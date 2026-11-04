@@ -95,26 +95,32 @@ const skillLinks = [
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 },
     { id: 'ai', label: 'AI & ML Core', color: '#00f0ff', count: 6 },
     { id: 'fullstack', label: 'Full-Stack Systems', color: '#c084fc', count: 6 },
     { id: 'data', label: 'Data & Analytics', color: '#ffb703', count: 4 },
     { id: 'tools', label: 'Production Engineering', color: '#34d399', count: 5 },
-    { id: 'networking', label: 'Computer Networks', color: '#38bdf8', count: 4 }
+    { id: 'networking', label: 'Computer Networks', color: '#38bdf8', count: 4 },
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 }
 ];
 
 const Skills = () => {
     const canvasRef = useRef(null);
-    const [activeDomain, setActiveDomain] = useState('all');
-    const [selectedSkill, setSelectedSkill] = useState(null);
-    const activeDomainRef = useRef('all');
+    // Default to 'ai' domain so canvas is ultra-spacious, focused and completely overlap-free
+    const [activeDomain, setActiveDomain] = useState('ai');
+    const [selectedSkill, setSelectedSkill] = useState(skillNodes.find(s => s.id === 'langgraph'));
+    const activeDomainRef = useRef('ai');
 
     useEffect(() => {
         activeDomainRef.current = activeDomain;
+        // Auto-select first skill of active domain for the dock
+        if (activeDomain !== 'all') {
+            const firstOfDomain = skillNodes.find(s => s.domain === activeDomain);
+            if (firstOfDomain) setSelectedSkill(firstOfDomain);
+        }
     }, [activeDomain]);
 
     const handleDomainToggle = (domainId) => {
-        setActiveDomain(prev => (prev === domainId && domainId !== 'all') ? 'all' : domainId);
+        setActiveDomain(domainId);
     };
 
     useEffect(() => {
@@ -138,49 +144,49 @@ const Skills = () => {
 
         const nodes = skillNodes.map(n => {
             const coordMap = {
-                adnan: { x: 0.50, y: 0.48 },
+                adnan: { x: 0.50, y: 0.50 },
 
-                // 5 Core Pillars
-                ai: { x: 0.32, y: 0.30 },
-                fullstack: { x: 0.68, y: 0.30 },
-                data: { x: 0.25, y: 0.64 },
-                tools: { x: 0.75, y: 0.64 },
-                networking: { x: 0.50, y: 0.78 },
+                // 5 Core Pillars (Generous separation)
+                ai: { x: 0.30, y: 0.34 },
+                fullstack: { x: 0.70, y: 0.34 },
+                data: { x: 0.26, y: 0.68 },
+                tools: { x: 0.74, y: 0.68 },
+                networking: { x: 0.50, y: 0.80 },
 
-                // AI Sub-nodes (Top-Left)
-                langgraph: { x: 0.16, y: 0.14 },
-                langchain: { x: 0.13, y: 0.26 },
-                llms: { x: 0.28, y: 0.12 },
-                python: { x: 0.14, y: 0.40 },
-                groq: { x: 0.38, y: 0.16 },
-                streamlit: { x: 0.32, y: 0.22 },
+                // AI Sub-nodes (Top-Left Quadrant - Well spaced)
+                langgraph: { x: 0.12, y: 0.18 },
+                langchain: { x: 0.10, y: 0.36 },
+                llms: { x: 0.26, y: 0.14 },
+                python: { x: 0.15, y: 0.52 },
+                groq: { x: 0.38, y: 0.18 },
+                streamlit: { x: 0.34, y: 0.25 },
 
-                // Full-Stack Sub-nodes (Top-Right)
-                react: { x: 0.84, y: 0.14 },
-                nodejs: { x: 0.70, y: 0.12 },
-                prisma: { x: 0.87, y: 0.26 },
-                mysql: { x: 0.62, y: 0.16 },
-                javascript: { x: 0.86, y: 0.40 },
-                tailwind: { x: 0.68, y: 0.22 },
+                // Full-Stack Sub-nodes (Top-Right Quadrant - Well spaced)
+                react: { x: 0.88, y: 0.18 },
+                nodejs: { x: 0.74, y: 0.14 },
+                prisma: { x: 0.90, y: 0.36 },
+                mysql: { x: 0.62, y: 0.18 },
+                javascript: { x: 0.85, y: 0.52 },
+                tailwind: { x: 0.66, y: 0.25 },
 
-                // Data Sub-nodes (Bottom-Left)
-                sql: { x: 0.12, y: 0.58 },
-                tableau: { x: 0.28, y: 0.82 },
-                pandas: { x: 0.15, y: 0.74 },
-                excel: { x: 0.11, y: 0.48 },
+                // Data Sub-nodes (Bottom-Left Quadrant - Well spaced)
+                sql: { x: 0.10, y: 0.66 },
+                tableau: { x: 0.28, y: 0.88 },
+                pandas: { x: 0.14, y: 0.82 },
+                excel: { x: 0.10, y: 0.52 },
 
-                // Production Sub-nodes (Bottom-Right)
-                sysdesign: { x: 0.88, y: 0.58 },
-                docker: { x: 0.76, y: 0.88 },
-                solid: { x: 0.72, y: 0.80 },
-                jwt: { x: 0.85, y: 0.74 },
-                git: { x: 0.89, y: 0.48 },
+                // Production Sub-nodes (Bottom-Right Quadrant - Well spaced)
+                sysdesign: { x: 0.90, y: 0.66 },
+                docker: { x: 0.72, y: 0.88 },
+                solid: { x: 0.86, y: 0.82 },
+                jwt: { x: 0.90, y: 0.52 },
+                git: { x: 0.82, y: 0.74 },
 
-                // Networking Sub-nodes (Bottom-Center)
-                vpc: { x: 0.40, y: 0.90 },
-                wireshark: { x: 0.60, y: 0.90 },
-                tcpudp: { x: 0.34, y: 0.80 },
-                secgroups: { x: 0.66, y: 0.80 }
+                // Networking Sub-nodes (Bottom-Center - Well spaced)
+                vpc: { x: 0.38, y: 0.92 },
+                wireshark: { x: 0.62, y: 0.92 },
+                tcpudp: { x: 0.34, y: 0.82 },
+                secgroups: { x: 0.66, y: 0.82 }
             };
 
             const target = coordMap[n.id] || { x: 0.5, y: 0.5 };
@@ -266,8 +272,7 @@ const Skills = () => {
                             setActiveDomain(next);
                             activeDomainRef.current = next;
                         } else if (node.id === 'adnan') {
-                            setActiveDomain('all');
-                            activeDomainRef.current = 'all';
+                            setActiveDomain(activeDomainRef.current === 'all' ? 'ai' : 'all');
                         } else if (node.desc) {
                             setSelectedSkill(node);
                         }
@@ -489,7 +494,7 @@ const Skills = () => {
     const activeDomainMeta = domainFilterList.find(d => d.id === activeDomain) || domainFilterList[0];
 
     return (
-        <section id="skills" className="section-padding neural-graph-section">
+        <section id="skills" className="section-padding skills-neural-section">
             <div className="container">
                 <motion.div
                     className="neural-header"
@@ -508,71 +513,80 @@ const Skills = () => {
                     </p>
                 </motion.div>
 
-                <div className="graph-container glass-panel">
+                {/* Horizontal Domain Filter Toolbar (Above Canvas - Zero Node Overlap) */}
+                <div className="skills-filter-toolbar">
+                    {domainFilterList.map(domain => (
+                        <button
+                            key={domain.id}
+                            className={`filter-chip ${activeDomain === domain.id ? 'active' : ''}`}
+                            onClick={() => handleDomainToggle(domain.id)}
+                            style={{ '--chip-color': domain.color }}
+                        >
+                            <span
+                                className="chip-dot"
+                                style={{
+                                    backgroundColor: domain.color,
+                                    boxShadow: `0 0 8px ${domain.color}`
+                                }}
+                            ></span>
+                            <span className="chip-text">{domain.label}</span>
+                            <span className="chip-count">{domain.count}</span>
+                        </button>
+                    ))}
+                </div>
+
+                <div className="graph-container glass-panel skills-graph-canvas-box">
                     {/* Top Left Meta Tag */}
                     <div className="graph-system-meta">
                         <span className="meta-prefix">System Architecture:</span>
                         <span className="meta-code" style={{ color: activeDomainMeta.color }}>
                             {' '}SKILLS_NEURAL_TOPOLOGY_V2 // {activeDomainMeta.label.toUpperCase()}
                         </span>
-                        <span className="meta-instruction"> — Click domain pillars or buttons to filter</span>
-                    </div>
-
-                    {/* Top Right Legend / Interactive Filter Pills */}
-                    <div className="graph-legend-card">
-                        {domainFilterList.map(domain => (
-                            <button
-                                key={domain.id}
-                                className={`legend-btn ${activeDomain === domain.id ? 'active' : ''}`}
-                                onClick={() => handleDomainToggle(domain.id)}
-                                title={`Filter: ${domain.label}`}
-                            >
-                                <span
-                                    className="legend-dot"
-                                    style={{
-                                        backgroundColor: domain.color,
-                                        boxShadow: `0 0 8px ${domain.color}`
-                                    }}
-                                ></span>
-                                <span className="legend-label">{domain.label}</span>
-                                <span className="legend-count">{domain.count}</span>
-                            </button>
-                        ))}
+                        <span className="meta-instruction"> — Click domain pillars or chips above to filter</span>
                     </div>
 
                     <canvas ref={canvasRef} className="graph-canvas" />
-
-                    {/* Interactive Telemetry HUD Inspector (Shows on Hover/Click) */}
-                    <AnimatePresence>
-                        {selectedSkill && selectedSkill.desc && (
-                            <motion.div
-                                key={selectedSkill.id}
-                                className="skills-hud-inspector"
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 10 }}
-                                transition={{ duration: 0.2 }}
-                                style={{
-                                    '--hud-accent': selectedSkill.color,
-                                    '--hud-glow': `${selectedSkill.color}25`
-                                }}
-                            >
-                                <div className="hud-header">
-                                    <span className="hud-tag">{selectedSkill.tag || 'SPEC'}</span>
-                                    <h4 className="hud-title">{selectedSkill.label}</h4>
-                                    <span className="hud-level">{selectedSkill.level || 90}% MASTERY</span>
-                                </div>
-                                <p className="hud-desc">{selectedSkill.desc}</p>
-                                <div className="hud-meter-track">
-                                    <div
-                                        className="hud-meter-fill"
-                                        style={{ width: `${selectedSkill.level || 90}%`, background: selectedSkill.color }}
-                                    ></div>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
                 </div>
+
+                {/* Telemetry HUD Dock (Positioned BELOW the Canvas - Zero Node Collision) */}
+                {selectedSkill && selectedSkill.desc && (
+                    <motion.div
+                        key={selectedSkill.id}
+                        className="skills-telemetry-dock glass-panel"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.2 }}
+                        style={{
+                            '--dock-accent': selectedSkill.color,
+                            '--dock-glow': `${selectedSkill.color}25`
+                        }}
+                    >
+                        <div className="dock-left">
+                            <span className="dock-tag" style={{ color: selectedSkill.color, borderColor: `${selectedSkill.color}66` }}>
+                                {selectedSkill.tag || 'SPEC'}
+                            </span>
+                            <div className="dock-title-wrap">
+                                <h4 className="dock-title">{selectedSkill.label}</h4>
+                                <span className="dock-domain">{selectedSkill.domain?.toUpperCase() || 'CORE'} DOMAIN</span>
+                            </div>
+                        </div>
+
+                        <p className="dock-desc">{selectedSkill.desc}</p>
+
+                        <div className="dock-right">
+                            <span className="dock-level-text">{selectedSkill.level || 90}% PROFICIENCY</span>
+                            <div className="dock-meter-track">
+                                <div
+                                    className="dock-meter-fill"
+                                    style={{
+                                        width: `${selectedSkill.level || 90}%`,
+                                        background: `linear-gradient(90deg, ${selectedSkill.color} 0%, #ffffff 100%)`
+                                    }}
+                                ></div>
+                            </div>
+                        </div>
+                    </motion.div>
+                )}
             </div>
         </section>
     );

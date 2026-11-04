@@ -812,61 +812,61 @@ const NeuralGraph = () => {
                     </p>
                 </motion.div>
 
+                {/* Horizontal Domain Filter Toolbar (Above Canvas - Zero Node Overlap) */}
+                <div className="skills-filter-toolbar">
+                    <button
+                        className={`filter-chip ${activeDomain === 'all' ? 'active' : ''}`}
+                        onClick={() => handleDomainToggle('all')}
+                        style={{ '--chip-color': '#ffffff' }}
+                    >
+                        <span className="chip-dot" style={{ backgroundColor: '#ffffff', boxShadow: '0 0 8px #ffffff' }}></span>
+                        <span className="chip-text">All Domains</span>
+                        <span className="chip-count">14</span>
+                    </button>
+                    <button
+                        className={`filter-chip ${activeDomain === 'ai' ? 'active' : ''}`}
+                        onClick={() => handleDomainToggle('ai')}
+                        style={{ '--chip-color': '#00f0ff' }}
+                    >
+                        <span className="chip-dot" style={{ backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></span>
+                        <span className="chip-text">AI & ML Core</span>
+                        <span className="chip-count">3</span>
+                    </button>
+                    <button
+                        className={`filter-chip ${activeDomain === 'fullstack' ? 'active' : ''}`}
+                        onClick={() => handleDomainToggle('fullstack')}
+                        style={{ '--chip-color': '#c084fc' }}
+                    >
+                        <span className="chip-dot" style={{ backgroundColor: '#c084fc', boxShadow: '0 0 8px #c084fc' }}></span>
+                        <span className="chip-text">Full-Stack</span>
+                        <span className="chip-count">5</span>
+                    </button>
+                    <button
+                        className={`filter-chip ${activeDomain === 'data' ? 'active' : ''}`}
+                        onClick={() => handleDomainToggle('data')}
+                        style={{ '--chip-color': '#fbbf24' }}
+                    >
+                        <span className="chip-dot" style={{ backgroundColor: '#fbbf24', boxShadow: '0 0 8px #fbbf24' }}></span>
+                        <span className="chip-text">Data & Analytics</span>
+                        <span className="chip-count">2</span>
+                    </button>
+                    <button
+                        className={`filter-chip ${activeDomain === 'projects' ? 'active' : ''}`}
+                        onClick={() => handleDomainToggle('projects')}
+                        style={{ '--chip-color': '#34d399' }}
+                    >
+                        <span className="chip-dot" style={{ backgroundColor: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
+                        <span className="chip-text">Production Eng</span>
+                        <span className="chip-count">4</span>
+                    </button>
+                </div>
+
                 <div className="graph-container glass-panel">
                     {/* Top Left Meta Tag (Dynamic Active Domain Indicator) */}
                     <div className="graph-system-meta">
                         <span className="meta-prefix">System Architecture:</span>
                         <span className="meta-code"> AGENTIC_NEURAL_TOPOLOGY_V2 // {domainMeta[activeDomain]?.label || 'CORE'}</span>
                         <span className="meta-instruction"> — Click domain pillars or buttons to filter</span>
-                    </div>
-
-                    {/* Top Right Legend / Interactive Filter Pills */}
-                    <div className="graph-legend-card">
-                        <button
-                            className={`legend-btn ${activeDomain === 'all' ? 'active' : ''}`}
-                            onClick={() => handleDomainToggle('all')}
-                            title="Show all domains simultaneously"
-                        >
-                            <span className="legend-dot" style={{ backgroundColor: '#ffffff', boxShadow: '0 0 8px #ffffff' }}></span>
-                            <span className="legend-label">All Domains</span>
-                            <span className="legend-count">14</span>
-                        </button>
-                        <button
-                            className={`legend-btn ${activeDomain === 'ai' ? 'active' : ''}`}
-                            onClick={() => handleDomainToggle('ai')}
-                            title="Filter: AI & ML Core"
-                        >
-                            <span className="legend-dot" style={{ backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></span>
-                            <span className="legend-label">AI & ML Core</span>
-                            <span className="legend-count">3</span>
-                        </button>
-                        <button
-                            className={`legend-btn ${activeDomain === 'fullstack' ? 'active' : ''}`}
-                            onClick={() => handleDomainToggle('fullstack')}
-                            title="Filter: Full-Stack Systems"
-                        >
-                            <span className="legend-dot" style={{ backgroundColor: '#c084fc', boxShadow: '0 0 8px #c084fc' }}></span>
-                            <span className="legend-label">Full-Stack Systems</span>
-                            <span className="legend-count">5</span>
-                        </button>
-                        <button
-                            className={`legend-btn ${activeDomain === 'data' ? 'active' : ''}`}
-                            onClick={() => handleDomainToggle('data')}
-                            title="Filter: Data & Analytics"
-                        >
-                            <span className="legend-dot" style={{ backgroundColor: '#fbbf24', boxShadow: '0 0 8px #fbbf24' }}></span>
-                            <span className="legend-label">Data & Analytics</span>
-                            <span className="legend-count">2</span>
-                        </button>
-                        <button
-                            className={`legend-btn ${activeDomain === 'projects' ? 'active' : ''}`}
-                            onClick={() => handleDomainToggle('projects')}
-                            title="Filter: Production Engineering"
-                        >
-                            <span className="legend-dot" style={{ backgroundColor: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
-                            <span className="legend-label">Production Eng</span>
-                            <span className="legend-count">4</span>
-                        </button>
                     </div>
 
                     <canvas ref={canvasRef} className="graph-canvas" />
