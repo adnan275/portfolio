@@ -609,66 +609,59 @@ const Skills = () => {
                         <span className="meta-code" style={{ color: activeDomainMeta.color }}>
                             {' '}SKILLS_NEURAL_TOPOLOGY_V2 // {activeDomainMeta.label.toUpperCase()}
                         </span>
-                        <span className="meta-instruction"> — Hover over any node or click chips above to filter</span>
+                        <span className="meta-instruction"> — Click domain chips above to filter</span>
                     </div>
 
                     <canvas ref={canvasRef} className="graph-canvas" />
                 </div>
 
-                {/* Telemetry HUD Dock (Instant Zero-Delay Hover Telemetry) */}
-                <div
-                    className={`skills-telemetry-dock glass-panel ${selectedSkill && selectedSkill.desc ? 'active' : 'idle'}`}
-                    style={{
-                        '--dock-accent': selectedSkill ? selectedSkill.color : '#00f0ff',
-                        '--dock-glow': selectedSkill ? `${selectedSkill.color}25` : 'transparent'
-                    }}
-                >
-                    {selectedSkill && selectedSkill.desc ? (
-                        <>
-                            <div className="dock-left">
-                                <span className="dock-tag" style={{ color: selectedSkill.color, borderColor: `${selectedSkill.color}66` }}>
-                                    {selectedSkill.tag || 'SPEC'}
-                                </span>
-                                <div className="dock-title-wrap">
-                                    <h4 className="dock-title">{selectedSkill.label}</h4>
-                                    <span className="dock-domain">{selectedSkill.domain?.toUpperCase() || 'CORE'} DOMAIN</span>
-                                </div>
+                {/* Telemetry HUD Dock (Shows directly on hover with zero delay; hidden when not hovering) */}
+                {selectedSkill && selectedSkill.desc && (
+                    <div
+                        className="skills-telemetry-dock glass-panel"
+                        style={{
+                            '--dock-accent': selectedSkill.color,
+                            '--dock-glow': `${selectedSkill.color}25`
+                        }}
+                    >
+                        <div className="dock-left">
+                            <span className="dock-tag" style={{ color: selectedSkill.color, borderColor: `${selectedSkill.color}66` }}>
+                                {selectedSkill.tag || 'SPEC'}
+                            </span>
+                            <div className="dock-title-wrap">
+                                <h4 className="dock-title">{selectedSkill.label}</h4>
+                                <span className="dock-domain">{selectedSkill.domain?.toUpperCase() || 'CORE'} DOMAIN</span>
                             </div>
-
-                            <p className="dock-desc">{selectedSkill.desc}</p>
-
-                            <div className="dock-right">
-                                <span className="dock-level-text">{selectedSkill.level || 90}% PROFICIENCY</span>
-                                <div className="dock-meter-track">
-                                    <div
-                                        className="dock-meter-fill"
-                                        style={{
-                                            width: `${selectedSkill.level || 90}%`,
-                                            background: `linear-gradient(90deg, ${selectedSkill.color} 0%, #ffffff 100%)`
-                                        }}
-                                    ></div>
-                                </div>
-                            </div>
-
-                            <button
-                                className="dock-close-btn"
-                                onClick={() => {
-                                    selectedSkillRef.current = null;
-                                    setSelectedSkill(null);
-                                }}
-                                aria-label="Close details"
-                                title="Close"
-                            >
-                                ✕
-                            </button>
-                        </>
-                    ) : (
-                        <div className="dock-placeholder">
-                            <span className="placeholder-radar-dot"></span>
-                            <span className="placeholder-text">// HOVER OVER ANY SKILL NODE TO INSPECT ARCHITECTURAL TELEMETRY</span>
                         </div>
-                    )}
-                </div>
+
+                        <p className="dock-desc">{selectedSkill.desc}</p>
+
+                        <div className="dock-right">
+                            <span className="dock-level-text">{selectedSkill.level || 90}% PROFICIENCY</span>
+                            <div className="dock-meter-track">
+                                <div
+                                    className="dock-meter-fill"
+                                    style={{
+                                        width: `${selectedSkill.level || 90}%`,
+                                        background: `linear-gradient(90deg, ${selectedSkill.color} 0%, #ffffff 100%)`
+                                    }}
+                                ></div>
+                            </div>
+                        </div>
+
+                        <button
+                            className="dock-close-btn"
+                            onClick={() => {
+                                selectedSkillRef.current = null;
+                                setSelectedSkill(null);
+                            }}
+                            aria-label="Close details"
+                            title="Close"
+                        >
+                            ✕
+                        </button>
+                    </div>
+                )}
             </div>
         </section>
     );
