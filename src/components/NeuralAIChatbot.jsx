@@ -19,9 +19,9 @@ import '../styles/NeuralAIChatbot.css';
 const KNOWLEDGE_BASE = {
     bio: {
         keywords: [
-            'adnan', 'who is adnan', 'adnan rizvi', 'who is adnan rizvi', 'about adnan', 
-            'who is he', 'bio', 'about', 'introduction', 'tell me about adnan', 
-            'background', 'who are you', 'what is your name', 'profile', 'software engineer',
+            'who is adnan', 'who is adnan rizvi', 'about adnan', 
+            'who is he', 'bio', 'introduction', 'tell me about adnan', 
+            'background', 'who are you', 'what is your name', 'profile',
             'adnan kaun hai', 'koun hai', 'introduce yourself', 'summary', 'overview'
         ],
         response: "**Adnan Rizvi** is a **Software Engineer & AI Systems Developer** with **2+ Years** of hands-on experience architecting autonomous AI agents, privacy-centric RAG engines, 3D web interfaces, and high-throughput backends.\n\n" +
@@ -45,7 +45,7 @@ const KNOWLEDGE_BASE = {
             "• 🌐 **Cloud & Networking**: Multi-tier AWS VPCs, CIDR subnetting, ALB/NLB, and Wireshark diagnostics\n" +
             "• 💼 **Full-Stack & Hiring**: React 19, Node.js, Prisma, work history, and direct contact\n\n" +
             "What would you like to explore first?",
-        chips: ['🚀 Flagship Projects', '🤖 Agentic AI & RAG', '🖥️ Verilog & Silicon', '⚡ LeetCode 400+ DSA', '💼 Why Hire Adnan?']
+        chips: ['👤 Who is Adnan?', '💼 Why Hire Adnan?']
     },
     sentinel: {
         keywords: [
@@ -119,11 +119,29 @@ const KNOWLEDGE_BASE = {
             "🔗 Check out the live app: [GigFlow Live Platform](https://service-hive-zeta.vercel.app/).",
         chips: ['🛍️ Presento Treasure', '📹 Zync Platform', '🚀 All Projects']
     },
+    best_project: {
+        keywords: [
+            'best project', 'best projects', 'top project', 'top projects', 
+            'best project of adnan', 'best work', 'top work', 'flagship project', 
+            'flagship projects', 'best ai project', 'standout project', 'main project',
+            'most impressive project', 'greatest project', 'favorite project', 
+            'sabse accha project', 'sabse best project', 'best app', 'number 1 project',
+            'star project'
+        ],
+        response: "Adnan's #1 standout flagship system is **Sentinel** — an autonomous, privacy-focused local AI desktop agent:\n\n" +
+            "• 🤖 **Sentinel (Local AI Agent)**: Local-first file organization agent running local LLMs via **Ollama**, **FastAPI**, **Next.js**, and **Rust/Tauri**. Features a safety-first **Plan-Before-Execute** pattern where users preview and approve the entire file operations graph before execution with zero cloud data egress.\n" +
+            "  🔗 [Sentinel Live Demo](https://sentinel-ten-black.vercel.app/) | [GitHub Repository](https://github.com/adnan275/sentinel)\n\n" +
+            "Other top tier flagship engineering systems built by Adnan:\n" +
+            "• 🧠 **NeuraX (Vector DB & RAG)**: Built from first principles in Python/NumPy with custom HNSW indexing, 768D vector search, and a real-time 2D PCA semantic projection. ([HF Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n" +
+            "• ⚡ **EV Charging Multi-Agent**: LangGraph state graph predicting station availability and wait times across 240,000+ stations with sub-50ms Groq LPU inference. ([HF Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent))\n\n" +
+            "Which project would you like to explore deeper?",
+        chips: ['🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB', '⚡ EV Charging AI', '🚀 All Projects']
+    },
     projects: {
         keywords: [
             'project', 'projects', 'portfolio', 'work', 'built', 'apps', 'chess', 
             'neural', 'stockfish', 'rag', 'github', 'demo', 'kya banaya hai', 
-            'list projects', 'top projects', 'flagship'
+            'list projects', 'all projects', 'flagship', 'show projects'
         ],
         response: "Here is an overview of Adnan's **flagship production systems**:\n\n" +
             "1. **🤖 Sentinel (Local AI Agent)**: Offline file organizer with Ollama, Tauri & Rust. ([Live Demo](https://sentinel-ten-black.vercel.app/))\n" +
@@ -406,16 +424,6 @@ export default function NeuralAIChatbot() {
             timestamp: getFormattedTime(),
             chips: [
                 '👤 Who is Adnan?',
-                '🏆 WorldQuant Gold',
-                '🚀 Flagship Projects',
-                '🤖 Sentinel AI Agent',
-                '🧠 NeuraX Vector DB',
-                '⚡ EV Charging AI',
-                '💻 400+ LeetCode DSA',
-                '🖥️ Verilog & Architecture',
-                '🌐 AWS & Cloud Networks',
-                '🏗️ System Design',
-                '🎓 Education & NST',
                 '💼 Why Hire Adnan?'
             ]
         }
@@ -481,7 +489,65 @@ export default function NeuralAIChatbot() {
         const cleanQuery = cleanText(rawQuery);
         if (!cleanQuery) return KNOWLEDGE_BASE.greetings;
 
-        const queryTokens = cleanQuery.split(' ').filter(Boolean);
+        // 1. Direct High-Precision Intent Routing (Handles specific questions instantly)
+        // Best / Flagship Projects
+        if (/\b(best project|best projects|top project|top projects|flagship project|flagship projects|best work|star project|standout project|main project|favorite project|sabse accha project|sabse best project)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.best_project;
+        }
+
+        // General Projects / Portfolio
+        if (/\b(project|projects|portfolio|built|apps|kya banaya hai|what has he built|what did he make|github repos|github projects)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.projects;
+        }
+
+        // Sentinel AI Agent
+        if (/\b(sentinel|file organizer|local ai agent|offline agent|tauri|ollama)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.sentinel;
+        }
+
+        // NeuraX Vector DB
+        if (/\b(neurax|vector db|vector database|embeddings|hnsw|rag engine)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.neurax;
+        }
+
+        // EV Charging Multi-Agent
+        if (/\b(ev|charging|charging station|langgraph agent|ev agent)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.evcharging;
+        }
+
+        // Why Hire
+        if (/\b(hire|why hire|hire adnan|why should we hire|recruiter|interview|work with)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.hire;
+        }
+
+        // Contact / Email
+        if (/\b(contact|email|phone|reach|call|message|touch)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.contact;
+        }
+
+        // Bio / Who is Adnan
+        if (/\b(who is adnan|who are you|about adnan|introduce yourself|adnan kaun hai|tell me about yourself|tell me about adnan|bio|background|profile|intro)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.bio;
+        }
+
+        // DSA & LeetCode
+        if (/\b(dsa|leetcode|algorithms|problem solving|400\+|competitive programming|dynamic programming)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.dsa;
+        }
+
+        // Greetings
+        if (/^(hi|hello|hey|namaste|morning|evening|sup|start|help)$/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.greetings;
+        }
+
+        // 2. Normalized Token-Scoring Engine
+        const normalizedQuery = cleanQuery
+            .replace(/\b(tell me about|what is|what are|show me|list all|can you tell me|do you know|give me|what are the)\b/g, ' ')
+            .replace(/\b(adnan|rizvi|adnans|adnan's|of adnan|by adnan|for adnan|his)\b/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        const queryTokens = (normalizedQuery || cleanQuery).split(' ').filter(Boolean);
 
         let bestCategory = null;
         let highestScore = 0;
@@ -494,23 +560,22 @@ export default function NeuralAIChatbot() {
                 const lowerKeyword = cleanText(keyword);
                 if (!lowerKeyword) return;
 
-                // 1. Exact match bonus
-                if (cleanQuery === lowerKeyword) {
-                    categoryScore += 140;
+                // Exact match bonus (both clean and normalized)
+                if (cleanQuery === lowerKeyword || (normalizedQuery && normalizedQuery === lowerKeyword)) {
+                    categoryScore += 160;
                 }
-                // 2. Exact phrase included in query
-                else if (cleanQuery.includes(lowerKeyword)) {
-                    categoryScore += 35 + lowerKeyword.length * 3;
+                // Exact phrase included in query
+                else if (cleanQuery.includes(lowerKeyword) || (normalizedQuery && normalizedQuery.includes(lowerKeyword))) {
+                    categoryScore += 40 + lowerKeyword.length * 3;
                 }
-                // 3. Keyword contains full clean query
+                // Keyword contains full clean query
                 else if (lowerKeyword.includes(cleanQuery) && cleanQuery.length > 3) {
                     categoryScore += 25 + cleanQuery.length * 2;
                 }
 
-                // 4. Token-by-token scoring
+                // Token-by-token scoring
                 const keywordTokens = lowerKeyword.split(' ').filter(Boolean);
                 queryTokens.forEach((qToken) => {
-                    // Match short critical tech acronyms (e.g. ai, ml, dl, ev, db, ip, nst, dsa, aws, vpc)
                     if (keywordTokens.includes(qToken)) {
                         categoryScore += qToken.length <= 3 ? 20 : 14;
                     } else if (qToken.length > 3 && lowerKeyword.includes(qToken)) {
@@ -530,24 +595,12 @@ export default function NeuralAIChatbot() {
             return bestCategory;
         }
 
-        // Common conversational fallbacks
-        if (/\b(who|about|adnan|bio|profile|intro|creator|developer)\b/.test(cleanQuery)) {
-            return KNOWLEDGE_BASE.bio;
-        }
-        if (/\b(hi|hello|hey|namaste|morning|evening|sup|start)\b/.test(cleanQuery)) {
-            return KNOWLEDGE_BASE.greetings;
-        }
-        if (/\b(project|projects|work|built|portfolio|github)\b/.test(cleanQuery)) {
-            return KNOWLEDGE_BASE.projects;
-        }
+        // Conversational fallbacks
         if (/\b(college|university|degree|study|nst|rishihood)\b/.test(cleanQuery)) {
             return KNOWLEDGE_BASE.education;
         }
-        if (/\b(hire|recruiter|interview|job|opportunity)\b/.test(cleanQuery)) {
-            return KNOWLEDGE_BASE.hire;
-        }
-        if (/\b(contact|email|phone|reach|call)\b/.test(cleanQuery)) {
-            return KNOWLEDGE_BASE.contact;
+        if (/\b(who|about|bio|profile|intro|creator|developer)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.bio;
         }
 
         return {
@@ -831,31 +884,6 @@ export default function NeuralAIChatbot() {
                                     </div>
                                 </motion.div>
                             )}
-                        </div>
-
-                        {/* Quick Prompts Bar */}
-                        <div className="quick-prompts-bar">
-                            {[
-                                '🏆 WorldQuant Gold',
-                                '🚀 Flagship Projects',
-                                '🤖 Sentinel AI',
-                                '🧠 NeuraX Vector DB',
-                                '⚡ EV Charging AI',
-                                '💻 400+ DSA',
-                                '🖥️ Verilog & Silicon',
-                                '🌐 AWS Cloud Networks',
-                                '🏗️ System Design',
-                                '🎓 Education & NST',
-                                '💼 Why Hire Adnan?'
-                            ].map((prompt, pIdx) => (
-                                <button
-                                    key={pIdx}
-                                    className="quick-prompt-pill"
-                                    onClick={() => handleSendMessage(prompt.replace(/^[^\p{L}\p{N}]+/u, '').trim())}
-                                >
-                                    {prompt}
-                                </button>
-                            ))}
                         </div>
 
                         {/* Input Area */}
