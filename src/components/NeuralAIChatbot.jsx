@@ -228,12 +228,28 @@ const KNOWLEDGE_BASE = {
             "🔗 Explore the cloud network stack in the [Skills Section](#skills)!",
         chips: ['🖥️ Computer Architecture', '💻 Full-Stack Systems', '🚀 Flagship Projects']
     },
+    techstack: {
+        keywords: [
+            'techstack', 'tech stack', 'technology stack', 'technologies', 'skills', 
+            'languages', 'programming languages', 'tools', 'frameworks', 'which techstack',
+            'what tech stack', 'techstack adnan knows', 'kya kya ata hai', 'kya kya aata hai',
+            'what does he know', 'technical skills', 'stack', 'tech stack kya hai', 
+            'technologies he knows', 'competencies', 'what can he code', 'developer stack'
+        ],
+        response: "⚡ **Adnan's Complete Production Tech Stack & Architecture**:\n\n" +
+            "• 🤖 **AI & Multi-Agent Systems**: Python, PyTorch, LangGraph, LangChain, Ollama, ChromaDB, Hugging Face, Transformers, Groq LPU, NumPy, Pandas\n" +
+            "• 🌐 **Full-Stack & Real-Time Web**: React 19, TypeScript, Next.js (App Router), Node.js, Express, FastAPI, WebSockets (Socket.io), Three.js (WebGL), TailwindCSS\n" +
+            "• 🗄️ **Databases & Caching**: PostgreSQL, MySQL, MongoDB, Redis, Prisma ORM, Custom Vector DBs (HNSW indexing)\n" +
+            "• 🖥️ **Silicon & Systems Engineering**: Verilog HDL, RISC-V, 5-Stage CPU Pipelining, SOLID patterns, Object-Oriented Design (OOP)\n" +
+            "• ☁️ **Cloud, DevOps & Networking**: AWS (VPC, Subnets, ALB/NLB, Route 53, EC2), Docker, Linux / Bash, Git / GitHub Actions, Wireshark\n\n" +
+            "🔗 You can explore and filter all 25+ technologies interactively in the [Skills Constellation](#skills)!",
+        chips: ['🚀 Flagship Projects', '🤖 Sentinel AI Agent', '💼 Why Hire Adnan?']
+    },
     fullstack: {
         keywords: [
-            'skill', 'skills', 'stack', 'tech', 'fullstack', 'frontend', 'backend', 
-            'react', 'node', 'express', 'javascript', 'typescript', 'css', 'three', 
-            'webgl', 'database', 'postgres', 'docker', 'vite', 'sql', 'mern', 
-            'prisma', 'mongodb', 'kya kya ata hai'
+            'fullstack', 'frontend', 'backend', 'react', 'node', 'express', 
+            'javascript', 'typescript', 'css', 'three', 'webgl', 'postgres', 
+            'vite', 'mern', 'prisma', 'mongodb'
         ],
         response: "Adnan's **Full-Stack Systems & Web Architecture**:\n\n" +
             "• **Frontend UI/UX**: React 19, TypeScript, Modern ES6+, Three.js / React Three Fiber (3D WebGL), Framer Motion, TailwindCSS\n" +
@@ -493,6 +509,11 @@ export default function NeuralAIChatbot() {
         // Best / Flagship Projects
         if (/\b(best project|best projects|top project|top projects|flagship project|flagship projects|best work|star project|standout project|main project|favorite project|sabse accha project|sabse best project)\b/.test(cleanQuery)) {
             return KNOWLEDGE_BASE.best_project;
+        }
+
+        // Tech Stack & Complete Skills
+        if (/\b(tech\s*stack|techstack|technolog(y|ies)|skills?|languages?|frameworks?|tools?|what\s+does\s+he\s+know|what\s+can\s+he\s+code|competenc(y|ies))\b|kya\s+kya\s+aa?ta/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.techstack;
         }
 
         // General Projects / Portfolio
