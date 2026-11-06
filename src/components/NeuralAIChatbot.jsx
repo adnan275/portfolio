@@ -25,7 +25,7 @@ const KNOWLEDGE_BASE = {
             'adnan kaun hai', 'koun hai', 'introduce yourself', 'summary', 'overview'
         ],
         response: "**Adnan Rizvi** is a **Software Engineer & AI Systems Developer** with **2+ Years** of hands-on experience architecting autonomous AI agents, privacy-centric RAG engines, 3D web interfaces, and high-throughput backends.\n\n" +
-            "• **Academic Rigor**: Pursuing B.Tech in Computer Science & AI at **Newton School of Technology (NST) / Rishihood University**.\n" +
+            "• **Academic Rigor**: Pursuing B.Tech in Computer Science & AI at **Newton School of Technology (NST)**.\n" +
             "• **Quantitative Finance**: Achieved **Gold Level in WorldQuant Challenge®** (WorldQuant BRAIN), engineering high-performance predictive trading Alphas.\n" +
             "• **Algorithmic Mastery**: Solved **400+ DSA problems** across LeetCode, mastering runtime efficiency, dynamic programming, and clean OOP/SOLID patterns.\n" +
             "• **Flagship Inventions**: Built **Sentinel (Local AI File Organizer)**, **NeuraX (Vector DB & RAG Engine)**, and **LangGraph EV Charging AI**.\n" +
@@ -332,13 +332,13 @@ const KNOWLEDGE_BASE = {
     education: {
         keywords: [
             'education', 'college', 'university', 'degree', 'btech', 'csai', 
-            'nst', 'newton school', 'rishihood', 'academics', 'gpa', 'study', 
+            'nst', 'newton school', 'academics', 'gpa', 'study', 
             'where do you study', 'qualification', 'qualifications', 'kaha padhte ho', 
             'kis college me', 'school', 'batch', 'student'
         ],
         response: "🎓 **Academic Background**:\n\n" +
             "• **Degree**: Bachelor of Technology (B.Tech) in **Computer Science & Artificial Intelligence**\n" +
-            "• **Institution**: **Newton School of Technology (NST) / Rishihood University**\n" +
+            "• **Institution**: **Newton School of Technology (NST)**\n" +
             "• **Timeline**: Batch 2024 – 2028 (Currently in Semester 5)\n" +
             "• **Focus Areas**: Advanced Machine Learning, Deep Learning, Modern Computer Architecture, Computer Networks & AWS Cloud, Distributed Systems.\n\n" +
             "🔗 Learn more about his learning path in the [My Journey Section](#about).",
@@ -407,7 +407,7 @@ const KNOWLEDGE_BASE = {
         ],
         response: "📄 **Adnan Rizvi's Resume Overview**:\n\n" +
             "• **Role**: Software Engineer & AI Systems Developer\n" +
-            "• **Education**: B.Tech Computer Science & AI (NST / Rishihood University)\n" +
+            "• **Education**: B.Tech Computer Science & AI (Newton School of Technology - NST)\n" +
             "• **Skills**: PyTorch, LangGraph, Python, FastAPI, React 19, Node.js, Prisma, AWS, Verilog, 400+ LeetCode DSA\n" +
             "• **Proven Deliverables**: Sentinel, NeuraX Vector DB, EV Charging AI, Zync Platform\n\n" +
             "🔗 Need a copy of his full PDF resume? Drop an email to [adnan.rizvi2004@gmail.com](mailto:adnan.rizvi2004@gmail.com) or ping him through the [Contact Form](#contact)!",
@@ -617,7 +617,7 @@ export default function NeuralAIChatbot() {
         }
 
         // Conversational fallbacks
-        if (/\b(college|university|degree|study|nst|rishihood)\b/.test(cleanQuery)) {
+        if (/\b(college|university|degree|study|nst|newton school)\b/.test(cleanQuery)) {
             return KNOWLEDGE_BASE.education;
         }
         if (/\b(who|about|bio|profile|intro|creator|developer)\b/.test(cleanQuery)) {
