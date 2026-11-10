@@ -24,10 +24,12 @@
 
 .glow-blob {
     position: absolute;
-    filter: blur(120px);
+    filter: blur(80px);
     border-radius: 50%;
     animation: pulse-glow 12s ease-in-out infinite alternate;
-    will-change: transform, opacity;
+    will-change: transform;
+    transform: translateZ(0);
+    contain: paint;
 }
 
 .glow-blob-1 {

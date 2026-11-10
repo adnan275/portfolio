@@ -515,8 +515,12 @@ const Skills = () => {
                 ctx.beginPath();
                 ctx.arc(node.x, node.y, r / (isCore ? 1.5 : 1.8), 0, Math.PI * 2);
                 ctx.fillStyle = node.color;
-                ctx.shadowColor = node.color;
-                ctx.shadowBlur = isCore ? 20 : (isSelectedDomain ? 26 : (isHovered ? 22 : 9));
+                if (isCore || isSelectedDomain || isHovered) {
+                    ctx.shadowColor = node.color;
+                    ctx.shadowBlur = isCore ? 20 : (isSelectedDomain ? 24 : 18);
+                } else {
+                    ctx.shadowBlur = 0;
+                }
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
@@ -529,8 +533,12 @@ const Skills = () => {
                 ctx.textBaseline = 'top';
 
                 const labelY = node.y + r + (isSmallPhone ? 4 : 6);
-                ctx.shadowColor = '#000000';
-                ctx.shadowBlur = 8;
+                if (isHovered || isCore || isSelectedDomain) {
+                    ctx.shadowColor = '#000000';
+                    ctx.shadowBlur = 6;
+                } else {
+                    ctx.shadowBlur = 0;
+                }
                 ctx.fillStyle = (isHovered || isCore || isSelectedDomain) ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
 
                 const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
@@ -540,12 +548,30 @@ const Skills = () => {
                 ctx.restore();
             });
 
-            animId = requestAnimationFrame(render);
+            if (isVisible) {
+                animId = requestAnimationFrame(render);
+            }
         };
+
+        let isVisible = true;
+        const observer = new IntersectionObserver(([entry]) => {
+            const nextVisible = entry.isIntersecting;
+            if (nextVisible && !isVisible) {
+                isVisible = true;
+                cancelAnimationFrame(animId);
+                animId = requestAnimationFrame(render);
+            } else if (!nextVisible && isVisible) {
+                isVisible = false;
+                cancelAnimationFrame(animId);
+            }
+        }, { threshold: 0.05 });
+
+        observer.observe(canvas);
 
         render();
 
         return () => {
+            observer.disconnect();
             window.removeEventListener('resize', resize);
             canvas.removeEventListener('mousemove', handleMouseMove);
             canvas.removeEventListener('mouseleave', handleMouseLeave);

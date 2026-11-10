@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: #030408;
+    background: #03050c;
     z-index: 99999;
     display: flex;
     align-items: center;
@@ -15,6 +15,48 @@
     font-family: 'Fira Code', 'JetBrains Mono', monospace;
 }
 
+/* Ambient Cyber Vapor Glows */
+.loader-glow-orb-1 {
+    position: absolute;
+    top: -15%;
+    left: 10%;
+    width: 55vw;
+    height: 55vw;
+    max-width: 700px;
+    max-height: 700px;
+    background: radial-gradient(circle, rgba(0, 240, 255, 0.18) 0%, rgba(99, 102, 241, 0.10) 45%, transparent 70%);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: orbPulse 8s ease-in-out infinite alternate;
+}
+
+.loader-glow-orb-2 {
+    position: absolute;
+    bottom: -15%;
+    right: 10%;
+    width: 50vw;
+    height: 50vw;
+    max-width: 650px;
+    max-height: 650px;
+    background: radial-gradient(circle, rgba(236, 72, 153, 0.16) 0%, rgba(168, 85, 247, 0.14) 40%, transparent 70%);
+    filter: blur(100px);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: orbPulse 10s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orbPulse {
+    0% {
+        transform: scale(0.9) translate(0, 0);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(1.1) translate(20px, -15px);
+        opacity: 1;
+    }
+}
+
 /* Background Cyber Grid */
 .loader-grid-bg {
     position: absolute;
@@ -23,9 +65,11 @@
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(rgba(0, 240, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.04) 1px, transparent 1px);
     background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 85%);
     pointer-events: none;
 }
 
@@ -35,7 +79,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.7;
+    opacity: 0.85;
     pointer-events: none;
 }
 
@@ -49,7 +93,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.08em;
     z-index: 10;
     pointer-events: none;
@@ -58,26 +102,33 @@
 .hud-pill {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.35rem 0.85rem;
-    background: rgba(10, 14, 26, 0.8);
-    border: 1px solid rgba(0, 240, 255, 0.2);
-    border-radius: 6px;
-    color: #00f0ff;
+    gap: 0.55rem;
+    padding: 0.4rem 0.95rem;
+    background: rgba(10, 15, 30, 0.85);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 8px;
+    color: #38bdf8;
+    box-shadow: 0 0 16px rgba(0, 240, 255, 0.15);
 }
 
 .hud-dot {
-    width: 6px;
-    height: 6px;
-    background: #00f0ff;
+    width: 7px;
+    height: 7px;
+    background: #00ff87;
     border-radius: 50%;
-    box-shadow: 0 0 8px #00f0ff;
+    box-shadow: 0 0 10px #00ff87, 0 0 18px #00ff87;
     animation: hudBlink 1s infinite alternate;
 }
 
 @keyframes hudBlink {
-    0% { opacity: 0.3; }
-    100% { opacity: 1; }
+    0% { opacity: 0.35; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1.15); }
+}
+
+.hud-metric {
+    font-size: 0.73rem;
+    color: rgba(224, 231, 255, 0.75);
+    text-shadow: 0 0 8px rgba(99, 102, 241, 0.3);
 }
 
 /* Center HUD Container */
@@ -88,12 +139,31 @@
     flex-direction: column;
     width: 90%;
     max-width: 640px;
-    padding: 2.25rem;
-    background: rgba(8, 11, 20, 0.92);
-    backdrop-filter: blur(20px);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 240, 255, 0.25);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), inset 0 0 35px rgba(0, 240, 255, 0.06);
+    padding: 2.4rem;
+    background: linear-gradient(145deg, rgba(8, 14, 28, 0.94) 0%, rgba(14, 10, 26, 0.94) 100%);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border-radius: 24px;
+    border: 1px solid rgba(0, 240, 255, 0.32);
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.85),
+        0 0 50px rgba(168, 85, 247, 0.18),
+        0 0 30px rgba(0, 240, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 0 30px rgba(0, 240, 255, 0.05);
+    overflow: hidden;
+}
+
+/* Top Neon Prismatic Edge */
+.loader-hud-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #00f0ff 30%, #a855f7 70%, transparent 100%);
+    box-shadow: 0 0 14px #00f0ff;
 }
 
 .hud-header {
@@ -108,74 +178,110 @@
 .hud-title-group {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
+    gap: 0.3rem;
 }
 
 .hud-main-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #ffffff;
-    letter-spacing: 0.05em;
+    font-size: 1.15rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #00f0ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.06em;
+    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.35));
 }
 
 .hud-sub-title {
-    font-size: 0.75rem;
-    color: #00f0ff;
-    letter-spacing: 0.1em;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #38bdf8;
+    letter-spacing: 0.12em;
 }
 
 .hud-version-badge {
     font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
-    background: rgba(192, 132, 252, 0.15);
-    border: 1px solid rgba(192, 132, 252, 0.3);
-    color: #c084fc;
-    border-radius: 4px;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(236, 72, 153, 0.15) 100%);
+    border: 1px solid rgba(168, 85, 247, 0.45);
+    color: #e9d5ff;
+    box-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
+    border-radius: 6px;
+    letter-spacing: 0.05em;
 }
 
 /* Terminal Log Stream Window */
 .loader-terminal-window {
-    background: rgba(3, 5, 10, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    height: 140px;
+    background: rgba(3, 6, 14, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 1.1rem 1.35rem;
+    height: 145px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.6rem;
     overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.8);
+    position: relative;
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.9),
+        0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .terminal-line {
     font-size: 0.78rem;
     line-height: 1.6;
-    color: rgba(255, 255, 255, 0.65);
-    margin: 0.1rem 0;
+    color: rgba(226, 232, 240, 0.7);
+    margin: 0.12rem 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .terminal-line.active {
-    color: #00f0ff;
+    color: #38bdf8;
     font-weight: 700;
-    text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
 .terminal-prefix {
-    color: #34d399;
-    margin-right: 0.5rem;
+    color: #00ff87;
+    margin-right: 0.6rem;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(0, 255, 135, 0.4);
 }
 
 .terminal-time {
-    color: rgba(255, 255, 255, 0.35);
-    margin-right: 0.6rem;
+    color: #a78bfa;
+    margin-right: 0.7rem;
+    opacity: 0.8;
+}
+
+.terminal-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.terminal-cursor {
+    color: #00f0ff;
+    margin-left: 0.4rem;
+    animation: cursorBlink 0.8s infinite alternate;
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+@keyframes cursorBlink {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* Progress Bar & Percentage */
 .loader-progress-section {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: 0.7rem;
 }
 
 .progress-header-row {
@@ -185,30 +291,67 @@
     font-size: 0.8rem;
 }
 
+.progress-label-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-pulse-dot {
+    width: 6px;
+    height: 6px;
+    background: #00f0ff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00f0ff;
+    animation: hudBlink 0.8s infinite alternate;
+}
+
 .progress-label {
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.05em;
+    color: rgba(226, 232, 240, 0.85);
+    letter-spacing: 0.08em;
+    font-size: 0.76rem;
 }
 
 .progress-val {
-    color: #00f0ff;
-    font-weight: 800;
+    background: linear-gradient(90deg, #00f0ff 0%, #c084fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    font-size: 0.95rem;
+    letter-spacing: 0.04em;
+    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.6));
 }
 
 .hud-progress-bg {
     width: 100%;
-    height: 8px;
-    background: rgba(255, 255, 255, 0.08);
+    height: 10px;
+    background: rgba(10, 15, 30, 0.8);
     border-radius: 100px;
     overflow: hidden;
-    border: 1px solid rgba(0, 240, 255, 0.2);
+    position: relative;
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 240, 255, 0.15);
 }
 
 .hud-progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, #00f0ff 0%, #c084fc 50%, #34d399 100%);
-    box-shadow: 0 0 16px #00f0ff;
+    position: relative;
+    background: linear-gradient(90deg, #00f0ff 0%, #6366f1 35%, #a855f7 70%, #ec4899 100%);
+    box-shadow: 0 0 20px #00f0ff, 0 0 35px #a855f7;
+    border-radius: 100px;
     transition: width 0.08s ease-out;
+}
+
+.hud-progress-glow-head {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 12px #ffffff, 0 0 20px #00f0ff;
 }
 
 @media (max-width: 768px) {
@@ -217,14 +360,20 @@
     }
 
     .loader-hud-container {
-        padding: 1.5rem;
+        padding: 1.6rem;
+        border-radius: 20px;
     }
 
     .loader-terminal-window {
-        height: 120px;
+        height: 125px;
+        padding: 0.9rem 1rem;
     }
 
     .hud-main-title {
-        font-size: 0.95rem;
+        font-size: 1rem;
+    }
+
+    .hud-sub-title {
+        font-size: 0.66rem;
     }
 }

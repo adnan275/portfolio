@@ -330,12 +330,34 @@ const ParticleBackground3D = () => {
                 });
             });
 
-            animId = requestAnimationFrame(render);
+            if (isVisible) {
+                animId = requestAnimationFrame(render);
+            }
         };
+
+        let isVisible = true;
+        const observer = new IntersectionObserver(([entry]) => {
+            const nextVisible = entry.isIntersecting;
+            if (nextVisible && !isVisible) {
+                isVisible = true;
+                cancelAnimationFrame(animId);
+                animId = requestAnimationFrame(render);
+            } else if (!nextVisible && isVisible) {
+                isVisible = false;
+                cancelAnimationFrame(animId);
+            }
+        }, { threshold: 0.05 });
+
+        if (canvas.parentElement) {
+            observer.observe(canvas.parentElement);
+        } else {
+            observer.observe(canvas);
+        }
 
         render();
 
         return () => {
+            observer.disconnect();
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', handleMouseMove);
             cancelAnimationFrame(animId);

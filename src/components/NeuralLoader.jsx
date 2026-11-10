@@ -16,6 +16,7 @@ const NeuralLoader = ({ onComplete }) => {
     const [progress, setProgress] = useState(0);
     const [activeLogs, setActiveLogs] = useState([terminalLogs[0]]);
     const [isFinished, setIsFinished] = useState(false);
+    const [hasExited, setHasExited] = useState(false);
 
     useEffect(() => {
         // ~3.8s immersive HUD boot sequence
@@ -41,10 +42,12 @@ const NeuralLoader = ({ onComplete }) => {
     }, [onComplete]);
 
     useEffect(() => {
+        if (isFinished) return;
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
         let animId;
+        let isRunning = true;
 
         const resize = () => {
             canvas.width = window.innerWidth;
@@ -53,13 +56,14 @@ const NeuralLoader = ({ onComplete }) => {
         resize();
         window.addEventListener('resize', resize);
 
-        const nodes = Array.from({ length: 50 }, () => ({
+        const palette = ['#00f0ff', '#a855f7', '#ec4899', '#38bdf8', '#10b981'];
+        const nodes = Array.from({ length: 55 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            vx: (Math.random() - 0.5) * 1.5,
-            vy: (Math.random() - 0.5) * 1.5,
-            radius: Math.random() * 2 + 1,
-            color: Math.random() > 0.5 ? '#00f0ff' : '#c084fc'
+            vx: (Math.random() - 0.5) * 1.4,
+            vy: (Math.random() - 0.5) * 1.4,
+            radius: Math.random() * 2.2 + 1,
+            color: palette[Math.floor(Math.random() * palette.length)]
         }));
 
         const render = () => {
@@ -75,7 +79,10 @@ const NeuralLoader = ({ onComplete }) => {
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
                 ctx.fillStyle = n.color;
+                ctx.shadowColor = n.color;
+                ctx.shadowBlur = 10;
                 ctx.fill();
+                ctx.shadowBlur = 0;
 
                 for (let j = i + 1; j < nodes.length; j++) {
                     const n2 = nodes[j];
@@ -83,32 +90,40 @@ const NeuralLoader = ({ onComplete }) => {
                     const dy = n.y - n2.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
 
-                    if (dist < 140) {
+                    if (dist < 145) {
                         ctx.beginPath();
                         ctx.moveTo(n.x, n.y);
                         ctx.lineTo(n2.x, n2.y);
-                        ctx.strokeStyle = n.color;
-                        ctx.globalAlpha = (1 - dist / 140) * 0.4;
-                        ctx.lineWidth = 0.8;
+                        const grad = ctx.createLinearGradient(n.x, n.y, n2.x, n2.y);
+                        grad.addColorStop(0, n.color);
+                        grad.addColorStop(1, n2.color);
+                        ctx.strokeStyle = grad;
+                        ctx.globalAlpha = (1 - dist / 145) * 0.45;
+                        ctx.lineWidth = 0.9;
                         ctx.stroke();
                         ctx.globalAlpha = 1;
                     }
                 }
             });
 
-            animId = requestAnimationFrame(render);
+            if (isRunning) {
+                animId = requestAnimationFrame(render);
+            }
         };
 
         render();
 
         return () => {
+            isRunning = false;
             window.removeEventListener('resize', resize);
             cancelAnimationFrame(animId);
         };
-    }, []);
+    }, [isFinished]);
+
+    if (hasExited) return null;
 
     return (
-        <AnimatePresence>
+        <AnimatePresence onExitComplete={() => setHasExited(true)}>
             {!isFinished && (
                 <motion.div
                     className="neural-loader-overlay"
@@ -116,6 +131,9 @@ const NeuralLoader = ({ onComplete }) => {
                     exit={{ opacity: 0, scale: 1.05 }}
                     transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
                 >
+                    {/* Ambient Cyber Vapor Glows */}
+                    <div className="loader-glow-orb-1" />
+                    <div className="loader-glow-orb-2" />
                     <div className="loader-grid-bg" />
                     <canvas ref={canvasRef} className="loader-canvas" />
 
@@ -125,8 +143,8 @@ const NeuralLoader = ({ onComplete }) => {
                             <span className="hud-dot" />
                             <span>SYS_STATUS: ONLINE</span>
                         </div>
-                        <div>MEM: 64GB DDR5 // CUDA_ACTIVE</div>
-                        <div>LATENCY: 12ms</div>
+                        <div className="hud-metric">MEM: 64GB DDR5 // CUDA_ACTIVE</div>
+                        <div className="hud-metric">LATENCY: 12ms</div>
                     </div>
 
                     {/* Center Terminal Container */}
@@ -146,29 +164,38 @@ const NeuralLoader = ({ onComplete }) => {
 
                         {/* Terminal Log Stream Window */}
                         <div className="loader-terminal-window">
-                            {activeLogs.slice(-4).map((log, index) => (
-                                <div
-                                    key={index}
-                                    className={`terminal-line${index === activeLogs.slice(-4).length - 1 ? ' active' : ''}`}
-                                >
-                                    <span className="terminal-prefix">[SYS]</span>
-                                    <span className="terminal-time">{log.time}</span>
-                                    <span>{log.text}</span>
-                                </div>
-                            ))}
+                            {activeLogs.slice(-4).map((log, index) => {
+                                const isLatest = index === activeLogs.slice(-4).length - 1;
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`terminal-line${isLatest ? ' active' : ''}`}
+                                    >
+                                        <span className="terminal-prefix">[SYS]</span>
+                                        <span className="terminal-time">{log.time}</span>
+                                        <span className="terminal-text">{log.text}</span>
+                                        {isLatest && <span className="terminal-cursor">▋</span>}
+                                    </div>
+                                );
+                            })}
                         </div>
 
                         {/* Progress Bar & Percentage */}
                         <div className="loader-progress-section">
                             <div className="progress-header-row">
-                                <span className="progress-label">INITIALIZING NEURAL MESH</span>
+                                <div className="progress-label-wrap">
+                                    <span className="progress-pulse-dot" />
+                                    <span className="progress-label">INITIALIZING NEURAL MESH</span>
+                                </div>
                                 <span className="progress-val">{progress}%</span>
                             </div>
                             <div className="hud-progress-bg">
                                 <div
                                     className="hud-progress-fill"
                                     style={{ width: `${progress}%` }}
-                                />
+                                >
+                                    <span className="hud-progress-glow-head" />
+                                </div>
                             </div>
                         </div>
                     </motion.div>
