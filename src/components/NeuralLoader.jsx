@@ -3,12 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import '../styles/NeuralLoader.css';
 
 const terminalLogs = [
-    { time: '0.001s', text: 'SYSTEM_BOOT_INIT // ARCH: x86_64_NEURAL' },
-    { time: '0.014s', text: 'LOADING_CUDA_TENSORS // FP16_PRECISION' },
-    { time: '0.038s', text: 'MOUNTING_HNSW_INDEX // 768_VECTOR_DIMS' },
-    { time: '0.072s', text: 'DEPLOYING_LANGGRAPH_AGENTS // AGENTIC_V2' },
-    { time: '0.105s', text: 'CONNECTING_PRISMA_ORM // MYSQL_AIVEN' },
-    { time: '0.150s', text: 'SYSTEM_READY // ADNAN_RIZVI_PORTFOLIO' }
+    { time: '0.001s', text: 'SYSTEM_BOOT_INIT // x86_64_NEURAL' },
+    { time: '0.014s', text: 'LOADING_CUDA_TENSORS // FP16' },
+    { time: '0.038s', text: 'MOUNTING_HNSW_INDEX // 768_VECTORS' },
+    { time: '0.072s', text: 'DEPLOYING_LANGGRAPH // AGENTIC_V2' },
+    { time: '0.105s', text: 'CONNECTING_PRISMA // MYSQL_AIVEN' },
+    { time: '0.150s', text: 'SYSTEM_READY // ADNAN_RIZVI' }
 ];
 
 const NeuralLoader = ({ onComplete }) => {

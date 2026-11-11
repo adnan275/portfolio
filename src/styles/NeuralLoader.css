@@ -230,12 +230,13 @@
 
 .terminal-line {
     font-size: 0.78rem;
-    line-height: 1.6;
+    line-height: 1.5;
     color: rgba(226, 232, 240, 0.7);
     margin: 0.12rem 0;
     display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
+    align-items: baseline;
+    flex-wrap: wrap;
+    word-break: break-word;
 }
 
 .terminal-line.active {
@@ -246,30 +247,32 @@
 
 .terminal-prefix {
     color: #00ff87;
-    margin-right: 0.6rem;
+    margin-right: 0.5rem;
     font-weight: 700;
     text-shadow: 0 0 8px rgba(0, 255, 135, 0.4);
+    flex-shrink: 0;
 }
 
 .terminal-time {
     color: #a78bfa;
-    margin-right: 0.7rem;
+    margin-right: 0.6rem;
     opacity: 0.8;
+    flex-shrink: 0;
 }
 
 .terminal-text {
     flex: 1;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .terminal-cursor {
     color: #00f0ff;
-    margin-left: 0.4rem;
+    margin-left: 0.35rem;
     animation: cursorBlink 0.8s infinite alternate;
     font-size: 0.85rem;
     line-height: 1;
+    display: inline-block;
 }
 
 @keyframes cursorBlink {
@@ -360,20 +363,158 @@
     }
 
     .loader-hud-container {
-        padding: 1.6rem;
+        width: 92%;
+        max-width: 520px;
+        padding: 1.8rem 1.4rem;
         border-radius: 20px;
     }
 
     .loader-terminal-window {
-        height: 125px;
-        padding: 0.9rem 1rem;
+        height: auto;
+        min-height: 125px;
+        max-height: 160px;
+        padding: 0.9rem 1.1rem;
     }
 
     .hud-main-title {
-        font-size: 1rem;
+        font-size: 1.05rem;
     }
 
     .hud-sub-title {
-        font-size: 0.66rem;
+        font-size: 0.68rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .loader-hud-container {
+        width: 94%;
+        max-width: 440px;
+        padding: 1.35rem 1.1rem;
+        border-radius: 18px;
+    }
+
+    .hud-header {
+        margin-bottom: 1.1rem;
+        padding-bottom: 0.75rem;
+        align-items: flex-start;
+        gap: 0.6rem;
+    }
+
+    .hud-title-group {
+        gap: 0.25rem;
+        flex: 1;
+    }
+
+    .hud-main-title {
+        font-size: 0.92rem;
+        letter-spacing: 0.03em;
+        line-height: 1.3;
+    }
+
+    .hud-sub-title {
+        font-size: 0.62rem;
+        letter-spacing: 0.05em;
+        line-height: 1.35;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .hud-version-badge {
+        font-size: 0.62rem;
+        padding: 0.2rem 0.5rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+    .loader-terminal-window {
+        height: auto;
+        min-height: 130px;
+        max-height: 160px;
+        padding: 0.85rem 0.95rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .terminal-line {
+        font-size: 0.7rem;
+        line-height: 1.45;
+        margin: 0.18rem 0;
+        flex-wrap: wrap;
+    }
+
+    .terminal-prefix {
+        margin-right: 0.4rem;
+        font-size: 0.68rem;
+    }
+
+    .terminal-time {
+        margin-right: 0.45rem;
+        font-size: 0.65rem;
+    }
+
+    .terminal-text {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
+        word-break: break-word;
+    }
+
+    .progress-header-row {
+        font-size: 0.75rem;
+    }
+
+    .progress-label {
+        font-size: 0.68rem;
+        letter-spacing: 0.04em;
+    }
+
+    .progress-val {
+        font-size: 0.88rem;
+    }
+
+    .hud-progress-bg {
+        height: 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .loader-hud-container {
+        width: 96%;
+        padding: 1.1rem 0.85rem;
+        border-radius: 16px;
+    }
+
+    .hud-main-title {
+        font-size: 0.84rem;
+    }
+
+    .hud-sub-title {
+        font-size: 0.56rem;
+        letter-spacing: 0.03em;
+    }
+
+    .hud-version-badge {
+        display: none; /* Hide badge on sub-380px screens to give full width to title */
+    }
+
+    .loader-terminal-window {
+        padding: 0.75rem 0.8rem;
+        min-height: 120px;
+    }
+
+    .terminal-line {
+        font-size: 0.64rem;
+        line-height: 1.4;
+    }
+
+    .terminal-time {
+        display: none; /* Hide timestamp on ultra-narrow phones so log text has 100% room */
+    }
+
+    .progress-label {
+        font-size: 0.62rem;
+    }
+
+    .progress-val {
+        font-size: 0.82rem;
     }
 }
