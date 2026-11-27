@@ -292,15 +292,15 @@ const initialNodes = [
         image: '/projects/cloudpulse.png',
         github: 'https://github.com/adnan275/CloudPulse',
         details: {
-            problem: 'In modern cloud deployments, networking is often treated as a black box—assuming DNS routing, TLS encryption, and load balancing magically work behind cloud providers. In private microservice architectures, directly exposing backend nodes wastes CPU on repetitive TLS handshakes, hardcoded IPs break scalability without local DNS resolution, uneven traffic creates bottlenecks, and missing HTTP cache validation wastes network bandwidth.',
-            solution: 'Architected CloudPulse from first principles across a physical 3-machine network topology: configured private DNS (dnsmasq on UDP 53) resolving custom domains (app.team1.test), deployed Nginx as an edge reverse proxy terminating TLS 1.3 with Root-CA-signed certificates, implemented round-robin load balancing across decoupled Node.js compute nodes, and enabled HTTP 304 conditional caching (ETag/Last-Modified). Verified complete packet traversal (DNS -> TCP 3-way handshake -> TLS ClientHello/ServerHello -> HTTP proxy pass) via Wireshark with a live NOC telemetry dashboard on Render.',
+            problem: 'Directly exposing backend servers wastes CPU on redundant TLS handshakes, hardcoded IPs break scalability without private DNS, traffic clogs single instances without load balancing, and missing cache validation wastes network bandwidth.',
+            solution: 'Engineered CloudPulse across a physical 3-machine LAN: configured private DNS (dnsmasq on UDP 53), deployed an Nginx edge proxy terminating TLS 1.3, implemented round-robin load balancing across decoupled Node.js nodes, and enabled HTTP 304 caching—all verified packet-by-packet via Wireshark.',
             features: [
-                'Private DNS Resolution: Configured dnsmasq on UDP port 53 for local domain mapping (AWS Route 53 equivalent)',
-                'Edge Reverse Proxy & TLS 1.3: Terminates encrypted HTTPS traffic at Nginx edge, offloading compute from backends',
-                'Round-Robin Load Balancing: Evenly distributes traffic between Node.js compute nodes with X-Backend tracking',
-                'HTTP 304 Conditional Caching: Slashes bandwidth waste using ETag & Last-Modified validation headers',
-                'Deep Packet Inspection: Wireshark verified DNS lookups, TCP 3-way handshakes, and TLS handshake exchanges',
-                'Interactive NOC Dashboard: Live web telemetry interface deployed on Render tracking real-time health and latency'
+                'Private DNS Resolution: dnsmasq on UDP 53 resolving local domains to the gateway',
+                'Edge Reverse Proxy: Nginx terminating TLS 1.3, offloading crypto compute from backends',
+                'Round-Robin Balancing: Evenly distributes requests across Node.js compute instances',
+                'HTTP 304 Caching: Eliminates bandwidth waste using ETag & Last-Modified validation',
+                'Wireshark Verified: Packet-level capture of DNS, TCP 3-way handshakes, and TLS exchanges',
+                'Live NOC Terminal: Interactive telemetry dashboard deployed on Render'
             ],
             techStack: ['JavaScript', 'Node.js', 'Express', 'Nginx', 'TLS 1.3', 'TCP/IP', 'dnsmasq', 'Wireshark', 'Render']
         }
