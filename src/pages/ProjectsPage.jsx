@@ -10,19 +10,19 @@ import '../styles/Projects.css';
 const projects = [
     {
         title: 'HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence',
-        description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal.',
+        description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal without human listening.',
         tags: ['PyTorch', 'Deep Learning', 'Audio Spectroscopy', 'Librosa', 'Grad-CAM', 'Late Fusion', 'Streamlit'],
         link: 'https://harmonix-studio.streamlit.app/',
         image: '/projects/harmonix.png',
         github: 'https://github.com/adnan275/HarmoniX',
         details: {
-            problem: 'Raw audio waveforms are high-dimensional, unstructured, and noisy, making automated music emotion recognition and affective computing notoriously difficult without explainable acoustic frequency correlation.',
-            solution: 'Engineered HarmoniX, a multimodal deep neural system that converts raw acoustic signals into 128-band Mel-Spectrograms processed by 2D CNN backbones, fused with acoustic physics features (MFCCs, spectral contrast, chroma) via Late-Fusion networks with real-time Grad-CAM saliency maps.',
+            problem: 'How can an autonomous AI system accurately predict human emotional response to music without human listening? Traditional audio evaluation requires subjective listening, while raw 1D audio waveforms are noisy, high-dimensional, and lack spatial structure. The core challenge is decomposing complex continuous sound waves into discrete frequency-time representations (like 128-band Mel-Spectrograms) and physical acoustic latents (MFCCs, spectral contrast, chroma, tonnetz) so that deep convolutional networks can "see" and predict musical valence and arousal objectively.',
+            solution: 'Engineered HarmoniX, a multimodal deep neural system that decomposes raw acoustic waveforms into 128-band Mel-Spectrograms processed by 2D CNN vision backbones, fused with acoustic physics features via Late-Fusion networks. Integrated layer-wise Signed Grad-CAM heatmaps that visually pinpoint the exact frequency-time segments that trigger emotional valence and arousal shifts, achieving SOTA test R² = 0.527 on the PMEmo dataset.',
             features: [
-                'Dual-branch multimodal architecture: 2D Spectrogram CNN + Dense Acoustic Feature Extractor',
-                'Explainable AI: Layer-wise Grad-CAM heatmaps pinpointing affective acoustic frequencies in real time',
-                'Continuous 2D Valence-Arousal plane emotion mapping with sub-second inference',
-                'Interactive audio upload, feature inspection studio, and real-time audio playback'
+                'Predicts audio emotion without listening by decomposing waveforms into 128-band 2D Mel-Spectrograms',
+                'Dual-branch multimodal architecture: 2D Spectrogram CNN + Dense Acoustic Physics Feature Extractor',
+                'Explainable AI: Layer-wise Signed Grad-CAM heatmaps pinpointing affective frequency bands in real time',
+                'Continuous 2D Valence-Arousal plane emotion mapping with sub-second inference on Streamlit Cloud'
             ],
             techStack: ['PyTorch', 'Librosa', 'NumPy', 'Streamlit', 'SoundFile', 'SciPy', 'Matplotlib', 'Grad-CAM']
         }
@@ -35,12 +35,12 @@ const projects = [
         image: '/projects/tensorax.png',
         github: 'https://github.com/adnan275/TensoraX',
         details: {
-            problem: 'General-purpose CPUs and GPUs encounter memory bandwidth bottlenecks and repeated SRAM access cycles on dense matrix multiplications (GEMM) in deep neural workloads.',
-            solution: 'Architected TensoraX in Verilog HDL—a parameterized 2D mesh systolic array accelerator where Processing Elements (PEs) pass data rhythmically across a 2D grid, maximizing data reuse and minimizing global memory bus traffic.',
+            problem: 'Dense matrix multiplication (GEMM) is the fundamental computational bottleneck of modern deep neural network inference. On standard CPUs and GPUs, repeatedly fetching matrix operands from off-chip DRAM creates severe memory bandwidth saturation and excessive energy dissipation. The challenge is designing hardware that streams matrix data rhythmically across processing elements without repeated DRAM read/write cycles.',
+            solution: 'Architected TensoraX in Verilog HDL—a parameterized 2D mesh systolic array hardware accelerator where Processing Elements (PEs) pass activations and weights horizontally and vertically across an N×N spatial grid, maximizing local data reuse, eliminating buffer stalls, and achieving O(N) DRAM memory traffic reduction.',
             features: [
                 'Parameterized N×N systolic array mesh with multiply-accumulate (MAC) processing elements',
                 'Synchronous pipelined dataflow minimizing global memory read/write cycles to O(N)',
-                'Verified cycle-by-cycle against NumPy golden matrix models using Icarus Verilog & GTKWave waveforms',
+                'Cycle-accurate verification against NumPy golden matrix models using Icarus Verilog & GTKWave waveforms',
                 'Synthesizable RTL design ready for open-source EDA toolchains (Yosys) and FPGA deployment'
             ],
             techStack: ['Verilog HDL', 'GTKWave', 'Icarus Verilog', 'Digital Logic', 'Computer Architecture', 'RTL Synthesis']

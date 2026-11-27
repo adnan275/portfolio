@@ -51,19 +51,19 @@ const initialNodes = [
         color: '#38bdf8',
         radius: 9,
         title: 'HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence',
-        description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal.',
+        description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal without human listening.',
         tags: ['PyTorch', 'Deep Learning', 'Audio Spectroscopy', 'Librosa', 'Grad-CAM', 'Late Fusion', 'Streamlit'],
         link: 'https://harmonix-studio.streamlit.app/',
         image: '/projects/harmonix.png',
         github: 'https://github.com/adnan275/HarmoniX',
         details: {
-            problem: 'Raw audio waveforms are high-dimensional and noisy, making automated music emotion recognition and affective computing notoriously difficult without explainable acoustic frequency correlation.',
-            solution: 'Engineered HarmoniX, a multimodal deep neural system that converts raw acoustic signals into 128-band Mel-Spectrograms processed by 2D CNN backbones, fused with acoustic physics features (MFCCs, spectral contrast, chroma) via Late-Fusion networks with real-time Grad-CAM saliency maps.',
+            problem: 'How can an autonomous AI model accurately predict human emotional response to music without human listening? Traditional evaluation requires subjective human listening, while raw 1D sound waveforms are noisy and unstructured. The solution decomposes continuous audio waves into 128-band 2D Mel-Spectrograms (frequency-time representations) and acoustic physics features (MFCCs, spectral contrast, chroma) so convolutional vision networks can "see" and predict musical valence and arousal objectively.',
+            solution: 'Engineered HarmoniX: converts raw acoustic signals into 128-band Mel-Spectrograms processed by 2D CNN vision backbones, fused with acoustic physics latents via Late-Fusion networks. Integrated layer-wise Signed Grad-CAM heatmaps that visually pinpoint the exact frequency-time segments that trigger emotional valence and arousal shifts, achieving SOTA test R² = 0.527 on the PMEmo dataset.',
             features: [
-                'Dual-branch multimodal architecture: 2D Spectrogram CNN + Dense Acoustic Feature Extractor',
-                'Explainable AI: Layer-wise Grad-CAM heatmaps pinpointing affective acoustic frequencies in real time',
-                'Continuous 2D Valence-Arousal plane emotion mapping with sub-second inference',
-                'Interactive audio upload, feature inspection studio, and real-time audio playback'
+                'Predicts audio emotion without listening by decomposing waveforms into 128-band 2D Mel-Spectrograms',
+                'Dual-branch multimodal architecture: 2D Spectrogram CNN + Dense Acoustic Physics Feature Extractor',
+                'Explainable AI: Layer-wise Signed Grad-CAM heatmaps pinpointing affective frequency bands in real time',
+                'Continuous 2D Valence-Arousal plane emotion mapping with sub-second inference on Streamlit Cloud'
             ],
             techStack: ['PyTorch', 'Librosa', 'NumPy', 'Streamlit', 'SoundFile', 'SciPy', 'Matplotlib', 'Grad-CAM']
         }
@@ -369,12 +369,12 @@ const initialNodes = [
         image: '/projects/tensorax.png',
         github: 'https://github.com/adnan275/TensoraX',
         details: {
-            problem: 'General-purpose CPUs and GPUs encounter memory bandwidth bottlenecks and repeated SRAM access cycles on dense matrix multiplications (GEMM) in deep neural workloads.',
-            solution: 'Architected TensoraX in Verilog HDL—a parameterized 2D mesh systolic array accelerator where Processing Elements (PEs) pass data rhythmically across a 2D grid, maximizing data reuse and minimizing global memory bus traffic.',
+            problem: 'Dense matrix multiplication (GEMM) is the fundamental computational bottleneck of modern deep neural network inference. On standard CPUs and GPUs, repeatedly fetching matrix operands from off-chip DRAM creates severe memory bandwidth saturation and excessive energy dissipation. The challenge is designing hardware that streams matrix data rhythmically across processing elements without repeated DRAM read/write cycles.',
+            solution: 'Architected TensoraX in Verilog HDL—a parameterized 2D mesh systolic array hardware accelerator where Processing Elements (PEs) pass activations and weights horizontally and vertically across an N×N spatial grid, maximizing local data reuse, eliminating buffer stalls, and achieving O(N) DRAM memory traffic reduction.',
             features: [
                 'Parameterized N×N systolic array mesh with multiply-accumulate (MAC) processing elements',
                 'Synchronous pipelined dataflow minimizing global memory read/write cycles to O(N)',
-                'Verified cycle-by-cycle against NumPy golden matrix models using Icarus Verilog & GTKWave waveforms',
+                'Cycle-accurate verification against NumPy golden matrix models using Icarus Verilog & GTKWave waveforms',
                 'Synthesizable RTL design ready for open-source EDA toolchains (Yosys) and FPGA deployment'
             ],
             techStack: ['Verilog HDL', 'GTKWave', 'Icarus Verilog', 'Digital Logic', 'Computer Architecture', 'RTL Synthesis']
@@ -566,15 +566,18 @@ const NeuralGraph = () => {
                 projects: { x: 0.67, y: 0.62 },
 
                 // AI Sub-nodes (Top-Left Quadrant)
-                sentinel: { x: 0.12, y: 0.32 },
-                neurax: { x: 0.28, y: 0.20 },
-                ev_agent: { x: 0.15, y: 0.48 },
+                harmonix: { x: 0.18, y: 0.18 },
+                neurax: { x: 0.32, y: 0.18 },
+                sentinel: { x: 0.11, y: 0.32 },
+                affinix: { x: 0.12, y: 0.44 },
+                ev_agent: { x: 0.20, y: 0.52 },
 
                 // Full-Stack Sub-nodes (Top-Right Quadrant - Clear of right border)
-                presento: { x: 0.86, y: 0.32 },
                 gigflow: { x: 0.68, y: 0.18 },
-                zync: { x: 0.83, y: 0.48 },
+                cloudpulse: { x: 0.82, y: 0.20 },
                 taskly: { x: 0.72, y: 0.30 },
+                presento: { x: 0.87, y: 0.32 },
+                zync: { x: 0.83, y: 0.48 },
                 capstone: { x: 0.89, y: 0.44 },
 
                 // Data Sub-nodes (Bottom-Left Quadrant)
@@ -582,6 +585,7 @@ const NeuralGraph = () => {
                 socratic: { x: 0.36, y: 0.86 },
 
                 // Production Sub-nodes (Bottom-Right Quadrant - Clear of right border)
+                tensorax: { x: 0.64, y: 0.80 },
                 livesitter: { x: 0.82, y: 0.72 },
                 qr: { x: 0.88, y: 0.80 },
                 password: { x: 0.74, y: 0.88 },

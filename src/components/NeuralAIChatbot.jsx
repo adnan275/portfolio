@@ -108,10 +108,11 @@ const KNOWLEDGE_BASE = {
             'librosa', 'late fusion', 'audio ai', 'music intelligence', 'sound ai'
         ],
         response: "🎵 **HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence**\n\n" +
-            "HarmoniX is a standout flagship AI system that combines acoustic physics with 2D convolutional spectroscopy and explainable deep learning to predict music emotional valence and arousal.\n\n" +
-            "• **Dual-Branch Architecture**: Extracts 128-band Mel-Spectrograms processed by a 2D CNN backbone, fused with acoustic physics features (MFCCs, spectral contrast, chroma, tonnetz) via a Late-Fusion neural network.\n" +
-            "• **Explainable AI (Grad-CAM)**: Generates layer-wise saliency heatmaps that visually map exactly which audio frequency-time bands triggered emotional valence/arousal shifts.\n" +
-            "• **Continuous 2D Emotion Mapping**: Evaluates audio across the Russell Circumplex Model with sub-second inference.\n" +
+            "HarmoniX solves the challenge of **predicting musical emotion and mood without human listening**.\n\n" +
+            "• **The Core Problem**: Human listening is subjective and time-consuming, while raw 1D audio waveforms are noisy and high-dimensional. HarmoniX solves this by mathematically decomposing raw audio into 128-band **2D Mel-Spectrograms** (time-frequency heatmaps) and physical acoustic latents (MFCCs, spectral contrast, chroma, tonnetz) so computer vision models can 'see' and decode emotion objectively.\n" +
+            "• **Dual-Branch Architecture**: Combines a 2D Spectrogram CNN vision backbone with a dense acoustic physics network via Late Fusion.\n" +
+            "• **Explainable AI (Grad-CAM)**: Generates signed heatmaps highlighting the exact frequency-time intervals that trigger emotional shifts in valence and arousal.\n" +
+            "• **Performance**: SOTA test R² = 0.527 on the PMEmo dataset with sub-second inference.\n" +
             "• **Tech Stack**: PyTorch, Librosa, NumPy, Streamlit Cloud, Grad-CAM, SoundFile, SciPy\n\n" +
             "🔗 Try the live studio: [HarmoniX Live App](https://harmonix-studio.streamlit.app/) | [GitHub Repository](https://github.com/adnan275/HarmoniX)",
         chips: ['🤖 Sentinel AI Agent', '⚡ TensoraX Hardware', '🚀 All Projects']
