@@ -21,9 +21,11 @@ const skillNodes = [
     { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RAG & VECTORS', level: 95, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
     { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'PYTHON & AI', level: 96, desc: 'Core Python, async FastAPI microservices, custom autograd backprop, CNNs, LoRA & QLoRA quantization.' },
 
-    // --- Full-Stack Systems Sub-skills (Consolidated MERN Stack) ---
-    { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MERN FULLSTACK', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
-    { id: 'typescript_api', label: 'TypeScript & REST APIs', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'TYPE-SAFE BACKEND', level: 94, desc: 'Type-safe contracts, Prisma ORM, MySQL/Postgres relational schema, API clustering & Tailwind HUD.' },
+    // --- Full-Stack Systems Sub-skills (Frontend, Backend, UI/Motion & Database) ---
+    { id: 'react_next', label: 'React 19 & Next.js', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MODERN FRONTEND', level: 96, desc: 'Next.js App Router, React 19 Server Components, SSR/SSG pipelines & client-side reactive state.' },
+    { id: 'tailwind_ui', label: 'Tailwind CSS & Motion', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MODERN UI/UX', level: 95, desc: 'Responsive glassmorphism HUDs, atomic utility tokens, Framer Motion animations & cyber aesthetics.' },
+    { id: 'node_ts', label: 'Node.js & TypeScript', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'TYPE-SAFE BACKEND', level: 95, desc: 'Scalable async backend services, Express/Fastify APIs, type-safe RPC contracts & real-time WebSockets.' },
+    { id: 'db_sql_nosql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'SQL & NOSQL DB', level: 94, desc: 'Relational schema design, ACID transactions, MongoDB document aggregation, indexing & Prisma ORM.' },
 
     // --- Modern Computer Architecture Sub-skills (Directly from CSA-222 PDF) ---
     { id: 'verilog', label: 'Verilog HDL & GTKWave', category: 'arch_skill', domain: 'comparch', radius: 10, color: '#fdba74', tag: 'RTL SYNTHESIS', level: 95, desc: 'Hardware description language (HDL), cycle-accurate RTL testbench validation, waveform simulation & logic verification.' },
@@ -56,9 +58,11 @@ const skillLinks = [
     { source: 'ai', target: 'langchain' },
     { source: 'ai', target: 'python' },
 
-    // Full-Stack sub-links
-    { source: 'fullstack', target: 'mern' },
-    { source: 'fullstack', target: 'typescript_api' },
+    // Full-Stack sub-links (Frontend, UI/UX, Backend, Database)
+    { source: 'fullstack', target: 'react_next' },
+    { source: 'fullstack', target: 'tailwind_ui' },
+    { source: 'fullstack', target: 'node_ts' },
+    { source: 'fullstack', target: 'db_sql_nosql' },
 
     // Modern Computer Architecture sub-links
     { source: 'comparch', target: 'verilog' },
@@ -77,9 +81,9 @@ const skillLinks = [
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 16 },
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 18 },
     { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 5 },
-    { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 2 },
+    { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 4 },
     { id: 'comparch', label: 'Computer Architecture', color: '#f97316', count: 4 },
     { id: 'networking', label: 'Cloud & Networks', color: '#fbbf24', count: 2 },
     { id: 'tools', label: 'Production & Systems', color: '#10b981', count: 3 }
@@ -119,40 +123,42 @@ const Skills = () => {
             ai: { x: 0.28, y: 0.28 },
             fullstack: { x: 0.74, y: 0.28 },
             comparch: { x: 0.25, y: 0.65 },
-            networking: { x: 0.50, y: 0.74 },
+            networking: { x: 0.50, y: 0.70 },
             tools: { x: 0.75, y: 0.65 },
 
             // AI Sub-nodes (Top-Left - Generously Spaced Out Pentagon)
             langgraph: { x: 0.14, y: 0.14 },
-            groq: { x: 0.38, y: 0.16 },
-            streamlit: { x: 0.40, y: 0.34 },
-            python: { x: 0.24, y: 0.44 },
+            groq: { x: 0.36, y: 0.14 },
+            streamlit: { x: 0.40, y: 0.28 },
+            python: { x: 0.22, y: 0.44 },
             langchain: { x: 0.10, y: 0.30 },
 
-            // Full-Stack Sub-nodes (Top-Right)
-            mern: { x: 0.86, y: 0.14 },
-            typescript_api: { x: 0.88, y: 0.38 },
+            // Full-Stack Sub-nodes (Top-Right - Clean 4-Node Clutter-Free Matrix)
+            tailwind_ui: { x: 0.60, y: 0.16 },
+            react_next: { x: 0.86, y: 0.14 },
+            db_sql_nosql: { x: 0.62, y: 0.36 },
+            node_ts: { x: 0.88, y: 0.36 },
 
             // Computer Architecture Sub-nodes (Bottom-Left)
-            verilog: { x: 0.10, y: 0.58 },
-            riscv_pipe: { x: 0.12, y: 0.78 },
-            systolic_ai: { x: 0.25, y: 0.88 },
-            cache_mesi: { x: 0.36, y: 0.74 },
+            verilog: { x: 0.10, y: 0.56 },
+            riscv_pipe: { x: 0.10, y: 0.76 },
+            systolic_ai: { x: 0.24, y: 0.88 },
+            cache_mesi: { x: 0.35, y: 0.76 },
 
-            // Networking Sub-nodes (Bottom-Center)
-            tcp_sockets: { x: 0.44, y: 0.90 },
-            cloud_vpc: { x: 0.56, y: 0.90 },
+            // Networking Sub-nodes (Bottom-Center - Staggered Y to avoid text overlap)
+            tcp_sockets: { x: 0.42, y: 0.84 },
+            cloud_vpc: { x: 0.58, y: 0.90 },
 
-            // Production & Systems Sub-nodes (Bottom-Right)
-            sql_analytics: { x: 0.64, y: 0.74 },
-            devops_sec: { x: 0.75, y: 0.88 },
-            sysdesign: { x: 0.88, y: 0.78 }
+            // Production & Systems Sub-nodes (Bottom-Right - Staggered Triangle)
+            sql_analytics: { x: 0.68, y: 0.76 },
+            devops_sec: { x: 0.78, y: 0.88 },
+            sysdesign: { x: 0.88, y: 0.76 }
         };
 
         const calculateBaseCoords = (nodeId, w, h) => {
             const target = coordMap[nodeId] || { x: 0.5, y: 0.5 };
-            const compressX = w < 420 ? 0.72 : (w < 580 ? 0.82 : (w < 768 ? 0.92 : 1.0));
-            const compressY = h < 520 ? 0.94 : 1.0;
+            const compressX = w < 420 ? 0.94 : (w < 580 ? 0.96 : 1.0);
+            const compressY = h < 520 ? 0.96 : 1.0;
             let tx = target.x;
             if (tx !== 0.5) {
                 tx = 0.5 + (tx - 0.5) * compressX;
