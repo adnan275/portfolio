@@ -910,11 +910,11 @@ const NeuralGraph = () => {
                 >
                     <span className="neural-meta-pill">
                         <span className="pill-pulse-dot"></span>
-                        Interactive Domain Topology
+                        Curated System Topology
                     </span>
                     <h2 className="heading-lg">System Architecture & Projects</h2>
                     <p className="neural-subtitle">
-                        Neural topology mapping AI/ML models, agentic workflows, and full-stack systems. Click any domain pillar to expand its cluster, or click any node to explore case studies.
+                        A curated neural topology mapping select production systems, deep learning architectures, and high-throughput agentic workflows. Strictly filtered for architectural depth, performance benchmarks, and real-world utility. Click any domain pillar to expand its cluster, or click any node to explore case studies.
                     </p>
                 </motion.div>
 

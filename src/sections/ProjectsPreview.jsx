@@ -225,9 +225,9 @@ const ProjectsPreview = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="heading-lg">Checkout my Projects</h2>
+                    <h2 className="heading-lg">Featured Engineering Systems</h2>
                     <p className="preview-subtitle">
-                        Created stunning user interfaces with React, making websites that look great and work smoothly for real-life projects.
+                        A curated showcase of production-grade AI agents, deep neural systems, and hardware architectures filtered strictly for technical depth and real-world performance.
                     </p>
                 </motion.div>
 
