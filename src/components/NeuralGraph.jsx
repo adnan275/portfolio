@@ -44,6 +44,56 @@ const initialNodes = [
 
     // AI Pillar Sub-nodes (Clickable Projects)
     {
+        id: 'harmonix',
+        domain: 'ai',
+        label: 'HarmoniX',
+        category: 'project',
+        color: '#38bdf8',
+        radius: 9,
+        title: 'HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence',
+        description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal.',
+        tags: ['PyTorch', 'Deep Learning', 'Audio Spectroscopy', 'Librosa', 'Grad-CAM', 'Late Fusion', 'Streamlit'],
+        link: 'https://harmonix-studio.streamlit.app/',
+        image: '/projects/harmonix.png',
+        github: 'https://github.com/adnan275/HarmoniX',
+        details: {
+            problem: 'Raw audio waveforms are high-dimensional and noisy, making automated music emotion recognition and affective computing notoriously difficult without explainable acoustic frequency correlation.',
+            solution: 'Engineered HarmoniX, a multimodal deep neural system that converts raw acoustic signals into 128-band Mel-Spectrograms processed by 2D CNN backbones, fused with acoustic physics features (MFCCs, spectral contrast, chroma) via Late-Fusion networks with real-time Grad-CAM saliency maps.',
+            features: [
+                'Dual-branch multimodal architecture: 2D Spectrogram CNN + Dense Acoustic Feature Extractor',
+                'Explainable AI: Layer-wise Grad-CAM heatmaps pinpointing affective acoustic frequencies in real time',
+                'Continuous 2D Valence-Arousal plane emotion mapping with sub-second inference',
+                'Interactive audio upload, feature inspection studio, and real-time audio playback'
+            ],
+            techStack: ['PyTorch', 'Librosa', 'NumPy', 'Streamlit', 'SoundFile', 'SciPy', 'Matplotlib', 'Grad-CAM']
+        }
+    },
+    {
+        id: 'affinix',
+        domain: 'ai',
+        label: 'Affinix AI',
+        category: 'project',
+        color: '#38bdf8',
+        radius: 8,
+        title: 'Affinix — Autonomous AI Career & Job Matching Platform',
+        description: 'Autonomous multi-hop agent platform for job-resume matching featuring episodic memory, hybrid search (Okapi BM25 + Dense Vectors with Reciprocal Rank Fusion), and automated applicant ranking.',
+        tags: ['Python', 'FastAPI', 'LangGraph', 'Hybrid Search', 'Reciprocal Rank Fusion', 'ChromaDB', 'Next.js'],
+        link: 'https://affinix-n89g.onrender.com',
+        image: '/projects/affinix.png',
+        github: 'https://github.com/adnan275/Affinix',
+        details: {
+            problem: 'Traditional applicant tracking systems (ATS) rely on naive keyword matching, discarding qualified candidates due to lexical phrasing differences while recruiters spend hours on manual screening.',
+            solution: 'Developed Affinix, an autonomous multi-hop agentic engine that combines Okapi BM25 sparse keyword scoring with dense 768D embeddings using Reciprocal Rank Fusion (RRF) and an episodic memory graph to match talent accurately.',
+            features: [
+                'Multi-hop agent workflow evaluating technical competencies, seniority fit, and compensation bands',
+                'Hybrid retrieval combining Okapi BM25 and dense semantic embeddings via Reciprocal Rank Fusion (RRF)',
+                'Episodic memory graph storing applicant history and hiring feedback loops',
+                'High-throughput asynchronous REST API built with FastAPI and containerized on Render'
+            ],
+            techStack: ['Python', 'FastAPI', 'LangGraph', 'ChromaDB', 'NumPy', 'Docker', 'Uvicorn', 'Render']
+        }
+    },
+    {
         id: 'sentinel',
         domain: 'ai',
         label: 'Sentinel AI',
@@ -228,6 +278,31 @@ const initialNodes = [
             techStack: ['HTML5', 'CSS3', 'JavaScript']
         }
     },
+    {
+        id: 'cloudpulse',
+        domain: 'fullstack',
+        label: 'CloudPulse',
+        category: 'project',
+        color: '#e879f9',
+        radius: 8,
+        title: 'CloudPulse — Private Network Service Platform & Infrastructure Telemetry',
+        description: 'Private network service dashboard providing live infrastructure telemetry, TLS 1.3 termination, Nginx reverse proxy load balancing, and network health monitoring.',
+        tags: ['JavaScript', 'Node.js', 'Nginx', 'TLS 1.3', 'TCP/IP', 'Wireshark', 'Infrastructure Telemetry', 'Render'],
+        link: 'https://cloudpulse-hba3.onrender.com/',
+        image: '/projects/cloudpulse.png',
+        github: 'https://github.com/adnan275/CloudPulse',
+        details: {
+            problem: 'Private microservice environments and local networks often lack lightweight, unified telemetry for tracking packet latency, TLS handshakes, and reverse proxy throughput.',
+            solution: 'Built CloudPulse, an agile network monitoring and service orchestration platform featuring Nginx reverse proxy configuration, automated TLS 1.3 certificate termination, real-time health pings, and socket-level telemetry.',
+            features: [
+                'Real-time network telemetry and service status monitoring',
+                'Nginx reverse-proxy load distribution with SSL/TLS 1.3 edge termination',
+                'Layer 4 / Layer 7 connection diagnostics and packet inspection logging',
+                'Live cloud dashboard deployed with automated uptime heartbeat checks'
+            ],
+            techStack: ['JavaScript', 'Node.js', 'Express', 'Nginx', 'TLS/SSL', 'TCP/IP', 'WebSockets', 'Render']
+        }
+    },
 
     // Data Pillar Sub-nodes (Clickable Projects)
     {
@@ -280,6 +355,31 @@ const initialNodes = [
     },
 
     // Production Engineering Sub-nodes (Clickable Projects)
+    {
+        id: 'tensorax',
+        domain: 'projects',
+        label: 'TensoraX',
+        category: 'project',
+        color: '#6ee7b7',
+        radius: 9,
+        title: 'TensoraX — 2D Mesh Systolic Array Matrix Multiplication Accelerator',
+        description: 'Cycle-accurate 2D mesh systolic array GEMM hardware accelerator modeled in Verilog HDL for deep learning tensor operations, featuring parameterized processing elements and testbench verification.',
+        tags: ['Verilog HDL', 'Computer Architecture', 'Systolic Array', 'GEMM Acceleration', 'Digital Logic', 'GTKWave', 'FPGA'],
+        link: 'https://github.com/adnan275/TensoraX',
+        image: '/projects/tensorax.png',
+        github: 'https://github.com/adnan275/TensoraX',
+        details: {
+            problem: 'General-purpose CPUs and GPUs encounter memory bandwidth bottlenecks and repeated SRAM access cycles on dense matrix multiplications (GEMM) in deep neural workloads.',
+            solution: 'Architected TensoraX in Verilog HDL—a parameterized 2D mesh systolic array accelerator where Processing Elements (PEs) pass data rhythmically across a 2D grid, maximizing data reuse and minimizing global memory bus traffic.',
+            features: [
+                'Parameterized N×N systolic array mesh with multiply-accumulate (MAC) processing elements',
+                'Synchronous pipelined dataflow minimizing global memory read/write cycles to O(N)',
+                'Verified cycle-by-cycle against NumPy golden matrix models using Icarus Verilog & GTKWave waveforms',
+                'Synthesizable RTL design ready for open-source EDA toolchains (Yosys) and FPGA deployment'
+            ],
+            techStack: ['Verilog HDL', 'GTKWave', 'Icarus Verilog', 'Digital Logic', 'Computer Architecture', 'RTL Synthesis']
+        }
+    },
     {
         id: 'livesitter',
         label: 'Livesitter',
@@ -369,6 +469,8 @@ const initialLinks = [
     { source: 'adnan', target: 'data' },
     { source: 'adnan', target: 'projects' },
 
+    { source: 'ai', target: 'harmonix' },
+    { source: 'ai', target: 'affinix' },
     { source: 'ai', target: 'sentinel' },
     { source: 'ai', target: 'neurax' },
     { source: 'ai', target: 'ev_agent' },
@@ -378,10 +480,12 @@ const initialLinks = [
     { source: 'fullstack', target: 'zync' },
     { source: 'fullstack', target: 'taskly' },
     { source: 'fullstack', target: 'capstone' },
+    { source: 'fullstack', target: 'cloudpulse' },
 
     { source: 'data', target: 'bi_portfolio' },
     { source: 'data', target: 'socratic' },
 
+    { source: 'projects', target: 'tensorax' },
     { source: 'projects', target: 'livesitter' },
     { source: 'projects', target: 'qr' },
     { source: 'projects', target: 'password' },
@@ -389,6 +493,8 @@ const initialLinks = [
 ];
 
 const nodeDomainMap = {
+    harmonix: 'ai',
+    affinix: 'ai',
     sentinel: 'ai',
     neurax: 'ai',
     ev_agent: 'ai',
@@ -397,8 +503,10 @@ const nodeDomainMap = {
     zync: 'fullstack',
     taskly: 'fullstack',
     capstone: 'fullstack',
+    cloudpulse: 'fullstack',
     bi_portfolio: 'data',
     socratic: 'data',
+    tensorax: 'projects',
     livesitter: 'projects',
     qr: 'projects',
     password: 'projects',
@@ -407,10 +515,10 @@ const nodeDomainMap = {
 
 const domainMeta = {
     all: { label: 'ALL DOMAINS', color: '#ffffff' },
-    ai: { label: 'AI & ML CORE', color: '#00f0ff', count: 3 },
-    fullstack: { label: 'FULL-STACK SYSTEMS', color: '#c084fc', count: 5 },
+    ai: { label: 'AI & ML CORE', color: '#00f0ff', count: 5 },
+    fullstack: { label: 'FULL-STACK SYSTEMS', color: '#c084fc', count: 6 },
     data: { label: 'DATA & ANALYTICS', color: '#fbbf24', count: 2 },
-    projects: { label: 'PRODUCTION ENGINEERING', color: '#34d399', count: 4 }
+    projects: { label: 'PRODUCTION ENGINEERING', color: '#34d399', count: 5 }
 };
 
 const NeuralGraph = () => {

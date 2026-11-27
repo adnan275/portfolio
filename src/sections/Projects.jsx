@@ -5,6 +5,34 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence',
+        description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal.',
+        tags: ['PyTorch', 'Deep Learning', 'Audio Spectroscopy', 'Librosa', 'Grad-CAM', 'Late Fusion', 'Streamlit'],
+        link: 'https://harmonix-studio.streamlit.app/',
+        image: '/projects/harmonix.png'
+    },
+    {
+        title: 'TensoraX — 2D Mesh Systolic Array Matrix Multiplication Accelerator',
+        description: 'Cycle-accurate 2D mesh systolic array GEMM hardware accelerator modeled in Verilog HDL for deep learning tensor operations, featuring parameterized processing elements and testbench verification.',
+        tags: ['Verilog HDL', 'Computer Architecture', 'Systolic Array', 'GEMM Acceleration', 'Digital Logic', 'GTKWave', 'FPGA'],
+        link: 'https://github.com/adnan275/TensoraX',
+        image: '/projects/tensorax.png'
+    },
+    {
+        title: 'Affinix — Autonomous AI Career & Job Matching Platform',
+        description: 'Autonomous multi-hop agent platform for job-resume matching featuring episodic memory, hybrid search (Okapi BM25 + Dense Vectors with Reciprocal Rank Fusion), and automated applicant ranking.',
+        tags: ['Python', 'FastAPI', 'LangGraph', 'Hybrid Search', 'Reciprocal Rank Fusion', 'ChromaDB', 'Next.js'],
+        link: 'https://affinix-n89g.onrender.com',
+        image: '/projects/affinix.png'
+    },
+    {
+        title: 'CloudPulse — Private Network Service Platform & Infrastructure Telemetry',
+        description: 'Private network service dashboard providing live infrastructure telemetry, TLS 1.3 termination, Nginx reverse proxy load balancing, and network health monitoring.',
+        tags: ['JavaScript', 'Node.js', 'Nginx', 'TLS 1.3', 'TCP/IP', 'Wireshark', 'Infrastructure Telemetry', 'Render'],
+        link: 'https://cloudpulse-hba3.onrender.com/',
+        image: '/projects/cloudpulse.png'
+    },
+    {
         title: 'Sentinel — AI-Powered File Organization',
         description: 'Local-first AI agent that scans, classifies, and organizes files using a plan-before-execute flow. Built with a focus on safety and privacy, it runs entirely offline using local LLMs.',
         tags: ['Python', 'FastAPI', 'Next.js', 'Rust', 'Tauri', 'Ollama', 'SQLModel'],

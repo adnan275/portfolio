@@ -7,6 +7,55 @@ import '../styles/Three.css';
 
 const projects = [
     {
+        title: 'HarmoniX',
+        description: 'Multimodal Music Emotion Perception & Deep Intelligence',
+        tags: ['PyTorch', 'Spectroscopy', 'Grad-CAM', 'Streamlit'],
+        image: '/projects/harmonix.png',
+        link: 'https://harmonix-studio.streamlit.app/'
+    },
+    {
+        title: 'TensoraX',
+        description: '2D Mesh Systolic Array Matrix Multiplication Accelerator',
+        tags: ['Verilog HDL', 'Computer Architecture', 'GEMM', 'FPGA'],
+        image: '/projects/tensorax.png',
+        link: 'https://github.com/adnan275/TensoraX'
+    },
+    {
+        title: 'Sentinel',
+        description: 'AI-Powered Local File Organization Agent',
+        tags: ['Python', 'FastAPI', 'Rust', 'Tauri', 'Ollama'],
+        image: '/projects/sentinel.png',
+        link: 'https://sentinel-ten-black.vercel.app/'
+    },
+    {
+        title: 'Affinix',
+        description: 'Autonomous AI Career & Job Matching Platform',
+        tags: ['FastAPI', 'Hybrid RRF', 'Episodic Memory', 'ChromaDB'],
+        image: '/projects/affinix.png',
+        link: 'https://affinix-n89g.onrender.com'
+    },
+    {
+        title: 'NeuraX',
+        description: 'Vector DB & RAG Engine with PCA Visualizer',
+        tags: ['Python', 'NumPy', 'HNSW', '768D Embeddings'],
+        image: '/projects/neurax.png',
+        link: 'https://huggingface.co/spaces/rizzzvi/NeuraX'
+    },
+    {
+        title: 'CloudPulse',
+        description: 'Private Network Service Platform & Telemetry',
+        tags: ['Node.js', 'Nginx', 'TLS 1.3', 'TCP/IP', 'Wireshark'],
+        image: '/projects/cloudpulse.png',
+        link: 'https://cloudpulse-hba3.onrender.com/'
+    },
+    {
+        title: 'AI EV Charging Station',
+        description: 'Autonomous Multi-Agent Suitability & Wait-Time Predictor',
+        tags: ['LangGraph', 'XGBoost', 'Groq LPU', 'ChromaDB'],
+        image: '/projects/ev-charging-agent.png',
+        link: 'https://huggingface.co/spaces/rizzzvi/ev-charging-agent'
+    },
+    {
         title: 'Presento Treasure',
         description: 'Full-Stack E-commerce Platform',
         tags: ['React', 'Node.js', 'MySQL', 'Express'],

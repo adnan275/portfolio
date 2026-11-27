@@ -28,7 +28,7 @@ const KNOWLEDGE_BASE = {
             "• **Academic Rigor**: Pursuing B.Tech in Computer Science & AI at **Newton School of Technology (NST)**.\n" +
             "• **Quantitative Finance**: Achieved **Gold Level in WorldQuant Challenge®** (WorldQuant BRAIN), engineering high-performance predictive trading Alphas.\n" +
             "• **Algorithmic Mastery**: Solved **400+ DSA problems** across LeetCode, mastering runtime efficiency, dynamic programming, and clean OOP/SOLID patterns.\n" +
-            "• **Flagship Inventions**: Built **Sentinel (Local AI File Organizer)**, **NeuraX (Vector DB & RAG Engine)**, and **LangGraph EV Charging AI**.\n" +
+            "• **Flagship Inventions**: Built **HarmoniX (Multimodal Music Emotion AI)**, **Sentinel (Local AI File Agent)**, **TensoraX (Verilog Systolic Array Accelerator)**, and **NeuraX (Vector DB & RAG)**.\n" +
             "• **End-to-End Stack**: From low-level silicon logic (**Verilog HDL, RISC-V**) and **AWS Cloud Networks (VPC, Route 53)** to modern **React 19, PyTorch, and LangChain**.\n\n" +
             "🔗 Explore his [Featured Projects](/projects), inspect verified [Certifications](/certifications), or get in touch via [Contact Form](#contact).",
         chips: ['🏆 WorldQuant Gold', '🚀 Flagship Projects', '🤖 Agentic AI & RAG', '⚡ LeetCode 400+ DSA', '💼 Why Hire Adnan?']
@@ -39,10 +39,11 @@ const KNOWLEDGE_BASE = {
             'what can you do', 'help', 'bot', 'assistant', 'kaise ho', 'kya haal hai', 'start'
         ],
         response: "Hello & welcome! 👋 I am **Adnan's Neural AI Assistant**.\n\nI can give you in-depth answers about Adnan's **code architecture**, **live systems**, and **technical competencies**:\n\n" +
-            "• 🤖 **AI & LLM Systems**: Sentinel (Offline Agent), NeuraX (Vector DB), LangGraph EV Agent\n" +
+            "• 🤖 **AI & LLM Systems**: HarmoniX (Music Emotion AI), Sentinel (Offline Agent), NeuraX (Vector DB), Affinix (Career AI)\n" +
+            "• 🖥️ **Computer Architecture**: TensoraX (Verilog 2D Systolic GEMM Accelerator), RISC-V, 5-stage CPU datapath\n" +
             "• ⚡ **Problem Solving**: 400+ LeetCode DSA solutions, algorithms, and system architecture\n" +
-            "• 🖥️ **Computer Architecture**: Verilog HDL, RISC-V, 5-stage CPU pipelining, and GPU/TPU accelerators\n" +
-            "• 🌐 **Cloud & Networking**: Multi-tier AWS VPCs, CIDR subnetting, ALB/NLB, and Wireshark diagnostics\n" +
+            "• 🌐 **Cloud & Networking**: CloudPulse, Multi-tier AWS VPCs, CIDR subnetting, ALB/NLB, and Wireshark diagnostics\n" +
+            "• 💼 **Full-Stack & Hiring**: React 19, Node.js, Prisma, work history, and direct contact\n\n" +
             "• 💼 **Full-Stack & Hiring**: React 19, Node.js, Prisma, work history, and direct contact\n\n" +
             "What would you like to explore first?",
         chips: ['👤 Who is Adnan?', '💼 Why Hire Adnan?']
@@ -100,6 +101,64 @@ const KNOWLEDGE_BASE = {
             "🔗 Test the live app: [Zync Live Demo](https://zync-five.vercel.app/login) or view the [GitHub Repo](https://github.com/adnan275/zync).",
         chips: ['💼 GigFlow Marketplace', '🛍️ Presento Treasure', '🚀 All Projects']
     },
+    harmonix: {
+        keywords: [
+            'harmonix', 'music ai', 'music emotion', 'audio emotion', 'spectrogram', 
+            'mel spectrogram', 'audio spectroscopy', 'grad cam', 'valence arousal', 
+            'librosa', 'late fusion', 'audio ai', 'music intelligence', 'sound ai'
+        ],
+        response: "🎵 **HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence**\n\n" +
+            "HarmoniX is a standout flagship AI system that combines acoustic physics with 2D convolutional spectroscopy and explainable deep learning to predict music emotional valence and arousal.\n\n" +
+            "• **Dual-Branch Architecture**: Extracts 128-band Mel-Spectrograms processed by a 2D CNN backbone, fused with acoustic physics features (MFCCs, spectral contrast, chroma, tonnetz) via a Late-Fusion neural network.\n" +
+            "• **Explainable AI (Grad-CAM)**: Generates layer-wise saliency heatmaps that visually map exactly which audio frequency-time bands triggered emotional valence/arousal shifts.\n" +
+            "• **Continuous 2D Emotion Mapping**: Evaluates audio across the Russell Circumplex Model with sub-second inference.\n" +
+            "• **Tech Stack**: PyTorch, Librosa, NumPy, Streamlit Cloud, Grad-CAM, SoundFile, SciPy\n\n" +
+            "🔗 Try the live studio: [HarmoniX Live App](https://harmonix-studio.streamlit.app/) | [GitHub Repository](https://github.com/adnan275/HarmoniX)",
+        chips: ['🤖 Sentinel AI Agent', '⚡ TensoraX Hardware', '🚀 All Projects']
+    },
+    tensorax: {
+        keywords: [
+            'tensorax', 'systolic array', 'gemm', 'matrix multiplication accelerator', 
+            'verilog accelerator', 'hardware accelerator', 'verilog project', 'pe mesh', 
+            'fpga accelerator', 'rtl accelerator', 'deep learning accelerator'
+        ],
+        response: "🖥️ **TensoraX — 2D Mesh Systolic Array GEMM Hardware Accelerator**\n\n" +
+            "A cycle-accurate hardware accelerator modeled in **Verilog HDL** specifically designed to accelerate deep learning matrix multiplication (GEMM) operations.\n\n" +
+            "• **2D Systolic Array Mesh**: Features a parameterized grid of Processing Elements (PEs) with Multiply-Accumulate (MAC) units that pass data rhythmically across rows and columns.\n" +
+            "• **O(N) Pipelined Compute**: Eliminates memory bandwidth stalls and slashes SRAM access cycles by reusing activations and weights in-flight.\n" +
+            "• **RTL Verification**: Cycle-by-cycle waveform verification via **Icarus Verilog** and **GTKWave**, matched with 100% bit-accuracy against NumPy golden models.\n" +
+            "• **Tech Stack**: Verilog HDL, GTKWave, Icarus Verilog, Computer Architecture, RTL Synthesis\n\n" +
+            "🔗 Inspect the RTL source code: [TensoraX GitHub Repository](https://github.com/adnan275/TensoraX)",
+        chips: ['🎵 HarmoniX Music AI', '🤖 Sentinel AI Agent', '🚀 All Projects']
+    },
+    affinix: {
+        keywords: [
+            'affinix', 'career ai', 'job matching', 'reciprocal rank fusion', 'rrf', 
+            'bm25', 'episodic memory', 'multi-hop agent', 'resume matcher', 'ats', 'job intelligence'
+        ],
+        response: "💼 **Affinix — Autonomous AI Career & Job Matching Platform**\n\n" +
+            "An autonomous multi-hop agent platform that resolves candidate-opportunity misalignment using hybrid search and cognitive memory.\n\n" +
+            "• **Hybrid Retrieval (RRF)**: Fuses sparse lexical retrieval (Okapi BM25) with dense semantic vector embeddings (768D cosine similarity) using **Reciprocal Rank Fusion**.\n" +
+            "• **Episodic Memory Graph**: Maintains dynamic context over candidate work history, interview evaluations, and feedback loops.\n" +
+            "• **High-Throughput API**: Asynchronous backend built with **FastAPI** delivering sub-40ms P99 matching inference.\n" +
+            "• **Tech Stack**: Python, FastAPI, LangGraph, ChromaDB, NumPy, Docker, Render\n\n" +
+            "🔗 Visit the platform: [Affinix Live App](https://affinix-n89g.onrender.com) | [GitHub Repository](https://github.com/adnan275/Affinix)",
+        chips: ['🎵 HarmoniX Music AI', '🤖 Sentinel AI Agent', '🚀 All Projects']
+    },
+    cloudpulse: {
+        keywords: [
+            'cloudpulse', 'network service', 'network telemetry', 'nginx proxy', 'tls 1.3', 
+            'wireshark project', 'infrastructure telemetry', 'private network', 'reverse proxy'
+        ],
+        response: "🌐 **CloudPulse — Private Network Service Platform & Infrastructure Telemetry**\n\n" +
+            "A private network monitoring and service orchestration platform providing real-time infrastructure observability and secure gateway termination.\n\n" +
+            "• **Reverse Proxy & TLS 1.3**: Automated TLS 1.3 termination and Layer 7 load balancing powered by **Nginx**.\n" +
+            "• **Real-Time Telemetry**: Sub-2ms heartbeat telemetry, packet inspection diagnostics, and active socket-level connection status.\n" +
+            "• **High Availability**: Monitored uptime with automated failover alerting and clean cloud dashboard visualization.\n" +
+            "• **Tech Stack**: JavaScript, Node.js, Express, Nginx, TLS/SSL, TCP/IP, WebSockets, Render\n\n" +
+            "🔗 View the live platform: [CloudPulse Live Demo](https://cloudpulse-hba3.onrender.com/) | [GitHub Repository](https://github.com/adnan275/CloudPulse)",
+        chips: ['🖥️ TensoraX Hardware', '🎵 HarmoniX Music AI', '🚀 All Projects']
+    },
     presento: {
         keywords: ['presento', 'presento treasure', 'ecommerce', 'e-commerce', 'shop', 'cart', 'checkout', 'store'],
         response: "🛍️ **Presento Treasure — High-Performance E-Commerce Engine**\n\n" +
@@ -128,14 +187,17 @@ const KNOWLEDGE_BASE = {
             'sabse accha project', 'sabse best project', 'best app', 'number 1 project',
             'star project'
         ],
-        response: "Adnan's #1 standout flagship system is **Sentinel** — an autonomous, privacy-focused local AI desktop agent:\n\n" +
-            "• 🤖 **Sentinel (Local AI Agent)**: Local-first file organization agent running local LLMs via **Ollama**, **FastAPI**, **Next.js**, and **Rust/Tauri**. Features a safety-first **Plan-Before-Execute** pattern where users preview and approve the entire file operations graph before execution with zero cloud data egress.\n" +
-            "  🔗 [Sentinel Live Demo](https://sentinel-ten-black.vercel.app/) | [GitHub Repository](https://github.com/adnan275/sentinel)\n\n" +
-            "Other top tier flagship engineering systems built by Adnan:\n" +
-            "• 🧠 **NeuraX (Vector DB & RAG)**: Built from first principles in Python/NumPy with custom HNSW indexing, 768D vector search, and a real-time 2D PCA semantic projection. ([HF Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n" +
-            "• ⚡ **EV Charging Multi-Agent**: LangGraph state graph predicting station availability and wait times across 240,000+ stations with sub-50ms Groq LPU inference. ([HF Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent))\n\n" +
+        response: "Adnan's top flagship engineering systems:\n\n" +
+            "• 🎵 **HarmoniX (Multimodal Music Emotion AI)**: Deep learning system combining 2D Mel-Spectrogram CNNs with acoustic physics features (MFCCs, tonnetz) and layer-wise Grad-CAM heatmaps for real-time emotional valence & arousal prediction.\n" +
+            "  🔗 [HarmoniX Live Studio](https://harmonix-studio.streamlit.app/) | [GitHub](https://github.com/adnan275/HarmoniX)\n\n" +
+            "• 🤖 **Sentinel (Local AI Agent)**: Local-first offline desktop file organizer running local LLMs via Ollama, FastAPI, and Rust/Tauri with an approval-based 'Plan-Before-Execute' safety graph.\n" +
+            "  🔗 [Sentinel Live Demo](https://sentinel-ten-black.vercel.app/) | [GitHub](https://github.com/adnan275/sentinel)\n\n" +
+            "• 🖥️ **TensoraX (GEMM Hardware Accelerator)**: 2D Mesh Systolic Array hardware accelerator modeled in Verilog HDL for low-power deep learning tensor matrix multiplications.\n" +
+            "  🔗 [TensoraX GitHub](https://github.com/adnan275/TensoraX)\n\n" +
+            "• 🧠 **NeuraX (Vector DB & RAG)**: From-scratch 768D vector database with HNSW indexing and interactive 2D PCA canvas. ([HF Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n\n" +
+            "• 💼 **Affinix (Autonomous AI Career Engine)**: Multi-hop agent platform with hybrid Okapi BM25 + dense vector RRF search and episodic memory. ([Live App](https://affinix-n89g.onrender.com) | [GitHub](https://github.com/adnan275/Affinix))\n\n" +
             "Which project would you like to explore deeper?",
-        chips: ['🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB', '⚡ EV Charging AI', '🚀 All Projects']
+        chips: ['🎵 HarmoniX Music AI', '🤖 Sentinel AI Agent', '🖥️ TensoraX Hardware', '🚀 All Projects']
     },
     projects: {
         keywords: [
@@ -144,14 +206,16 @@ const KNOWLEDGE_BASE = {
             'list projects', 'all projects', 'flagship', 'show projects'
         ],
         response: "Here is an overview of Adnan's **flagship production systems**:\n\n" +
-            "1. **🤖 Sentinel (Local AI Agent)**: Offline file organizer with Ollama, Tauri & Rust. ([Live Demo](https://sentinel-ten-black.vercel.app/))\n" +
-            "2. **🧠 NeuraX (Vector DB & RAG)**: 768D embeddings, HNSW indexing & live 2D PCA canvas. ([HF Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n" +
-            "3. **⚡ EV Charging AI Agent**: LangGraph multi-agent system across 240,000+ stations. ([HF Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent))\n" +
-            "4. **📹 Zync Video Platform**: 15k+ calls, 50k+ messages with <0.1% error rate. ([Live Demo](https://zync-five.vercel.app/login))\n" +
-            "5. **🛍️ Presento Treasure**: E-commerce with sub-80ms Prisma queries. ([Live Demo](https://fullstack-presento-swaj.vercel.app/))\n" +
-            "6. **💼 GigFlow Marketplace**: Real-time freelance market via Socket.io. ([Live Demo](https://service-hive-zeta.vercel.app/))\n\n" +
+            "1. **🎵 HarmoniX (Music Emotion AI)**: 2D Spectrogram CNN + Late-Fusion & Grad-CAM. ([Live Studio](https://harmonix-studio.streamlit.app/))\n" +
+            "2. **🖥️ TensoraX (Hardware Accelerator)**: 2D Mesh Systolic Array in Verilog HDL. ([GitHub](https://github.com/adnan275/TensoraX))\n" +
+            "3. **🤖 Sentinel (Local AI Agent)**: Offline file organizer with Ollama & Rust/Tauri. ([Live Demo](https://sentinel-ten-black.vercel.app/))\n" +
+            "4. **💼 Affinix (Autonomous AI Matching)**: Hybrid BM25 + Dense RRF search with episodic memory. ([Live App](https://affinix-n89g.onrender.com))\n" +
+            "5. **🧠 NeuraX (Vector DB & RAG)**: 768D embeddings, HNSW indexing & live 2D PCA canvas. ([HF Space](https://huggingface.co/spaces/rizzzvi/NeuraX))\n" +
+            "6. **🌐 CloudPulse (Network Telemetry)**: Private network monitoring with Nginx & TLS 1.3. ([Live Demo](https://cloudpulse-hba3.onrender.com/))\n" +
+            "7. **⚡ EV Charging AI Agent**: LangGraph multi-agent system across 240,000+ stations. ([HF Space](https://huggingface.co/spaces/rizzzvi/ev-charging-agent))\n" +
+            "8. **📹 Zync Video Platform**: 15k+ calls, 50k+ messages with <0.1% error rate. ([Live Demo](https://zync-five.vercel.app/login))\n\n" +
             "🔗 See full architecture diagrams & case studies on the [Projects Page](/projects)!",
-        chips: ['🤖 Sentinel AI Agent', '🧠 NeuraX Vector DB', '⚡ EV Charging AI', '💼 Why Hire Adnan?']
+        chips: ['🎵 HarmoniX Music AI', '🤖 Sentinel AI Agent', '🖥️ TensoraX Hardware', '💼 Why Hire Adnan?']
     },
     dsa: {
         keywords: [
@@ -436,7 +500,7 @@ export default function NeuralAIChatbot() {
         {
             id: 1,
             sender: 'ai',
-            text: "Hello & welcome! 👋 I am **Adnan's Neural AI Assistant**.\n\nWhether you're exploring his **flagship AI projects (Sentinel, NeuraX)**, reviewing his **400+ LeetCode DSA background**, or looking to **hire / connect**, I am here with instant architectural answers.\n\nClick a suggestion chip below or type any question to get started!",
+            text: "Hello & welcome! 👋 I am **Adnan's Neural AI Assistant**.\n\nWhether you're exploring his **flagship engineering systems (HarmoniX, TensoraX, Sentinel, NeuraX)**, reviewing his **400+ LeetCode DSA background**, or looking to **hire / connect**, I am here with instant architectural answers.\n\nClick a suggestion chip below or type any question to get started!",
             timestamp: getFormattedTime(),
             chips: [
                 '👤 Who is Adnan?',
@@ -519,6 +583,26 @@ export default function NeuralAIChatbot() {
         // General Projects / Portfolio
         if (/\b(project|projects|portfolio|built|apps|kya banaya hai|what has he built|what did he make|github repos|github projects)\b/.test(cleanQuery)) {
             return KNOWLEDGE_BASE.projects;
+        }
+
+        // HarmoniX Music Emotion AI
+        if (/\b(harmonix|music\s*ai|music\s*emotion|spectrogram|mel\s*spectrogram|audio\s*ai|audio\s*emotion|grad\s*cam)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.harmonix;
+        }
+
+        // TensoraX GEMM Hardware Accelerator
+        if (/\b(tensorax|systolic\s*array|gemm|matrix\s*multiplication\s*accelerator|verilog\s*accelerator|hardware\s*accelerator)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.tensorax;
+        }
+
+        // Affinix Autonomous Career Platform
+        if (/\b(affinix|career\s*ai|job\s*matching|reciprocal\s*rank|rrf|ats\s*matcher)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.affinix;
+        }
+
+        // CloudPulse Network Telemetry
+        if (/\b(cloudpulse|network\s*service|network\s*telemetry|infrastructure\s*telemetry|tls\s*1\.3)\b/.test(cleanQuery)) {
+            return KNOWLEDGE_BASE.cloudpulse;
         }
 
         // Sentinel AI Agent
