@@ -105,20 +105,6 @@ const projects = [
         link: 'https://auth-taskly.vercel.app/'
     },
     {
-        title: 'Stone Paper Scissors',
-        description: 'Interactive game',
-        tags: ['JavaScript', 'HTML'],
-        image: '/projects/rps-update.png',
-        link: 'https://stone-paper-scissors-blue-pi.vercel.app/'
-    },
-    {
-        title: 'Password Strength Checker',
-        description: 'Password validation utility',
-        tags: ['JavaScript', 'HTML'],
-        image: '/projects/password.png',
-        link: 'https://password-strength-checker-psi-one.vercel.app/'
-    },
-    {
         title: 'Capstone Project',
         description: 'Full-stack web solution',
         tags: ['HTML', 'CSS', 'JavaScript'],

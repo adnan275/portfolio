@@ -403,63 +403,6 @@ const initialNodes = [
             ],
             techStack: ['React', 'Node.js', 'FFmpeg', 'HLS.js', 'MongoDB', 'Express']
         }
-    },
-    {
-        id: 'qr',
-        label: 'QR Scanner',
-        category: 'project',
-        color: '#6ee7b7',
-        radius: 8,
-        title: 'QR Scanner & Generator',
-        description: 'Utility tool to scan and generate QR codes instantly with camera integration.',
-        tags: ['JavaScript', 'API', 'Tool', 'HTML', 'CSS'],
-        link: 'https://qr-scanner-ten-tawny.vercel.app/',
-        image: '/projects/qr-new.png',
-        github: 'https://github.com/adnan275/qr-scanner',
-        details: {
-            problem: 'Finding a clean, ad-free tool to quickly generate or scan QR codes.',
-            solution: 'Built a lightweight utility using the QR Code API for generation and browser scanning.',
-            features: ['Instant QR generation', 'Camera-based scanning', 'Clean interface'],
-            techStack: ['JavaScript', 'QR API', 'HTML5', 'CSS3']
-        }
-    },
-    {
-        id: 'password',
-        label: 'Password Checker',
-        category: 'project',
-        color: '#6ee7b7',
-        radius: 8,
-        title: 'Password Strength Checker',
-        description: 'Real-time password validation utility for security awareness and entropy measurement.',
-        tags: ['JavaScript', 'RegEx', 'HTML', 'CSS'],
-        link: 'https://password-strength-checker-psi-one.vercel.app/',
-        image: '/projects/password.png',
-        github: 'https://github.com/adnan275/password-strength-checker',
-        details: {
-            problem: 'Lack of immediate feedback on password vulnerability.',
-            solution: 'Real-time validation tool checking passwords against complexity rules as user types.',
-            features: ['Real-time entropy calculation', 'Visual strength indicator', 'Zero-data storage'],
-            techStack: ['JavaScript', 'RegEx', 'HTML5', 'CSS3']
-        }
-    },
-    {
-        id: 'rps',
-        label: 'Stone Paper Scissors',
-        category: 'project',
-        color: '#6ee7b7',
-        radius: 8,
-        title: 'Stone Paper Scissors Game',
-        description: 'Interactive game with score tracking and responsive state machine UI.',
-        tags: ['JavaScript', 'HTML', 'CSS'],
-        link: 'https://stone-paper-scissors-blue-pi.vercel.app/',
-        image: '/projects/rps-update.png',
-        github: 'https://github.com/adnan275/stone-paper-scissors-blue-pi',
-        details: {
-            problem: 'Creating engaging state-managed games in vanilla JS.',
-            solution: 'Implemented a clean state machine in vanilla JS to handle rounds and scores.',
-            features: ['Score persistence', 'Interactive animations', 'AI opponent'],
-            techStack: ['JavaScript', 'HTML5', 'CSS3']
-        }
     }
 ];
 
@@ -486,10 +429,7 @@ const initialLinks = [
     { source: 'data', target: 'socratic' },
 
     { source: 'projects', target: 'tensorax' },
-    { source: 'projects', target: 'livesitter' },
-    { source: 'projects', target: 'qr' },
-    { source: 'projects', target: 'password' },
-    { source: 'projects', target: 'rps' }
+    { source: 'projects', target: 'livesitter' }
 ];
 
 const nodeDomainMap = {
@@ -507,18 +447,15 @@ const nodeDomainMap = {
     bi_portfolio: 'data',
     socratic: 'data',
     tensorax: 'projects',
-    livesitter: 'projects',
-    qr: 'projects',
-    password: 'projects',
-    rps: 'projects'
+    livesitter: 'projects'
 };
 
 const domainMeta = {
-    all: { label: 'ALL DOMAINS', color: '#ffffff' },
+    all: { label: 'ALL DOMAINS', color: '#ffffff', count: 15 },
     ai: { label: 'AI & ML CORE', color: '#00f0ff', count: 5 },
     fullstack: { label: 'FULL-STACK SYSTEMS', color: '#c084fc', count: 6 },
     data: { label: 'DATA & ANALYTICS', color: '#fbbf24', count: 2 },
-    projects: { label: 'PRODUCTION ENGINEERING', color: '#34d399', count: 5 }
+    projects: { label: 'PRODUCTION ENGINEERING', color: '#34d399', count: 2 }
 };
 
 const NeuralGraph = () => {
@@ -585,11 +522,8 @@ const NeuralGraph = () => {
                 socratic: { x: 0.36, y: 0.86 },
 
                 // Production Sub-nodes (Bottom-Right Quadrant - Clear of right border)
-                tensorax: { x: 0.64, y: 0.80 },
-                livesitter: { x: 0.82, y: 0.72 },
-                qr: { x: 0.88, y: 0.80 },
-                password: { x: 0.74, y: 0.88 },
-                rps: { x: 0.85, y: 0.92 }
+                tensorax: { x: 0.65, y: 0.82 },
+                livesitter: { x: 0.82, y: 0.76 }
             };
 
             const target = coordMap[n.id] || { x: 0.5, y: 0.5 };
@@ -993,7 +927,7 @@ const NeuralGraph = () => {
                     >
                         <span className="chip-dot" style={{ backgroundColor: '#ffffff', boxShadow: '0 0 8px #ffffff' }}></span>
                         <span className="chip-text">All Domains</span>
-                        <span className="chip-count">14</span>
+                        <span className="chip-count">{domainMeta.all.count}</span>
                     </button>
                     <button
                         className={`filter-chip ${activeDomain === 'ai' ? 'active' : ''}`}
@@ -1002,7 +936,7 @@ const NeuralGraph = () => {
                     >
                         <span className="chip-dot" style={{ backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></span>
                         <span className="chip-text">AI & ML Core</span>
-                        <span className="chip-count">3</span>
+                        <span className="chip-count">{domainMeta.ai.count}</span>
                     </button>
                     <button
                         className={`filter-chip ${activeDomain === 'fullstack' ? 'active' : ''}`}
@@ -1011,7 +945,7 @@ const NeuralGraph = () => {
                     >
                         <span className="chip-dot" style={{ backgroundColor: '#c084fc', boxShadow: '0 0 8px #c084fc' }}></span>
                         <span className="chip-text">Full-Stack</span>
-                        <span className="chip-count">5</span>
+                        <span className="chip-count">{domainMeta.fullstack.count}</span>
                     </button>
                     <button
                         className={`filter-chip ${activeDomain === 'data' ? 'active' : ''}`}
@@ -1020,7 +954,7 @@ const NeuralGraph = () => {
                     >
                         <span className="chip-dot" style={{ backgroundColor: '#fbbf24', boxShadow: '0 0 8px #fbbf24' }}></span>
                         <span className="chip-text">Data & Analytics</span>
-                        <span className="chip-count">2</span>
+                        <span className="chip-count">{domainMeta.data.count}</span>
                     </button>
                     <button
                         className={`filter-chip ${activeDomain === 'projects' ? 'active' : ''}`}
@@ -1029,7 +963,7 @@ const NeuralGraph = () => {
                     >
                         <span className="chip-dot" style={{ backgroundColor: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
                         <span className="chip-text">Production Eng</span>
-                        <span className="chip-count">4</span>
+                        <span className="chip-count">{domainMeta.projects.count}</span>
                     </button>
                 </div>
 
