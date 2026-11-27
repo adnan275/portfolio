@@ -21,11 +21,11 @@ const skillNodes = [
     { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RAG & VECTORS', level: 95, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
     { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'PYTHON & AI', level: 96, desc: 'Core Python, async FastAPI microservices, custom autograd backprop, CNNs, LoRA & QLoRA quantization.' },
 
-    // --- Full-Stack Systems Sub-skills (Frontend, Backend, UI/Motion & Database) ---
-    { id: 'react_next', label: 'React 19 & Next.js', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MODERN FRONTEND', level: 96, desc: 'Next.js App Router, React 19 Server Components, SSR/SSG pipelines & client-side reactive state.' },
+    // --- Full-Stack Systems Sub-skills (MERN, Modern UI, TypeScript & Database) ---
+    { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MERN FULLSTACK', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
     { id: 'tailwind_ui', label: 'Tailwind CSS & Motion', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MODERN UI/UX', level: 95, desc: 'Responsive glassmorphism HUDs, atomic utility tokens, Framer Motion animations & cyber aesthetics.' },
-    { id: 'node_ts', label: 'Node.js & TypeScript', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'TYPE-SAFE BACKEND', level: 95, desc: 'Scalable async backend services, Express/Fastify APIs, type-safe RPC contracts & real-time WebSockets.' },
-    { id: 'db_sql_nosql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'SQL & NOSQL DB', level: 94, desc: 'Relational schema design, ACID transactions, MongoDB document aggregation, indexing & Prisma ORM.' },
+    { id: 'typescript_api', label: 'TypeScript & REST APIs', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'TYPE-SAFE BACKEND', level: 95, desc: 'Type-safe contracts, Prisma ORM, MySQL/Postgres relational schema, API clustering & backend microservices.' },
+    { id: 'db_sql_nosql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'SQL & NOSQL DB', level: 94, desc: 'Relational schema design, ACID transactions, MongoDB document pipelines, indexing & database clustering.' },
 
     // --- Modern Computer Architecture Sub-skills (Directly from CSA-222 PDF) ---
     { id: 'verilog', label: 'Verilog HDL & GTKWave', category: 'arch_skill', domain: 'comparch', radius: 10, color: '#fdba74', tag: 'RTL SYNTHESIS', level: 95, desc: 'Hardware description language (HDL), cycle-accurate RTL testbench validation, waveform simulation & logic verification.' },
@@ -58,10 +58,10 @@ const skillLinks = [
     { source: 'ai', target: 'langchain' },
     { source: 'ai', target: 'python' },
 
-    // Full-Stack sub-links (Frontend, UI/UX, Backend, Database)
-    { source: 'fullstack', target: 'react_next' },
+    // Full-Stack sub-links (MERN, UI/UX, Backend, Database)
+    { source: 'fullstack', target: 'mern' },
     { source: 'fullstack', target: 'tailwind_ui' },
-    { source: 'fullstack', target: 'node_ts' },
+    { source: 'fullstack', target: 'typescript_api' },
     { source: 'fullstack', target: 'db_sql_nosql' },
 
     // Modern Computer Architecture sub-links
@@ -135,9 +135,9 @@ const Skills = () => {
 
             // Full-Stack Sub-nodes (Top-Right - Clean 4-Node Clutter-Free Matrix)
             tailwind_ui: { x: 0.60, y: 0.16 },
-            react_next: { x: 0.86, y: 0.14 },
+            mern: { x: 0.86, y: 0.14 },
             db_sql_nosql: { x: 0.62, y: 0.36 },
-            node_ts: { x: 0.88, y: 0.36 },
+            typescript_api: { x: 0.88, y: 0.36 },
 
             // Computer Architecture Sub-nodes (Bottom-Left)
             verilog: { x: 0.10, y: 0.56 },
