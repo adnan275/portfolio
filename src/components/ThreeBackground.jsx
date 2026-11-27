@@ -70,32 +70,32 @@ function Scene() {
         <>
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1} />
-            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#8b5cf6" />
+            <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff334b" />
 
             <ParticleField count={1000} />
 
             <FloatingShape
                 position={[-3, 2, -2]}
                 geometry={<icosahedronGeometry args={[0.5, 0]} />}
-                color="#6366f1"
+                color="#e11d48"
                 speed={0.8}
             />
             <FloatingShape
                 position={[3, -1, -3]}
                 geometry={<torusGeometry args={[0.4, 0.15, 16, 32]} />}
-                color="#8b5cf6"
+                color="#ff334b"
                 speed={1.2}
             />
             <FloatingShape
                 position={[2, 2, -4]}
                 geometry={<octahedronGeometry args={[0.4, 0]} />}
-                color="#ec4899"
+                color="#f97316"
                 speed={1}
             />
             <FloatingShape
                 position={[-2, -2, -2]}
                 geometry={<boxGeometry args={[0.5, 0.5, 0.5]} />}
-                color="#06b6d4"
+                color="#52525b"
                 speed={0.9}
             />
         </>

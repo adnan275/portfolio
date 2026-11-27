@@ -8,46 +8,46 @@ const skillNodes = [
     { id: 'adnan', label: 'ADNAN RIZVI', category: 'center', radius: 22, color: '#ffffff' },
 
     // Core 5 Domain Pillars
-    { id: 'ai', label: 'AI & ML Core', category: 'pillar', radius: 15, color: '#00f0ff' },
-    { id: 'fullstack', label: 'Full-Stack Systems', category: 'pillar', radius: 15, color: '#c084fc' },
-    { id: 'data', label: 'Data & Analytics', category: 'pillar', radius: 15, color: '#ffb703' },
-    { id: 'tools', label: 'Production Engineering', category: 'pillar', radius: 15, color: '#34d399' },
-    { id: 'networking', label: 'Computer Networks', category: 'pillar', radius: 15, color: '#38bdf8' },
+    { id: 'ai', label: 'AI & ML Core', category: 'pillar', radius: 15, color: '#ff334b' },
+    { id: 'fullstack', label: 'Full-Stack Systems', category: 'pillar', radius: 15, color: '#38bdf8' },
+    { id: 'data', label: 'Data & Analytics', category: 'pillar', radius: 15, color: '#fbbf24' },
+    { id: 'tools', label: 'Production Engineering', category: 'pillar', radius: 15, color: '#10b981' },
+    { id: 'networking', label: 'Computer Networks', category: 'pillar', radius: 15, color: '#f97316' },
 
     // --- AI & ML Core Sub-skills ---
-    { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, persistent checkpointing & human-in-the-loop validation.' },
-    { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'RAG & VECTORS', level: 94, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
-    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'FOUNDATION', level: 92, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
-    { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'PYTHON & AI', level: 96, desc: 'Core Python, async FastAPI microservices, custom autograd backprop, CNNs, LoRA & QLoRA quantization.' },
-    { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 8, color: '#00f0ff', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
-    { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 7, color: '#00f0ff', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
+    { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, persistent checkpointing & human-in-the-loop validation.' },
+    { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'RAG & VECTORS', level: 94, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
+    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'FOUNDATION', level: 92, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
+    { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'PYTHON & AI', level: 96, desc: 'Core Python, async FastAPI microservices, custom autograd backprop, CNNs, LoRA & QLoRA quantization.' },
+    { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
+    { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 7, color: '#fb7185', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
 
     // --- Full-Stack Systems Sub-skills ---
-    { id: 'react', label: 'React 19 & Next.js', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'FULLSTACK UI', level: 96, desc: 'Next.js App Router, SSR/SSG pipelines, React Server Components, custom hooks & Vite.' },
-    { id: 'nodejs', label: 'Node.js & WebSockets', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'REAL-TIME APIS', level: 94, desc: 'Socket.io real-time bidirectional messaging, WebRTC signaling, async clustering & Express REST APIs.' },
-    { id: 'prisma', label: 'Prisma ORM', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'TYPE-SAFE DB', level: 92, desc: 'Schema-driven migrations, declarative relations, connection pooling & auto-generated clients.' },
-    { id: 'mysql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'STORAGE LAYER', level: 91, desc: 'B-tree indexing, ACID relational guarantees, aggregation pipelines & sharding strategies.' },
-    { id: 'javascript', label: 'TypeScript & JavaScript', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#c084fc', tag: 'TYPE-SAFE CORE', level: 96, desc: 'Type-safe interfaces, generics, V8 Event Loop microtasks, closures & Web Workers.' },
-    { id: 'tailwind', label: 'Tailwind & Motion', category: 'fs_skill', domain: 'fullstack', radius: 7, color: '#c084fc', tag: 'CYBER UI', level: 94, desc: 'Atomic design tokens, hardware-accelerated animations, responsive glassmorphism & HUDs.' },
+    { id: 'react', label: 'React 19 & Next.js', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'FULLSTACK UI', level: 96, desc: 'Next.js App Router, SSR/SSG pipelines, React Server Components, custom hooks & Vite.' },
+    { id: 'nodejs', label: 'Node.js & WebSockets', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'REAL-TIME APIS', level: 94, desc: 'Socket.io real-time bidirectional messaging, WebRTC signaling, async clustering & Express REST APIs.' },
+    { id: 'prisma', label: 'Prisma ORM', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'TYPE-SAFE DB', level: 92, desc: 'Schema-driven migrations, declarative relations, connection pooling & auto-generated clients.' },
+    { id: 'mysql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'STORAGE LAYER', level: 91, desc: 'B-tree indexing, ACID relational guarantees, aggregation pipelines & sharding strategies.' },
+    { id: 'javascript', label: 'TypeScript & JavaScript', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'TYPE-SAFE CORE', level: 96, desc: 'Type-safe interfaces, generics, V8 Event Loop microtasks, closures & Web Workers.' },
+    { id: 'tailwind', label: 'Tailwind & Motion', category: 'fs_skill', domain: 'fullstack', radius: 7, color: '#7dd3fc', tag: 'CYBER UI', level: 94, desc: 'Atomic design tokens, hardware-accelerated animations, responsive glassmorphism & HUDs.' },
 
     // --- Data & Analytics Sub-skills ---
-    { id: 'sql', label: 'Advanced SQL', category: 'data_skill', domain: 'data', radius: 8, color: '#ffb703', tag: 'QUERY ENGINE', level: 95, desc: 'Window functions, Common Table Expressions (CTEs), recursive queries & execution plan tuning.' },
-    { id: 'tableau', label: 'Tableau & Dashboards', category: 'data_skill', domain: 'data', radius: 8, color: '#ffb703', tag: 'ANALYTICS HUD', level: 90, desc: 'Interactive parameter controls, multi-source blending, calculated fields & KPI reporting.' },
-    { id: 'pandas', label: 'Pandas & NumPy', category: 'data_skill', domain: 'data', radius: 8, color: '#ffb703', tag: 'ETL PIPELINE', level: 93, desc: 'Vectorized tensor operations, exploratory data analysis, outlier sanitization & feature engineering.' },
-    { id: 'excel', label: 'Excel & Data Prep', category: 'data_skill', domain: 'data', radius: 7, color: '#ffb703', tag: 'STATISTICS', level: 88, desc: 'Dynamic pivot structures, statistical regression modeling, Power Query transformations.' },
+    { id: 'sql', label: 'Advanced SQL', category: 'data_skill', domain: 'data', radius: 8, color: '#fde047', tag: 'QUERY ENGINE', level: 95, desc: 'Window functions, Common Table Expressions (CTEs), recursive queries & execution plan tuning.' },
+    { id: 'tableau', label: 'Tableau & Dashboards', category: 'data_skill', domain: 'data', radius: 8, color: '#fde047', tag: 'ANALYTICS HUD', level: 90, desc: 'Interactive parameter controls, multi-source blending, calculated fields & KPI reporting.' },
+    { id: 'pandas', label: 'Pandas & NumPy', category: 'data_skill', domain: 'data', radius: 8, color: '#fde047', tag: 'ETL PIPELINE', level: 93, desc: 'Vectorized tensor operations, exploratory data analysis, outlier sanitization & feature engineering.' },
+    { id: 'excel', label: 'Excel & Data Prep', category: 'data_skill', domain: 'data', radius: 7, color: '#fde047', tag: 'STATISTICS', level: 88, desc: 'Dynamic pivot structures, statistical regression modeling, Power Query transformations.' },
 
     // --- Production Engineering Sub-skills ---
-    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'DISTRIBUTED ARCH', level: 95, desc: 'Redis distributed caching, microservices architectures, load balancers, CDN edge caching & CAP theorem.' },
-    { id: 'docker', label: 'Docker Containers', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'ISOLATION', level: 92, desc: 'Multi-stage container builds, Alpine optimization, compose orchestration & deterministic runs.' },
-    { id: 'solid', label: 'OOP & Clean Code', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'PATTERNS', level: 92, desc: 'SOLID principles, design patterns (Factory, Observer, Strategy), dependency injection.' },
-    { id: 'jwt', label: 'JWT & Security', category: 'tool_skill', domain: 'tools', radius: 8, color: '#34d399', tag: 'AUTH / SEC', level: 93, desc: 'Role-Based Access Control (RBAC), token rotation, salted SHA hashing & CSRF/XSS hardening.' },
-    { id: 'git', label: 'Git & GitHub Actions', category: 'tool_skill', domain: 'tools', radius: 7, color: '#34d399', tag: 'CI/CD DEVOPS', level: 94, desc: 'Branch protections, automated GitHub Actions testing, preview deploy triggers on Vercel.' },
+    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'DISTRIBUTED ARCH', level: 95, desc: 'Redis distributed caching, microservices architectures, load balancers, CDN edge caching & CAP theorem.' },
+    { id: 'docker', label: 'Docker Containers', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'ISOLATION', level: 92, desc: 'Multi-stage container builds, Alpine optimization, compose orchestration & deterministic runs.' },
+    { id: 'solid', label: 'OOP & Clean Code', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'PATTERNS', level: 92, desc: 'SOLID principles, design patterns (Factory, Observer, Strategy), dependency injection.' },
+    { id: 'jwt', label: 'JWT & Security', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'AUTH / SEC', level: 93, desc: 'Role-Based Access Control (RBAC), token rotation, salted SHA hashing & CSRF/XSS hardening.' },
+    { id: 'git', label: 'Git & GitHub Actions', category: 'tool_skill', domain: 'tools', radius: 7, color: '#6ee7b7', tag: 'CI/CD DEVOPS', level: 94, desc: 'Branch protections, automated GitHub Actions testing, preview deploy triggers on Vercel.' },
 
     // --- Computer Networks Sub-skills ---
-    { id: 'vpc', label: 'AWS VPC & Subnets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'CLOUD NETWORK', level: 92, desc: 'CIDR subnetting, Internet Gateways, NAT routing tables & multi-tier isolated zones.' },
-    { id: 'wireshark', label: 'Wireshark & Packets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'PACKET DIAG', level: 90, desc: 'Packet trace inspection, TCP 3-way handshake analysis, window sizing & packet drop telemetry.' },
-    { id: 'tcpudp', label: 'TCP/UDP & Sockets', category: 'net_skill', domain: 'networking', radius: 8, color: '#38bdf8', tag: 'TRANSPORT', level: 94, desc: 'Python low-level socket programming, AIMD congestion control & multiplexing protocols.' },
-    { id: 'secgroups', label: 'Security & VPNs', category: 'net_skill', domain: 'networking', radius: 7, color: '#38bdf8', tag: 'ENCRYPTION', level: 91, desc: 'Stateful Security Groups, stateless NACLs, TLS/SSL certificates, WireGuard tunnels.' }
+    { id: 'vpc', label: 'AWS VPC & Subnets', category: 'net_skill', domain: 'networking', radius: 8, color: '#fdba74', tag: 'CLOUD NETWORK', level: 92, desc: 'CIDR subnetting, Internet Gateways, NAT routing tables & multi-tier isolated zones.' },
+    { id: 'wireshark', label: 'Wireshark & Packets', category: 'net_skill', domain: 'networking', radius: 8, color: '#fdba74', tag: 'PACKET DIAG', level: 90, desc: 'Packet trace inspection, TCP 3-way handshake analysis, window sizing & packet drop telemetry.' },
+    { id: 'tcpudp', label: 'TCP/UDP & Sockets', category: 'net_skill', domain: 'networking', radius: 8, color: '#fdba74', tag: 'TRANSPORT', level: 94, desc: 'Python low-level socket programming, AIMD congestion control & multiplexing protocols.' },
+    { id: 'secgroups', label: 'Security & VPNs', category: 'net_skill', domain: 'networking', radius: 7, color: '#fdba74', tag: 'ENCRYPTION', level: 91, desc: 'Stateful Security Groups, stateless NACLs, TLS/SSL certificates, WireGuard tunnels.' }
 ];
 
 const skillLinks = [
@@ -96,11 +96,11 @@ const skillLinks = [
 
 const domainFilterList = [
     { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 },
-    { id: 'ai', label: 'AI & ML Core', color: '#00f0ff', count: 6 },
-    { id: 'fullstack', label: 'Full-Stack Systems', color: '#c084fc', count: 6 },
-    { id: 'data', label: 'Data & Analytics', color: '#ffb703', count: 4 },
-    { id: 'tools', label: 'Production Engineering', color: '#34d399', count: 5 },
-    { id: 'networking', label: 'Computer Networks', color: '#38bdf8', count: 4 }
+    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 6 },
+    { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 6 },
+    { id: 'data', label: 'Data & Analytics', color: '#fbbf24', count: 4 },
+    { id: 'tools', label: 'Production Engineering', color: '#10b981', count: 5 },
+    { id: 'networking', label: 'Computer Networks', color: '#f97316', count: 4 }
 ];
 
 const Skills = () => {

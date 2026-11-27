@@ -17,14 +17,14 @@ const initialNodes = [
         id: 'ai',
         label: 'AI & ML Core',
         category: 'pillar',
-        color: '#00f0ff',
+        color: '#ff334b',
         radius: 12
     },
     {
         id: 'fullstack',
         label: 'Full-Stack Systems',
         category: 'pillar',
-        color: '#c084fc',
+        color: '#38bdf8',
         radius: 12
     },
     {
@@ -38,7 +38,7 @@ const initialNodes = [
         id: 'projects',
         label: 'Production Engineering',
         category: 'pillar',
-        color: '#34d399',
+        color: '#10b981',
         radius: 12
     },
 
@@ -48,7 +48,7 @@ const initialNodes = [
         domain: 'ai',
         label: 'HarmoniX',
         category: 'project',
-        color: '#38bdf8',
+        color: '#fb7185',
         radius: 9,
         title: 'HarmoniX — Multimodal Music Emotion Perception & Deep Intelligence',
         description: 'Multimodal Deep Learning system integrating 2D Convolutional Spectroscopy (Mel-Spectrograms) with Late-Fusion Neural Networks and Grad-CAM visual interpretability to decode audio emotional valence & arousal without human listening.',
@@ -73,7 +73,7 @@ const initialNodes = [
         domain: 'ai',
         label: 'Affinix AI',
         category: 'project',
-        color: '#38bdf8',
+        color: '#fb7185',
         radius: 8,
         title: 'Affinix — Autonomous AI Career & Job Matching Platform',
         description: 'Autonomous multi-hop agent platform for job-resume matching featuring episodic memory, hybrid search (Okapi BM25 + Dense Vectors with Reciprocal Rank Fusion), and automated applicant ranking.',
@@ -98,7 +98,7 @@ const initialNodes = [
         domain: 'ai',
         label: 'Sentinel AI',
         category: 'project',
-        color: '#38bdf8',
+        color: '#fb7185',
         radius: 8,
         title: 'Sentinel — AI-Powered File Organization',
         description: 'Local-first AI agent that scans, classifies, and organizes files using a plan-before-execute flow. Built with a focus on safety and privacy, running offline via local LLMs.',
@@ -122,7 +122,7 @@ const initialNodes = [
         id: 'neurax',
         label: 'NeuraX Vector DB',
         category: 'project',
-        color: '#38bdf8',
+        color: '#fb7185',
         radius: 8,
         title: 'NeuraX — Vector DB & RAG Engine',
         description: 'Privacy-centric Vector Database and RAG engine supporting 768D embeddings with HNSW/KD-Tree indexing and real-time PCA visualization.',
@@ -146,7 +146,7 @@ const initialNodes = [
         id: 'ev_agent',
         label: 'EV Charging Agent',
         category: 'project',
-        color: '#38bdf8',
+        color: '#fb7185',
         radius: 8,
         title: 'AI EV Charging Station Intelligence',
         description: 'Autonomous Agentic AI system using LangGraph for charger suitability prediction, wait time forecasting, and geospatial retrieval over 240,000+ stations.',
@@ -172,7 +172,7 @@ const initialNodes = [
         id: 'presento',
         label: 'Presento Treasure',
         category: 'project',
-        color: '#e879f9',
+        color: '#7dd3fc',
         radius: 8,
         title: 'Presento Treasure — E-commerce Platform',
         description: 'Full-stack freelance e-commerce platform built with modular Express APIs, role-based auth, and sub-80ms search performance.',
@@ -196,7 +196,7 @@ const initialNodes = [
         id: 'gigflow',
         label: 'GigFlow',
         category: 'project',
-        color: '#e879f9',
+        color: '#7dd3fc',
         radius: 8,
         title: 'GigFlow — Real-Time Freelance Marketplace',
         description: 'Real-time freelance marketplace platform for posting gigs, bidding, and live messaging powered by Socket.io.',
@@ -220,7 +220,7 @@ const initialNodes = [
         id: 'zync',
         label: 'Zync Platform',
         category: 'project',
-        color: '#e879f9',
+        color: '#7dd3fc',
         radius: 8,
         title: 'Zync — Video Calling Platform',
         description: 'Real-time video calling platform with 15,000+ calls, 50,000+ messages, 98% user satisfaction, and <0.1% error rate.',
@@ -244,7 +244,7 @@ const initialNodes = [
         id: 'taskly',
         label: 'Taskly',
         category: 'project',
-        color: '#e879f9',
+        color: '#7dd3fc',
         radius: 8,
         title: 'Taskly — Task Manager',
         description: 'Auth-based Task Manager for organizing personal workflows with real-time Firebase syncing.',
@@ -263,7 +263,7 @@ const initialNodes = [
         id: 'capstone',
         label: 'Capstone Project',
         category: 'project',
-        color: '#e879f9',
+        color: '#7dd3fc',
         radius: 8,
         title: 'Capstone Project — Full Stack Web',
         description: 'Comprehensive web solution demonstrating full-stack capabilities and modern layout design.',
@@ -283,7 +283,7 @@ const initialNodes = [
         domain: 'fullstack',
         label: 'CloudPulse',
         category: 'project',
-        color: '#e879f9',
+        color: '#7dd3fc',
         radius: 8,
         title: 'CloudPulse — Private Network Service Platform & Infrastructure Telemetry',
         description: 'Distributed enterprise network service platform simulating multi-machine cloud infrastructure with private DNS, edge reverse proxying, TLS 1.3 termination, round-robin load balancing, and packet telemetry.',
@@ -311,7 +311,7 @@ const initialNodes = [
         id: 'bi_portfolio',
         label: 'BI Portfolio',
         category: 'project',
-        color: '#fcd34d',
+        color: '#fde047',
         radius: 8,
         title: 'Data Analytics & BI Portfolio',
         description: 'Consolidated data intelligence portfolio showcasing end-to-end ETL pipelines, EDA, and interactive Tableau dashboards.',
@@ -335,7 +335,7 @@ const initialNodes = [
         id: 'socratic',
         label: 'Socratic Tutor',
         category: 'project',
-        color: '#fcd34d',
+        color: '#fde047',
         radius: 8,
         title: 'Socratic Study Buddy',
         description: 'AI-powered Socratic tutor with intelligent guardrails that guides learning through questions rather than direct answers.',
@@ -934,18 +934,18 @@ const NeuralGraph = () => {
                     <button
                         className={`filter-chip ${activeDomain === 'ai' ? 'active' : ''}`}
                         onClick={() => handleDomainToggle('ai')}
-                        style={{ '--chip-color': '#00f0ff' }}
+                        style={{ '--chip-color': '#ff334b' }}
                     >
-                        <span className="chip-dot" style={{ backgroundColor: '#00f0ff', boxShadow: '0 0 8px #00f0ff' }}></span>
+                        <span className="chip-dot" style={{ backgroundColor: '#ff334b', boxShadow: '0 0 8px #ff334b' }}></span>
                         <span className="chip-text">AI & ML Core</span>
                         <span className="chip-count">{domainMeta.ai.count}</span>
                     </button>
                     <button
                         className={`filter-chip ${activeDomain === 'fullstack' ? 'active' : ''}`}
                         onClick={() => handleDomainToggle('fullstack')}
-                        style={{ '--chip-color': '#c084fc' }}
+                        style={{ '--chip-color': '#38bdf8' }}
                     >
-                        <span className="chip-dot" style={{ backgroundColor: '#c084fc', boxShadow: '0 0 8px #c084fc' }}></span>
+                        <span className="chip-dot" style={{ backgroundColor: '#38bdf8', boxShadow: '0 0 8px #38bdf8' }}></span>
                         <span className="chip-text">Full-Stack</span>
                         <span className="chip-count">{domainMeta.fullstack.count}</span>
                     </button>
@@ -961,9 +961,9 @@ const NeuralGraph = () => {
                     <button
                         className={`filter-chip ${activeDomain === 'projects' ? 'active' : ''}`}
                         onClick={() => handleDomainToggle('projects')}
-                        style={{ '--chip-color': '#34d399' }}
+                        style={{ '--chip-color': '#10b981' }}
                     >
-                        <span className="chip-dot" style={{ backgroundColor: '#34d399', boxShadow: '0 0 8px #34d399' }}></span>
+                        <span className="chip-dot" style={{ backgroundColor: '#10b981', boxShadow: '0 0 8px #10b981' }}></span>
                         <span className="chip-text">Production Eng</span>
                         <span className="chip-count">{domainMeta.projects.count}</span>
                     </button>

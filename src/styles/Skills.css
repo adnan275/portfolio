@@ -22,15 +22,15 @@
     gap: 0.6rem;
     padding: 0.45rem 1.15rem;
     border-radius: 100px;
-    background: rgba(0, 240, 255, 0.08);
-    border: 1px solid rgba(0, 240, 255, 0.28);
-    box-shadow: 0 0 16px rgba(0, 240, 255, 0.15);
+    background: rgba(255, 51, 75, 0.08);
+    border: 1px solid rgba(255, 51, 75, 0.28);
+    box-shadow: 0 0 16px rgba(255, 51, 75, 0.15);
     font-family: 'Fira Code', 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: #00f0ff;
+    color: #ff334b;
     margin: 0 auto 0.9rem auto;
 }
 
@@ -38,8 +38,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #00f0ff;
-    box-shadow: 0 0 8px #00f0ff;
+    background: #ff334b;
+    box-shadow: 0 0 8px #ff334b;
     animation: pulse-glow 2s infinite alternate;
 }
 
@@ -144,7 +144,7 @@
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent 5%, var(--skill-color, #00f0ff) 50%, transparent 95%);
+    background: linear-gradient(90deg, transparent 5%, var(--skill-color, #ff334b) 50%, transparent 95%);
     opacity: 0.55;
     transition: all 0.3s ease;
 }
@@ -157,7 +157,7 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: radial-gradient(circle, var(--skill-color, #00f0ff) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--skill-color, #ff334b) 0%, transparent 70%);
     opacity: 0.12;
     pointer-events: none;
     transition: all 0.35s ease;
@@ -165,14 +165,14 @@
 
 .cyber-skill-card:hover {
     transform: translateY(-5px);
-    border-color: var(--skill-color, #00f0ff);
+    border-color: var(--skill-color, #ff334b);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 25px var(--skill-glow, rgba(0, 240, 255, 0.25));
 }
 
 .cyber-skill-card:hover .cyber-card-top-line {
     opacity: 1;
     height: 2.5px;
-    box-shadow: 0 0 12px var(--skill-color, #00f0ff);
+    box-shadow: 0 0 12px var(--skill-color, #ff334b);
 }
 
 .cyber-skill-card:hover .cyber-card-radial-glow {
@@ -205,7 +205,7 @@
 
 .cyber-skill-card:hover .cyber-icon-wrap {
     background: rgba(255, 255, 255, 0.08);
-    border-color: var(--skill-color, #00f0ff);
+    border-color: var(--skill-color, #ff334b);
     transform: scale(1.06);
     box-shadow: 0 0 14px var(--skill-glow, rgba(0, 240, 255, 0.2));
 }
@@ -226,12 +226,12 @@
     border-radius: 6px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    color: var(--skill-color, #00f0ff);
+    color: var(--skill-color, #ff334b);
     transition: all 0.2s ease;
 }
 
 .cyber-skill-card:hover .cyber-badge-tag {
-    border-color: var(--skill-color, #00f0ff);
+    border-color: var(--skill-color, #ff334b);
     background: rgba(0, 240, 255, 0.08);
 }
 
@@ -286,9 +286,9 @@
 
 .meter-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--skill-color, #00f0ff) 0%, #ffffff 100%);
+    background: linear-gradient(90deg, var(--skill-color, #ff334b) 0%, #ffffff 100%);
     border-radius: 10px;
-    box-shadow: 0 0 8px var(--skill-color, #00f0ff);
+    box-shadow: 0 0 8px var(--skill-color, #ff334b);
     transition: width 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -374,7 +374,7 @@
 
 .filter-chip.active {
     background: rgba(255, 255, 255, 0.12);
-    border-color: var(--chip-color, #00f0ff);
+    border-color: var(--chip-color, #ff334b);
     color: #ffffff;
     box-shadow: 0 0 16px var(--chip-color, rgba(0, 240, 255, 0.35));
     transform: translateY(-2px);
@@ -424,7 +424,7 @@
     border-radius: 16px;
     background: rgba(10, 14, 26, 0.94);
     backdrop-filter: blur(20px);
-    border: 1px solid var(--dock-accent, #00f0ff);
+    border: 1px solid var(--dock-accent, #ff334b);
     box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 24px var(--dock-glow, rgba(0, 240, 255, 0.15));
     display: flex;
     align-items: center;
@@ -531,7 +531,7 @@
 .dock-meter-fill {
     height: 100%;
     border-radius: 10px;
-    box-shadow: 0 0 8px var(--dock-accent, #00f0ff);
+    box-shadow: 0 0 8px var(--dock-accent, #ff334b);
     animation: dock-meter-expand 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 

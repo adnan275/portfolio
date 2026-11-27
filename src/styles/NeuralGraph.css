@@ -37,15 +37,15 @@
     gap: 0.55rem;
     padding: 0.45rem 1.15rem;
     border-radius: 100px;
-    background: rgba(0, 240, 255, 0.08);
-    border: 1px solid rgba(0, 240, 255, 0.28);
-    box-shadow: 0 0 16px rgba(0, 240, 255, 0.15);
+    background: rgba(255, 51, 75, 0.08);
+    border: 1px solid rgba(255, 51, 75, 0.28);
+    box-shadow: 0 0 16px rgba(255, 51, 75, 0.15);
     font-family: 'Fira Code', 'JetBrains Mono', monospace;
     font-size: 0.76rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #00f0ff;
+    color: #ff334b;
     margin: 0 auto 0.95rem auto;
 }
 
@@ -53,8 +53,8 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #00f0ff;
-    box-shadow: 0 0 8px #00f0ff;
+    background: #ff334b;
+    box-shadow: 0 0 8px #ff334b;
     animation: pulse-glow 2s infinite alternate;
 }
 
@@ -66,9 +66,9 @@
     margin: 0 auto;
     border-radius: 24px;
     padding: 0;
-    background: #06080e;
+    background: #050508;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 40px rgba(0, 240, 255, 0.03);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(255, 51, 75, 0.03);
     overflow: hidden;
 }
 
@@ -94,7 +94,7 @@
 }
 
 .meta-code {
-    color: #00f0ff;
+    color: #ff334b;
     font-weight: 700;
 }
 
@@ -145,7 +145,7 @@
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.3);
     color: #ffffff;
-    box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+    box-shadow: 0 0 12px rgba(255, 51, 75, 0.25);
 }
 
 .legend-dot {
@@ -179,8 +179,8 @@
 }
 
 .legend-btn.active .legend-count {
-    color: #00f0ff;
-    background: rgba(0, 240, 255, 0.15);
+    color: #ff334b;
+    background: rgba(255, 51, 75, 0.15);
 }
 
 .graph-canvas {

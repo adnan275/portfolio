@@ -48,10 +48,10 @@ const ParticleBackground3D = () => {
                 : ['Y0: Sub-80ms API', 'Y1: Autonomous Action', 'Y2: PCA 2D Embedding', 'Y3: Production App'];
 
             const layers = [
-                // Layer 0: Input Layer (Cyan)
+                // Layer 0: Input Layer (Crimson Scarlet)
                 {
                     name: 'INPUT LAYER',
-                    color: '#00f0ff',
+                    color: '#ff334b',
                     x: xPositions[0],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
                         label: inputLabels[i] || `X${i}`,
@@ -59,10 +59,10 @@ const ParticleBackground3D = () => {
                         radius: isSmallMobile ? 4.5 : (isMobile ? 5.5 : 8)
                     }))
                 },
-                // Layer 1: Hidden Layer 1 (Purple)
+                // Layer 1: Hidden Layer 1 (Amber Ember)
                 {
                     name: 'HIDDEN 1',
-                    color: '#c084fc',
+                    color: '#f97316',
                     x: xPositions[1],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
                         label: `H1_${i}`,
@@ -70,10 +70,10 @@ const ParticleBackground3D = () => {
                         radius: isSmallMobile ? 3.5 : (isMobile ? 4.5 : 7)
                     }))
                 },
-                // Layer 2: Hidden Layer 2 (Magenta)
+                // Layer 2: Hidden Layer 2 (Warm Ruby)
                 {
                     name: 'HIDDEN 2',
-                    color: '#e879f9',
+                    color: '#e11d48',
                     x: xPositions[2],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
                         label: `H2_${i}`,
@@ -81,10 +81,10 @@ const ParticleBackground3D = () => {
                         radius: isSmallMobile ? 3.5 : (isMobile ? 4.5 : 7)
                     }))
                 },
-                // Layer 3: Output Layer (Green)
+                // Layer 3: Output Layer (Jade Green)
                 {
                     name: 'OUTPUT LAYER',
-                    color: '#34d399',
+                    color: '#10b981',
                     x: xPositions[3],
                     nodes: Array.from({ length: 4 }, (_, i) => ({
                         label: outputLabels[i] || `Y${i}`,
@@ -126,14 +126,14 @@ const ParticleBackground3D = () => {
             const isSmallMobile = w < 480;
 
             const formulaTexts = [
-                { text: 'z = wᵀx + b', color: '#00f0ff', px: 0.06, py: 0.28 },
-                { text: 'σ(z) = 1/(1+e⁻ᶻ)', color: '#c084fc', px: isMobile ? 0.05 : 0.18, py: isMobile ? 0.48 : 0.38 },
-                { text: 'σ\'(z) = σ(z)(1-σ(z))', color: '#a78bfa', px: 0.15, py: 0.72 },
-                { text: 'ŷ = Xw + b', color: '#38bdf8', px: 0.24, py: 0.82 },
-                { text: 'J(w,b) = ½n Σ(yᵢ-ŷᵢ)²', color: '#e879f9', px: isMobile ? 0.85 : 0.76, py: isMobile ? 0.52 : 0.80 },
-                { text: 'w := w - α(∂J/∂w)', color: '#f472b6', px: 0.82, py: 0.42 },
-                { text: 'β = (XᵀX)⁻¹Xᵀy', color: '#34d399', px: 0.92, py: 0.28 },
-                { text: 'Acc = (TP+TN)/Total', color: '#4ade80', px: 0.88, py: 0.72 }
+                { text: 'z = wᵀx + b', color: '#ff334b', px: 0.06, py: 0.28 },
+                { text: 'σ(z) = 1/(1+e⁻ᶻ)', color: '#f97316', px: isMobile ? 0.05 : 0.18, py: isMobile ? 0.48 : 0.38 },
+                { text: 'σ\'(z) = σ(z)(1-σ(z))', color: '#e4e4e7', px: 0.15, py: 0.72 },
+                { text: 'ŷ = Xw + b', color: '#ff4d61', px: 0.24, py: 0.82 },
+                { text: 'J(w,b) = ½n Σ(yᵢ-ŷᵢ)²', color: '#fb7185', px: isMobile ? 0.85 : 0.76, py: isMobile ? 0.52 : 0.80 },
+                { text: 'w := w - α(∂J/∂w)', color: '#f59e0b', px: 0.82, py: 0.42 },
+                { text: 'β = (XᵀX)⁻¹Xᵀy', color: '#10b981', px: 0.92, py: 0.28 },
+                { text: 'Acc = (TP+TN)/Total', color: '#a1a1aa', px: 0.88, py: 0.72 }
             ];
 
             // Filter out dense formulas on mobile to keep layout clean

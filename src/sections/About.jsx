@@ -7,19 +7,19 @@ const About = () => {
     const milestones = [
         {
             title: "01. The Foundations",
-            color: "#38bdf8",
+            color: "#a1a1aa",
             tag: "Core Web & CS",
             content: "Mastered core computer science and web engineering principles—<strong>HTML, CSS, and modern JavaScript</strong>, establishing a strong base for scalable software solutions."
         },
         {
             title: "02. The Logic & DSA",
-            color: "#6366f1",
+            color: "#ff334b",
             tag: "400+ Solved",
             content: "Deep-dived into <strong>Data Structures & Algorithms</strong>, solving <strong>400+ problems</strong> across LeetCode, mastering runtime complexity, memory optimization, and clean logic."
         },
         {
             title: "03. Full-Stack Mastery",
-            color: "#c084fc",
+            color: "#38bdf8",
             tag: "MERN & SQL",
             content: "Built production-grade web systems with <strong>React, Node.js, Express, Prisma, and SQL</strong>, implementing <strong>OOP and SOLID</strong> design patterns for high maintainability."
         },
@@ -37,25 +37,25 @@ const About = () => {
         },
         {
             title: "06. Advanced Machine Learning & Quantitative Modeling",
-            color: "#14b8a6",
+            color: "#10b981",
             tag: "From-Scratch ML & Quants",
             content: "Implemented ML algorithms from scratch in <strong>NumPy</strong>—mastering <strong>OLS, GMM clustering, CART decision trees, Time Series ARIMA forecasting</strong>, and statistical <strong>VIF diagnostics</strong>, applied to institutional <strong>WorldQuant BRAIN Alpha simulation</strong>."
         },
         {
             title: "07. Deep Learning & Neural Systems",
-            color: "#ec4899",
+            color: "#e11d48",
             tag: "PyTorch & Transformers",
             content: "Designed deep neural architectures in <strong>PyTorch</strong>—mastering <strong>Transformers, Mamba SSMs, Diffusion DDPM, Multimodal CLIP</strong>, and post-training via <strong>DPO & QLoRA quantization</strong>."
         },
         {
             title: "08. Agentic AI & Intelligence",
-            color: "#00f0ff",
+            color: "#ff334b",
             tag: "Autonomous Agents",
             content: "Explored the world of <strong>Generative AI</strong>, specializing in <strong>RAG (Retrieval-Augmented Generation)</strong> and autonomous <strong>Agentic Workflows</strong> using LangChain & LangGraph."
         },
         {
             title: "09. The Future: System Design & Scale",
-            color: "#ffb703",
+            color: "#fbbf24",
             tag: "Scale & Architecture",
             content: "Currently mastering <strong>System Design</strong> and high-performance computing. My goal is to bridge the gap between robust engineering and cutting-edge AI to build technology that impacts millions."
         }

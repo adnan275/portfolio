@@ -56,7 +56,7 @@ const NeuralLoader = ({ onComplete }) => {
         resize();
         window.addEventListener('resize', resize);
 
-        const palette = ['#00f0ff', '#a855f7', '#ec4899', '#38bdf8', '#10b981'];
+        const palette = ['#ff334b', '#e11d48', '#f97316', '#ffffff', '#71717a'];
         const nodes = Array.from({ length: 55 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,

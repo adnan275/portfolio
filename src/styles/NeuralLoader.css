@@ -162,8 +162,8 @@
     left: 8%;
     right: 8%;
     height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #00f0ff 30%, #a855f7 70%, transparent 100%);
-    box-shadow: 0 0 14px #00f0ff;
+    background: linear-gradient(90deg, transparent 0%, #ff334b 30%, #e11d48 70%, transparent 100%);
+    box-shadow: 0 0 14px #ff334b;
 }
 
 .hud-header {
@@ -184,11 +184,11 @@
 .hud-main-title {
     font-size: 1.15rem;
     font-weight: 800;
-    background: linear-gradient(90deg, #ffffff 0%, #e0e7ff 50%, #00f0ff 100%);
+    background: linear-gradient(90deg, #ffffff 0%, #f4f4f5 50%, #ff4d61 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     letter-spacing: 0.06em;
-    filter: drop-shadow(0 0 12px rgba(0, 240, 255, 0.35));
+    filter: drop-shadow(0 0 12px rgba(255, 51, 75, 0.35));
 }
 
 .hud-sub-title {
@@ -267,7 +267,7 @@
 }
 
 .terminal-cursor {
-    color: #00f0ff;
+    color: #ff334b;
     margin-left: 0.35rem;
     animation: cursorBlink 0.8s infinite alternate;
     font-size: 0.85rem;
@@ -303,9 +303,9 @@
 .progress-pulse-dot {
     width: 6px;
     height: 6px;
-    background: #00f0ff;
+    background: #ff334b;
     border-radius: 50%;
-    box-shadow: 0 0 8px #00f0ff;
+    box-shadow: 0 0 8px #ff334b;
     animation: hudBlink 0.8s infinite alternate;
 }
 
@@ -316,31 +316,31 @@
 }
 
 .progress-val {
-    background: linear-gradient(90deg, #00f0ff 0%, #c084fc 100%);
+    background: linear-gradient(90deg, #ff334b 0%, #f97316 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
     font-size: 0.95rem;
     letter-spacing: 0.04em;
-    filter: drop-shadow(0 0 10px rgba(0, 240, 255, 0.6));
+    filter: drop-shadow(0 0 10px rgba(255, 51, 75, 0.6));
 }
 
 .hud-progress-bg {
     width: 100%;
     height: 10px;
-    background: rgba(10, 15, 30, 0.8);
+    background: rgba(10, 10, 15, 0.85);
     border-radius: 100px;
     overflow: hidden;
     position: relative;
-    border: 1px solid rgba(0, 240, 255, 0.35);
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0, 240, 255, 0.15);
+    border: 1px solid rgba(255, 51, 75, 0.35);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 12px rgba(255, 51, 75, 0.15);
 }
 
 .hud-progress-fill {
     height: 100%;
     position: relative;
-    background: linear-gradient(90deg, #00f0ff 0%, #6366f1 35%, #a855f7 70%, #ec4899 100%);
-    box-shadow: 0 0 20px #00f0ff, 0 0 35px #a855f7;
+    background: linear-gradient(90deg, #ff334b 0%, #e11d48 45%, #f97316 100%);
+    box-shadow: 0 0 20px #ff334b, 0 0 35px #e11d48;
     border-radius: 100px;
     transition: width 0.08s ease-out;
 }
@@ -354,7 +354,7 @@
     height: 8px;
     border-radius: 50%;
     background: #ffffff;
-    box-shadow: 0 0 12px #ffffff, 0 0 20px #00f0ff;
+    box-shadow: 0 0 12px #ffffff, 0 0 20px #ff334b;
 }
 
 @media (max-width: 768px) {
