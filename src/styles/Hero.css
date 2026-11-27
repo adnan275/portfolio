@@ -446,11 +446,15 @@
     }
 
     .hero-title {
-        font-size: clamp(2.5rem, 10vw, 4rem);
+        font-size: clamp(2.2rem, 9vw, 3.6rem);
     }
 
     .hero-subtitle {
-        font-size: clamp(1.8rem, 7vw, 2.8rem) !important;
+        font-size: clamp(1.2rem, 5.2vw, 1.8rem) !important;
+    }
+
+    .typing-text {
+        font-size: clamp(1.2rem, 5.2vw, 1.8rem) !important;
     }
 
     .hero-description {
