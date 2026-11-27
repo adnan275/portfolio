@@ -14,12 +14,13 @@ const skillNodes = [
     { id: 'networking', label: 'Cloud & Networks', category: 'pillar', radius: 17, color: '#fbbf24' },
     { id: 'tools', label: 'Production & Systems', category: 'pillar', radius: 17, color: '#10b981' },
 
-    // --- AI & ML Core Sub-skills (Expanded from Syllabus) ---
-    { id: 'langgraph', label: 'LangGraph & Multi-Agents', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'AGENTIC AI', level: 96, desc: 'Stateful cyclic agent workflows, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
-    { id: 'transformers_mamba', label: 'Transformers & Mamba', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'ATTENTION & SSM', level: 94, desc: 'Self-attention, Vision Transformers, selective state-space models (Mamba) & linear-time long-context sequence modeling.' },
-    { id: 'python_dl', label: 'PyTorch & Neural Autograd', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'TENSOR ENGINE', level: 95, desc: 'Custom neural layers, dynamic autograd backprop, loss function engineering, CNNs & async FastAPI microservices.' },
-    { id: 'rag_vectors', label: 'RAG & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RETRIEVAL', level: 95, desc: 'HNSW vector indexing, ChromaDB/Pinecone dense search, 768D embeddings & semantic retrieval architectures.' },
-    { id: 'multimodal_tuning', label: 'Multimodal AI & LoRA', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'MULTIMODAL & DPO', level: 93, desc: 'Audio spectrogram embeddings (HarmoniX), CLIP cross-attention, LoRA/QLoRA parameter-efficient fine-tuning & DPO alignment.' },
+    // --- AI & ML Core Sub-skills (Exact Nodes from Portfolio Architecture) ---
+    { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
+    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'FOUNDATION', level: 94, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
+    { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
+    { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
+    { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RAG & VECTORS', level: 95, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
+    { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'PYTHON & AI', level: 96, desc: 'Core Python, async FastAPI microservices, custom autograd backprop, CNNs, LoRA & QLoRA quantization.' },
 
     // --- Full-Stack Systems Sub-skills (Consolidated MERN Stack) ---
     { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MERN FULLSTACK', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
@@ -51,10 +52,11 @@ const skillLinks = [
 
     // AI sub-links
     { source: 'ai', target: 'langgraph' },
-    { source: 'ai', target: 'transformers_mamba' },
-    { source: 'ai', target: 'python_dl' },
-    { source: 'ai', target: 'rag_vectors' },
-    { source: 'ai', target: 'multimodal_tuning' },
+    { source: 'ai', target: 'llms' },
+    { source: 'ai', target: 'groq' },
+    { source: 'ai', target: 'streamlit' },
+    { source: 'ai', target: 'langchain' },
+    { source: 'ai', target: 'python' },
 
     // Full-Stack sub-links
     { source: 'fullstack', target: 'mern' },
@@ -77,8 +79,8 @@ const skillLinks = [
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 16 },
-    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 5 },
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 17 },
+    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 6 },
     { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 2 },
     { id: 'comparch', label: 'Computer Architecture', color: '#f97316', count: 4 },
     { id: 'networking', label: 'Cloud & Networks', color: '#fbbf24', count: 2 },
@@ -116,18 +118,19 @@ const Skills = () => {
             adnan: { x: 0.50, y: 0.48 },
 
             // 5 Core Pillars
-            ai: { x: 0.26, y: 0.28 },
+            ai: { x: 0.28, y: 0.28 },
             fullstack: { x: 0.74, y: 0.28 },
             comparch: { x: 0.25, y: 0.65 },
             networking: { x: 0.50, y: 0.74 },
             tools: { x: 0.75, y: 0.65 },
 
-            // AI Sub-nodes (Top-Left - Generously Spaced Out)
+            // AI Sub-nodes (Top-Left - Perfectly spaced around AI pillar)
             langgraph: { x: 0.12, y: 0.14 },
-            transformers_mamba: { x: 0.26, y: 0.12 },
-            python_dl: { x: 0.40, y: 0.18 },
-            rag_vectors: { x: 0.10, y: 0.34 },
-            multimodal_tuning: { x: 0.22, y: 0.44 },
+            llms: { x: 0.26, y: 0.12 },
+            groq: { x: 0.40, y: 0.16 },
+            streamlit: { x: 0.40, y: 0.32 },
+            langchain: { x: 0.10, y: 0.32 },
+            python: { x: 0.16, y: 0.44 },
 
             // Full-Stack Sub-nodes (Top-Right)
             mern: { x: 0.86, y: 0.14 },
