@@ -227,7 +227,7 @@ const ProjectsPreview = () => {
                 >
                     <h2 className="heading-lg">Featured Engineering Systems</h2>
                     <p className="preview-subtitle">
-                        A curated showcase of production-grade AI agents, deep neural systems, and hardware architectures filtered strictly for technical depth and real-world performance.
+                        Curated production-grade AI agents, neural models, and scalable architectures.
                     </p>
                 </motion.div>
 

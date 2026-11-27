@@ -910,11 +910,11 @@ const NeuralGraph = () => {
                 >
                     <span className="neural-meta-pill">
                         <span className="pill-pulse-dot"></span>
-                        Curated System Topology
+                        Curated Systems
                     </span>
                     <h2 className="heading-lg">System Architecture & Projects</h2>
                     <p className="neural-subtitle">
-                        A curated neural topology mapping select production systems, deep learning architectures, and high-throughput agentic workflows. Strictly filtered for architectural depth, performance benchmarks, and real-world utility. Click any domain pillar to expand its cluster, or click any node to explore case studies.
+                        Select production systems and deep learning architectures—curated strictly for engineering depth. Click any node to explore case studies.
                     </p>
                 </motion.div>
 
