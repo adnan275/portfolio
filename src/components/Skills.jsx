@@ -14,10 +14,12 @@ const skillNodes = [
     { id: 'networking', label: 'Cloud & Networks', category: 'pillar', radius: 17, color: '#fbbf24' },
     { id: 'tools', label: 'Production & Systems', category: 'pillar', radius: 17, color: '#10b981' },
 
-    // --- AI & ML Core Sub-skills ---
+    // --- AI & ML Core Sub-skills (Expanded from Syllabus) ---
     { id: 'langgraph', label: 'LangGraph & Multi-Agents', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'AGENTIC AI', level: 96, desc: 'Stateful cyclic agent workflows, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
+    { id: 'transformers_mamba', label: 'Transformers & Mamba', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'ATTENTION & SSM', level: 94, desc: 'Self-attention, Vision Transformers, selective state-space models (Mamba) & linear-time long-context sequence modeling.' },
+    { id: 'python_dl', label: 'PyTorch & Neural Autograd', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'TENSOR ENGINE', level: 95, desc: 'Custom neural layers, dynamic autograd backprop, loss function engineering, CNNs & async FastAPI microservices.' },
     { id: 'rag_vectors', label: 'RAG & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RETRIEVAL', level: 95, desc: 'HNSW vector indexing, ChromaDB/Pinecone dense search, 768D embeddings & semantic retrieval architectures.' },
-    { id: 'python_dl', label: 'PyTorch & Deep Learning', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'TENSOR ENGINE', level: 94, desc: 'Transformers, custom neural architectures, LoRA/QLoRA fine-tuning, Groq sub-50ms inference & FastAPI.' },
+    { id: 'multimodal_tuning', label: 'Multimodal AI & LoRA', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'MULTIMODAL & DPO', level: 93, desc: 'Audio spectrogram embeddings (HarmoniX), CLIP cross-attention, LoRA/QLoRA parameter-efficient fine-tuning & DPO alignment.' },
 
     // --- Full-Stack Systems Sub-skills (Consolidated MERN Stack) ---
     { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MERN FULLSTACK', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
@@ -49,8 +51,10 @@ const skillLinks = [
 
     // AI sub-links
     { source: 'ai', target: 'langgraph' },
-    { source: 'ai', target: 'rag_vectors' },
+    { source: 'ai', target: 'transformers_mamba' },
     { source: 'ai', target: 'python_dl' },
+    { source: 'ai', target: 'rag_vectors' },
+    { source: 'ai', target: 'multimodal_tuning' },
 
     // Full-Stack sub-links
     { source: 'fullstack', target: 'mern' },
@@ -73,8 +77,8 @@ const skillLinks = [
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 14 },
-    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 3 },
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 16 },
+    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 5 },
     { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 2 },
     { id: 'comparch', label: 'Computer Architecture', color: '#f97316', count: 4 },
     { id: 'networking', label: 'Cloud & Networks', color: '#fbbf24', count: 2 },
@@ -112,16 +116,18 @@ const Skills = () => {
             adnan: { x: 0.50, y: 0.48 },
 
             // 5 Core Pillars
-            ai: { x: 0.28, y: 0.28 },
-            fullstack: { x: 0.72, y: 0.28 },
+            ai: { x: 0.26, y: 0.28 },
+            fullstack: { x: 0.74, y: 0.28 },
             comparch: { x: 0.25, y: 0.65 },
             networking: { x: 0.50, y: 0.74 },
             tools: { x: 0.75, y: 0.65 },
 
-            // AI Sub-nodes (Top-Left)
-            langgraph: { x: 0.14, y: 0.14 },
-            python_dl: { x: 0.36, y: 0.14 },
-            rag_vectors: { x: 0.12, y: 0.38 },
+            // AI Sub-nodes (Top-Left - Generously Spaced Out)
+            langgraph: { x: 0.12, y: 0.14 },
+            transformers_mamba: { x: 0.26, y: 0.12 },
+            python_dl: { x: 0.40, y: 0.18 },
+            rag_vectors: { x: 0.10, y: 0.34 },
+            multimodal_tuning: { x: 0.22, y: 0.44 },
 
             // Full-Stack Sub-nodes (Top-Right)
             mern: { x: 0.86, y: 0.14 },
