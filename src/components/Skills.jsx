@@ -5,44 +5,47 @@ import '../styles/Skills.css';
 
 const skillNodes = [
     // Center Node
-    { id: 'adnan', label: 'ADNAN RIZVI', category: 'center', radius: 22, color: '#ffffff' },
+    { id: 'adnan', label: 'ADNAN RIZVI', category: 'center', radius: 25, color: '#ffffff' },
 
     // Core 5 Domain Pillars
-    { id: 'ai', label: 'AI & ML Core', category: 'pillar', radius: 15, color: '#ff334b' },
-    { id: 'fullstack', label: 'Full-Stack Systems', category: 'pillar', radius: 15, color: '#38bdf8' },
-    { id: 'data', label: 'Data & Analytics', category: 'pillar', radius: 15, color: '#fbbf24' },
-    { id: 'tools', label: 'Production Engineering', category: 'pillar', radius: 15, color: '#10b981' },
-    { id: 'networking', label: 'Computer Networks', category: 'pillar', radius: 15, color: '#f97316' },
+    { id: 'ai', label: 'AI & ML Core', category: 'pillar', radius: 17, color: '#ff334b' },
+    { id: 'fullstack', label: 'Full-Stack Systems', category: 'pillar', radius: 17, color: '#38bdf8' },
+    { id: 'comparch', label: 'Computer Architecture', category: 'pillar', radius: 17, color: '#f97316' },
+    { id: 'networking', label: 'Cloud & Networks', category: 'pillar', radius: 17, color: '#fbbf24' },
+    { id: 'tools', label: 'Production & Systems', category: 'pillar', radius: 17, color: '#10b981' },
 
-    // --- AI & ML Core Sub-skills (3 Focused High-Impact Nodes) ---
-    { id: 'langgraph', label: 'LangGraph & Agents', category: 'ai_skill', domain: 'ai', radius: 9, color: '#fb7185', tag: 'AGENTIC AI', level: 96, desc: 'Stateful cyclic agent graphs, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
-    { id: 'rag_vectors', label: 'RAG & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 9, color: '#fb7185', tag: 'RETRIEVAL', level: 95, desc: 'HNSW vector indexing, ChromaDB dense search, 768D embeddings & semantic retrieval architectures.' },
-    { id: 'python_dl', label: 'PyTorch & Deep Learning', category: 'ai_skill', domain: 'ai', radius: 9, color: '#fb7185', tag: 'CORE DL', level: 94, desc: 'Transformers, custom neural architectures, LoRA/QLoRA fine-tuning, Groq sub-50ms inference & FastAPI.' },
+    // --- AI & ML Core Sub-skills ---
+    { id: 'langgraph', label: 'LangGraph & Multi-Agents', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'AGENTIC AI', level: 96, desc: 'Stateful cyclic agent workflows, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
+    { id: 'rag_vectors', label: 'RAG & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RETRIEVAL', level: 95, desc: 'HNSW vector indexing, ChromaDB/Pinecone dense search, 768D embeddings & semantic retrieval architectures.' },
+    { id: 'python_dl', label: 'PyTorch & Deep Learning', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'TENSOR ENGINE', level: 94, desc: 'Transformers, custom neural architectures, LoRA/QLoRA fine-tuning, Groq sub-50ms inference & FastAPI.' },
 
-    // --- Full-Stack Systems Sub-skills (Consolidated MERN & Next.js Stack) ---
-    { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 9, color: '#7dd3fc', tag: 'MERN ARCH', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
-    { id: 'typescript_api', label: 'TypeScript & REST APIs', category: 'fs_skill', domain: 'fullstack', radius: 9, color: '#7dd3fc', tag: 'BACKEND & ORM', level: 94, desc: 'Type-safe contracts, Prisma ORM, MySQL/Postgres relational schema, API clustering & Tailwind UI.' },
+    // --- Full-Stack Systems Sub-skills (Consolidated MERN Stack) ---
+    { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'MERN FULLSTACK', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
+    { id: 'typescript_api', label: 'TypeScript & REST APIs', category: 'fs_skill', domain: 'fullstack', radius: 10, color: '#7dd3fc', tag: 'TYPE-SAFE BACKEND', level: 94, desc: 'Type-safe contracts, Prisma ORM, MySQL/Postgres relational schema, API clustering & Tailwind HUD.' },
 
-    // --- Data & Analytics Sub-skills (2 Clean High-Impact Nodes) ---
-    { id: 'sql_bi', label: 'Advanced SQL & Tableau', category: 'data_skill', domain: 'data', radius: 9, color: '#fde047', tag: 'SQL & BI', level: 95, desc: 'Complex CTEs, window functions, analytics pipelines, parameter-driven dashboards & KPI intelligence.' },
-    { id: 'pandas_numpy', label: 'Pandas, NumPy & EDA', category: 'data_skill', domain: 'data', radius: 9, color: '#fde047', tag: 'DATA PIPELINES', level: 93, desc: 'Vectorized tensor operations, exploratory data analysis, data sanitization & predictive modeling.' },
+    // --- Modern Computer Architecture Sub-skills (Directly from CSA-222 PDF) ---
+    { id: 'verilog', label: 'Verilog HDL & GTKWave', category: 'arch_skill', domain: 'comparch', radius: 10, color: '#fdba74', tag: 'RTL SYNTHESIS', level: 95, desc: 'Hardware description language (HDL), cycle-accurate RTL testbench validation, waveform simulation & logic verification.' },
+    { id: 'riscv_pipe', label: 'RISC-V & 5-Stage Datapath', category: 'arch_skill', domain: 'comparch', radius: 10, color: '#fdba74', tag: 'CPU PIPELINING', level: 93, desc: '5-stage instruction datapath (IF/ID/EX/MEM/WB), RAW data hazard mitigation, branch prediction & assembly translation.' },
+    { id: 'systolic_ai', label: 'TPU & Systolic Arrays', category: 'arch_skill', domain: 'comparch', radius: 10, color: '#fdba74', tag: 'TENSORAX GEMM', level: 95, desc: '2D mesh systolic array matrix accelerators, parameterized PEs, spatial data reuse & low-power tensor compute.' },
+    { id: 'cache_mesi', label: 'Cache Hierarchy & MESI', category: 'arch_skill', domain: 'comparch', radius: 10, color: '#fdba74', tag: 'AMAT & COHERENCE', level: 92, desc: 'L1/L2/L3 cache associativity, AMAT latency reduction, multicore MESI snooping protocol & cache-blocked matrix tiling.' },
 
-    // --- Production Engineering Sub-skills (2 Clean Nodes) ---
-    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 9, color: '#6ee7b7', tag: 'DISTRIBUTED', level: 95, desc: 'Redis caching, microservices, load balancing, multi-stage Docker containerization & CAP theorem.' },
-    { id: 'devops_sec', label: 'CI/CD, Git & Security', category: 'tool_skill', domain: 'tools', radius: 9, color: '#6ee7b7', tag: 'DEVSECOPS', level: 93, desc: 'Automated GitHub Actions, JWT/RBAC security, token rotation, OOP SOLID patterns & clean code.' },
+    // --- Computer Networks & Cloud Sub-skills ---
+    { id: 'tcp_sockets', label: 'TCP/IP & Wireshark', category: 'net_skill', domain: 'networking', radius: 10, color: '#fde047', tag: 'PROTOCOLS', level: 94, desc: 'Low-level Python sockets, 3-way handshakes, TLS 1.3 termination & Wireshark packet capture telemetry.' },
+    { id: 'cloud_vpc', label: 'AWS VPC & Private DNS', category: 'net_skill', domain: 'networking', radius: 10, color: '#fde047', tag: 'INFRASTRUCTURE', level: 92, desc: 'AWS VPC CIDR subnetting, NAT gateways, stateful security groups & dnsmasq private DNS routing.' },
 
-    // --- Computer Networks Sub-skills (2 Clean Nodes) ---
-    { id: 'tcp_protocols', label: 'TCP/IP & Wireshark', category: 'net_skill', domain: 'networking', radius: 9, color: '#fdba74', tag: 'PROTOCOLS', level: 94, desc: 'Low-level Python sockets, 3-way handshakes, TLS 1.3 termination & Wireshark packet capture telemetry.' },
-    { id: 'cloud_vpc', label: 'Cloud VPC & Private DNS', category: 'net_skill', domain: 'networking', radius: 9, color: '#fdba74', tag: 'INFRASTRUCTURE', level: 92, desc: 'AWS VPC CIDR subnetting, NAT gateways, stateful security groups & dnsmasq private DNS routing.' }
+    // --- Production & Systems Sub-skills ---
+    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 10, color: '#6ee7b7', tag: 'DISTRIBUTED ARCH', level: 95, desc: 'Redis caching, microservices, load balancing, multi-stage Docker containerization & CAP theorem.' },
+    { id: 'sql_analytics', label: 'Advanced SQL & Tableau', category: 'tool_skill', domain: 'tools', radius: 10, color: '#6ee7b7', tag: 'SQL & BI', level: 94, desc: 'Complex CTEs, window functions, analytics pipelines, parameter-driven dashboards & KPI intelligence.' },
+    { id: 'devops_sec', label: 'CI/CD, Git & Security', category: 'tool_skill', domain: 'tools', radius: 10, color: '#6ee7b7', tag: 'DEVSECOPS', level: 93, desc: 'Automated GitHub Actions, JWT/RBAC security, token rotation, OOP SOLID patterns & clean code.' }
 ];
 
 const skillLinks = [
     // Core links to pillars
     { source: 'adnan', target: 'ai' },
     { source: 'adnan', target: 'fullstack' },
-    { source: 'adnan', target: 'data' },
-    { source: 'adnan', target: 'tools' },
+    { source: 'adnan', target: 'comparch' },
     { source: 'adnan', target: 'networking' },
+    { source: 'adnan', target: 'tools' },
 
     // AI sub-links
     { source: 'ai', target: 'langgraph' },
@@ -53,26 +56,29 @@ const skillLinks = [
     { source: 'fullstack', target: 'mern' },
     { source: 'fullstack', target: 'typescript_api' },
 
-    // Data sub-links
-    { source: 'data', target: 'sql_bi' },
-    { source: 'data', target: 'pandas_numpy' },
-
-    // Production Engineering sub-links
-    { source: 'tools', target: 'sysdesign' },
-    { source: 'tools', target: 'devops_sec' },
+    // Modern Computer Architecture sub-links
+    { source: 'comparch', target: 'verilog' },
+    { source: 'comparch', target: 'riscv_pipe' },
+    { source: 'comparch', target: 'systolic_ai' },
+    { source: 'comparch', target: 'cache_mesi' },
 
     // Networking sub-links
-    { source: 'networking', target: 'tcp_protocols' },
-    { source: 'networking', target: 'cloud_vpc' }
+    { source: 'networking', target: 'tcp_sockets' },
+    { source: 'networking', target: 'cloud_vpc' },
+
+    // Production & Systems sub-links
+    { source: 'tools', target: 'sysdesign' },
+    { source: 'tools', target: 'sql_analytics' },
+    { source: 'tools', target: 'devops_sec' }
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 11 },
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 14 },
     { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 3 },
     { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 2 },
-    { id: 'data', label: 'Data & Analytics', color: '#fbbf24', count: 2 },
-    { id: 'tools', label: 'Production Engineering', color: '#10b981', count: 2 },
-    { id: 'networking', label: 'Computer Networks', color: '#f97316', count: 2 }
+    { id: 'comparch', label: 'Computer Architecture', color: '#f97316', count: 4 },
+    { id: 'networking', label: 'Cloud & Networks', color: '#fbbf24', count: 2 },
+    { id: 'tools', label: 'Production & Systems', color: '#10b981', count: 3 }
 ];
 
 const Skills = () => {
@@ -100,44 +106,47 @@ const Skills = () => {
         let animId;
 
         let width = 800;
-        let height = 600;
+        let height = 660;
 
         const coordMap = {
             adnan: { x: 0.50, y: 0.48 },
 
             // 5 Core Pillars
-            ai: { x: 0.28, y: 0.30 },
-            fullstack: { x: 0.72, y: 0.30 },
-            data: { x: 0.22, y: 0.64 },
-            tools: { x: 0.78, y: 0.64 },
-            networking: { x: 0.50, y: 0.72 },
+            ai: { x: 0.28, y: 0.28 },
+            fullstack: { x: 0.72, y: 0.28 },
+            comparch: { x: 0.25, y: 0.65 },
+            networking: { x: 0.50, y: 0.74 },
+            tools: { x: 0.75, y: 0.65 },
 
             // AI Sub-nodes (Top-Left)
-            langgraph: { x: 0.14, y: 0.16 },
-            rag_vectors: { x: 0.12, y: 0.40 },
-            python_dl: { x: 0.36, y: 0.16 },
+            langgraph: { x: 0.14, y: 0.14 },
+            python_dl: { x: 0.36, y: 0.14 },
+            rag_vectors: { x: 0.12, y: 0.38 },
 
             // Full-Stack Sub-nodes (Top-Right)
-            mern: { x: 0.86, y: 0.16 },
-            typescript_api: { x: 0.88, y: 0.40 },
+            mern: { x: 0.86, y: 0.14 },
+            typescript_api: { x: 0.88, y: 0.38 },
 
-            // Data Sub-nodes (Bottom-Left)
-            sql_bi: { x: 0.12, y: 0.80 },
-            pandas_numpy: { x: 0.28, y: 0.86 },
-
-            // Production Sub-nodes (Bottom-Right)
-            sysdesign: { x: 0.88, y: 0.80 },
-            devops_sec: { x: 0.72, y: 0.86 },
+            // Computer Architecture Sub-nodes (Bottom-Left)
+            verilog: { x: 0.10, y: 0.58 },
+            riscv_pipe: { x: 0.12, y: 0.78 },
+            systolic_ai: { x: 0.25, y: 0.88 },
+            cache_mesi: { x: 0.36, y: 0.74 },
 
             // Networking Sub-nodes (Bottom-Center)
-            tcp_protocols: { x: 0.40, y: 0.90 },
-            cloud_vpc: { x: 0.60, y: 0.90 }
+            tcp_sockets: { x: 0.44, y: 0.90 },
+            cloud_vpc: { x: 0.56, y: 0.90 },
+
+            // Production & Systems Sub-nodes (Bottom-Right)
+            sql_analytics: { x: 0.64, y: 0.74 },
+            devops_sec: { x: 0.75, y: 0.88 },
+            sysdesign: { x: 0.88, y: 0.78 }
         };
 
         const calculateBaseCoords = (nodeId, w, h) => {
             const target = coordMap[nodeId] || { x: 0.5, y: 0.5 };
-            const compressX = w < 420 ? 0.70 : (w < 580 ? 0.80 : (w < 768 ? 0.90 : 1.0));
-            const compressY = h < 520 ? 0.92 : 1.0;
+            const compressX = w < 420 ? 0.72 : (w < 580 ? 0.82 : (w < 768 ? 0.92 : 1.0));
+            const compressY = h < 520 ? 0.94 : 1.0;
             let tx = target.x;
             if (tx !== 0.5) {
                 tx = 0.5 + (tx - 0.5) * compressX;
@@ -508,7 +517,7 @@ const Skills = () => {
                 // Monospace Text Label (Scaled smoothly for small phones & tablets)
                 const isSmallPhone = width < 420;
                 const isTablet = width < 560;
-                const fontSize = isSmallPhone ? 7.2 : (isTablet ? 8.2 : 10.2);
+                const fontSize = isSmallPhone ? 7.8 : (isTablet ? 9.2 : 11.2);
                 ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';

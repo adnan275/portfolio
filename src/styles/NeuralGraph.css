@@ -62,7 +62,7 @@
     position: relative;
     width: 100%;
     max-width: 1150px;
-    height: 610px;
+    height: 660px;
     margin: 0 auto;
     border-radius: 24px;
     padding: 0;
@@ -200,7 +200,7 @@
     }
 
     .graph-container {
-        height: 520px;
+        height: 570px;
     }
 
     .graph-system-meta {
@@ -212,7 +212,7 @@
 
 @media (max-width: 580px) {
     .graph-container {
-        height: 520px;
+        height: 550px;
         border-radius: 18px;
     }
 
@@ -229,7 +229,7 @@
 
 @media (max-width: 420px) {
     .graph-container {
-        height: 500px;
+        height: 530px;
         border-radius: 16px;
     }
 
