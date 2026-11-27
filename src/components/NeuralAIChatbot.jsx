@@ -149,15 +149,19 @@ const KNOWLEDGE_BASE = {
     cloudpulse: {
         keywords: [
             'cloudpulse', 'network service', 'network telemetry', 'nginx proxy', 'tls 1.3', 
-            'wireshark project', 'infrastructure telemetry', 'private network', 'reverse proxy'
+            'wireshark project', 'infrastructure telemetry', 'private network', 'reverse proxy',
+            'dnsmasq', 'private dns', 'load balancing', 'http 304', 'caching'
         ],
         response: "🌐 **CloudPulse — Private Network Service Platform & Infrastructure Telemetry**\n\n" +
-            "A private network monitoring and service orchestration platform providing real-time infrastructure observability and secure gateway termination.\n\n" +
-            "• **Reverse Proxy & TLS 1.3**: Automated TLS 1.3 termination and Layer 7 load balancing powered by **Nginx**.\n" +
-            "• **Real-Time Telemetry**: Sub-2ms heartbeat telemetry, packet inspection diagnostics, and active socket-level connection status.\n" +
-            "• **High Availability**: Monitored uptime with automated failover alerting and clean cloud dashboard visualization.\n" +
-            "• **Tech Stack**: JavaScript, Node.js, Express, Nginx, TLS/SSL, TCP/IP, WebSockets, Render\n\n" +
-            "🔗 View the live platform: [CloudPulse Live Demo](https://cloudpulse-hba3.onrender.com/) | [GitHub Repository](https://github.com/adnan275/CloudPulse)",
+            "CloudPulse is an enterprise-grade private network platform simulating full cloud infrastructure across a physical multi-machine LAN setup:\n\n" +
+            "• **The Core Problem**: In cloud microservices, direct exposure of backend nodes wastes heavy CPU cycles doing repeated TLS handshakes, hardcoded IPs break scalability without local DNS, and missing conditional caching wastes network bandwidth.\n" +
+            "• **Private DNS Resolution (UDP 53)**: Deployed `dnsmasq` translating custom domains (`app.team1.test`) into gateway IPs inside an isolated LAN (AWS Route 53 equivalent).\n" +
+            "• **Edge Reverse Proxy & TLS 1.3**: Configured **Nginx** as an Application Load Balancer (ALB) terminating HTTPS/TLS 1.3 at the edge with Root-CA-signed certificates, offloading crypto compute from backends.\n" +
+            "• **Round-Robin Load Balancing**: Balances traffic between multiple Node.js compute nodes with health checks and `X-Backend` provenance headers.\n" +
+            "• **HTTP 304 Conditional Caching**: Configured ETag and Last-Modified validation headers, eliminating redundant data transmission.\n" +
+            "• **Packet Verification**: Wireshark verified across all layers (DNS A-record query, TCP 3-way handshake, TLS ClientHello/ServerHello, and internal proxy passes).\n" +
+            "• **Tech Stack**: JavaScript, Node.js, Express, Nginx, TLS 1.3, TCP/IP, dnsmasq, Wireshark, Render\n\n" +
+            "🔗 Visit the NOC Terminal: [CloudPulse Live Demo](https://cloudpulse-hba3.onrender.com/) | [GitHub Repository](https://github.com/adnan275/CloudPulse)",
         chips: ['🖥️ TensoraX Hardware', '🎵 HarmoniX Music AI', '🚀 All Projects']
     },
     presento: {
