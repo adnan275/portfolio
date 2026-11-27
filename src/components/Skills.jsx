@@ -16,7 +16,6 @@ const skillNodes = [
 
     // --- AI & ML Core Sub-skills (Exact Nodes from Portfolio Architecture) ---
     { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
-    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'FOUNDATION', level: 94, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
     { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
     { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
     { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 10, color: '#fb7185', tag: 'RAG & VECTORS', level: 95, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
@@ -52,7 +51,6 @@ const skillLinks = [
 
     // AI sub-links
     { source: 'ai', target: 'langgraph' },
-    { source: 'ai', target: 'llms' },
     { source: 'ai', target: 'groq' },
     { source: 'ai', target: 'streamlit' },
     { source: 'ai', target: 'langchain' },
@@ -79,8 +77,8 @@ const skillLinks = [
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 17 },
-    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 6 },
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 16 },
+    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 5 },
     { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 2 },
     { id: 'comparch', label: 'Computer Architecture', color: '#f97316', count: 4 },
     { id: 'networking', label: 'Cloud & Networks', color: '#fbbf24', count: 2 },
@@ -124,13 +122,12 @@ const Skills = () => {
             networking: { x: 0.50, y: 0.74 },
             tools: { x: 0.75, y: 0.65 },
 
-            // AI Sub-nodes (Top-Left - Perfectly spaced around AI pillar)
-            langgraph: { x: 0.12, y: 0.14 },
-            llms: { x: 0.26, y: 0.12 },
-            groq: { x: 0.40, y: 0.16 },
-            streamlit: { x: 0.40, y: 0.32 },
-            langchain: { x: 0.10, y: 0.32 },
-            python: { x: 0.16, y: 0.44 },
+            // AI Sub-nodes (Top-Left - Generously Spaced Out Pentagon)
+            langgraph: { x: 0.14, y: 0.14 },
+            groq: { x: 0.38, y: 0.16 },
+            streamlit: { x: 0.40, y: 0.34 },
+            python: { x: 0.24, y: 0.44 },
+            langchain: { x: 0.10, y: 0.30 },
 
             // Full-Stack Sub-nodes (Top-Right)
             mern: { x: 0.86, y: 0.14 },
