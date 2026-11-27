@@ -212,7 +212,7 @@
 
 @media (max-width: 580px) {
     .graph-container {
-        height: 480px;
+        height: 520px;
         border-radius: 18px;
     }
 
@@ -229,7 +229,7 @@
 
 @media (max-width: 420px) {
     .graph-container {
-        height: 450px;
+        height: 500px;
         border-radius: 16px;
     }
 

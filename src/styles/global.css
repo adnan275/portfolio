@@ -41,8 +41,22 @@
         var(--shadow-md);
 }
 
+section {
+    scroll-margin-top: 80px;
+}
+
 .section-padding {
     padding: var(--spacing-lg) 0;
+}
+
+@media (max-width: 768px) {
+    section {
+        scroll-margin-top: 65px;
+    }
+
+    .section-padding {
+        padding: 2.75rem 0;
+    }
 }
 
 h1,

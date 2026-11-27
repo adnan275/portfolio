@@ -14,40 +14,26 @@ const skillNodes = [
     { id: 'tools', label: 'Production Engineering', category: 'pillar', radius: 15, color: '#10b981' },
     { id: 'networking', label: 'Computer Networks', category: 'pillar', radius: 15, color: '#f97316' },
 
-    // --- AI & ML Core Sub-skills ---
-    { id: 'langgraph', label: 'LangGraph v0.2+', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'MULTI-AGENT', level: 96, desc: 'Stateful cyclic agent workflows, persistent checkpointing & human-in-the-loop validation.' },
-    { id: 'langchain', label: 'LangChain & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'RAG & VECTORS', level: 94, desc: 'Semantic retrieval architectures, ChromaDB/Pinecone dense vector search, hybrid ranking & agent memory.' },
-    { id: 'llms', label: 'Transformers & LLMs', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'FOUNDATION', level: 92, desc: 'Self-Attention, Mamba SSMs, Diffusion pipelines, Direct Preference Optimization (DPO).' },
-    { id: 'python', label: 'Python & PyTorch', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'PYTHON & AI', level: 96, desc: 'Core Python, async FastAPI microservices, custom autograd backprop, CNNs, LoRA & QLoRA quantization.' },
-    { id: 'groq', label: 'Groq LPU Engine', category: 'ai_skill', domain: 'ai', radius: 8, color: '#fb7185', tag: 'INFERENCE', level: 93, desc: 'Ultra-low latency sub-50ms TTFT acceleration for real-time agent reasoning loops.' },
-    { id: 'streamlit', label: 'Streamlit & Agent UI', category: 'ai_skill', domain: 'ai', radius: 7, color: '#fb7185', tag: 'PROTOTYPE', level: 90, desc: 'Rapid reactive AI dashboard prototypes, multi-agent chat interfaces & telemetry displays.' },
+    // --- AI & ML Core Sub-skills (3 Focused High-Impact Nodes) ---
+    { id: 'langgraph', label: 'LangGraph & Agents', category: 'ai_skill', domain: 'ai', radius: 9, color: '#fb7185', tag: 'AGENTIC AI', level: 96, desc: 'Stateful cyclic agent graphs, multi-agent teams, persistent checkpoints & human-in-the-loop validation.' },
+    { id: 'rag_vectors', label: 'RAG & Vector DBs', category: 'ai_skill', domain: 'ai', radius: 9, color: '#fb7185', tag: 'RETRIEVAL', level: 95, desc: 'HNSW vector indexing, ChromaDB dense search, 768D embeddings & semantic retrieval architectures.' },
+    { id: 'python_dl', label: 'PyTorch & Deep Learning', category: 'ai_skill', domain: 'ai', radius: 9, color: '#fb7185', tag: 'CORE DL', level: 94, desc: 'Transformers, custom neural architectures, LoRA/QLoRA fine-tuning, Groq sub-50ms inference & FastAPI.' },
 
-    // --- Full-Stack Systems Sub-skills ---
-    { id: 'react', label: 'React 19 & Next.js', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'FULLSTACK UI', level: 96, desc: 'Next.js App Router, SSR/SSG pipelines, React Server Components, custom hooks & Vite.' },
-    { id: 'nodejs', label: 'Node.js & WebSockets', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'REAL-TIME APIS', level: 94, desc: 'Socket.io real-time bidirectional messaging, WebRTC signaling, async clustering & Express REST APIs.' },
-    { id: 'prisma', label: 'Prisma ORM', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'TYPE-SAFE DB', level: 92, desc: 'Schema-driven migrations, declarative relations, connection pooling & auto-generated clients.' },
-    { id: 'mysql', label: 'MySQL & MongoDB', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'STORAGE LAYER', level: 91, desc: 'B-tree indexing, ACID relational guarantees, aggregation pipelines & sharding strategies.' },
-    { id: 'javascript', label: 'TypeScript & JavaScript', category: 'fs_skill', domain: 'fullstack', radius: 8, color: '#7dd3fc', tag: 'TYPE-SAFE CORE', level: 96, desc: 'Type-safe interfaces, generics, V8 Event Loop microtasks, closures & Web Workers.' },
-    { id: 'tailwind', label: 'Tailwind & Motion', category: 'fs_skill', domain: 'fullstack', radius: 7, color: '#7dd3fc', tag: 'CYBER UI', level: 94, desc: 'Atomic design tokens, hardware-accelerated animations, responsive glassmorphism & HUDs.' },
+    // --- Full-Stack Systems Sub-skills (Consolidated MERN & Next.js Stack) ---
+    { id: 'mern', label: 'MERN & Next.js Stack', category: 'fs_skill', domain: 'fullstack', radius: 9, color: '#7dd3fc', tag: 'MERN ARCH', level: 96, desc: 'MongoDB, Express, React 19, Node.js, Next.js App Router, SSR/SSG pipelines & real-time WebSockets.' },
+    { id: 'typescript_api', label: 'TypeScript & REST APIs', category: 'fs_skill', domain: 'fullstack', radius: 9, color: '#7dd3fc', tag: 'BACKEND & ORM', level: 94, desc: 'Type-safe contracts, Prisma ORM, MySQL/Postgres relational schema, API clustering & Tailwind UI.' },
 
-    // --- Data & Analytics Sub-skills ---
-    { id: 'sql', label: 'Advanced SQL', category: 'data_skill', domain: 'data', radius: 8, color: '#fde047', tag: 'QUERY ENGINE', level: 95, desc: 'Window functions, Common Table Expressions (CTEs), recursive queries & execution plan tuning.' },
-    { id: 'tableau', label: 'Tableau & Dashboards', category: 'data_skill', domain: 'data', radius: 8, color: '#fde047', tag: 'ANALYTICS HUD', level: 90, desc: 'Interactive parameter controls, multi-source blending, calculated fields & KPI reporting.' },
-    { id: 'pandas', label: 'Pandas & NumPy', category: 'data_skill', domain: 'data', radius: 8, color: '#fde047', tag: 'ETL PIPELINE', level: 93, desc: 'Vectorized tensor operations, exploratory data analysis, outlier sanitization & feature engineering.' },
-    { id: 'excel', label: 'Excel & Data Prep', category: 'data_skill', domain: 'data', radius: 7, color: '#fde047', tag: 'STATISTICS', level: 88, desc: 'Dynamic pivot structures, statistical regression modeling, Power Query transformations.' },
+    // --- Data & Analytics Sub-skills (2 Clean High-Impact Nodes) ---
+    { id: 'sql_bi', label: 'Advanced SQL & Tableau', category: 'data_skill', domain: 'data', radius: 9, color: '#fde047', tag: 'SQL & BI', level: 95, desc: 'Complex CTEs, window functions, analytics pipelines, parameter-driven dashboards & KPI intelligence.' },
+    { id: 'pandas_numpy', label: 'Pandas, NumPy & EDA', category: 'data_skill', domain: 'data', radius: 9, color: '#fde047', tag: 'DATA PIPELINES', level: 93, desc: 'Vectorized tensor operations, exploratory data analysis, data sanitization & predictive modeling.' },
 
-    // --- Production Engineering Sub-skills ---
-    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'DISTRIBUTED ARCH', level: 95, desc: 'Redis distributed caching, microservices architectures, load balancers, CDN edge caching & CAP theorem.' },
-    { id: 'docker', label: 'Docker Containers', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'ISOLATION', level: 92, desc: 'Multi-stage container builds, Alpine optimization, compose orchestration & deterministic runs.' },
-    { id: 'solid', label: 'OOP & Clean Code', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'PATTERNS', level: 92, desc: 'SOLID principles, design patterns (Factory, Observer, Strategy), dependency injection.' },
-    { id: 'jwt', label: 'JWT & Security', category: 'tool_skill', domain: 'tools', radius: 8, color: '#6ee7b7', tag: 'AUTH / SEC', level: 93, desc: 'Role-Based Access Control (RBAC), token rotation, salted SHA hashing & CSRF/XSS hardening.' },
-    { id: 'git', label: 'Git & GitHub Actions', category: 'tool_skill', domain: 'tools', radius: 7, color: '#6ee7b7', tag: 'CI/CD DEVOPS', level: 94, desc: 'Branch protections, automated GitHub Actions testing, preview deploy triggers on Vercel.' },
+    // --- Production Engineering Sub-skills (2 Clean Nodes) ---
+    { id: 'sysdesign', label: 'System Design & Redis', category: 'tool_skill', domain: 'tools', radius: 9, color: '#6ee7b7', tag: 'DISTRIBUTED', level: 95, desc: 'Redis caching, microservices, load balancing, multi-stage Docker containerization & CAP theorem.' },
+    { id: 'devops_sec', label: 'CI/CD, Git & Security', category: 'tool_skill', domain: 'tools', radius: 9, color: '#6ee7b7', tag: 'DEVSECOPS', level: 93, desc: 'Automated GitHub Actions, JWT/RBAC security, token rotation, OOP SOLID patterns & clean code.' },
 
-    // --- Computer Networks Sub-skills ---
-    { id: 'vpc', label: 'AWS VPC & Subnets', category: 'net_skill', domain: 'networking', radius: 8, color: '#fdba74', tag: 'CLOUD NETWORK', level: 92, desc: 'CIDR subnetting, Internet Gateways, NAT routing tables & multi-tier isolated zones.' },
-    { id: 'wireshark', label: 'Wireshark & Packets', category: 'net_skill', domain: 'networking', radius: 8, color: '#fdba74', tag: 'PACKET DIAG', level: 90, desc: 'Packet trace inspection, TCP 3-way handshake analysis, window sizing & packet drop telemetry.' },
-    { id: 'tcpudp', label: 'TCP/UDP & Sockets', category: 'net_skill', domain: 'networking', radius: 8, color: '#fdba74', tag: 'TRANSPORT', level: 94, desc: 'Python low-level socket programming, AIMD congestion control & multiplexing protocols.' },
-    { id: 'secgroups', label: 'Security & VPNs', category: 'net_skill', domain: 'networking', radius: 7, color: '#fdba74', tag: 'ENCRYPTION', level: 91, desc: 'Stateful Security Groups, stateless NACLs, TLS/SSL certificates, WireGuard tunnels.' }
+    // --- Computer Networks Sub-skills (2 Clean Nodes) ---
+    { id: 'tcp_protocols', label: 'TCP/IP & Wireshark', category: 'net_skill', domain: 'networking', radius: 9, color: '#fdba74', tag: 'PROTOCOLS', level: 94, desc: 'Low-level Python sockets, 3-way handshakes, TLS 1.3 termination & Wireshark packet capture telemetry.' },
+    { id: 'cloud_vpc', label: 'Cloud VPC & Private DNS', category: 'net_skill', domain: 'networking', radius: 9, color: '#fdba74', tag: 'INFRASTRUCTURE', level: 92, desc: 'AWS VPC CIDR subnetting, NAT gateways, stateful security groups & dnsmasq private DNS routing.' }
 ];
 
 const skillLinks = [
@@ -60,47 +46,33 @@ const skillLinks = [
 
     // AI sub-links
     { source: 'ai', target: 'langgraph' },
-    { source: 'ai', target: 'langchain' },
-    { source: 'ai', target: 'llms' },
-    { source: 'ai', target: 'python' },
-    { source: 'ai', target: 'groq' },
-    { source: 'ai', target: 'streamlit' },
+    { source: 'ai', target: 'rag_vectors' },
+    { source: 'ai', target: 'python_dl' },
 
     // Full-Stack sub-links
-    { source: 'fullstack', target: 'react' },
-    { source: 'fullstack', target: 'nodejs' },
-    { source: 'fullstack', target: 'prisma' },
-    { source: 'fullstack', target: 'mysql' },
-    { source: 'fullstack', target: 'javascript' },
-    { source: 'fullstack', target: 'tailwind' },
+    { source: 'fullstack', target: 'mern' },
+    { source: 'fullstack', target: 'typescript_api' },
 
     // Data sub-links
-    { source: 'data', target: 'sql' },
-    { source: 'data', target: 'tableau' },
-    { source: 'data', target: 'pandas' },
-    { source: 'data', target: 'excel' },
+    { source: 'data', target: 'sql_bi' },
+    { source: 'data', target: 'pandas_numpy' },
 
     // Production Engineering sub-links
     { source: 'tools', target: 'sysdesign' },
-    { source: 'tools', target: 'docker' },
-    { source: 'tools', target: 'solid' },
-    { source: 'tools', target: 'jwt' },
-    { source: 'tools', target: 'git' },
+    { source: 'tools', target: 'devops_sec' },
 
     // Networking sub-links
-    { source: 'networking', target: 'vpc' },
-    { source: 'networking', target: 'wireshark' },
-    { source: 'networking', target: 'tcpudp' },
-    { source: 'networking', target: 'secgroups' }
+    { source: 'networking', target: 'tcp_protocols' },
+    { source: 'networking', target: 'cloud_vpc' }
 ];
 
 const domainFilterList = [
-    { id: 'all', label: 'All Domains', color: '#ffffff', count: 25 },
-    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 6 },
-    { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 6 },
-    { id: 'data', label: 'Data & Analytics', color: '#fbbf24', count: 4 },
-    { id: 'tools', label: 'Production Engineering', color: '#10b981', count: 5 },
-    { id: 'networking', label: 'Computer Networks', color: '#f97316', count: 4 }
+    { id: 'all', label: 'All Domains', color: '#ffffff', count: 11 },
+    { id: 'ai', label: 'AI & ML Core', color: '#ff334b', count: 3 },
+    { id: 'fullstack', label: 'Full-Stack Systems', color: '#38bdf8', count: 2 },
+    { id: 'data', label: 'Data & Analytics', color: '#fbbf24', count: 2 },
+    { id: 'tools', label: 'Production Engineering', color: '#10b981', count: 2 },
+    { id: 'networking', label: 'Computer Networks', color: '#f97316', count: 2 }
 ];
 
 const Skills = () => {
@@ -127,75 +99,58 @@ const Skills = () => {
         const ctx = canvas.getContext('2d');
         let animId;
 
-        const resize = () => {
-            const rect = canvas.parentElement.getBoundingClientRect();
-            canvas.width = rect.width * window.devicePixelRatio;
-            canvas.height = rect.height * window.devicePixelRatio;
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
-        };
-        resize();
-        window.addEventListener('resize', resize);
+        let width = 800;
+        let height = 600;
 
-        const width = canvas.width / window.devicePixelRatio;
-        const height = canvas.height / window.devicePixelRatio;
+        const coordMap = {
+            adnan: { x: 0.50, y: 0.48 },
+
+            // 5 Core Pillars
+            ai: { x: 0.28, y: 0.30 },
+            fullstack: { x: 0.72, y: 0.30 },
+            data: { x: 0.22, y: 0.64 },
+            tools: { x: 0.78, y: 0.64 },
+            networking: { x: 0.50, y: 0.72 },
+
+            // AI Sub-nodes (Top-Left)
+            langgraph: { x: 0.14, y: 0.16 },
+            rag_vectors: { x: 0.12, y: 0.40 },
+            python_dl: { x: 0.36, y: 0.16 },
+
+            // Full-Stack Sub-nodes (Top-Right)
+            mern: { x: 0.86, y: 0.16 },
+            typescript_api: { x: 0.88, y: 0.40 },
+
+            // Data Sub-nodes (Bottom-Left)
+            sql_bi: { x: 0.12, y: 0.80 },
+            pandas_numpy: { x: 0.28, y: 0.86 },
+
+            // Production Sub-nodes (Bottom-Right)
+            sysdesign: { x: 0.88, y: 0.80 },
+            devops_sec: { x: 0.72, y: 0.86 },
+
+            // Networking Sub-nodes (Bottom-Center)
+            tcp_protocols: { x: 0.40, y: 0.90 },
+            cloud_vpc: { x: 0.60, y: 0.90 }
+        };
+
+        const calculateBaseCoords = (nodeId, w, h) => {
+            const target = coordMap[nodeId] || { x: 0.5, y: 0.5 };
+            const compressX = w < 420 ? 0.70 : (w < 580 ? 0.80 : (w < 768 ? 0.90 : 1.0));
+            const compressY = h < 520 ? 0.92 : 1.0;
+            let tx = target.x;
+            if (tx !== 0.5) {
+                tx = 0.5 + (tx - 0.5) * compressX;
+            }
+            let ty = target.y;
+            if (ty !== 0.5) {
+                ty = 0.5 + (ty - 0.5) * compressY;
+            }
+            return { x: w * tx, y: h * ty };
+        };
 
         const nodes = skillNodes.map(n => {
-            const coordMap = {
-                adnan: { x: 0.50, y: 0.50 },
-
-                // 5 Core Pillars (Generous separation)
-                ai: { x: 0.30, y: 0.34 },
-                fullstack: { x: 0.70, y: 0.34 },
-                data: { x: 0.26, y: 0.68 },
-                tools: { x: 0.74, y: 0.68 },
-                networking: { x: 0.50, y: 0.80 },
-
-                // AI Sub-nodes (Top-Left Quadrant - Clear of bottom)
-                langgraph: { x: 0.13, y: 0.15 },
-                langchain: { x: 0.10, y: 0.28 },
-                llms: { x: 0.26, y: 0.12 },
-                python: { x: 0.14, y: 0.42 }, // PyTorch & DL safely positioned at y: 0.42
-                groq: { x: 0.38, y: 0.18 },
-                streamlit: { x: 0.33, y: 0.24 },
-
-                // Full-Stack Sub-nodes (Top-Right Quadrant - Clear of bottom)
-                react: { x: 0.87, y: 0.15 },
-                nodejs: { x: 0.74, y: 0.12 },
-                prisma: { x: 0.90, y: 0.28 },
-                mysql: { x: 0.62, y: 0.18 },
-                javascript: { x: 0.86, y: 0.42 }, // JS safely positioned at y: 0.42
-                tailwind: { x: 0.67, y: 0.24 },
-
-                // Data Sub-nodes (Bottom-Left Quadrant - Well separated below y: 0.56)
-                excel: { x: 0.10, y: 0.58 }, // Excel positioned at y: 0.58 (115px below PyTorch)
-                sql: { x: 0.12, y: 0.70 },
-                pandas: { x: 0.16, y: 0.82 },
-                tableau: { x: 0.30, y: 0.88 },
-
-                // Production Sub-nodes (Bottom-Right Quadrant - Well separated below y: 0.56)
-                jwt: { x: 0.90, y: 0.58 }, // JWT positioned at y: 0.58 (115px below JavaScript)
-                sysdesign: { x: 0.88, y: 0.70 },
-                git: { x: 0.82, y: 0.82 },
-                solid: { x: 0.70, y: 0.86 },
-                docker: { x: 0.78, y: 0.92 },
-
-                // Networking Sub-nodes (Bottom-Center - Well spaced)
-                vpc: { x: 0.38, y: 0.92 },
-                wireshark: { x: 0.62, y: 0.92 },
-                tcpudp: { x: 0.34, y: 0.82 },
-                secgroups: { x: 0.66, y: 0.82 }
-            };
-
-            const target = coordMap[n.id] || { x: 0.5, y: 0.5 };
-            let tx = target.x;
-            // On narrower screens, gently compress X towards center so edge labels never clip off canvas
-            if (width < 580 && tx !== 0.5) {
-                tx = 0.5 + (tx - 0.5) * 0.86;
-            }
-            const x = width * tx;
-            const y = height * target.y;
-
+            const { x, y } = calculateBaseCoords(n.id, 800, 600);
             return {
                 ...n,
                 x,
@@ -214,6 +169,28 @@ const Skills = () => {
         let mouseDownPos = { x: 0, y: 0 };
         let mouseX = -1000;
         let mouseY = -1000;
+
+        const resize = () => {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width * window.devicePixelRatio;
+            canvas.height = rect.height * window.devicePixelRatio;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+            width = rect.width;
+            height = rect.height;
+
+            nodes.forEach(node => {
+                const coords = calculateBaseCoords(node.id, width, height);
+                node.baseX = coords.x;
+                node.baseY = coords.y;
+                if (draggedNode !== node) {
+                    node.x = coords.x;
+                    node.y = coords.y;
+                }
+            });
+        };
+        resize();
+        window.addEventListener('resize', resize);
 
         const handleMouseMove = (e) => {
             const rect = canvas.getBoundingClientRect();
@@ -370,8 +347,12 @@ const Skills = () => {
 
                 if (node !== draggedNode) {
                     node.angle += node.speed;
-                    node.x = node.baseX + Math.sin(node.angle * 1.1) * 5;
-                    node.y = node.baseY + Math.cos(node.angle * 1.5) * 5;
+                    const r = node.radius * Math.max(0.1, node.scale);
+                    const safeMargin = r + 12;
+                    const rawX = node.baseX + Math.sin(node.angle * 1.1) * 4;
+                    const rawY = node.baseY + Math.cos(node.angle * 1.5) * 4;
+                    node.x = Math.max(safeMargin, Math.min(width - safeMargin, rawX));
+                    node.y = Math.max(safeMargin, Math.min(height - safeMargin - 15, rawY));
                 }
             });
 
@@ -527,12 +508,20 @@ const Skills = () => {
                 // Monospace Text Label (Scaled smoothly for small phones & tablets)
                 const isSmallPhone = width < 420;
                 const isTablet = width < 560;
-                const fontSize = isSmallPhone ? 7.6 : (isTablet ? 8.8 : 10.5);
+                const fontSize = isSmallPhone ? 7.2 : (isTablet ? 8.2 : 10.2);
                 ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
 
-                const labelY = node.y + r + (isSmallPhone ? 4 : 6);
+                const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
+                const textWidth = ctx.measureText(labelText).width;
+                const halfTextWidth = textWidth / 2;
+                const sidePad = 10;
+                // Clamp X so the label never clips off canvas left or right borders
+                const clampedLabelX = Math.max(halfTextWidth + sidePad, Math.min(width - halfTextWidth - sidePad, node.x));
+                const rawLabelY = node.y + r + (isSmallPhone ? 3 : 5);
+                const clampedLabelY = Math.max(sidePad, Math.min(height - fontSize - sidePad, rawLabelY));
+
                 if (isHovered || isCore || isSelectedDomain) {
                     ctx.shadowColor = '#000000';
                     ctx.shadowBlur = 6;
@@ -541,8 +530,7 @@ const Skills = () => {
                 }
                 ctx.fillStyle = (isHovered || isCore || isSelectedDomain) ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
 
-                const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
-                ctx.fillText(labelText, node.x, labelY);
+                ctx.fillText(labelText, clampedLabelX, clampedLabelY);
                 ctx.shadowBlur = 0;
 
                 ctx.restore();

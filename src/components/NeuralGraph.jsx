@@ -681,8 +681,12 @@ const NeuralGraph = () => {
 
                 if (node !== draggedNode) {
                     node.angle += node.speed;
-                    node.x = node.baseX + Math.sin(node.angle * 1.2) * 6;
-                    node.y = node.baseY + Math.cos(node.angle * 1.6) * 6;
+                    const r = node.radius * Math.max(0.1, node.scale);
+                    const safeMargin = r + 12;
+                    const rawX = node.baseX + Math.sin(node.angle * 1.2) * 6;
+                    const rawY = node.baseY + Math.cos(node.angle * 1.6) * 6;
+                    node.x = Math.max(safeMargin, Math.min(width - safeMargin, rawX));
+                    node.y = Math.max(safeMargin, Math.min(height - safeMargin - 15, rawY));
                 }
             });
 
@@ -840,15 +844,21 @@ const NeuralGraph = () => {
                 ctx.fill();
                 ctx.shadowBlur = 0;
 
-                // Clean Monospace Text Label (Responsive font scaling)
+                // Clean Monospace Text Label (Responsive font scaling & boundary clamp)
                 const isSmallPhone = width < 420;
                 const isTablet = width < 560;
-                const fontSize = isSmallPhone ? 7.6 : (isTablet ? 8.8 : 10.5);
+                const fontSize = isSmallPhone ? 7.2 : (isTablet ? 8.2 : 10.2);
                 ctx.font = `${isHovered || isCore || isSelectedDomain ? '700' : '600'} ${fontSize}px 'Fira Code', 'JetBrains Mono', monospace`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'top';
 
-                const labelY = node.y + r + (isSmallPhone ? 4 : 6);
+                const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
+                const textWidth = ctx.measureText(labelText).width;
+                const halfTextWidth = textWidth / 2;
+                const sidePad = 10;
+                const clampedLabelX = Math.max(halfTextWidth + sidePad, Math.min(width - halfTextWidth - sidePad, node.x));
+                const rawLabelY = node.y + r + (isSmallPhone ? 3 : 5);
+                const clampedLabelY = Math.max(sidePad, Math.min(height - fontSize - sidePad, rawLabelY));
 
                 if (isHovered || isCore || isSelectedDomain) {
                     ctx.shadowColor = '#000000';
@@ -858,8 +868,7 @@ const NeuralGraph = () => {
                 }
                 ctx.fillStyle = (isHovered || isCore || isSelectedDomain) ? '#ffffff' : 'rgba(235, 240, 255, 0.85)';
                 
-                const labelText = isSelectedDomain ? `${node.label} [ACTIVE]` : node.label;
-                ctx.fillText(labelText, node.x, labelY);
+                ctx.fillText(labelText, clampedLabelX, clampedLabelY);
                 ctx.shadowBlur = 0;
 
                 ctx.restore();
