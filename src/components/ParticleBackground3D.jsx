@@ -183,22 +183,8 @@ const ParticleBackground3D = () => {
             mouseY = e.clientY - rect.top;
         };
 
-        let activeBursts = [];
-        let lastBurstTime = 0;
-        const triggerActivationBurst = () => {
-            const now = performance.now();
-            if (now - lastBurstTime < 500) return; // Debounce rapid hover jitter
-            lastBurstTime = now;
-            activeBursts.push({
-                startTime: now,
-                duration: 1700 // Smooth, majestic 1.7s forward pass travel
-            });
-            if (activeBursts.length > 2) activeBursts.shift();
-        };
-
         window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('neural-activation-burst', triggerActivationBurst);
 
         const render = () => {
             const width = w;
@@ -207,47 +193,6 @@ const ParticleBackground3D = () => {
             const isSmallMobile = width < 480;
 
             ctx.clearRect(0, 0, width, height);
-
-            const now = performance.now();
-            activeBursts = activeBursts.filter(b => now - b.startTime < b.duration);
-
-            const getBurstWave = (x) => {
-                let maxFactor = 0;
-                activeBursts.forEach(b => {
-                    const progress = (now - b.startTime) / b.duration;
-                    const startX = layers[0]?.x || 0;
-                    const endX = layers[layers.length - 1]?.x || width;
-                    const waveX = startX + (endX - startX) * progress;
-                    const dist = Math.abs(x - waveX);
-                    const radius = 125;
-                    if (dist < radius) {
-                        const factor = Math.cos((dist / radius) * (Math.PI / 2));
-                        if (factor > maxFactor) maxFactor = factor;
-                    }
-                });
-                return maxFactor;
-            };
-
-            const getBurstSparksForSegment = (x1, x2, y1, y2) => {
-                const sparks = [];
-                activeBursts.forEach(b => {
-                    const progress = (now - b.startTime) / b.duration;
-                    const startX = layers[0]?.x || 0;
-                    const endX = layers[layers.length - 1]?.x || width;
-                    const waveX = startX + (endX - startX) * progress;
-                    if (waveX >= x1 && waveX <= x2) {
-                        const segRatio = (waveX - x1) / (x2 - x1);
-                        sparks.push({
-                            x: waveX,
-                            y: y1 + (y2 - y1) * segRatio,
-                            ratio: segRatio,
-                            dx: x2 - x1,
-                            dy: y2 - y1
-                        });
-                    }
-                });
-                return sparks;
-            };
 
             // 1. Draw Visible Network Connection Lines (Streamlined on mobile for clean, uncluttered look)
             for (let l = 0; l < layers.length - 1; l++) {
@@ -263,58 +208,21 @@ const ParticleBackground3D = () => {
                         const midY = (nodeA.y + nodeB.y) / 2;
                         const isMouseNear = Math.hypot(mouseX - midX, mouseY - midY) < 140;
 
-                        const sparks = getBurstSparksForSegment(currentLayer.x, nextLayer.x, nodeA.y, nodeB.y);
-                        const hasBurst = sparks.length > 0;
-
                         ctx.beginPath();
                         ctx.moveTo(currentLayer.x, nodeA.y);
                         ctx.lineTo(nextLayer.x, nodeB.y);
 
-                        if (hasBurst) {
-                            ctx.strokeStyle = currentLayer.color;
-                            ctx.lineWidth = isMobile ? 1.8 : 2.5;
-                            ctx.globalAlpha = 0.95;
-                            ctx.shadowColor = currentLayer.color;
-                            ctx.shadowBlur = 14;
-                        } else if (isMouseNear) {
+                        if (isMouseNear) {
                             ctx.strokeStyle = currentLayer.color;
                             ctx.lineWidth = isMobile ? 1.2 : 1.8;
                             ctx.globalAlpha = 0.7;
-                            ctx.shadowBlur = 0;
                         } else {
                             ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
                             ctx.lineWidth = isMobile ? 0.7 : 1.2;
                             ctx.globalAlpha = isMobile ? 0.15 : 0.40;
-                            ctx.shadowBlur = 0;
                         }
                         ctx.stroke();
-                        ctx.shadowBlur = 0;
                         ctx.globalAlpha = 1;
-
-                        // Electrical forward-pass impulse sparks along active synapses
-                        if (hasBurst) {
-                            sparks.forEach(spark => {
-                                // Fading trail particle behind main spark
-                                if (spark.ratio > 0.06) {
-                                    const tailX = spark.x - (spark.dx || 30) * 0.05;
-                                    const tailY = spark.y - (spark.dy || 0) * 0.05;
-                                    ctx.beginPath();
-                                    ctx.arc(tailX, tailY, isMobile ? 1.8 : 2.6, 0, Math.PI * 2);
-                                    ctx.fillStyle = currentLayer.color;
-                                    ctx.globalAlpha = 0.6;
-                                    ctx.fill();
-                                    ctx.globalAlpha = 1;
-                                }
-
-                                ctx.beginPath();
-                                ctx.arc(spark.x, spark.y, isMobile ? 3 : 4.5, 0, Math.PI * 2);
-                                ctx.fillStyle = '#ffffff';
-                                ctx.shadowColor = currentLayer.color;
-                                ctx.shadowBlur = 16;
-                                ctx.fill();
-                                ctx.shadowBlur = 0;
-                            });
-                        }
                     });
                 });
             }
@@ -338,19 +246,17 @@ const ParticleBackground3D = () => {
                 ctx.shadowBlur = 0;
             });
 
-            // 3. Render Ambient Floating Math Formulas in Background Space (With Interactive Glow)
+            // 3. Render Ambient Floating Math Formulas in Background Space (With Interactive Proximity Glow)
             const time = Date.now();
             floatingFormulas.forEach((item) => {
                 const floatY = item.baseY + Math.sin(time * item.speed + item.phase) * 8;
                 const distToMouse = Math.hypot(mouseX - item.x, mouseY - floatY);
                 const isHovered = distToMouse < 110;
-                const formulaWave = getBurstWave(item.x);
-                const isFormulaExcited = isHovered || formulaWave > 0.25;
 
-                const fontSz = isSmallMobile ? "600 7.5px" : (isMobile ? "600 8.5px" : (isFormulaExcited ? "700 11px" : "600 9.8px"));
+                const fontSz = isSmallMobile ? "600 7.5px" : (isMobile ? "600 8.5px" : (isHovered ? "700 11px" : "600 9.8px"));
                 ctx.font = `${fontSz} 'Fira Code', 'JetBrains Mono', monospace`;
                 
-                if (isFormulaExcited) {
+                if (isHovered) {
                     ctx.fillStyle = '#ffffff';
                     ctx.globalAlpha = 0.95;
                     ctx.shadowColor = item.color;
@@ -372,14 +278,12 @@ const ParticleBackground3D = () => {
             // 4. Draw Layer Header Titles & Nodes (Razor Sharp Monospace Precision)
             layers.forEach((layer, layerIdx) => {
                 const isOuterLayer = layerIdx === 0 || layerIdx === layers.length - 1;
-                const layerWavePulse = getBurstWave(layer.x);
-                const isLayerPulsing = layerWavePulse > 0.05;
 
                 // Header Titles: Centered cleanly above their respective node columns
                 const headerY = isSmallMobile ? height * 0.10 : (isMobile ? height * 0.11 : height * 0.19);
                 const fontSize = isSmallMobile ? "800 8.5px" : (isMobile ? "800 9.5px" : "800 12px");
                 ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
-                ctx.fillStyle = isLayerPulsing ? '#ffffff' : layer.color;
+                ctx.fillStyle = layer.color;
 
                 let displayName = layer.name;
                 if (isSmallMobile) {
@@ -389,9 +293,9 @@ const ParticleBackground3D = () => {
 
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
-                ctx.globalAlpha = isLayerPulsing ? 1.0 : 0.95;
-                ctx.shadowColor = isLayerPulsing ? layer.color : '#000000';
-                ctx.shadowBlur = isLayerPulsing ? 14 : 4;
+                ctx.globalAlpha = 0.95;
+                ctx.shadowColor = '#000000';
+                ctx.shadowBlur = 4;
                 ctx.fillText(displayName, layer.x, headerY);
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
@@ -401,32 +305,23 @@ const ParticleBackground3D = () => {
                     const distToMouse = Math.hypot(mouseX - layer.x, mouseY - node.y);
                     const isHovered = distToMouse < 30;
 
-                    // Outer Ring with dynamic forward-pass impulse expansion
+                    // Outer Ring
                     ctx.beginPath();
-                    const ringRadius = node.radius + (isHovered ? 6 : (isMobile ? 2 : 4)) + (layerWavePulse * 7.5);
-                    ctx.arc(layer.x, node.y, ringRadius, 0, Math.PI * 2);
-                    ctx.strokeStyle = (isHovered || layerWavePulse > 0.35) ? '#ffffff' : layer.color;
-                    ctx.lineWidth = (isHovered || isLayerPulsing) ? (2.0 + layerWavePulse * 1.5) : 1.2;
-                    ctx.globalAlpha = isOuterLayer 
-                        ? (isHovered || isLayerPulsing ? 1.0 : (isMobile ? 0.35 : 0.6)) 
-                        : (isLayerPulsing ? 0.95 : 0.25);
-                    if (isLayerPulsing || isHovered) {
-                        ctx.shadowColor = layer.color;
-                        ctx.shadowBlur = isHovered ? 18 : 22 * layerWavePulse;
-                    }
+                    ctx.arc(layer.x, node.y, node.radius + (isHovered ? 6 : (isMobile ? 2 : 4)), 0, Math.PI * 2);
+                    ctx.strokeStyle = isHovered ? '#ffffff' : layer.color;
+                    ctx.lineWidth = isHovered ? 2 : 1.2;
+                    ctx.globalAlpha = isOuterLayer ? (isHovered ? 0.95 : (isMobile ? 0.35 : 0.6)) : 0.25;
                     ctx.stroke();
-                    ctx.shadowBlur = 0;
                     ctx.globalAlpha = 1;
 
-                    // Inner Core Dot with high-energy white ignition
+                    // Inner Core Dot
                     ctx.beginPath();
-                    const coreRadius = (node.radius / 1.7) + (layerWavePulse * 2.5);
-                    ctx.arc(layer.x, node.y, coreRadius, 0, Math.PI * 2);
-                    ctx.fillStyle = (isHovered || layerWavePulse > 0.28) ? '#ffffff' : layer.color;
-                    ctx.globalAlpha = (isHovered || isLayerPulsing) ? 1.0 : (isMobile ? 0.7 : 0.85);
-                    if (isHovered || isLayerPulsing) {
+                    ctx.arc(layer.x, node.y, node.radius / 1.7, 0, Math.PI * 2);
+                    ctx.fillStyle = isHovered ? '#ffffff' : layer.color;
+                    ctx.globalAlpha = isHovered ? 1 : (isMobile ? 0.7 : 0.85);
+                    if (isHovered) {
                         ctx.shadowColor = layer.color;
-                        ctx.shadowBlur = isHovered ? 18 : 25 * layerWavePulse;
+                        ctx.shadowBlur = 18;
                     }
                     ctx.fill();
                     ctx.shadowBlur = 0;
@@ -434,9 +329,9 @@ const ParticleBackground3D = () => {
 
                     // Labels for Outer Layers (Input & Output) - DESKTOP ONLY
                     if (isOuterLayer && !isMobile) {
-                        const fontSize = (isHovered || isLayerPulsing) ? "700 10.5px" : "600 10px";
+                        const fontSize = isHovered ? "700 10.5px" : "600 10px";
                         ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
-                        ctx.fillStyle = (isHovered || isLayerPulsing) 
+                        ctx.fillStyle = isHovered 
                             ? '#ffffff' 
                             : (layerIdx === 0 ? 'rgba(255, 140, 155, 0.92)' : 'rgba(110, 231, 183, 0.92)');
 
@@ -449,8 +344,8 @@ const ParticleBackground3D = () => {
                             : layer.x + node.radius + textOffset;
 
                         ctx.textBaseline = 'middle';
-                        ctx.shadowColor = (isHovered || isLayerPulsing) ? layer.color : '#000000';
-                        ctx.shadowBlur = (isHovered || isLayerPulsing) ? 12 : 4;
+                        ctx.shadowColor = isHovered ? layer.color : '#000000';
+                        ctx.shadowBlur = isHovered ? 10 : 4;
                         ctx.fillText(node.label, textX, node.y);
                         ctx.shadowBlur = 0;
                     }
@@ -487,7 +382,6 @@ const ParticleBackground3D = () => {
             observer.disconnect();
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('neural-activation-burst', triggerActivationBurst);
             cancelAnimationFrame(animId);
         };
     }, []);
