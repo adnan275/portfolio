@@ -184,12 +184,16 @@ const ParticleBackground3D = () => {
         };
 
         let activeBursts = [];
+        let lastBurstTime = 0;
         const triggerActivationBurst = () => {
+            const now = performance.now();
+            if (now - lastBurstTime < 500) return; // Debounce rapid hover jitter
+            lastBurstTime = now;
             activeBursts.push({
-                startTime: performance.now(),
-                duration: 800
+                startTime: now,
+                duration: 1700 // Smooth, majestic 1.7s forward pass travel
             });
-            if (activeBursts.length > 3) activeBursts.shift();
+            if (activeBursts.length > 2) activeBursts.shift();
         };
 
         window.addEventListener('resize', handleResize);
@@ -215,7 +219,7 @@ const ParticleBackground3D = () => {
                     const endX = layers[layers.length - 1]?.x || width;
                     const waveX = startX + (endX - startX) * progress;
                     const dist = Math.abs(x - waveX);
-                    const radius = 95;
+                    const radius = 125;
                     if (dist < radius) {
                         const factor = Math.cos((dist / radius) * (Math.PI / 2));
                         if (factor > maxFactor) maxFactor = factor;
@@ -235,7 +239,10 @@ const ParticleBackground3D = () => {
                         const segRatio = (waveX - x1) / (x2 - x1);
                         sparks.push({
                             x: waveX,
-                            y: y1 + (y2 - y1) * segRatio
+                            y: y1 + (y2 - y1) * segRatio,
+                            ratio: segRatio,
+                            dx: x2 - x1,
+                            dy: y2 - y1
                         });
                     }
                 });
@@ -287,6 +294,18 @@ const ParticleBackground3D = () => {
                         // Electrical forward-pass impulse sparks along active synapses
                         if (hasBurst) {
                             sparks.forEach(spark => {
+                                // Fading trail particle behind main spark
+                                if (spark.ratio > 0.06) {
+                                    const tailX = spark.x - (spark.dx || 30) * 0.05;
+                                    const tailY = spark.y - (spark.dy || 0) * 0.05;
+                                    ctx.beginPath();
+                                    ctx.arc(tailX, tailY, isMobile ? 1.8 : 2.6, 0, Math.PI * 2);
+                                    ctx.fillStyle = currentLayer.color;
+                                    ctx.globalAlpha = 0.6;
+                                    ctx.fill();
+                                    ctx.globalAlpha = 1;
+                                }
+
                                 ctx.beginPath();
                                 ctx.arc(spark.x, spark.y, isMobile ? 3 : 4.5, 0, Math.PI * 2);
                                 ctx.fillStyle = '#ffffff';
