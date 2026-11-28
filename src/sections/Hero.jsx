@@ -3,13 +3,24 @@ import { motion } from 'framer-motion';
 import ParticleBackground3D from '../components/ParticleBackground3D';
 import TypingAnimation from '../components/TypingAnimation';
 import Magnetic from '../components/Magnetic';
+import { useLenis } from '../components/LenisProvider';
 import '../styles/Hero.css';
 
 const Hero = () => {
+    const lenisRef = useLenis();
+
     const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
+        const element = document.getElementById(sectionId)
+            || (sectionId === 'work' ? (document.getElementById('work') || document.getElementById('neural-graph')) : null);
         if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
+            if (lenisRef?.current) {
+                lenisRef.current.scrollTo(element, {
+                    offset: -80,
+                    duration: 1.2,
+                });
+            } else {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
     };
 

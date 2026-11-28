@@ -866,7 +866,7 @@ const NeuralGraph = () => {
     }, []);
 
     return (
-        <section id="neural-graph" className="section-padding neural-graph-section">
+        <section id="work" className="section-padding neural-graph-section">
             <div className="container">
                 <motion.div
                     className="neural-header"
