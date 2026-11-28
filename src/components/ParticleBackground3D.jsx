@@ -34,18 +34,31 @@ const ParticleBackground3D = () => {
             const isMobile = w < 768;
             const isSmallMobile = w < 480;
 
-            // Wide central corridor (xPositions auto-adapt to device width)
+            // Wide central corridor with generous edge clearance to prevent text clipping
+            const isSmallScreen = w < 1200;
+            const padLeft = isMobile ? w * 0.05 : (isSmallScreen ? 165 : 185);
+            const padRight = isMobile ? w * 0.05 : (isSmallScreen ? 175 : 195);
+
             const xPositions = isMobile
                 ? [w * 0.04, w * 0.28, w * 0.72, w * 0.96]
-                : [w * 0.08, w * 0.25, w * 0.75, w * 0.92];
+                : [
+                    Math.max(padLeft, w * 0.12),
+                    w * 0.29,
+                    w * 0.71,
+                    Math.min(w - padRight, w * 0.88)
+                ];
 
             const inputLabels = isSmallMobile
-                ? ['X0: Data Ingest', 'X1: Vector Mesh', 'X2: Agent Prompt', 'X3: WebRTC']
-                : ['X0: Data Ingest', 'X1: 768D Vector Mesh', 'X2: Agentic Prompt', 'X3: WebRTC / Stream'];
+                ? ['[IN_0] Ingest', '[IN_1] Vector', '[IN_2] Prompt', '[IN_3] Stream']
+                : isMobile
+                    ? ['[IN_00] Data Ingest', '[IN_01] 768D Mesh', '[IN_02] Agent Loop', '[IN_03] WebRTC']
+                    : ['[IN_00] Data Ingest', '[IN_01] 768D Vector Mesh', '[IN_02] Agentic Prompt Loop', '[IN_03] WebRTC / TCP Stream'];
 
             const outputLabels = isSmallMobile
-                ? ['Y0: Sub-80ms API', 'Y1: Agent Action', 'Y2: PCA 2D', 'Y3: Prod App']
-                : ['Y0: Sub-80ms API', 'Y1: Autonomous Action', 'Y2: PCA 2D Embedding', 'Y3: Production App'];
+                ? ['[OUT_0] API', '[OUT_1] Agent', '[OUT_2] Embed', '[OUT_3] Telemetry']
+                : isMobile
+                    ? ['[OUT_00] Sub-80ms', '[OUT_01] Auto Action', '[OUT_02] PCA Embed', '[OUT_03] Telemetry']
+                    : ['[OUT_00] Sub-80ms Inference', '[OUT_01] Autonomous Agent', '[OUT_02] PCA 2D Embeddings', '[OUT_03] Production Telemetry'];
 
             const layers = [
                 // Layer 0: Input Layer (Crimson Scarlet)
@@ -233,28 +246,40 @@ const ParticleBackground3D = () => {
                 ctx.shadowBlur = 0;
             });
 
-            // 3. Render Ambient Floating Math Formulas in Background Space
+            // 3. Render Ambient Floating Math Formulas in Background Space (With Interactive Glow)
             const time = Date.now();
             floatingFormulas.forEach((item) => {
                 const floatY = item.baseY + Math.sin(time * item.speed + item.phase) * 8;
-                const fontSz = isSmallMobile ? "600 7.5px" : (isMobile ? "600 8.5px" : "600 10px");
+                const distToMouse = Math.hypot(mouseX - item.x, mouseY - floatY);
+                const isHovered = distToMouse < 110;
+
+                const fontSz = isSmallMobile ? "600 7.5px" : (isMobile ? "600 8.5px" : (isHovered ? "700 11px" : "600 9.8px"));
                 ctx.font = `${fontSz} 'Fira Code', 'JetBrains Mono', monospace`;
-                ctx.fillStyle = item.color;
-                ctx.globalAlpha = isMobile ? 0.30 : 0.40;
+                
+                if (isHovered) {
+                    ctx.fillStyle = '#ffffff';
+                    ctx.globalAlpha = 0.95;
+                    ctx.shadowColor = item.color;
+                    ctx.shadowBlur = 14;
+                } else {
+                    ctx.fillStyle = item.color;
+                    ctx.globalAlpha = isMobile ? 0.28 : 0.40;
+                    ctx.shadowColor = '#000000';
+                    ctx.shadowBlur = 4;
+                }
+
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.shadowColor = '#000000';
-                ctx.shadowBlur = 4;
                 ctx.fillText(item.text, item.x, floatY);
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
             });
 
-            // 4. Draw Layer Header Titles & Nodes (Razor Sharp HD Rendering)
+            // 4. Draw Layer Header Titles & Nodes (Razor Sharp Monospace Precision)
             layers.forEach((layer, layerIdx) => {
                 const isOuterLayer = layerIdx === 0 || layerIdx === layers.length - 1;
 
-                // Header Titles: Clean Monospace Font positioned safely below Navbar
+                // Header Titles: Centered cleanly above their respective node columns
                 const headerY = isSmallMobile ? height * 0.10 : (isMobile ? height * 0.11 : height * 0.19);
                 const fontSize = isSmallMobile ? "800 8.5px" : (isMobile ? "800 9.5px" : "800 12px");
                 ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
@@ -266,18 +291,11 @@ const ParticleBackground3D = () => {
                     else if (layerIdx === 3) displayName = 'OUTPUT';
                 }
 
-                if (layerIdx === 0) {
-                    ctx.textAlign = 'left';
-                } else if (layerIdx === layers.length - 1) {
-                    ctx.textAlign = 'right';
-                } else {
-                    ctx.textAlign = 'center';
-                }
-
+                ctx.textAlign = 'center';
                 ctx.textBaseline = 'bottom';
-                ctx.globalAlpha = 1.0;
+                ctx.globalAlpha = 0.95;
                 ctx.shadowColor = '#000000';
-                ctx.shadowBlur = 3;
+                ctx.shadowBlur = 4;
                 ctx.fillText(displayName, layer.x, headerY);
                 ctx.shadowBlur = 0;
                 ctx.globalAlpha = 1;
@@ -309,21 +327,25 @@ const ParticleBackground3D = () => {
                     ctx.shadowBlur = 0;
                     ctx.globalAlpha = 1;
 
-                    // Labels for Outer Layers (Input & Output) - DESKTOP ONLY to keep mobile 100% clean
+                    // Labels for Outer Layers (Input & Output) - DESKTOP ONLY
                     if (isOuterLayer && !isMobile) {
-                        const fontSize = "600 10px";
+                        const fontSize = isHovered ? "700 10.5px" : "600 10px";
                         ctx.font = `${fontSize} 'Fira Code', 'JetBrains Mono', monospace`;
-                        ctx.fillStyle = isHovered ? '#ffffff' : 'rgba(235, 240, 255, 0.82)';
+                        ctx.fillStyle = isHovered 
+                            ? '#ffffff' 
+                            : (layerIdx === 0 ? 'rgba(255, 140, 155, 0.92)' : 'rgba(110, 231, 183, 0.92)');
 
-                        ctx.textAlign = layer.x < width * 0.5 ? 'right' : 'left';
-                        const textOffset = 10;
-                        const textX = layer.x < width * 0.5
+                        const textOffset = 12;
+                        const isLeft = layerIdx === 0;
+                        ctx.textAlign = isLeft ? 'right' : 'left';
+                        
+                        const textX = isLeft
                             ? layer.x - node.radius - textOffset
                             : layer.x + node.radius + textOffset;
 
                         ctx.textBaseline = 'middle';
-                        ctx.shadowColor = '#000000';
-                        ctx.shadowBlur = 6;
+                        ctx.shadowColor = isHovered ? layer.color : '#000000';
+                        ctx.shadowBlur = isHovered ? 10 : 4;
                         ctx.fillText(node.label, textX, node.y);
                         ctx.shadowBlur = 0;
                     }
