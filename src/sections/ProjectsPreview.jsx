@@ -96,20 +96,6 @@ const projects = [
         tags: ['React', 'Node.js', 'Stream'],
         image: '/projects/zync.png',
         link: 'https://zync-five.vercel.app/login'
-    },
-    {
-        title: 'Taskly',
-        description: 'Task management app',
-        tags: ['React', 'Firebase'],
-        image: '/projects/taskly-real.png',
-        link: 'https://auth-taskly.vercel.app/'
-    },
-    {
-        title: 'Capstone Project',
-        description: 'Full-stack web solution',
-        tags: ['HTML', 'CSS', 'JavaScript'],
-        image: '/projects/capstone-real.jpg',
-        link: 'https://s-w-project-sigma.vercel.app/'
     }
 ];
 

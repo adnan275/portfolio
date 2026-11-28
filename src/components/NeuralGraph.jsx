@@ -241,44 +241,6 @@ const initialNodes = [
         }
     },
     {
-        id: 'taskly',
-        label: 'Taskly',
-        category: 'project',
-        color: '#7dd3fc',
-        radius: 8,
-        title: 'Taskly — Task Manager',
-        description: 'Auth-based Task Manager for organizing personal workflows with real-time Firebase syncing.',
-        tags: ['React', 'Firebase', 'Auth', 'JavaScript'],
-        link: 'https://auth-taskly.vercel.app/',
-        image: '/projects/taskly-real.png',
-        github: 'https://github.com/adnan275/auth-taskly',
-        details: {
-            problem: 'Users need a simple, fast, and reliable way to sync tasks across devices without complex setups.',
-            solution: 'Utilized Firebase for real-time data synchronization and seamless Google/Email authentication.',
-            features: ['Real-time task syncing', 'Google Authentication', 'Drag-and-drop organization', 'Offline support'],
-            techStack: ['React', 'Firebase', 'Firestore', 'Context API']
-        }
-    },
-    {
-        id: 'capstone',
-        label: 'Capstone Project',
-        category: 'project',
-        color: '#7dd3fc',
-        radius: 8,
-        title: 'Capstone Project — Full Stack Web',
-        description: 'Comprehensive web solution demonstrating full-stack capabilities and modern layout design.',
-        tags: ['CSS', 'HTML', 'JavaScript'],
-        link: 'https://s-w-project-sigma.vercel.app/',
-        image: '/projects/capstone-real.jpg',
-        github: 'https://github.com/adnan275/s-w-project',
-        details: {
-            problem: 'Integrating multiple web technologies into a cohesive application.',
-            solution: 'Developed a web platform focusing on semantic HTML, modern CSS layouts, and interactive JS components.',
-            features: ['Responsive multi-page layout', 'Interactive data displays', 'Form validation logic'],
-            techStack: ['HTML5', 'CSS3', 'JavaScript']
-        }
-    },
-    {
         id: 'cloudpulse',
         domain: 'fullstack',
         label: 'CloudPulse',
@@ -423,8 +385,6 @@ const initialLinks = [
     { source: 'fullstack', target: 'presento' },
     { source: 'fullstack', target: 'gigflow' },
     { source: 'fullstack', target: 'zync' },
-    { source: 'fullstack', target: 'taskly' },
-    { source: 'fullstack', target: 'capstone' },
     { source: 'fullstack', target: 'cloudpulse' },
 
     { source: 'data', target: 'bi_portfolio' },
@@ -443,8 +403,6 @@ const nodeDomainMap = {
     presento: 'fullstack',
     gigflow: 'fullstack',
     zync: 'fullstack',
-    taskly: 'fullstack',
-    capstone: 'fullstack',
     cloudpulse: 'fullstack',
     bi_portfolio: 'data',
     socratic: 'data',
@@ -453,9 +411,9 @@ const nodeDomainMap = {
 };
 
 const domainMeta = {
-    all: { label: 'ALL DOMAINS', color: '#ffffff', count: 15 },
+    all: { label: 'ALL DOMAINS', color: '#ffffff', count: 13 },
     ai: { label: 'AI & ML CORE', color: '#00f0ff', count: 5 },
-    fullstack: { label: 'FULL-STACK SYSTEMS', color: '#c084fc', count: 6 },
+    fullstack: { label: 'FULL-STACK SYSTEMS', color: '#c084fc', count: 4 },
     data: { label: 'DATA & ANALYTICS', color: '#fbbf24', count: 2 },
     projects: { label: 'PRODUCTION ENGINEERING', color: '#34d399', count: 2 }
 };
@@ -513,11 +471,9 @@ const NeuralGraph = () => {
 
                 // Full-Stack Sub-nodes (Top-Right Quadrant - Clear of right border)
                 gigflow: { x: 0.68, y: 0.18 },
-                cloudpulse: { x: 0.82, y: 0.20 },
-                taskly: { x: 0.72, y: 0.30 },
-                presento: { x: 0.87, y: 0.32 },
-                zync: { x: 0.83, y: 0.48 },
-                capstone: { x: 0.89, y: 0.44 },
+                cloudpulse: { x: 0.84, y: 0.20 },
+                presento: { x: 0.86, y: 0.34 },
+                zync: { x: 0.82, y: 0.48 },
 
                 // Data Sub-nodes (Bottom-Left Quadrant)
                 bi_portfolio: { x: 0.15, y: 0.76 },
